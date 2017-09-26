@@ -1,0 +1,11 @@
+*.bbl
+*.blg
+*.loe
+*.log
+*.lot
+*.lof
+*.out
+*.synctex.gz
+*.toc
+intro-stellar-physics.pdf
+git-info.tex
