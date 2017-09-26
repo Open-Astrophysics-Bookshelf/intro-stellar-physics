@@ -1,0 +1,43 @@
+% !TEX root = ../intro-stellar-physics.tex
+
+\newthought{Photons in a plasma, such as in the interior of the sun, transport energy.}  Were the sun transparent, these photons would immediately stream out, and the sun would release its stored energy in a fiery blast.  This doesn't happen: a photon can only travel a short distance before being scattered or absorbed. The net effect is that radiation generated in the core must travel a tortuous path, rather like a pinball, before reaching the surface and escaping.
+
+How far does a photon---or any particle, for that matter---travel, on average, in the interior of the sun? Imagine a particle traveling with speed $v$.  Draw a cylinder, of length $\ell$ and cross-sectional area $\mathcal{A}$, around its future path, as shown in Fig.~\ref{f.MFP}. What the particle ``sees'' is that the cylinder is partly blocked by obstacles---other particles in its path. What is the probability of our particle making it through the cylinder unscathed?
+
+\begin{marginfigure}
+    \includegraphics[width=\linewidth]{mean-free-path}
+    \caption{\label{f.MFP} Schematic of a particle incident on a group of particles.}
+\end{marginfigure}
+
+The probability of the particle making it through is the ratio
+\[
+    \mathcal{P} = \frac{\textrm{total area covered by obstacles}}{\textrm{area of cylinder}}
+\]
+Denote the cross-sectional area of the other particles by $\sigma$.  If the density of obstacles is $n$, then the number of obstacles in the cylinder is $n\times(\mathcal{A}\ell)$, and therefore the fraction of the area blocked by the obstacles is
+\begin{equation}
+    \mathcal{P} = \frac{n\times(\mathcal{A}\ell)\times\sigma}{\mathcal{A}} = n\sigma\ell.
+\label{e.prob-MFP}
+\end{equation}
+\marginnote{We are taking $\ell$ and $\mathcal{A}$ sufficiently small that we don't have to worry about particles overlapping.}
+The particle will suffer a collision when $\mathcal{P}\to 1$, or when
+\begin{equation}\label{e.MFP}
+    \ell = \frac{1}{n\sigma}.
+\end{equation}
+We call $\ell$ the ``mean free path''.
+
+\begin{exercisebox}[Mean free path for electron scattering]
+    In the sun, free electrons scatter photons, and the cross-section is
+    \[
+    \sigma_{\mathrm{Th}} = \left(\frac{8\pi}{3}\right)\left(\frac{e^2}{m_e c^2}\right)^2 = \val{\sci{6.65}{-27}}{\meter^2}.
+    \]
+    What is the mean free path against this process for a photon?
+\end{exercisebox}
+
+\begin{exercisebox}[Mean free path of a hockey puck]\label{ex.MFP-2D}
+    Suppose we have a flat surface on which pucks are sliding around, as shown in Fig.~\ref{f.MFP-2D} (Think of an air hockey table). The pucks bounce off the walls as they slide around.  Suppose there are $N$ pucks, each with a unit diameter, and the table is square with sides of length $L$.  Estimate the mean free path of a puck.
+\end{exercisebox}
+
+\begin{marginfigure}[-5\baselineskip]
+    \includegraphics[width=\linewidth]{air-hockey-mfp}
+    \caption[Mean free path of a hockey puck]{\label{f.MFP-2D}Schematic for Exercise~\ref{ex.MFP-2D}}
+\end{marginfigure}

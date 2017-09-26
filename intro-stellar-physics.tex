@@ -1,0 +1,74 @@
+\documentclass[profonts,stix]{astro-bookshelf}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=black,urlcolor=blue}
+
+\setcounter{secnumdepth}{1}
+
+\graphicspath{%
+{frontmatter/}{classifying-stars/figs/}{hydrostatic-balance/figs/}{mean-free-path/figs/}{stellar-atmospheres/figs/}{atomic-lines/figs/}{degeneracy/figs/}{convection/figs/}{nuclear-burning/figs/}{main-sequence/figs/}
+}
+
+\usepackage{starType}
+\input{symbols}
+% for aligning table columns
+\usepackage{dcolumn}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+\newcommand{\tabhead}[1]{\multicolumn{1}{c}{#1}}
+% for coloring rows
+\usepackage{colortbl}
+\usepackage{aasjournals}
+
+\newcommand*{\maintitle}{Stars}
+\newcommand*{\notice}{\thanks{\ccCopy\ 2017 Edward Brown; \ccbyncsa\ Except where explicitly noted, this work is licensed under the Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA
+4.0) license.}}
+
+\title{An Introduction to\\ Stellar Physics}
+\publisher{Open Astrophysics Bookshelf}
+\author{Edward Brown}
+\date{26 September 2017}
+
+\begin{document}
+\frontmatter
+\pagenumbering{roman}
+\input{frontmatter/frontmatter}
+
+\mainmatter
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\chapter{Stellar Classification}\label{ch.classifying-stars}
+\input{classifying-stars/classifying-stars}
+
+\chapter{Hydrostatic Balance and Basic Stellar Properties}\label{ch.hydrostatic-balance}
+\input{hydrostatic-balance/hydrostatic-balance}
+
+\chapter{Transport: The Mean Free Path}\label{ch.mean-free-path}
+\input{mean-free-path/mean-free-path}
+
+\chapter{A Closer Look at the Eddington Approximation}\label{ch.stellar-atmospheres}
+\input{stellar-atmospheres/stellar-atmospheres}
+
+\chapter{Atomic Lines}\label{ch.atomic-lines}
+\input{atomic-lines/atomic-lines}
+
+\chapter{The Equation of State}\label{ch.degeneracy}
+\input{degeneracy/degeneracy}
+
+\chapter{Convection}\label{ch.convection}
+\input{convection/convection}
+
+\chapter{Non-resonant Fusion Reactions}\label{ch.nuclear-burning}
+\input{nuclear-burning/nuclear-burning}
+
+\chapter{The Main Sequence}\label{ch.main-sequence}
+\input{main-sequence/main-sequence}
+
+\chapter{After the Main Sequence}\label{ch.post-main-sequence}
+\input{post-main-sequence/post-main-sequence}
+
+
+\backmatter
+\bibliographystyle{plainnat}
+\bibliography{bibs/stellar-astro}
+
+\end{document}
