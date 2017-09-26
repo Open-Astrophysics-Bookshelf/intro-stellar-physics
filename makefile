@@ -45,11 +45,11 @@ BIBS = bibs/stellar-astro.bib
 default: $(BASE).pdf
 
 $(BASE).pdf: $(BASE).tex $(TEX_SRC) $(FIGURES) $(BIBS)
-        # git rev-parse --short=8 HEAD > git-info.tex
-		$(COMPILE) $(OPS) $(BASE).tex
-		bibtex $(BASE).aux
-		$(COMPILE) $(OPS) $(BASE).tex
-		$(COMPILE) $(OPS) $(BASE).tex
+	git rev-parse --short=8 HEAD > git-info.tex
+	$(COMPILE) $(OPS) $(BASE).tex
+	bibtex $(BASE).aux
+	$(COMPILE) $(OPS) $(BASE).tex
+	$(COMPILE) $(OPS) $(BASE).tex
 
 clean:
 	-$(RM) *.aux *.log *.dvi  *.bbl *.blg *.toc *.lot *.lof *.loe *.out *.synctex.gz
