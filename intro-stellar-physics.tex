@@ -12,9 +12,12 @@
 % !TEX tabbedFile{post-main-sequence/post-main-sequence.tex}
 
 \documentclass[profonts,stix,symmetric]{astro-bookshelf}
+\usepackage{tcolorbox}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=black,urlcolor=blue}
 
 \setcounter{secnumdepth}{1}
+\tcbuselibrary{breakable}
+\tcbset{colback=yellow!10!white,fonttitle=\bfseries}
 
 \graphicspath{%
 {frontmatter/}{classifying-stars/figs/}{hydrostatic-balance/figs/}{mean-free-path/figs/}{stellar-atmospheres/figs/}{atomic-lines/figs/}{degeneracy/figs/}{convection/figs/}{nuclear-burning/figs/}{main-sequence/figs/}
