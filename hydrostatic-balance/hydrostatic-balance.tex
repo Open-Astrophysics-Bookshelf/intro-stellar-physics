@@ -60,7 +60,7 @@ Applying this to equation~(\ref{e.virial-deriv-1}) gives
 \end{eqnarray*}
 Now, if the system is bound and in mechanical equilibrium, then the positions and momenta of all particles are finite: none of the particles can escape, and the system doesn't violently collapse so that momenta are diverging.  Hence both $G(\tau)$ and $G(0)$ are finite numbers, so as $\tau\to\infty$, term I vanishes.
 
-As for term II, we can show that if the potential between pairs of particles depends on $1/r$, where $r$ is the distance between those particles, then term II is just $-\Omega$.  For now, I'll give a rough argument of why this is so:  in a spherically symmetric system, then the potential just depends on the distance $r$ from the origin; and since
+As for term II, we can show that if the potential between pairs of particles depends on $1/r$, where $r$ is the distance between those particles, then term II is just $-\Omega$ (see Box~\ref{b.working-vectors}).  For now, I'll give a rough argument of why this is so:  in a spherically symmetric system, then the potential just depends on the distance $r$ from the origin; and since
 \[
 	r\dd{}{r} \left(\frac{1}{r}\right) = -\frac{1}{r},
 \]
@@ -69,6 +69,47 @@ the last term is just $-\Omega$ and our equation is
 2\langle K\,\rangle + \langle \Omega\rangle = 0.
 \end{equation}
 This is the virial theorem.
+
+\begin{sidebar}[Working with vectors]
+\label{b.working-vectors}
+In this sidebar we'll show that the second term in equation~(\ref{e.virial-deriv-1}) is
+\begin{equation}\label{e.term-2}
+	\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\Omega = -\Omega.
+\end{equation}
+First, we need an expression for $\Omega$. Suppose we pick a pair of particles, $i$ and $k$.  The potential between this pair is
+\[
+	-\frac{Gm_{i}m_{k}}{r_{ik}} = -\frac{Gm_{i}m_{k}}{\sqrt{(\bvec{r}_{i}-\bvec{r}_{k})^{2}}}.
+\]
+Our total potential consists of a sum over the potentials between all $N(N-1)/2$ unique pairs of particles,
+\[
+	\Omega = -\frac{Gm_{1}m_{2}}{\sqrt{(\bvec{r}_{1}-\bvec{r}_{2})^{2}}} - \ldots 
+	-\frac{Gm_{i}m_{k}}{\sqrt{(\bvec{r}_{i}-\bvec{r}_{k})^{2}}} - \dots
+\]
+When we take the derivative in eq.~(\ref{e.term-2}), we apply $\bvec{r}_{i}\vdot\grad_{i}$ to each term in the potential.  For the term with the pair $i$, $k$, this will give
+\begin{eqnarray*}
+	\lefteqn{\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\left(-\frac{Gm_{i}m_{k}}{\sqrt{(\bvec{r}_{i}-\bvec{r}_{k})^{2}}}\right)} \\
+	&=& -Gm_{i}m_{k}\left[\bvec{r}_{i}\vdot\grad_{i}\left(\frac{1}{\sqrt{(\bvec{r}_{i}-\bvec{r}_{k})^{2}}}\right) + \bvec{r}_{k}\vdot\grad_{k}\left(\frac{1}{\sqrt{(\bvec{r}_{i}-\bvec{r}_{k})^{2}}}\right)\right].
+\end{eqnarray*}
+Since many of you aren't yet comfortable with vector expressions, we'll do this in detail for the $x$-component:
+\begin{eqnarray*}
+	\lefteqn{\left[\bvec{r}_{i}\vdot\grad_{i}\left(\frac{1}{\sqrt{(\bvec{r}_{i}-\bvec{r}_{k})^{2}}}\right) + \bvec{r}_{k}\vdot\grad_{k}\left(\frac{1}{\sqrt{(\bvec{r}_{i}-\bvec{r}_{k})^{2}}}\right)\right]_{x}}\\
+	&=& x_{i}\dd{}{x_{i}}\left(\frac{1}{\sqrt{(\bvec{r}_{i}-\bvec{r}_{k})^{2}}}\right)
+		+ x_{k}\dd{}{x_{k}}\left(\frac{1}{\sqrt{(\bvec{r}_{i}-\bvec{r}_{k})^{2}}}\right) \\
+		&=& -\frac{x_{i}(x_{i}-x_{k})}{(\bvec{r}_{i}-\bvec{r}_{k})^{3/2}}
+		+ \frac{x_{k}(x_{i}-x_{k})}{(\bvec{r}_{i}-\bvec{r}_{k})^{3/2}}\\
+		&=& -\frac{(x_{i}-x_{k})^{2}}{(\bvec{r}_{i}-\bvec{r}_{k})^{3/2}}
+\end{eqnarray*}
+The $y$- and $z$-components are similar, giving
+\begin{eqnarray*}
+	\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\left(-\frac{Gm_{i}m_{k}}{\sqrt{(\bvec{r}_{i}-\bvec{r}_{k})^{2}}}\right) &=& Gm_{i}m_{k}
+	\frac{(\bvec{r}_{i}-\bvec{r}_{k})^{2}}{(\bvec{r}_{i}-\bvec{r}_{k})^{3/2}}\\
+ &=& -\left(-\frac{Gm_{i}m_{k}}{\sqrt{(\bvec{r}_{i}-\bvec{r}_{k})^{2}}}\right).
+\end{eqnarray*}
+This can be done for every term in the sum, with the final result that
+\[
+	\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\Omega = -\Omega.
+\]
+\end{sidebar}
 
 For an ideal monatomic gas in thermal equilibrium, the mean kinetic energy of a particle in the gas is $K = (3/2)\kB T$, and we therefore may define an average temperature
 \begin{equation}\label{e.Tbar}
@@ -171,41 +212,3 @@ This timescale is called the \emph{Kelvin-Helmholtz timescale}.  Since $t_{\math
 
 As the star contracts and $R$ decreases, the central density, pressure, and temperature increase.  When the central temperature becomes sufficiently hot, the heating from nuclear reactions rapidly increases and supplies enough energy to offset that radiated from the surface.  At this point the star is on the main-sequence, where it remains until the hydrogen fuel is exhausted from its core.
 
-\begin{sidebar}[Some technical details]
-In this sidebar we'll show that the second term in equation~(\ref{e.virial-deriv-1}) is
-\begin{equation}\label{e.term-2}
-	\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\Omega = -\Omega.
-\end{equation}
-First, we need an expression for $\Omega$. Suppose we pick a pair of particles, $j$ and $k$.  The potential between this pair is
-\[
-	-\frac{Gm_{j}m_{k}}{r_{jk}} = -\frac{Gm_{j}m_{k}}{\sqrt{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}}.
-\]
-Our total potential consists of a sum over the potentials between all $N(N-1)/2$ unique pairs of particles,
-\[
-	\Omega = -\frac{Gm_{1}m_{2}}{\sqrt{(\bvec{r}_{1}-\bvec{r}_{2})^{2}}} - \ldots 
-	-\frac{Gm_{j}m_{k}}{\sqrt{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}} - \dots
-\]
-When we take the derivative in eq.~(\ref{e.term-2}), we can apply $\bvec{r}_{i}\vdot\grad_{i}$ to each term in the potential.  For the term with the pair $j$, $k$, this will give
-\begin{eqnarray*}
-	\lefteqn{\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\left(-\frac{Gm_{j}m_{k}}{\sqrt{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}}\right)} \\
-	&=& -Gm_{i}m_{j}\left[\bvec{r}_{j}\vdot\grad_{j}\left(\frac{1}{\sqrt{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}}\right) + \bvec{r}_{k}\vdot\grad_{k}\left(\frac{1}{\sqrt{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}}\right)\right].
-\end{eqnarray*}
-Since many of you aren't yet comfortable with vector expressions, we'll do this in detail for the $x$-component:
-\begin{eqnarray*}
-	\lefteqn{x_{j}\dd{}{x_{j}}\left(\frac{1}{\sqrt{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}}\right)
-		+ x_{k}\dd{}{x_{k}}\left(\frac{1}{\sqrt{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}}\right)} \\
-		&=& -\frac{x_{j}(x_{j}-x_{k})}{(\bvec{r}_{j}-\bvec{r}_{k})^{3/2}}
-		+ \frac{x_{k}(x_{j}-x_{k})}{(\bvec{r}_{j}-\bvec{r}_{k})^{3/2}}\\
-		&=& -\frac{(x_{j}-x_{k})^{2}}{(\bvec{r}_{j}-\bvec{r}_{k})^{3/2}}
-\end{eqnarray*}
-The $y$- and $z$-components are similar, giving
-\[
-	\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\left(-\frac{Gm_{j}m_{k}}{\sqrt{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}}\right) = Gm_{j}m_{k}
-	\frac{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}{(\bvec{r}_{j}-\bvec{r}_{k})^{3/2}}
- = -\left(-\frac{Gm_{j}m_{k}}{\sqrt{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}}\right).
-\]
-This can be done for every term in the sum, with the final result that
-\[
-	\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\Omega = -\Omega.
-\]
-\end{sidebar}
