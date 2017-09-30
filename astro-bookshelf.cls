@@ -99,6 +99,9 @@
 % for code listings
 \fvset{numbers=left}
 
+\renewcommand*{\listfigurename}{Figures}
+\renewcommand*{\listtablename}{Tables}
+
 % Offset box for inline exercises
 \ifthenelse{\boolean{@handout}}
 {
@@ -109,7 +112,7 @@
     \renewcommand{\theexercise}{\thechapter.\arabic{exercise}}
 }
 
-\newcommand{\listexercisename}{List of Exercises}
+\newcommand{\listexercisename}{Exercises}
 \newcommand\listofexercises{%
   \ifthenelse{\equal{\@tufte@class}{book}}%
     {\chapter*{\listexercisename}}%
@@ -148,7 +151,7 @@
     \renewcommand{\thesidebar}{\thechapter.\arabic{sidebar}}
 }
 
-\newcommand{\listsidebarname}{List of Sidebars}
+\newcommand{\listsidebarname}{Boxes}
 \newcommand\listofsidebars{%
   \ifthenelse{\equal{\@tufte@class}{book}}%
     {\chapter*{\listsidebarname}}%
@@ -163,7 +166,7 @@
 \newenvironment{sidebar}[1][]{%
 \vspace{\baselineskip}
 \refstepcounter{sidebar}
-\begin{tcolorbox}[breakable,title=Sidebar \thesidebar. #1]
+\begin{tcolorbox}[breakable,title=Box \thesidebar\ #1]
 \ifnum\value{sidebar} = 1%
 \addtocontents{lob}{\protect\addvspace{10\p@}}%
 \fi
