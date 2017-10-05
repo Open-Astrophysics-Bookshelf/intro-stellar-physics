@@ -6,7 +6,7 @@ def plot_one(n,ax):
     theta = np.linspace(0.0,2.0*np.pi,100)
     mu = np.cos(theta-np.pi/2)
     p = legendre(n)
-    r = p(mu)
+    r = np.abs(p(mu))
     x, y = r*np.cos(theta), r*np.sin(theta)
     ax.set_aspect('equal')
     ax.plot(x,y,color='k',linewidth=1,zorder=3)
