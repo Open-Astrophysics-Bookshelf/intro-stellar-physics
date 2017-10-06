@@ -47,13 +47,13 @@ The quantity $G = \sum_{i}\bvec{p}_{i}\vdot\bvec{r}_{i}$ is called the ``virial'
 	2K = \DDt{G} + \sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\Omega.
 \end{equation}
 So far, we just shuffled and relabeled terms.  The crucial step comes in taking the time-average of the kinetic energy, which we'll denote by $\langle\;\rangle$:
-\[	\langle f\,\rangle \equiv \lim_{\tau\to\infty} \frac{1}{\tau}\int_{0}^{\infty}f(t)\,\dif t. \]
+\[	\langle f\,\rangle \equiv \lim_{\tau\to\infty} \frac{1}{\tau}\int_{0}^{\tau}f(t)\,\dif t. \]
 Applying this to equation~(\ref{e.virial-deriv-1}) gives
 \begin{eqnarray*}
 	2\langle K\,\rangle &=&
 		 \left\langle\DDt{G}\right\rangle 
 		+ \left\langle\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\Omega\right\rangle\\
-	&=& \lim_{\tau\to\infty}\left[\int_{0}^{\infty}\,\DDt{G}\,\dif t\right] 
+	&=& \lim_{\tau\to\infty}\left[\int_{0}^{\tau}\,\DDt{G}\,\dif t\right] 
 		+ \left\langle\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\Omega\right\rangle\\
 	&=& \underbrace{\lim_{\tau\to\infty}\left[\frac{G(\tau)-G(0)}{\tau}\right]}_{\mathrm{I}}
 		+ \underbrace{\left\langle\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\Omega\right\rangle}_{\mathrm{II}}
