@@ -17,7 +17,7 @@ CHAPTERS = frontmatter \
 
 TEX_SRC = $(foreach chap, $(CHAPTERS), $(wildcard $(chap)/*.tex))
 
-FIGURES = frontmatter/cover-art.jpg \
+FIGURES = frontmatter/cover-art.png \
 	classifying-stars/figs/spectral_types.pdf \
 	hydrostatic-balance/figs/fall-to-center.pdf \
 	hydrostatic-balance/figs/hydrostatic-equilibrium.pdf \
