@@ -91,7 +91,7 @@
 
 % settings for sidebar text boxes
 \tcbuselibrary{breakable}
-\tcbset{colback=yellow!10!white,fonttitle=\bfseries}
+\tcbset{colback=yellow!5!white,fonttitle=\bfseries}
 
 % for having inline author citations
 \newcommand{\citetalt}[1]{\citeauthor{#1}\cite{#1}}
