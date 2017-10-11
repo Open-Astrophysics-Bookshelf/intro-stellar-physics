@@ -54,29 +54,35 @@ The sun emits light over a broad range of frequencies, with the peak of this \em
 \section{Intensity and specific flux}
 \label{s.intensity-specific-flux}
 
-Take a detector (CCD, your eye, an photographic emulsion) and place in front of the detector a filter that only lets through light with wavelengths in a range $\Delta\lambda$ as before. Then place a mask over the detector with a small pinhole of area $\Delta A$ that restricts the light falling on the detector to fall in a narrow cone of solid angle $\Delta\Omega$ about the normal to the detector. Then measure the energy $\Delta E$ incident on the detector in a time $\Delta t$. The quantity
+\begin{marginfigure}[6\baselineskip]
+\includegraphics[width=\linewidth]{intensity}
+\caption{\label{f.intensity} Schematic of radiative intensity.}
+\end{marginfigure}
+Take a detector (CCD, your eye, an photographic emulsion) and place in front of the detector a filter that only lets through light with wavelengths in a range $\Delta\lambda$ as before. Then place a mask over the detector with a small pinhole of area $\Delta A$ that restricts the light falling on the detector to fall in a narrow cone of solid angle $\Delta\Omega$ about the normal to the detector (see Fig.~\ref{f.intensity}). Then measure the energy $\Delta E$ incident on the detector in a time $\Delta t$. The quantity
 \begin{equation}\label{e.definition-intensity}
 I_{\lambda} \equiv \frac{\dif E}{\dif t\,\dif A\,\dif\lambda\,\dif\Omega}
 \end{equation}
 is known as the \emph{intensity}. It is the basic quantity describing radiation.
 
-In situations in which the wavelength is small (relative to the system in question), light propagates along \emph{rays}. By a ray of light, we mean the light emitted into a small cone of opening solid angle $\dif\Omega$ about a direction $\unitk$. In the absence of any interactions with matter, the intensity is conserved along a ray if both source and receiver are stationary with respect to one another.
+In situations in which the wavelength is small (relative to the system in question), light propagates along \emph{rays}. By a ray of light, we mean the light emitted into a small cone of opening solid angle $\dif\Omega$ about a direction $\unitk$. In the absence of any interactions with matter, the intensity is conserved along a ray if both source and receiver are stationary with respect to one another (Exercise~\ref{ex.intensity-conserved}).
 
 \begin{sidebar}[Solid angles]
 Imagine that your are at the center of a great sphere of radius $R$, and you shine a light that emits rays into some solid angle. Orient your coordinates so that the rays are traveling along the $z$-axis. The light will illuminate an area
-\[ 	A = d^{2}\int_{0}^{2\pi}\int_{0}^{\theta}\sin\theta\,\dif\theta\,\dif\phi. \]
-Here $\theta$ is the opening half-angle of the cone. The solid angle into which the light is emitted is $\Omega = A/d^{2}$. Astronomers often express the integral by changing variables to $\mu = \cos\theta$, so that the solid angle is
+\[ 	A = R^{2}\int_{0}^{2\pi}\int_{0}^{\theta}\sin\theta\,\dif\theta\,\dif\phi. \]
+Here $\theta$ is the opening half-angle of the cone. The solid angle into which the light is emitted is $\Omega = A/R^{2}$. Astronomers often express the integral by changing variables to $\mu = \cos\theta$, so that the solid angle is
 \[
 	\Delta\Omega = \int_{0}^{2\pi}\int_{1-\Delta\mu}^{1}\dif\mu\,\dif\phi.
 \]
+If we integrate over all angles ($0\le\theta\le\pi$, or $-1\le\mu\le 1$, then we get the area of a sphere, $A = 4\pi R^{2}$.
 \end{sidebar}
 
 \begin{exercisebox}[Proof that $I_{\lambda}$ is conserved]
-Your friend flashes a light: in a time $\Delta t$ it emits a energy $\Delta E_{\mathrm{emit}}$ in a waveband $\Delta\lambda$. The opening through which the light passes has area $\Delta A_{\mathrm{emit}}$, and the light goes into a cone of opening solid angle $\Delta\Omega_{\mathrm{emit}}$. Your friend therefore calculates her intensity as
+\label{ex.intensity-conserved}
+Your friend flashes a light: in a time $\Delta t$ it emits a energy $\Delta E_{\mathrm{emit}}$ in a waveband $\Delta\lambda$. The opening through which the light passes has area $\Delta A_{\mathrm{emit}}$, and the light goes into a cone of opening solid angle $\Delta\Omega_{\mathrm{emit}}$ (see Fig.~\ref{f.intensity-conserved}). Your friend therefore calculates her intensity as
 \[	
 	I_{\lambda,\mathrm{emit}} = \frac{\Delta E_{\mathrm{emit}}}{\Delta t\,\Delta A_{\mathrm{emit}}\,\Delta\lambda \,\Delta\Omega_{\mathrm{emit}}}.
 \]
-You stand a distance $d$ from your friend with a camera. The aperture on your camera has area $\Delta A_{\mathrm{obs.}}$. Show that the intensity you receive is $I_{\lambda,\mathrm{obs}} = I_{\lambda,\mathrm{emit}}$.
+You stand a distance $d$ ($d^{2}\gg \Delta A_{\mathrm{emit}}, \Delta A_{\mathrm{obs}}$ from your friend with a camera. The aperture on your camera has area $\Delta A_{\mathrm{obs.}}$. Show that the intensity you receive is $I_{\lambda,\mathrm{obs}} = I_{\lambda,\mathrm{emit}}$.
 \begin{enumerate}
 \item Calculate the incident energy that falls on your camera aperture $\Delta E_{\mathrm{obs}}$.
 \item What solid angle $\Delta\Omega_{\mathrm{obs}}$ is subtended by the rays entering the aperture?
@@ -87,3 +93,33 @@ You stand a distance $d$ from your friend with a camera. The aperture on your ca
 and show that this is the same as what your friend calculated.
 \end{enumerate}
 \end{exercisebox}
+\begin{figure*}
+\includegraphics[width=\linewidth]{intensity-conserved}
+\caption[Schematic of intensity being constant]{\label{f.intensity-conserved} Schematic for exercise \ref{ex.intensity-conserved}.}
+\end{figure*}
+
+To compute the \emph{specific flux} $F_{\lambda}$, we multiply the intensity by $\cos\theta$, where $\theta$ is the angle between the ray and the normal of our area\sidenote{this corrects for the projection of the area} and integrate over angle:
+\begin{equation}\label{e.specific-flux}
+F_{\lambda} =  \int I_{\lambda}\,\cos\theta\,\sin\theta\,\dif\theta\,\dif\phi.
+\end{equation}
+The specific flux has dimensions
+\[
+	[F_{\lambda}] \sim \frac{\textrm{energy}}{\textrm{time}\cdot\textrm{area}\cdot\textrm{wavelength}}.
+\]
+Astronomers typically use standard filters. For example, the $V$-band filter is centered at $\lambda=\val{551}{\nano\meter}$ and has a width at half-max of $\val{88}{\nano\meter}$. The flux in a particular band, for example $V$ is then
+\[
+	F_{V} = \int F_{\lambda} \, T(\lambda)\,\dif\lambda;
+\]
+here $T(\lambda)$ is the \emph{transmission function}, which specifies how much light is let through as a function of wavelength.  The transmission functions for some common UV/optical/IR filters are shown in Figure~\ref{f.UBVRI}.
+\begin{figure}
+\includegraphics[width=\linewidth]{UBVRI}
+\caption[Standard filters]{\label{f.UBVRI} Some standard UV/optical/IR filters. The $T(\lambda)$ are normalized so that $\max(T)=1$.}
+\end{figure}
+
+When making observations, it is common to compare the fluxes in a particular band between two stars. Optical astronomers therefore define the \emph{apparent magnitude} as
+\marginnote{NB. Throughout this text, $\log\equiv\lg$ denotes $\log_{10}$ and $\ln$ denotes $\log_{e}$.}
+\begin{equation}\label{e.apparent-magnitude}
+m(A) - m(B) = -2.5\log\left[\frac{F(A)}{F(B)}\right].
+\end{equation}
+Here $F(A)$ and $F(B)$ are two different measurements of flux (from two different stars, for example) in a particular waveband. It is common to use the label of the waveband in place of $m$.
+
