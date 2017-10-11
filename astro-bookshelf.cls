@@ -170,7 +170,7 @@
 \ifnum\value{sidebar} = 1%
 \addtocontents{lob}{\protect\addvspace{10\p@}}%
 \fi
-\sidebardescription{#1}}
+\sidebardescription{#1}\setlength{\parindent}{1.0pc}}
 {\end{tcolorbox}
 }
 
