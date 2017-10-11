@@ -1,5 +1,6 @@
 % !TEX TS-program = xelatex
 % !TEX useTabsWithFiles
+% !TEX tabbedFile{starlight/starlight.tex}
 % !TEX tabbedFile{classifying-stars/classifying-stars.tex}
 % !TEX tabbedFile{hydrostatic-balance/hydrostatic-balance.tex}
 % !TEX tabbedFile{mean-free-path/mean-free-path.tex}
@@ -17,7 +18,7 @@
 \setcounter{secnumdepth}{1}
 
 \graphicspath{%
-{frontmatter/}{classifying-stars/figs/}{hydrostatic-balance/figs/}{mean-free-path/figs/}{stellar-atmospheres/figs/}{atomic-lines/figs/}{degeneracy/figs/}{convection/figs/}{nuclear-burning/figs/}{main-sequence/figs/}
+{frontmatter/}{starlight/figs/}{classifying-stars/figs/}{hydrostatic-balance/figs/}{mean-free-path/figs/}{stellar-atmospheres/figs/}{atomic-lines/figs/}{degeneracy/figs/}{convection/figs/}{nuclear-burning/figs/}{main-sequence/figs/}
 }
 
 \usepackage{starType}
@@ -48,6 +49,9 @@ Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA
 \mainmatter
 \pagenumbering{arabic}
 \setcounter{page}{1}
+
+\chapter{Starlight}\label{ch.starlight}
+\input{starlight/starlight}
 
 \chapter{Stellar Classification}\label{ch.classifying-stars}
 \input{classifying-stars/classifying-stars}
