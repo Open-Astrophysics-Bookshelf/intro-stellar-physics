@@ -132,6 +132,7 @@
 \ifnum\value{exercise} = 1%
 \addtocontents{loe}{\protect\addvspace{10\p@}}%
 \fi
+\setlength{\parindent}{1.0pc}
 \noindent\rule[0.6ex]{\linewidth}{0.5pt}
 \allcaps{exercise \theexercise---}
 \exercisedescription{#1}}
