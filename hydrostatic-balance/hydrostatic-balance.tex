@@ -22,9 +22,30 @@ Here the mass enclosed within radius $r$ is
 \begin{equation}\label{e.mass-continuity}
 	m(r) = 4\pi \int_{0}^{r}\rho(r)r^{2}\,\dif r,
 \end{equation}
-with $\rho$ being the mass density.
+with $\rho$ being the mass density. We can't solve these equations yet because we don't have a relation---yet---between $P$ and $\rho$.  But rather than wait to develop all of the physics we need, we are going to leapfrog ahead by \emph{assuming} a simple form for $\rho(r)$ and using that to understand better how stars work.
 
-With the assumption that $\rho = \textrm{constant}$, we showed that the central temperature and pressure depended on the total mass $M$, total radius $R$, and the gravitational constant $G$ as
+\begin{exercisebox}[A star of constant density]
+\label{ex.constant-density-star}
+Let's suppose that $\rho$ is constant throughout the star. 
+In what follows, you should be able to express everything in terms of the star's mass $M$ and radius $R$, along with physical constants such as $G$ and $\kB$.
+
+\begin{enumerate}
+\item\label{rhoc} First, find $\rho$ in terms of the total mass $M$ and radius $R$.
+
+\item Next, solve equation~(\ref{e.mass}) to find $m(r)$ in terms of $M$ and $r/R$.
+
+\item\label{Pc} Use this expression for $m(r)$ and your expression for $\rho$ to integrate equation~(\ref{e.hydrostatic-equilibrium}) and to find the pressure at the center, $P_{c} = P(r=0)$.
+
+\item
+Now that we have an expression for the central pressure in terms of $M$ and $R$, let's try to understand what it means. For an ideal gas, the pressure, density, and temperature are related:
+\begin{equation}\label{e.eos}
+P = \rho\left(\frac{\kB}{\mu\mb}\right) T,
+\end{equation}
+where $\mb = 1/12\times(\textrm{mass of a \carbon\ atom})$ and $\mu$ is the mean molecular weight---the average mass of a particle in the gas.  We'll show how to compute $\mu$ later; for now, just treat it as a constant. Use your result from parts \ref{Pc} and \ref{rhoc}, as well as equation~(\ref{e.eos}) to find the central temperature of the star, in terms of $G$, $M$, $R$, and the mean molecular weight of the gas $\mu$.  Evaluate $T_{c}$ for $M=M_{\odot}$, $R=R_{\odot}$, and $\mu = 0.6$.  Do you get a reasonable result?
+\end{enumerate}
+\end{exercisebox}
+
+With the assumption that $\rho = \textrm{constant}$, we showed (exercise~\ref{ex.constant-density-star}) that the central temperature and pressure depended on the total mass $M$, total radius $R$, and the gravitational constant $G$ as
 \begin{eqnarray}
 \label{e.Tc}
 T_{c} &=& \frac{1}{2}\frac{GM}{R}\frac{\mu\mb}{\kB}\\
@@ -142,12 +163,7 @@ These are comparable to the central values, eqn.~(\ref{e.Tc}) and (\ref{e.Pc}).
 \section{A closer look at hydrostatic equilibrium}
 \label{s.closer-look}
 
-Let's imagine what would happen if the star fell out of equilibrium.  Suppose we could turn off the pressure\marginnote{Maybe that's what the red goo in the \emph{Star Trek} movie was supposed to do?}.  The star would collapse; how long would this take?  Let's calculate the amount of time a particle would need to free-fall from the surface to the center.  We can get this from Kepler's law. Start with a circular orbit and deform it while keeping the center at one focus, as shown in Fig.~\ref{f.fall-to-center}.  
-
-\begin{marginfigure}
-\includegraphics[width=\linewidth]{fall-to-center}
-\caption[Fall to center]{\label{f.fall-to-center} Deformation of an orbit until it becomes a fall to the center, denoted by the yellow dot.}
-\end{marginfigure}
+Let's imagine what would happen if the star fell out of equilibrium.  Suppose we could turn off the pressure.  The star would collapse; how long would this take?  Let's calculate the amount of time a particle would need to free-fall from the surface to the center.  We can get this from Kepler's law. Start with a circular orbit and deform it while keeping the center at one focus, as shown in Fig.~\ref{f.fall-to-center}.  
 
 The limit of these increasingly eccentric orbits is a fall into the center.  The time is one-half of an orbital period, and the semi-major axis in this limiting case is $a = R/2$:
 \[
@@ -158,6 +174,11 @@ Notice that we again have the combination $\sqrt{R^{3}/M}$.  Let's convert this 
 \tau_{\mathrm{ff}} = \left(\frac{3}{32\pi}\right)^{1/2}\left(\frac{1}{G}\frac{4\pi R^{3}}{3M}\right)^{1/2} = \left(\frac{3}{32\pi}\right)^{1/2} \frac{1}{\sqrt{G\bar{\rho}}}.
 \end{equation}
 The time to collapse is proportional to $1/\sqrt{G\bar{\rho}}$ and depends on the average density of the star. We call $t_{\mathrm{dyn}} \equiv 1/\sqrt{G\bar{\rho}}$ the \emph{dynamical timescale} of the star.
+
+\begin{marginfigure}[-12\baselineskip]
+\includegraphics[width=\linewidth]{fall-to-center}
+\caption[Fall to center]{\label{f.fall-to-center} Deformation of an orbit until it becomes a fall to the center, denoted by the yellow dot.}
+\end{marginfigure}
 
 Let's avoid a collapse by turning the pressure back on.  If part of the star is falling inward, the gas within the star will be compressed, the pressure will rise, and hydrostatic equilibrium will be restored.  How quickly can the star respond? A change is pressure is communicated to the rest of the star by sound waves, which travel at a speed (see Box~\ref{b.sound-speed})
 \begin{equation}\label{e.speed-of-sound}
@@ -224,6 +245,10 @@ This is the equation for a wave: the solutions are $P_{1}(x,t) = P_{1}(x\pm c_{s
 \end{sidebar}
 
 For the sun, $\bar{\rho} = \val{1400}{\kilo\gram\usk\meter^{-3}} = \val{1.4}{\grampercc}$; this is just a bit denser than you.  The dynamical timescale for the sun is about one hour.
+
+\begin{exercisebox}[Sound-crossing time]
+The central temperature $T_{c}$ is a measure of the average kinetic energy of a particle at the stellar center. Use the central temperature that you found for the constant density star in exercise~\ref{ex.constant-density-star} and estimate the time that such a particle would take to cross a distance $R$. How does this time compare to the orbital period of a satellite orbiting just outside the stellar surface?
+\end{exercisebox}
 
 \section{Stellar Properties}
 \label{s.stellar-properties}
