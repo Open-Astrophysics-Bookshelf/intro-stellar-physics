@@ -18,6 +18,10 @@ CHAPTERS = frontmatter \
 TEX_SRC = $(foreach chap, $(CHAPTERS), $(wildcard $(chap)/*.tex))
 
 FIGURES = frontmatter/cover-art.png \
+	starlight/figs/intensity.pdf \
+	starlight/figs/intensity-conserved.pdf \
+	starlight/figs/UBVRI.pdf \
+	starlight/figs/E-B-free-space.pdf \
 	classifying-stars/figs/spectral_types.pdf \
 	hydrostatic-balance/figs/fall-to-center.pdf \
 	hydrostatic-balance/figs/hydrostatic-equilibrium.pdf \
