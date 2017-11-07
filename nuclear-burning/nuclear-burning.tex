@@ -7,11 +7,11 @@ Let's take two nuclei with masses\sidenote{When doing kinematics, we shall make 
 We show in Fig.~\ref{f.tunneling} this Coulomb potential as a red curve.
 At closer distances the nuclear potential forms a deep well with a repulsive core (blue curve in Fig.~\ref{f.tunneling}).
 
-\begin{figure}[hb]
-\includegraphics[width=\linewidth]{Tunneling}
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{tunnel-schematic}
 \caption{Tunneling through the Coulomb potential barrier.}
 \label{f.tunneling}
-\end{figure}
+\end{marginfigure}
 
 \newthought{Suppose we shoot the particle in from infinity:} How close does the particle come before stopping? For the sun, $E \sim \val{1}{\keV}$ (black line in Fig.~\ref{f.tunneling}).  Equating this energy with the potential and solving for $r$ gives the \emph{turning radius}
 \begin{equation}
@@ -124,8 +124,8 @@ On to some numbers. Table~\ref{t.reaction} lists quantities for some common reac
 as you can verify for yourself. In the table, the exponent is evaluated at $T = \val{10^{7}}{\K}$; the exponent $n$ depends on temperature. Finally, note the size of $\EG/(4k)$.  This makes the argument of the exponential in equation~(\ref{e.rate2}) large in absolute value, and sets the temperature scale at which a given reaction comes into play.
  
 \begin{table}[hb]
+\forcerectofloat
 \caption{\label{t.reaction} Parameters for non-resonant reactions}
-\begin{center}
 \begin{tabular}{lrrrrrr}
 \hline
 Reaction & $p+p$ & $p+\helium[3]$ & $\helium[3]+\helium[3]$ & $p+\lithium[7]$ & $p+\carbon$\\
@@ -139,5 +139,4 @@ $\Delta/\Epk|_{T=\val{10^{7}}{\K}}$ & 1.0 & 0.75 & 0.53 & 0.64 & 0.50 \\
 $n(T = \val{10^{7}}{\K})$ & 4.6 & 8.8 & 18.3 & 12.4 & 20.5\\
 \hline
 \end{tabular}
-\end{center}
 \end{table}
