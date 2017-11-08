@@ -39,7 +39,7 @@ FIGURES = frontmatter/cover-art.png \
 	convection/figs/convection-1.jpg \
 	convection/figs/convection-2.jpg \
 	convection/figs/convective.pdf \
-	nuclear-burning/figs/Tunneling.pdf \
+	nuclear-burning/figs/tunnel-schematic.pdf \
 	nuclear-burning/figs/coulomb_integrand.pdf \
 	main-sequence/figs/luminosity.pdf
 
