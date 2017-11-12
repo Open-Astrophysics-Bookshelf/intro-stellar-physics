@@ -41,7 +41,7 @@ FIGURES = frontmatter/cover-art.png \
 	convection/figs/convective.pdf \
 	nuclear-burning/figs/tunnel-schematic.pdf \
 	nuclear-burning/figs/coulomb_integrand.pdf \
-	main-sequence/figs/luminosity.pdf
+	main-sequence/figs/luminosity-eqn.pdf
 
 
 BIBS = bibs/stellar-astro.bib
