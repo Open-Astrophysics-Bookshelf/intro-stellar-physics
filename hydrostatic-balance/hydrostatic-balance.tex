@@ -1,7 +1,8 @@
 % !TEX root = ../intro-stellar-physics.tex
 
-\section{Virial Equilibrium}
-\label{s.virial-equilibrium}
+\section{Hydrostatic equilibrium}
+\label{s.hydrostatic-equilibrium}
+
 
 Let's consider a fluid at rest in a gravitational field. By \emph{at rest}, we simply mean that the fluid velocity is sufficiently small that we can neglect the inertia of the moving fluid in our equation for force balance.  By a \emph{fluid}, we mean that the pressure is isotropic\sidenote{Meaning the pressure is the same in all directions.} and directed perpendicular to a surface.  Let's now imagine a small fluid element, with thickness $\Delta r$ and cross-sectional area $\Delta A$, as depicted in Fig.~\ref{f.hydrostatic-equilibrium}.
 \begin{marginfigure}
@@ -53,6 +54,100 @@ T_{c} &=& \frac{1}{2}\frac{GM}{R}\frac{\mu\mb}{\kB}\\
 P_{c} &=& \frac{3}{8\pi}\frac{GM^{2}}{R^{4}}.
 \end{eqnarray}
 Here $\mu\mb$ is the average mass of a particle in the plasma. Our task now is to show that the scalings of $P$ and $T$ with $M$ and $R$ hold in general for an a star in mechanical equilibrium.
+
+
+\section{A closer look at hydrostatic equilibrium}
+\label{s.closer-look}
+
+Let's imagine what would happen if the star fell out of equilibrium.  Suppose we could turn off the pressure.  The star would collapse; how long would this take?  Let's calculate the amount of time a particle would need to free-fall from the surface to the center.  We can get this from Kepler's law. Start with a circular orbit and deform it while keeping the center at one focus, as shown in Fig.~\ref{f.fall-to-center}.  
+
+The limit of these increasingly eccentric orbits is a fall into the center.  The time is one-half of an orbital period, and the semi-major axis in this limiting case is $a = R/2$:
+\[
+\tau_{\mathrm{ff}} = \frac{T}{2} = \frac{\pi}{\sqrt{GM}} \left(\frac{R}{2}\right)^{3/2}.
+\]
+Notice that we again have the combination $\sqrt{R^{3}/M}$.  Let's convert this into an expression involving the mean density $\bar{\rho}$:
+\begin{equation}\label{e.tff}
+\tau_{\mathrm{ff}} = \left(\frac{3}{32\pi}\right)^{1/2}\left(\frac{1}{G}\frac{4\pi R^{3}}{3M}\right)^{1/2} = \left(\frac{3}{32\pi}\right)^{1/2} \frac{1}{\sqrt{G\bar{\rho}}}.
+\end{equation}
+The time to collapse is proportional to $1/\sqrt{G\bar{\rho}}$ and depends on the average density of the star. We call $t_{\mathrm{dyn}} \equiv 1/\sqrt{G\bar{\rho}}$ the \emph{dynamical timescale} of the star.
+
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{fall-to-center}
+\caption[Fall to center]{\label{f.fall-to-center} Deformation of an orbit until it becomes a fall to the center, denoted by the yellow dot.}
+\end{marginfigure}
+
+Let's avoid a collapse by turning the pressure back on.  If part of the star is falling inward, the gas within the star will be compressed, the pressure will rise, and hydrostatic equilibrium will be restored.  How quickly can the star respond? A change is pressure is communicated to the rest of the star by sound waves, which travel at a speed (see Box~\ref{b.sound-speed})
+\begin{equation}\label{e.speed-of-sound}
+c_{s} = \left(\gamma\frac{P}{\rho}\right)^{1/2}
+	= \left(\gamma\frac{\kB T}{\mu\mb}\right)^{1/2}.
+\end{equation}
+Here $\gamma$ is the adiabatic index: for an ideal monatomic gas, $\gamma = 5/3$.  How long would it take for a sound wave to go a distance $R$?  Using the expression for the average temperature of a constant density sphere from eq.~(\ref{e.mean-T-rho}), we find
+\[
+	\tau_{\mathrm{sc}} = \frac{R}{c_{s}} = R\left(\frac{3R}{GM}\right)^{1/2}
+		= \left(\frac{3}{2\sqrt{\pi}}\right)\frac{1}{\sqrt{G\bar{\rho}}}.
+\]
+Both the sound-crossing time, $\tau_{\mathrm{sc}}$, and the free-fall time, $\tau_{\mathrm{ff}}$, are approximately equal to the dynamical timescale $1/\sqrt{G\bar{\rho}}$.  This is another way of looking at hydrostatic equilibrium: the star is able to remain in balance because the time for pressure disturbances to propagate, $\tau_{\mathrm{sc}}$, is comparable to the time for large-scale motions of the fluid, $\tau_{\mathrm{ff}}$.
+
+\begin{sidebar}[The sound speed]
+\label{b.sound-speed}
+Suppose we have a long tube filled with gas at pressure $P(x,t) = P_{0}$, density $\rho(x,t) = \rho_{0}$, and velocity $u(x,t) = U_{0} = 0$. We then tap on one end of the tube; this causes a disturbance to propagate down the tube. Let's look at a small mass of fluid, located between $x$ and $x+\Delta x$; if the cross-sectional area of the tube is $A$, then the mass in this small volume is $\rho A\,\Delta x$.
+
+As a result of the disturbance, the pressure in the tube becomes $P(x,t) = P_{0}+\sigma P_{1}(x,t)$. In this expression, $\sigma$ is a bookkeeping parameter that we'll eventually set to unity. We will expand our equations and keep only terms that are linear in $\sigma$. The fluid will also acquire a velocity $u(x,t) = \sigma u_{1}(x,t)$. This compresses or rarifies the gas: $\rho(x,t) = \rho_{0} + \sigma\rho_{1}(x,t)$.  Because the pressure in the tube is no longer uniform, our small mass will accelerate: 
+\begin{eqnarray*}
+	\rho A\,\Delta x \ddt{u} &=& A\,\Delta x\,(\rho_{0} + \sigma\rho_{1})\ddt{(0 + \sigma u_{1})}\\
+	&\approx& \sigma\left[A\,\Delta x \rho_{0}\ddt{u_{1}}\right] + \mathcal{O}(\sigma^{2}).
+\end{eqnarray*}
+The corresponding force on our mass is
+\[
+	A \left[ P(x) - P(x+\Delta x) \right] \approx -\sigma A \left[P_{1}(x+\Delta x)-P_{1}(x)\right];
+\]
+equating this to the expression---to order $\sigma$---for the acceleration, taking the limit $\Delta x\to 0$, and canceling common factors gives
+\begin{equation}\label{e.sound-speed-ut}
+	\ddt{u_{1}} = -\frac{1}{\rho_{0}}\ddx{P_{1}}.
+\end{equation}
+Because of the non-uniform velocity, the volume and hence density of our little mass will also change:
+\[
+	\ddt{V} = A\left[u(x+\Delta x)-u(x)\right] 
+		= \sigma A\,\Delta x\left[\frac{u_{1}(x+\Delta x)-u_{1}(x)}{\Delta x}\right]
+\]
+or
+\begin{equation}\label{e.sound-speed-lnVt}
+	\frac{1}{V}\ddt{V} = \sigma \ddx{u_{1}}.
+\end{equation}
+This change in volume is related to the change in pressure. We are interested in fluctuations that are sufficiently quick that no heat is transferred into or out of our mass. This is an adiabatic process, for which $PV^{\gamma} = \mathrm{const.}$. Here $\gamma$ is called the adiabatic index; for an ideal gas, this is the ratio of specific heats, $\gamma = C_{P}/C_{V}$.
+
+As the pressure changes adiabatically from $P_{0}$ to $\sigma P_{1}$, the volume changes as
+\[
+	\frac{\dif V}{V} = \dif\ln V = -\frac{1}{\gamma}\dif\ln P.
+\]
+Hence
+\begin{equation}\label{e.sound-speed-lnVt-2}
+	\ddt{\ln V} = -\frac{1}{\gamma}\ddt{\ln (P_{0} + \sigma P_{1})} \approx 
+		-\frac{\sigma}{\gamma P_{0}}\ddt{\ln P_{1}} = \sigma \ddx{u_{1}}.
+\end{equation}
+The last equality comes from equation (\ref{e.sound-speed-lnVt}).
+
+We therefore have two equations for the perturbed velocity to order $\sigma$:
+\begin{eqnarray*}
+\ddt{u_{1}} &=& -\frac{1}{\rho_{0}} \ddx{P_{1}}\\
+\ddx{u_{1}} &=& -\frac{1}{\gamma P_{0}} \ddt{P_{1}};
+\end{eqnarray*}
+differentiating the top equation with respect to $x$ and the bottom with respect to $t$, and equating the expressions for $\partial^{2}u_{1}/\partial t\partial x$ gives
+\begin{equation}\label{e.sound-speed}
+\frac{\partial^{2} P_{1}}{\partial t^{2}} = \left(\frac{\gamma P_{0}}{\rho_{0}}\right)
+	\frac{\partial^{2} P_{1}}{\partial x^{2}}.
+\end{equation}
+This is the equation for a wave: the solutions are $P_{1}(x,t) = P_{1}(x\pm c_{s}t)$, where the sound speed is $c_{s} = \sqrt{\gamma P/\rho}$.
+\end{sidebar}
+
+For the sun, $\bar{\rho} = \val{1400}{\kilo\gram\usk\meter^{-3}} = \val{1.4}{\grampercc}$; this is just a bit denser than you.  The dynamical timescale for the sun is about one hour.
+
+\begin{exercisebox}[Sound-crossing time]
+The central temperature $T_{c}$ is a measure of the average kinetic energy of a particle at the stellar center. Use the central temperature that you found for the constant density star in exercise~\ref{ex.constant-density-star} and estimate the time that such a particle would take to cross a distance $R$. How does this time compare to the orbital period of a satellite orbiting just outside the stellar surface?
+\end{exercisebox}
+
+\section{Virial Equilibrium}
+\label{s.virial-equilibrium}
 
 To show this, we are going to employ a form the \emph{virial theorem}.  Suppose we have a collection of $N$ particles, all moving about and exerting forces on one another.  If we let this system settle down into some kind of bound configuration, the virial theorem asserts that the kinetic energy $K$ is proportional to, and comparable in magnitude to, the potential energy $\Omega$; indeed if the potential between a pair of particles scales as $r^{-1}$, $r$ being the distance between the particles, then $K = -\Omega/2$.
 
@@ -159,96 +254,6 @@ Using this in equation~(\ref{e.mean-T}) gives us the mean temperature, and hence
 \bar{P} &=& \frac{3}{20\pi}\frac{GM^{2}}{R^{4}}.
 \end{eqnarray}
 These are comparable to the central values, eqn.~(\ref{e.Tc}) and (\ref{e.Pc}).
-
-\section{A closer look at hydrostatic equilibrium}
-\label{s.closer-look}
-
-Let's imagine what would happen if the star fell out of equilibrium.  Suppose we could turn off the pressure.  The star would collapse; how long would this take?  Let's calculate the amount of time a particle would need to free-fall from the surface to the center.  We can get this from Kepler's law. Start with a circular orbit and deform it while keeping the center at one focus, as shown in Fig.~\ref{f.fall-to-center}.  
-
-The limit of these increasingly eccentric orbits is a fall into the center.  The time is one-half of an orbital period, and the semi-major axis in this limiting case is $a = R/2$:
-\[
-\tau_{\mathrm{ff}} = \frac{T}{2} = \frac{\pi}{\sqrt{GM}} \left(\frac{R}{2}\right)^{3/2}.
-\]
-Notice that we again have the combination $\sqrt{R^{3}/M}$.  Let's convert this into an expression involving the mean density $\bar{\rho}$:
-\begin{equation}\label{e.tff}
-\tau_{\mathrm{ff}} = \left(\frac{3}{32\pi}\right)^{1/2}\left(\frac{1}{G}\frac{4\pi R^{3}}{3M}\right)^{1/2} = \left(\frac{3}{32\pi}\right)^{1/2} \frac{1}{\sqrt{G\bar{\rho}}}.
-\end{equation}
-The time to collapse is proportional to $1/\sqrt{G\bar{\rho}}$ and depends on the average density of the star. We call $t_{\mathrm{dyn}} \equiv 1/\sqrt{G\bar{\rho}}$ the \emph{dynamical timescale} of the star.
-
-\begin{marginfigure}[-12\baselineskip]
-\includegraphics[width=\linewidth]{fall-to-center}
-\caption[Fall to center]{\label{f.fall-to-center} Deformation of an orbit until it becomes a fall to the center, denoted by the yellow dot.}
-\end{marginfigure}
-
-Let's avoid a collapse by turning the pressure back on.  If part of the star is falling inward, the gas within the star will be compressed, the pressure will rise, and hydrostatic equilibrium will be restored.  How quickly can the star respond? A change is pressure is communicated to the rest of the star by sound waves, which travel at a speed (see Box~\ref{b.sound-speed})
-\begin{equation}\label{e.speed-of-sound}
-c_{s} = \left(\gamma\frac{P}{\rho}\right)^{1/2}
-	= \left(\gamma\frac{\kB T}{\mu\mb}\right)^{1/2}.
-\end{equation}
-Here $\gamma$ is the adiabatic index: for an ideal monatomic gas, $\gamma = 5/3$.  How long would it take for a sound wave to go a distance $R$?  Using the expression for the average temperature of a constant density sphere from eq.~(\ref{e.mean-T-rho}), we find
-\[
-	\tau_{\mathrm{sc}} = \frac{R}{c_{s}} = R\left(\frac{3R}{GM}\right)^{1/2}
-		= \left(\frac{3}{2\sqrt{\pi}}\right)\frac{1}{\sqrt{G\bar{\rho}}}.
-\]
-Both the sound-crossing time, $\tau_{\mathrm{sc}}$, and the free-fall time, $\tau_{\mathrm{ff}}$, are approximately equal to the dynamical timescale $1/\sqrt{G\bar{\rho}}$.  This is another way of looking at hydrostatic equilibrium: the star is able to remain in balance because the time for pressure disturbances to propagate, $\tau_{\mathrm{sc}}$, is comparable to the time for large-scale motions of the fluid, $\tau_{\mathrm{ff}}$.
-
-\begin{sidebar}[The sound speed]
-\label{b.sound-speed}
-Suppose we have a long tube filled with gas at pressure $P(x,t) = P_{0}$, density $\rho(x,t) = \rho_{0}$, and velocity $u(x,t) = U_{0} = 0$. We then tap on one end of the tube; this causes a disturbance to propagate down the tube. Let's look at a small mass of fluid, located between $x$ and $x+\Delta x$; if the cross-sectional area of the tube is $A$, then the mass in this small volume is $\rho A\,\Delta x$.
-
-As a result of the disturbance, the pressure in the tube becomes $P(x,t) = P_{0}+\sigma P_{1}(x,t)$. In this expression, $\sigma$ is a bookkeeping parameter that we'll eventually set to unity. We will expand our equations and keep only terms that are linear in $\sigma$. The fluid will also acquire a velocity $u(x,t) = \sigma u_{1}(x,t)$. This compresses or rarifies the gas: $\rho(x,t) = \rho_{0} + \sigma\rho_{1}(x,t)$.  Because the pressure in the tube is no longer uniform, our small mass will accelerate: 
-\begin{eqnarray*}
-	\rho A\,\Delta x \ddt{u} &=& A\,\Delta x\,(\rho_{0} + \sigma\rho_{1})\ddt{(0 + \sigma u_{1})}\\
-	&\approx& \sigma\left[A\,\Delta x \rho_{0}\ddt{u_{1}}\right] + \mathcal{O}(\sigma^{2}).
-\end{eqnarray*}
-The corresponding force on our mass is
-\[
-	A \left[ P(x) - P(x+\Delta x) \right] \approx -\sigma A \left[P_{1}(x+\Delta x)-P_{1}(x)\right];
-\]
-equating this to the expression---to order $\sigma$---for the acceleration, taking the limit $\Delta x\to 0$, and canceling common factors gives
-\begin{equation}\label{e.sound-speed-ut}
-	\ddt{u_{1}} = -\frac{1}{\rho_{0}}\ddx{P_{1}}.
-\end{equation}
-Because of the non-uniform velocity, the volume and hence density of our little mass will also change:
-\[
-	\ddt{V} = A\left[u(x+\Delta x)-u(x)\right] 
-		= \sigma A\,\Delta x\left[\frac{u_{1}(x+\Delta x)-u_{1}(x)}{\Delta x}\right]
-\]
-or
-\begin{equation}\label{e.sound-speed-lnVt}
-	\frac{1}{V}\ddt{V} = \sigma \ddx{u_{1}}.
-\end{equation}
-This change in volume is related to the change in pressure. We are interested in fluctuations that are sufficiently quick that no heat is transferred into or out of our mass. This is an adiabatic process, for which $PV^{\gamma} = \mathrm{const.}$. Here $\gamma$ is called the adiabatic index; for an ideal gas, this is the ratio of specific heats, $\gamma = C_{P}/C_{V}$.
-
-As the pressure changes adiabatically from $P_{0}$ to $\sigma P_{1}$, the volume changes as
-\[
-	\frac{\dif V}{V} = \dif\ln V = -\frac{1}{\gamma}\dif\ln P.
-\]
-Hence
-\begin{equation}\label{e.sound-speed-lnVt-2}
-	\ddt{\ln V} = -\frac{1}{\gamma}\ddt{\ln (P_{0} + \sigma P_{1})} \approx 
-		-\frac{\sigma}{\gamma P_{0}}\ddt{\ln P_{1}} = \sigma \ddx{u_{1}}.
-\end{equation}
-The last equality comes from equation (\ref{e.sound-speed-lnVt}).
-
-We therefore have two equations for the perturbed velocity to order $\sigma$:
-\begin{eqnarray*}
-\ddt{u_{1}} &=& -\frac{1}{\rho_{0}} \ddx{P_{1}}\\
-\ddx{u_{1}} &=& -\frac{1}{\gamma P_{0}} \ddt{P_{1}};
-\end{eqnarray*}
-differentiating the top equation with respect to $x$ and the bottom with respect to $t$, and equating the expressions for $\partial^{2}u_{1}/\partial t\partial x$ gives
-\begin{equation}\label{e.sound-speed}
-\frac{\partial^{2} P_{1}}{\partial t^{2}} = \left(\frac{\gamma P_{0}}{\rho_{0}}\right)
-	\frac{\partial^{2} P_{1}}{\partial x^{2}}.
-\end{equation}
-This is the equation for a wave: the solutions are $P_{1}(x,t) = P_{1}(x\pm c_{s}t)$, where the sound speed is $c_{s} = \sqrt{\gamma P/\rho}$.
-\end{sidebar}
-
-For the sun, $\bar{\rho} = \val{1400}{\kilo\gram\usk\meter^{-3}} = \val{1.4}{\grampercc}$; this is just a bit denser than you.  The dynamical timescale for the sun is about one hour.
-
-\begin{exercisebox}[Sound-crossing time]
-The central temperature $T_{c}$ is a measure of the average kinetic energy of a particle at the stellar center. Use the central temperature that you found for the constant density star in exercise~\ref{ex.constant-density-star} and estimate the time that such a particle would take to cross a distance $R$. How does this time compare to the orbital period of a satellite orbiting just outside the stellar surface?
-\end{exercisebox}
 
 \section{Stellar Properties}
 \label{s.stellar-properties}
