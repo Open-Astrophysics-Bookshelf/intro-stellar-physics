@@ -28,11 +28,6 @@ FIGURES = frontmatter/cover-art.png \
 	mean-free-path/figs/air-hockey-mfp.pdf \
 	mean-free-path/figs/mean-free-path.pdf \
 	stellar-atmospheres/figs/legendre.pdf \
-	atomic-lines/figs/damped.pdf \
-	atomic-lines/figs/beats.pdf \
-	atomic-lines/figs/comparison.pdf \
-	atomic-lines/figs/damped-driven.pdf \
-	atomic-lines/figs/simple-spring.png \
 	degeneracy/figs/fermions.pdf \
 	degeneracy/figs/scattering-classical.pdf \
 	degeneracy/figs/scattering-quantum.pdf \
