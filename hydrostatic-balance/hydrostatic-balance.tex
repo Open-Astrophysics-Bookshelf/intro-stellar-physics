@@ -46,16 +46,6 @@ where $\mb = 1/12\times(\textrm{mass of a \carbon\ atom})$ and $\mu$ is the mean
 \end{enumerate}
 \end{exercisebox}
 
-With the assumption that $\rho = \textrm{constant}$, we showed (exercise~\ref{ex.constant-density-star}) that the central temperature and pressure depended on the total mass $M$, total radius $R$, and the gravitational constant $G$ as
-\begin{eqnarray}
-\label{e.Tc}
-T_{c} &=& \frac{1}{2}\frac{GM}{R}\frac{\mu\mb}{\kB}\\
-\label{e.Pc}
-P_{c} &=& \frac{3}{8\pi}\frac{GM^{2}}{R^{4}}.
-\end{eqnarray}
-Here $\mu\mb$ is the average mass of a particle in the plasma. Our task now is to show that the scalings of $P$ and $T$ with $M$ and $R$ hold in general for an a star in mechanical equilibrium.
-
-
 \section{A closer look at hydrostatic equilibrium}
 \label{s.closer-look}
 
@@ -149,7 +139,18 @@ The central temperature $T_{c}$ is a measure of the average kinetic energy of a 
 \section{Virial Equilibrium}
 \label{s.virial-equilibrium}
 
-To show this, we are going to employ a form the \emph{virial theorem}.  Suppose we have a collection of $N$ particles, all moving about and exerting forces on one another.  If we let this system settle down into some kind of bound configuration, the virial theorem asserts that the kinetic energy $K$ is proportional to, and comparable in magnitude to, the potential energy $\Omega$; indeed if the potential between a pair of particles scales as $r^{-1}$, $r$ being the distance between the particles, then $K = -\Omega/2$.
+With the assumption that $\rho = \textrm{constant}$, we showed (exercise~\ref{ex.constant-density-star}) that the central temperature and pressure depended on the total mass $M$, total radius $R$, and the gravitational constant $G$ as
+\begin{eqnarray}
+\label{e.Tc}
+T_{c} &=& \frac{1}{2}\left\{\frac{GM}{R}\frac{\mu\mb}{\kB}\right\}\\
+\label{e.Pc}
+P_{c} &=& \frac{3}{8\pi}\left\{\frac{GM^{2}}{R^{4}}\right\}.
+\end{eqnarray}
+Here $\mu\mb$ is the average mass of a particle in the plasma\sidenote{%
+The constant $\mb$ is defined as $1/12$ the mass of a \carbon\ atom.}.
+Our task now is to show that the scalings of $T_{c}$ and $P_{c}$ with $M$ and $R$---the quantities in $\{\,\}$---hold in general for an a star in mechanical equilibrium.
+
+To show this, we are going to employ a form of the \emph{virial theorem}.  Suppose we have a collection of $N$ particles, all moving about and exerting forces on one another.  If we let this system settle down into some kind of bound configuration, then we can add up the kinetic and potential energies of all the particles to get a total kinetic energy $K$ and a total potential energy $\Omega$. The virial theorem asserts that $K$ is proportional to, and comparable in magnitude to, $\Omega$; indeed if the potential between a pair of particles scales as $r^{-1}$, $r$ being the distance between the particles, then $K = -\Omega/2$, as we'll now show.
 
 Let us take the position and momentum of particle $i$ to be $\bvec{r}_{i} = (x_{i},y_{i},z_{i})$ and $\bvec{p}_{i}=(p_{x},p_{y},p_{z})$.  Then the total kinetic energy is
 \begin{eqnarray}
