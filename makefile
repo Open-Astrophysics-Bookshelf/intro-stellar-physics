@@ -1,18 +1,20 @@
 BASE = intro-stellar-physics
-COMPILE = xelatex
+TEX = xelatex
+BIB = bibtex
 OPS = --file-line-error --synctex=1
+COMPILE = $(TEX) $(OPS)
 RM = rm -f
 
 CHAPTERS = frontmatter \
-	classifying-stars \
+	starlight \
 	hydrostatic-balance \
 	mean-free-path \
-    stellar-atmospheres \
-	atomic-lines \
-    degeneracy \
+	stellar-atmospheres \
+	classifying-stars \
 	convection \
 	nuclear-burning \
 	main-sequence \
+	degeneracy \
 	post-main-sequence
 
 TEX_SRC = $(foreach chap, $(CHAPTERS), $(wildcard $(chap)/*.tex))
@@ -45,13 +47,13 @@ default: $(BASE).pdf
 
 $(BASE).pdf: $(BASE).tex $(TEX_SRC) $(FIGURES) $(BIBS)
 	git rev-parse --short=8 HEAD > git-info.tex
-	$(COMPILE) $(OPS) $(BASE).tex
-	bibtex $(BASE).aux
-	$(COMPILE) $(OPS) $(BASE).tex
-	$(COMPILE) $(OPS) $(BASE).tex
+	$(COMPILE) $(BASE).tex
+	$(BIB) $(BASE).aux
+	$(COMPILE) $(BASE).tex
+	$(COMPILE) $(BASE).tex
 
 clean:
-	-$(RM) *.aux *.log *.dvi  *.bbl *.blg *.toc *.lot *.lof *.loe *.lob *.out *.synctex.gz
+	-$(RM) *.aux *.log *.dvi *.bbl *.blg *.toc *.lot *.lof *.loe *.lob *.out *.synctex.gz
 
 realclean: clean
 	-$(RM) $(BASE).pdf
