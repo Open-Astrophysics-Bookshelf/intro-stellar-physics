@@ -7,18 +7,17 @@ Let's start by considering the star we know best: our sun.  We'll denote the sun
 	\Msun = \val{\sci{1.99}{30}}{\kilo\gram}.
 \]
 This is roughly $10^{6}$ times the mass of the Earth, and is 1\,000 more massive than Jupiter.
-Radar ranging of the solar system gives us the mean Earth-Sun distance, which defines the \emph{astronomical unit}
+Radar ranging of the solar system, combined with orbital periods, gives us the mean Earth-Sun distance, which defines the \emph{astronomical unit}
 \[
 	\val{1}{\AU} = \val{\sci{1.5}{11}}{\meter}.
 \]
-Knowing this distance and the angular size of the sun then tells us its radius,
+The sun subtends an angle of about $0.5^{\circ}$ across its diameter. Knowing this distance and the angular size of the sun then tells us its radius,
 \[
 	\Rsun = \val{\sci{6.96}{8}}{\meter}.
 \]
-The sun therefore subtends an angle of about $0.5^{\circ}$ across its diameter.
 From measurements of the radiant flux and the distance, we then can infer the sun's radiant power, or luminosity,
 \[
-	\Lsun = \val{\sci{3.86}{27}}{\watt}.
+	\Lsun = \val{\sci{3.86}{26}}{\watt}.
 \]
 
 \begin{exercisebox}[Solar power]
@@ -134,25 +133,50 @@ Suppose we try to compute the specific flux using Eq.~(\ref{e.specific-flux}). S
 \[ F_{\lambda} = B_{\lambda}\int_{0}^{2\pi}\int_{0}^{\pi}\cos\theta\,\sin\theta\,\dif\theta\,\dif\phi = 0. \]
 
 \begin{exercisebox}
-Explain, without using mathematical expressions, why $F_{\lambda}=0$ if the emission is thermal.
+Explain, without using mathematical expressions, why there is no net flux for thermal emission.
 \end{exercisebox}
 
-Although the net flux is zero, if we just want the radiation escaping from our cavity, we only want to integrate over the angles $0\le\theta\le\pi/2$. If we do this, then our \emph{outward-going} flux is
+Although the net flux is zero, if we just want the radiation escaping from our cavity, we only want to integrate over the angles $0\le\theta\le\pi/2$. If we do this, then our \emph{outward-going} specific flux is
 \[ F_{\lambda}(\mathrm{outward}) = B_{\lambda}\int_{0}^{2\pi}\int_{0}^{\pi/2}\cos\theta\,\sin\theta\,\dif\theta\,\dif\phi = \pi B_{\lambda}. \]
+To find the total power emitted per area for thermal radiation, we need to integrate $F_{\lambda}$ over wavelength:
+\begin{equation}\label{e.bolometric-thermal-flux}
+F = \int_{0}^{\infty}F_{\lambda}(\mathrm{outward})\,\dif\lambda 
+	= \int_{0}^{\infty} \frac{2\pi hc^{2}}{\lambda^{5}} \frac{\dif\lambda}{\exp\left(hc/\lambda\kB T\right)-1}.
+\end{equation}
+By changing variables to $x = hc/\lambda\kB T$, we can write this integral as\marginnote{The integral over $x$ occurs in many areas of physics and can be done via contour integration.}
+\[
+	F = \frac{2\pi\kB^{4}}{h^{2}c}T^{4}\times \underbrace{\int_{0}^{\infty}\frac{x^{3}}{e^{x}-1}\,\dif x}_{=\pi^{4}/15} = \left[\frac{2\pi^{5}}{15}\frac{\kB^{4}}{h^{2}c}\right] T^{4}.
+\]
+The quantity in $\left[\cdot\right]$ is called the \emph{Stefan-Boltzmann constant}:
+\[
+	\sigmaSB = \val{\sci{5.7}{-8}}{\watt\usk\meter^{-2}\usk\K^{-4}};
+\]
+The total energy radiated per second per area from a thermal emitter of temperature $T$ is thus $\sigmaSB T^{4}$.
 
+\newthought{Real stars are \textbf{not} blackbodies!} That being said, their spectra are roughly thermal, so we can define an \emph{effective} surface temperature
+\[	\Teff = \left[\frac{F}{\sigmaSB}\right]^{1/4}. \]
+The total power output, or \emph{luminosity}, of a star of radius $R$ is thus
+\[
+	L = 4\pi R^{2}\sigmaSB \Teff^{4}.
+\]
+For the sun, $\Teff = \val{5780}{\K}$.
 
 \section{Magnitudes}
 \label{s.magnitudes}
 
-Astronomers typically use standard filters. For example, the $V$-band filter is centered at $\lambda=\val{551}{\nano\meter}$ and has a width at half-max of $\val{88}{\nano\meter}$. The flux in a particular band, for example $V$ is then
+When observing a star, astronomers are collecting light over a range of frequencies. To compare observations, astronomers typically pass the light through standard filters and measure the transmitted flux. The flux in a given band is then
 \[
-	F_{V} = \int F_{\lambda} \, T(\lambda)\,\dif\lambda;
+	F_{V} = \int F_{\lambda} \, T(\lambda)\,\dif\lambda.
 \]
-here $T(\lambda)$ is the \emph{transmission function}, which specifies how much light is let through as a function of wavelength.  The transmission functions for some common UV/optical/IR filters are shown in Figure~\ref{f.UBVRI}.
+Here $T(\lambda)$ is the \emph{transmission function} for that filter and specifies how much light is let through as a function of wavelength.  The transmission functions for some common UV/optical/IR filters are shown in Figure~\ref{f.UBVRI}. For example, the $V$-band filter is centered at $\lambda=\val{551}{\nano\meter}$ and has a width at half-max of $\val{88}{\nano\meter}$. 
 \begin{figure}
 \includegraphics[width=\linewidth]{UBVRI}
 \caption[Standard filters]{\label{f.UBVRI} Some standard UV/optical/IR filters. The $T(\lambda)$ are normalized so that $\max(T)=1$.}
 \end{figure}
+
+\begin{exercisebox}
+Suppose you wished to observe a sun-like star, and you wanted to observe wavelengths near the peak of the spectrum.  Which filter would you choose, and why?  What about for a star with a surface effective temperature $\Teff = \val{8\,000}{\K}$? 
+\end{exercisebox}
 
 When making observations, it is common to compare the fluxes in a particular band between two stars. Optical astronomers therefore define the \emph{apparent magnitude} as
 \marginnote{NB. Throughout this text, $\log\equiv\lg$ denotes $\log_{10}$ and $\ln$ denotes $\log_{e}$.}
@@ -160,4 +184,23 @@ When making observations, it is common to compare the fluxes in a particular ban
 m(A) - m(B) = -2.5\log\left[\frac{F(A)}{F(B)}\right].
 \end{equation}
 Here $F(A)$ and $F(B)$ are two different measurements of flux (from two different stars, for example) in a particular waveband. It is common to use the label of the waveband in place of $m$. Thus, for example, when an astronomer says, ``The $V$-magnitude is 16.6'', what she means is that the apparent magnitude measured with a standard $V$-filter is 16.6.
+
+As an application of this, imagine comparing the flux from a star, at a distance $d$, with that from an imaginary identical star located at a distance of $\val{10}{\parsec}$. We'll call the magnitude of this imaginary star at $\val{10}{\parsec}$ the \emph{absolute magnitude} $M$ and define the \emph{distance modulus} as
+\begin{eqnarray}
+\mathrm{DM} \equiv m-M &=& m(d) - m(\val{10}{\parsec})\nonumber\\
+&=& -2.5\log\left[\frac{L/4\pi d^{2}}{L/4\pi(\val{10}{\parsec})^{2}}\right]\nonumber\\
+&=& -2.5\log\left[\left(\frac{\val{10}{\parsec}}{d}\right)^{2}\right]\nonumber \\
+&=& 5\log\left(\frac{d}{\parsec}\right) - 5.
+\end{eqnarray}
+Since the absolute magnitude is a measure of the flux from the star \emph{if it were} at a specified distance, the absolute magnitude is a proxy for the luminosity \emph{measured in a given filter}.
+
+\newthought{We can also compare the flux from two different filters for the same star.} The difference in magnitudes for two different filters defines a \emph{color index}, which is a measure of the star's spectrum (and, roughly, its temperature). For example,
+\[
+	B - V \equiv m_{B}-m_{V} = -2.5\log\left[\frac{\int_{B-\mathrm{band}}F_{\lambda}\,\dif\lambda}{\int_{V-\mathrm{band}}F_{\lambda}\,\dif\lambda}\right]
+\]
+measures the ratio of fluxes in the $B$ and $V$ bands for a particular star.
+
+\begin{exercisebox}
+How would the $B-V$ index of the sun compare to that of a hotter star, e.g., one with $\Teff = \val{8\,000}{\K}$?
+\end{exercisebox}
 
