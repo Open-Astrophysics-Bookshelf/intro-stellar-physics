@@ -256,27 +256,27 @@ Using this in equation~(\ref{e.mean-T}) gives us the mean temperature, and hence
 \end{eqnarray}
 These are comparable to the central values, eqn.~(\ref{e.Tc}) and (\ref{e.Pc}).
 
-\section{Stellar Properties}
-\label{s.stellar-properties}
-
-We can infer a great deal from our simple virial scalings. Table~\ref{t.stellar-properties} provides masses and radii, in units of $\Msun$ and $\Rsun$, for stars from type B to type M.  If we assume that the stars have the same distribution of mass, so that the numerical coefficients in the expressions for $\rho_{c}$, $T_{c}$, and $P_{c}$ are the same, then for each star we may compute $\rho_{c}/\rho_{c,\odot} = (M/\Msun)(R/\Rsun)^{-3}$ and similarly for $T_{c}/T_{c,\odot}$ and $P_{c}/P_{c,\odot}$.
-
 \begin{table}
-\caption{\label{t.stellar-properties} Masses and radii for selected stellar types.}
+\caption{\label{t.stellar-properties} Masses, radii, and luminosities for selected stellar types.}
 \begin{tabular}{ld{4.2}d{3.2}d{1.2}d{1.2}d{1.2}d{2.3}}
  & \tabhead{B2} & \tabhead{B8} & \tabhead{F0} & \tabhead{G5} & \tabhead{M0} & \tabhead{M7}\\ 
 \hline
 $M/\Msun$ & 9.8 & 3.8 & 1.6 & 0.92 & 0.51 & 0.12\\
 $R/\Rsun$ & 5.6 & 3.0 & 1.5 & 0.92 & 0.60 & 0.18\\
 $L/\Lsun$ & 5800.0    & 180.0 & 6.5 & 0.79 & 0.08 & 0.003\\
-$\rho_{c}/\rho_{c,\odot}$ & 0.06 & 0.14 & 0.47 & 1.18 & 2.36 & 20.58\\
-\rowcolor{yellow}
-$T_{c}/T_{c,\odot}$ & 1.75 & 1.27 & 1.07 & 1.00 & 0.85 & 0.67\\
-$P_{c}/P_{c,\odot}$ & 0.10 & 0.18 & 0.51 & 1.18 & 2.01 & 13.72\\
+%$\rho_{c}/\rho_{c,\odot}$ & 0.06 & 0.14 & 0.47 & 1.18 & 2.36 & 20.58\\
+%\rowcolor{yellow}
+%$T_{c}/T_{c,\odot}$ & 1.75 & 1.27 & 1.07 & 1.00 & 0.85 & 0.67\\
+%$P_{c}/P_{c,\odot}$ & 0.10 & 0.18 & 0.51 & 1.18 & 2.01 & 13.72\\
 \end{tabular}
 \end{table}
 
-Notice that $P_{c}$ and $\rho_{c}$ are larger for lower-mass stars. An even more surprising finding from this table is how little $T_{c}$ varies. This table spans nearly two decades in mass and six decades in luminosity, and yet $T_{c}$ varies by only a factor of three.  As we'll derive later, this is a consequence of the fusion reactions being extremely sensitive to temperature.
+\begin{exercisebox}\label{ex.stellar-properties}
+We can infer a great deal from our simple virial scalings. Table~\ref{t.stellar-properties} provides masses, radii, and luminosities, in units of $\Msun$, $\Rsun$, and $\Lsun$, for stars from type B to type M.  
+Using the constant density model, compute $\rho/\rho_{\odot}$, $T_{c}/T_{c,\odot}$, and $P_{c}/P_{c,\odot}$. You should find that each quantity depends only on $m=M/\Msun$ and $r=R/\Rsun$. Describe your findings: do $P_{c}/P_{c,\odot}$, $\rho/\rho_{\odot}$, and $T_{c}/T_{c,\odot}$ vary in a similar fashion? If not, how do they change with stellar type?
+\end{exercisebox}
+
+%Notice that $P_{c}$ and $\rho_{c}$ are larger for lower-mass stars. An even more surprising finding from this table is how little $T_{c}$ varies. This table spans nearly two decades in mass and six decades in luminosity, and yet $T_{c}$ varies by only a factor of three.  As we'll derive later, this is a consequence of the fusion reactions being extremely sensitive to temperature.
 
 \section{Contraction to the main sequence}
 \label{s.stellar-contraction}
@@ -292,6 +292,9 @@ the time to radiate this energy away is
 t_{\mathrm{KH}} = \frac{|E_{\odot}|}{\Lsun} \approx \frac{G\Msun^{2}}{\Rsun\Lsun} \approx \val{\sci{3}{7}}{\yr}.
 \end{equation}
 This timescale is called the \emph{Kelvin-Helmholtz timescale}.  Since $t_{\mathrm{KM}} \gg t_{\mathrm{dyn}}$ the star is, to an excellent approximation, in hydrostatic equilibrium throughout the whole contraction.
+%
+%As the star contracts and $R$ decreases, the central density, pressure, and temperature increase.  When the central temperature becomes sufficiently hot, the heating from nuclear reactions rapidly increases and supplies enough energy to offset that radiated from the surface.  At this point the star is on the main-sequence, where it remains until the hydrogen fuel is exhausted from its core.
 
-As the star contracts and $R$ decreases, the central density, pressure, and temperature increase.  When the central temperature becomes sufficiently hot, the heating from nuclear reactions rapidly increases and supplies enough energy to offset that radiated from the surface.  At this point the star is on the main-sequence, where it remains until the hydrogen fuel is exhausted from its core.
-
+\begin{exercisebox}
+Using the constant-density model (note that constant here means ``constant throughout the star at any given time'' and the virial relations, give a qualitative sketch for how the pressure, density, temperature, radius, and total energy change with time as the protostar contracts.
+\end{exercisebox}
