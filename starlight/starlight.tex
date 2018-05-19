@@ -110,20 +110,26 @@ The specific flux has dimensions
 \section{Thermal emission}
 \label{s.thermal-emission}
 
-Imagine we had a material that emits and absorbs equally well at all wavelengths. We then made from this material a hollow box, and we heated this box to a temperature $T$. The hot atoms in the walls of the box would emit (and absorb) photons bouncing around in the cavity in this box, until the photons were in thermal equilibrium\sidenote{Meaning that the radiation field is on average neither gaining or losing energy from the walls of the box} with the walls of the box. If we then drilled a small hole in the side of the box, some photons would escape (but not so many as to disturb the thermal equilibrium). The intensity from the box depends on both temperature and wavelength, and is known as the \emph{Planck spectrum}\marginnote{Also called a \emph{blackbody} spectrum, since the material emits and absorbs equally well at all wavelengths.}:
+Imagine we had a material that emits and absorbs equally well at all wavelengths. We then made from this material a hollow box, and we heated this box to a temperature $T$. The hot atoms in the walls of the box would emit (and absorb) photons bouncing around in the cavity in this box, until the photons were in thermal equilibrium\sidenote{Meaning that the radiation field is on average neither gaining or losing energy from the walls of the box} with the walls of the box. If we then drilled a small hole in the side of the box, some photons would escape (but not so many as to disturb the thermal equilibrium). The intensity from the box depends on both temperature and wavelength, and is known as the \emph{Planck spectrum}:
 \begin{equation}\label{e.planck-spectrum-wavelength}
 I_{\lambda}(\mathrm{Planck}) \equiv B_{\lambda}(T) = \frac{2hc^{2}}{\lambda^{5}} \left[\exp\left(\frac{hc}{\lambda\kB T}\right)-1\right]^{-1}.
 \end{equation}
-The corresponding Planck spectrum for frequency is
-\begin{equation}\label{e.planck-spectrum-frequency}
-B_{\nu}(T) = \frac{2h\nu^{3}}{c^{2}} \left[\exp\left(\frac{h\nu}{\kB T}\right)-1\right]^{-1}.
-\end{equation}
+Fig.~\ref{f.Planck} displays the Planck spectra for a range of stellar temperatures. This spectrum is also known as a \emph{blackbody} spectrum, because it is emitted from a material that absorbs (and emits) equally well at all wavelengths. The emission is peaked at a wavelength $\lambda_{\mathrm{pk}} \sim hc/\kB T$. As the temperature increases, $B_{\lambda}$, increases at all wavelengths.
+\begin{marginfigure}[-12\baselineskip]
+\includegraphics[width=\linewidth]{Planck}
+\caption{\label{f.Planck}Thermal spectra for temperatures ranging from \val{3000}{\K} to \val{7000}{\K}.}
+\end{marginfigure}
 
 \begin{exercisebox}\label{ex.Wien-wavelength}
 Show that the the peak of the thermal spectrum, temperature $T$, occurs (i.e., where $B_{\lambda}$ is maximum) at a wavelength
 \[ \lambda_{\mathrm{pk}} = \val{290}{\nano\meter}\left(\frac{\val{10\,000}{\K}}{T}\right). \]
 This result is known as \emph{Wien's law}. Check this: what is the peak wavelength of the sun's emission?  
 \end{exercisebox}
+
+The Planck spectrum, expressed in terms of frequency, is
+\begin{equation}\label{e.planck-spectrum-frequency}
+B_{\nu}(T) = \frac{2h\nu^{3}}{c^{2}} \left[\exp\left(\frac{h\nu}{\kB T}\right)-1\right]^{-1}.
+\end{equation}
 
 \begin{exercisebox}
 What is the frequency corresponding to $\lambda_{\mathrm{pk}}$ in Exercise~\ref{ex.Wien-wavelength}? Compute the frequency $\nu_{\mathrm{pk}}$ at which $B_{\nu}$ is maximum. Is $\nu_{\mathrm{pk}}$ the same as the frequency corresponding to $\lambda_{\mathrm{pk}}$?
