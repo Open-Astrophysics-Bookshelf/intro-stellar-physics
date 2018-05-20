@@ -2,20 +2,20 @@
 
 \section{Introduction: Our Sun}
 
-Let's start by considering the star we know best: our sun.  We'll denote the sun with the symbol $\sun$.  From the orbits of the planets we can deduce the mass of the sun from Kepler's laws:
+Let's start by considering the star we know best: the Sun.  We'll denote the Sun with the symbol $\sun$.  From the orbits of the planets we can deduce the mass of the sun from Kepler's laws:
 \[
 	\Msun = \val{\sci{1.99}{30}}{\kilo\gram}.
 \]
 This is roughly $10^{6}$ times the mass of the Earth, and is 1\,000 more massive than Jupiter.
-Radar ranging of the solar system, combined with orbital periods, gives us the mean Earth-Sun distance, which defines the \emph{astronomical unit}
+Radar ranging of the solar system, combined with orbital periods, gives us the mean Earth-Sun distance, known as the \newterm{astronomical unit}:
 \[
 	\val{1}{\AU} = \val{\sci{1.5}{11}}{\meter}.
 \]
-The sun subtends an angle of about $0.5^{\circ}$ across its diameter. Knowing this distance and the angular size of the sun then tells us its radius,
+The sun subtends an angle of about $0.5^{\circ}$ across its diameter. Knowing this distance and the angular size of the sun then tells us its radius:
 \[
 	\Rsun = \val{\sci{6.96}{8}}{\meter}.
 \]
-From measurements of the radiant flux and the distance, we then can infer the sun's radiant power, or luminosity,
+From measurements of the radiant flux and the distance, we then can infer the sun's radiant power, or \newterm{luminosity}:
 \[
 	\Lsun = \val{\sci{3.86}{26}}{\watt}.
 \]
@@ -24,13 +24,13 @@ From measurements of the radiant flux and the distance, we then can infer the su
 Suppose we wish to replace the Simon power plant with a grid of solar panels. Under ideal conditions (direct light and 100\% efficient panels), how many square meters of solar panels are needed to generate $\val{70}{\Mega\watt}$ ($\val{\sci{70}{6}}{\watt}$)?
 \end{exercisebox}
 
-When we observe a star, we collect only a small fraction of this power: if a telescope (or our eye) has a collecting area $\mathcal{A}$ and is a distance $d$ from the star, then it intercepts a fraction $\mathcal{A}/(4\pi d^{2})$ of the star's light.  We call $F = L/(4\pi d^{2})$ the \emph{flux}. The units of flux are $\watt\,\meter^{-2}$.
+When we observe a star, we collect only a small fraction of this power: if a telescope (or our eye) has a collecting area $\mathcal{A}$ and is a distance $d$ from the star, then it intercepts a fraction $\mathcal{A}/(4\pi d^{2})$ of the star's light.  We call $F = L/(4\pi d^{2})$ the \newterm{flux}. The units of flux are $\watt\,\meter^{-2}$.
 
 \begin{exercisebox}[Flux from a distant star]
 What would the flux be from a star with $L = \val{0.1}{\Lsun}$ at a distance of $\val{10}{\parsec}$?
 Recall that a parsec (pc) is defined by the relation
 \[
-	\frac{\val{1}{\AU}}{\val{1}{\parsec}} = 1'' = \frac{1}{206265}.
+	\frac{\val{1}{\AU}}{\val{1}{\parsec}} = 1'' = \frac{1}{206\,265}.
 \]
 \end{exercisebox}
 
@@ -42,12 +42,12 @@ Recall that a parsec (pc) is defined by the relation
 \label{f.light-wave}
 \end{marginfigure}
 Charges feel an electric force.
-When we detect light, what happens at the atomic level is that the charges in our detector (antenna, CCD, eye) feel an electric (and magnetic) force that oscillates with frequency $\nu$. If we could set up a grid of detectors and measure the electric force per unit charge, we would notice a sinusoidal pattern traveling at speed\sidenote{This velocity is exact; the meter is defined in terms of the speed of light.} $c = \val{299\,792\,458}{\meter/\second}$ with a wavelength $\lambda = c/\nu$.  We call this force per charge the electric field $\bvec{E}(\bvec{x},t)$. The \emph{intensity} of the light at our detector is proportional to $|\bvec{E}|^{2} + |\bvec{B}|^{2}$.
+When we detect light, what happens at the atomic level is that the charges in our detector (antenna, CCD, eye) feel an electric (and magnetic) force that oscillates with frequency $\nu$. If we could set up a grid of detectors and measure the electric force per unit charge, we would notice a sinusoidal pattern traveling at speed\sidenote{This velocity is exact; the meter is defined in terms of the speed of light.} $c = \val{299\,792\,458}{\meter/\second}$ with a wavelength $\lambda = c/\nu$.  We call this force per charge the electric field $\bvec{E}(\bvec{x},t)$. The \newterm{intensity} of the light at our detector is proportional to $|\bvec{E}|^{2} + |\bvec{B}|^{2}$.
 
-Suppose we put a filter in front of our detector that only accepted light in a narrow range of wavelengths $(\lambda,\lambda+\Delta\lambda)$. We would find that energy is deposited into our detector in discrete quanta of magnitude $hc/\lambda = h\nu$\marginnote{The symbol $h = \val{\sci{6.63}{-34}}{\unitstyle{J}\usk\second}$ denotes \emph{Planck's constant}. It sets the scale for quantum mechanics}. We call these quanta \emph{photons}. The light emitted by our sun (or any other source) consists of a huge number of photons distributed over a wide range of wavelengths.
+Suppose we put a filter in front of our detector that only accepted light in a narrow range of wavelengths $(\lambda,\lambda+\Delta\lambda)$. We would find that energy is deposited into our detector in discrete quanta of magnitude $hc/\lambda = h\nu$\marginnote{The symbol $h = \val{\sci{6.63}{-34}}{\unitstyle{J}\usk\second}$ denotes \newterm{Planck's constant}. It sets the scale for quantum mechanics.}. We call these quanta \newterm{photons}. The light emitted by our sun (or any other source) consists of a huge number of photons distributed over a wide range of wavelengths.
 
 \begin{exercisebox}[Photon flux from the sun]
-The sun emits light over a broad range of frequencies, with the peak of this \emph{spectrum} at a wavelength of approximately $\val{500}{\nano\meter}$. Estimate the number of photons from the sun striking $\val{1}{\meter^{2}}$ of Earth each second.
+The sun emits light over a broad range of frequencies, with the peak of this \newterm{spectrum} at a wavelength of approximately $\val{500}{\nano\meter}$. Estimate the number of photons from the sun striking $\val{1}{\meter^{2}}$ of Earth each second.
 \end{exercisebox}
 
 \section{Intensity and specific flux}
@@ -57,13 +57,13 @@ The sun emits light over a broad range of frequencies, with the peak of this \em
 \includegraphics[width=\linewidth]{intensity}
 \caption{\label{f.intensity} Schematic of radiative intensity.}
 \end{marginfigure}
-Take a detector (CCD, your eye, an photographic emulsion) and place in front of the detector a filter that only lets through light with wavelengths in a range $\Delta\lambda$ as before. Then place a mask over the detector with a small pinhole of area $\Delta A$ that restricts the light falling on the detector to fall in a narrow cone of solid angle $\Delta\Omega$ about the normal to the detector (see Fig.~\ref{f.intensity}). Then measure the energy $\Delta E$ incident on the detector in a time $\Delta t$. The quantity
+Take a detector (a CCD, your eye, an photographic emulsion) and place in front of the detector a filter that only lets through light with wavelengths in a range $\Delta\lambda$ as before. Then place a mask over the detector with a small pinhole of area $\Delta A$ that restricts the light falling on the detector to fall in a narrow cone of solid angle $\Delta\Omega$ about the normal to the detector (see Fig.~\ref{f.intensity}). Then measure the energy $\Delta E$ incident on the detector in a time $\Delta t$. The quantity
 \begin{equation}\label{e.definition-intensity}
 I_{\lambda} \equiv \frac{\dif E}{\dif t\,\dif A\,\dif\lambda\,\dif\Omega}
 \end{equation}
 is known as the \emph{intensity}. It is the basic quantity describing radiation.
 
-In situations in which the wavelength is small (relative to the system in question), light propagates along \emph{rays}. By a ray of light, we mean the light emitted into a small cone of opening solid angle $\dif\Omega$ about a direction $\unitk$. In the absence of any interactions with matter, the intensity is conserved along a ray if both source and receiver are stationary with respect to one another (Exercise~\ref{ex.intensity-conserved}).
+In situations in which the wavelength is small (relative to the system in question), light propagates along \newterm{rays}. By a ray of light, we mean the light emitted into a small cone of opening solid angle $\dif\Omega$ about a direction $\unitk$. In the absence of any interactions with matter, the intensity is conserved along a ray if both source and receiver are stationary with respect to one another (Exercise~\ref{ex.intensity-conserved}).
 
 \begin{sidebar}[Solid angles]
 Imagine that your are at the center of a great sphere of radius $R$, and you shine a light that emits rays into some solid angle. Orient your coordinates so that the rays are traveling along the $z$-axis. The light will illuminate an area
@@ -97,7 +97,7 @@ and show that this is the same as what your friend calculated.
 \caption[Schematic of intensity being constant]{\label{f.intensity-conserved} Schematic for exercise \ref{ex.intensity-conserved}.}
 \end{figure*}
 
-To compute the \emph{specific flux} $F_{\lambda}$, we multiply the intensity by $\cos\theta$, where $\theta$ is the angle between the ray and the normal of our area\sidenote{this corrects for the projection of the area} and integrate over angle:
+To compute the \newterm{specific flux} $F_{\lambda}$, we multiply the intensity by $\cos\theta$, where $\theta$ is the angle between the ray and the normal of our area\sidenote{this corrects for the projection of the area} and integrate over angle:
 \begin{equation}\label{e.specific-flux}
 F_{\lambda} =  \int I_{\lambda}\,\cos\theta\,\sin\theta\,\dif\theta\,\dif\phi.
 \end{equation}
@@ -110,11 +110,11 @@ The specific flux has dimensions
 \section{Thermal emission}
 \label{s.thermal-emission}
 
-Imagine we had a material that emits and absorbs equally well at all wavelengths. We then made from this material a hollow box, and we heated this box to a temperature $T$. The hot atoms in the walls of the box would emit (and absorb) photons bouncing around in the cavity in this box, until the photons were in thermal equilibrium\sidenote{Meaning that the radiation field is on average neither gaining or losing energy from the walls of the box} with the walls of the box. If we then drilled a small hole in the side of the box, some photons would escape (but not so many as to disturb the thermal equilibrium). The intensity from the box depends on both temperature and wavelength, and is known as the \emph{Planck spectrum}:
+Imagine we had a material that emits and absorbs equally well at all wavelengths. We then made from this material a hollow box, and we heated this box to a temperature $T$. The hot atoms in the walls of the box would emit (and absorb) photons bouncing around in the cavity in this box, until the photons were in thermal equilibrium\sidenote{Meaning that the radiation field is on average neither gaining or losing energy from the walls of the box} with the walls of the box. If we then drilled a small hole in the side of the box, some photons would escape (but not so many as to disturb the thermal equilibrium). The intensity from the box depends on both temperature and wavelength, and is known as the \newterm{Planck spectrum}:
 \begin{equation}\label{e.planck-spectrum-wavelength}
 I_{\lambda}(\mathrm{Planck}) \equiv B_{\lambda}(T) = \frac{2hc^{2}}{\lambda^{5}} \left[\exp\left(\frac{hc}{\lambda\kB T}\right)-1\right]^{-1}.
 \end{equation}
-Fig.~\ref{f.Planck} displays the Planck spectra for a range of stellar temperatures. This spectrum is also known as a \emph{blackbody} spectrum, because it is emitted from a material that absorbs (and emits) equally well at all wavelengths. The emission is peaked at a wavelength $\lambda_{\mathrm{pk}} \sim hc/\kB T$. As the temperature increases, $B_{\lambda}$, increases at all wavelengths.
+Fig.~\ref{f.Planck} displays the Planck spectra for a range of stellar temperatures. This spectrum is also known as a \newterm{blackbody} spectrum, because it is emitted from a material that absorbs (and emits) equally well at all wavelengths. The emission is peaked at a wavelength $\lambda_{\mathrm{pk}} \sim hc/\kB T$. As the temperature increases, $B_{\lambda}$, increases at all wavelengths.
 \begin{marginfigure}[-12\baselineskip]
 \includegraphics[width=\linewidth]{Planck}
 \caption{\label{f.Planck}Thermal spectra for temperatures ranging from \val{3000}{\K} to \val{7000}{\K}.}
@@ -123,7 +123,7 @@ Fig.~\ref{f.Planck} displays the Planck spectra for a range of stellar temperatu
 \begin{exercisebox}\label{ex.Wien-wavelength}
 Show that the the peak of the thermal spectrum, temperature $T$, occurs (i.e., where $B_{\lambda}$ is maximum) at a wavelength
 \[ \lambda_{\mathrm{pk}} = \val{290}{\nano\meter}\left(\frac{\val{10\,000}{\K}}{T}\right). \]
-This result is known as \emph{Wien's law}. Check this: what is the peak wavelength of the sun's emission?  
+This result is known as \newterm{Wien's law}. Check this: what is the peak wavelength of the sun's emission?  
 \end{exercisebox}
 
 The Planck spectrum, expressed in terms of frequency, is
@@ -153,13 +153,13 @@ By changing variables to $x = hc/\lambda\kB T$, we can write this integral as\ma
 \[
 	F = \frac{2\pi\kB^{4}}{h^{2}c}T^{4}\times \underbrace{\int_{0}^{\infty}\frac{x^{3}}{e^{x}-1}\,\dif x}_{=\pi^{4}/15} = \left[\frac{2\pi^{5}}{15}\frac{\kB^{4}}{h^{2}c}\right] T^{4}.
 \]
-The quantity in $\left[\cdot\right]$ is called the \emph{Stefan-Boltzmann constant}:
+The quantity in $\left[\cdot\right]$ is called the \newterm{Stefan-Boltzmann constant}:
 \[
 	\sigmaSB = \val{\sci{5.7}{-8}}{\watt\usk\meter^{-2}\usk\K^{-4}};
 \]
 The total energy radiated per second per area from a thermal emitter of temperature $T$ is thus $\sigmaSB T^{4}$.
 
-\newthought{Real stars are \textbf{not} blackbodies!} That being said, their spectra are roughly thermal, so we can define an \emph{effective} surface temperature
+\newthought{Real stars are \emph{not} blackbodies!} That being said, their spectra are roughly thermal, so we can define an \newterm{effective surface temperature}
 \[	\Teff = \left[\frac{F}{\sigmaSB}\right]^{1/4}. \]
 The total power output, or \emph{luminosity}, of a star of radius $R$ is thus
 \[
@@ -174,7 +174,7 @@ When observing a star, astronomers are collecting light over a range of frequenc
 \[
 	F_{V} = \int F_{\lambda} \, T(\lambda)\,\dif\lambda.
 \]
-Here $T(\lambda)$ is the \emph{transmission function} for that filter and specifies how much light is let through as a function of wavelength.  The transmission functions for some common UV/optical/IR filters are shown in Figure~\ref{f.UBVRI}. For example, the $V$-band filter is centered at $\lambda=\val{551}{\nano\meter}$ and has a width at half-max of $\val{88}{\nano\meter}$. 
+Here $T(\lambda)$ is the \newterm{transmission function} for that filter and specifies how much light is let through as a function of wavelength.  The transmission functions for some common UV/optical/IR filters are shown in Figure~\ref{f.UBVRI}. For example, the $V$-band filter is centered at $\lambda=\val{551}{\nano\meter}$ and has a width at half-max of $\val{88}{\nano\meter}$. 
 \begin{figure}
 \includegraphics[width=\linewidth]{UBVRI}
 \caption[Standard filters]{\label{f.UBVRI} Some standard UV/optical/IR filters. The $T(\lambda)$ are normalized so that $\max(T)=1$.}
@@ -191,7 +191,7 @@ m(A) - m(B) = -2.5\log\left[\frac{F(A)}{F(B)}\right].
 \end{equation}
 Here $F(A)$ and $F(B)$ are two different measurements of flux (from two different stars, for example) in a particular waveband. It is common to use the label of the waveband in place of $m$. Thus, for example, when an astronomer says, ``The $V$-magnitude is 16.6'', what she means is that the apparent magnitude measured with a standard $V$-filter is 16.6.
 
-As an application of this, imagine comparing the flux from a star, at a distance $d$, with that from an imaginary identical star located at a distance of $\val{10}{\parsec}$. We'll call the magnitude of this imaginary star at $\val{10}{\parsec}$ the \emph{absolute magnitude} $M$ and define the \emph{distance modulus} as
+As an application of this, imagine comparing the flux from a star, at a distance $d$, with that from an imaginary identical star located at a distance of $\val{10}{\parsec}$. We'll call the magnitude of this imaginary star at $\val{10}{\parsec}$ the \newterm{absolute magnitude} $M$ and define the \newterm{distance modulus} as
 \begin{eqnarray}
 \mathrm{DM} \equiv m-M &=& m(d) - m(\val{10}{\parsec})\nonumber\\
 &=& -2.5\log\left[\frac{L/4\pi d^{2}}{L/4\pi(\val{10}{\parsec})^{2}}\right]\nonumber\\

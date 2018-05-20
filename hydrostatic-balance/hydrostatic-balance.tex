@@ -4,7 +4,7 @@
 \label{s.hydrostatic-equilibrium}
 
 
-Consider a fluid at rest in a gravitational field. By a \emph{fluid}, we mean that the pressure is isotropic\sidenote{Meaning the pressure is the same in all directions.} and directed perpendicular to any given surface. Let's now imagine a small fluid element, as depicted in Fig.~\ref{f.hydrostatic-equilibrium}. The gravitational acceleration is in the direction $-\unitvector{r}$; the fluid element has thickness $\Delta r$ along the direction of the gravitational force and cross-sectional area $\Delta A$.
+Consider a fluid at rest in a gravitational field. By a \newterm{fluid}, we mean that the pressure is isotropic\sidenote{Meaning the pressure is the same in all directions.} and directed perpendicular to any given surface. Let's now imagine a small fluid element, as depicted in Fig.~\ref{f.hydrostatic-equilibrium}. The gravitational acceleration is in the direction $-\unitvector{r}$; the fluid element has thickness $\Delta r$ along the direction of the gravitational force and cross-sectional area $\Delta A$.
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{hydrostatic-equilibrium}
 \caption[A fluid element in hydrostatic equilibrium]{A fluid element in hydrostatic equilibrium.
@@ -52,13 +52,13 @@ if we take the top of our column to infinity and the pressure at the top to zero
 
 \subsection{The isothermal ideal gas}\label{s.ideal-gas}
 
-In general the density $\rho$ depends on the pressure $P$, and we need more information to solve for the atmospheric structure. A relation between pressure, density, and temperature is called an \textbf{equation of state}. Let's relax our condition of constant density, but keep gravity and temperature constant and assume the fluid is an ideal gas\sidenote[][\baselineskip]{By \emph{ideal} gas, we mean that the particles are non-interacting; as a result, the energy of the gas only depends on the kinetic energy of the particles and in particular is independent of the volume.}. For $N$ particles in a volume $V$ at pressure and temperature $P$ and $T$, the ideal gas equation of state is
+In general the density $\rho$ depends on the pressure $P$, and we need more information to solve for the atmospheric structure. A relation between pressure, density, and temperature is called an \newterm{equation of state}. Let's relax our condition of constant density, but keep gravity and temperature constant and assume the fluid is an ideal gas\sidenote[][\baselineskip]{By \newterm{ideal} gas, we mean that the particles are non-interacting; as a result, the energy of the gas only depends on the kinetic energy of the particles and in particular is independent of the volume.}. For $N$ particles in a volume $V$ at pressure and temperature $P$ and $T$, the ideal gas equation of state is
 \begin{equation}\label{e.ideal-gas-eos}
 PV = N\kB T
 \end{equation}
-where $\kB = \val{\sci{1.381}{-23}}{\unitstyle{J}\usk\K^{-1}}$ is \textbf{Boltzmann's constant}.
+where $\kB = \val{\sci{1.381}{-23}}{\unitstyle{J}\usk\K^{-1}}$ is \newterm{Boltzmann's constant}.
 
-In chemistry, it is convenient to count the number of particles by \textbf{moles}.  One mole of a gas has $\NA = \sci{6.022}{23}$ particles\sidenote{The constant $\NA$ is known as \textbf{Avogadro's number}.}, and the number of moles in a sample is $n = N/\NA$.  If we divide and multiply equation~(\ref{e.ideal-gas-eos}) by $\NA$, then our ideal gas equation becomes
+In chemistry, it is convenient to count the number of particles by \newterm{moles}.  One mole of a gas has $\NA = \sci{6.022}{23}$ particles\sidenote{The constant $\NA$ is known as \newterm{Avogadro's number}.}, and the number of moles in a sample is $n = N/\NA$.  If we divide and multiply equation~(\ref{e.ideal-gas-eos}) by $\NA$, then our ideal gas equation becomes
 \[ PV = n\left[\NA k\right]T \equiv n R T, \]
 where $R = \NA k = \val{8.314}{\unitstyle{J}\usk\K^{-1}\usk\mol^{-1}}$ is the gas constant. This is perhaps the most familiar form of the ideal gas law---but it is not in a form useful to astronomers.
 
@@ -70,7 +70,7 @@ The quantity in parenthesis is the mass per volume, or density $\rho$, of our fl
 
 \begin{exercisebox}[The isothermal atmosphere]
 Let's take a stab at modeling Earth's atmosphere with equation~(\ref{e.hydrostatic-equilibrium-g}). Take Earth's atmosphere to be dry (no water, so we don't have to worry about condensation) and model it as an ideal gas. Also assume the temperature doesn't change with altitude. The molar weight of dry air is $\val{0.02897}{\kilo\gram\usk\mol^{-1}}$. Integrate eq.~(\ref{e.hydrostatic-equilibrium-g}) from $z=0$, where $P(z=0)=P_{0}$, to a height $z$. Show that the solution is $P(z) = P_{0}e^{-z/H_{P}}$, where $H_{P}$
-is the \textbf{pressure scale height}---the height over which the pressure decreases by a factor $1/e$. Evaluate $H_{P}$ for dry air at a temperature of $\val{288}{\K}$ ($\val{15}{^{\circ}\unitstyle{C}}$). Is the answer reasonable, based on your experience? Is the assumption of an isothermal atmosphere a good one? Explain why or why not.
+is the \newterm{pressure scale height}---the height over which the pressure decreases by a factor $1/e$. Evaluate $H_{P}$ for dry air at a temperature of $\val{288}{\K}$ ($\val{15}{^{\circ}\unitstyle{C}}$). Is the answer reasonable, based on your experience? Is the assumption of an isothermal atmosphere a good one? Explain why or why not.
 \end{exercisebox}
 
 \section{The mass distribution}
@@ -128,7 +128,7 @@ Notice that we again have the combination $\sqrt{R^{3}/M}$.  Let's convert this 
 \begin{equation}\label{e.tff}
 \tau_{\mathrm{ff}} = \left(\frac{3}{32\pi}\right)^{1/2}\left(\frac{1}{G}\frac{4\pi R^{3}}{3M}\right)^{1/2} = \left(\frac{3}{32\pi}\right)^{1/2} \frac{1}{\sqrt{G\bar{\rho}}}.
 \end{equation}
-The time to collapse is proportional to $1/\sqrt{G\bar{\rho}}$ and depends on the average density of the star. We call $t_{\mathrm{dyn}} \equiv 1/\sqrt{G\bar{\rho}}$ the \emph{dynamical timescale} of the star.
+The time to collapse is proportional to $1/\sqrt{G\bar{\rho}}$ and depends on the average density of the star. We call $t_{\mathrm{dyn}} \equiv 1/\sqrt{G\bar{\rho}}$ the \newterm{dynamical timescale} of the star.
 
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{fall-to-center}
