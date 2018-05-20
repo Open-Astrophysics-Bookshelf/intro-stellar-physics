@@ -52,21 +52,21 @@ if we take the top of our column to infinity and the pressure at the top to zero
 
 \subsection{The isothermal ideal gas}\label{s.ideal-gas}
 
-In general the density $\rho$ depends on the pressure $P$, and we need more information to solve for the atmospheric structure. A relation between pressure, density, and temperature is called an \newterm{equation of state}. Let's relax our condition of constant density, but keep gravity and temperature constant and assume the fluid is an ideal gas\sidenote[][\baselineskip]{By \newterm{ideal} gas, we mean that the particles are non-interacting; as a result, the energy of the gas only depends on the kinetic energy of the particles and in particular is independent of the volume.}. For $N$ particles in a volume $V$ at pressure and temperature $P$ and $T$, the ideal gas equation of state is
+In general the density $\rho$ depends on the pressure $P$ and temperature $T$ via an \newterm{equation of state}. Let's relax our condition of constant density, but keep gravity and temperature constant and assume the fluid is an ideal gas\sidenote[][\baselineskip]{By \newterm{ideal} gas, we mean that the particles are non-interacting; as a result, the energy of the gas only depends on the kinetic energy of the particles and in particular is independent of the volume.}. For $N$ particles in a volume $V$ at pressure and temperature $P$ and $T$, the ideal gas equation of state is
 \begin{equation}\label{e.ideal-gas-eos}
 PV = N\kB T
 \end{equation}
-where $\kB = \val{\sci{1.381}{-23}}{\unitstyle{J}\usk\K^{-1}}$ is \newterm{Boltzmann's constant}.
+where $\kB = \val{\sci{1.381}{-23}}{\unitstyle{J}\usk\K^{-1}}$ denotes \newterm{Boltzmann's constant}.
 
 In chemistry, it is convenient to count the number of particles by \newterm{moles}.  One mole of a gas has $\NA = \sci{6.022}{23}$ particles\sidenote{The constant $\NA$ is known as \newterm{Avogadro's number}.}, and the number of moles in a sample is $n = N/\NA$.  If we divide and multiply equation~(\ref{e.ideal-gas-eos}) by $\NA$, then our ideal gas equation becomes
 \[ PV = n\left[\NA k\right]T \equiv n R T, \]
 where $R = \NA k = \val{8.314}{\unitstyle{J}\usk\K^{-1}\usk\mol^{-1}}$ is the gas constant. This is perhaps the most familiar form of the ideal gas law---but it is not in a form useful to astronomers.
 
-We astronomers don't care about little beakers of fluid---we have whole worlds to model! Let's take our ideal gas law and introduce the molar weight $m$ as the mass of one mole of our gas.  Then the ideal gas law can be written
+We astronomers don't care about little beakers of fluid---we have whole stars to model! Let's go back to equation (\ref{e.ideal-gas-eos}) and introduce the molar weight $m$ as the mass of one mole of our gas. We then multiply and divide eq.~(\ref{e.ideal-gas-eos}) by $m/\NA$ and obtain
 \begin{equation}\label{e.ideal-gas-astro}
  P = \left(\frac{mN/\NA}{V}\right)\frac{k\NA}{m} T \equiv \rho \frac{k\NA}{m} T.
 \end{equation}
-The quantity in parenthesis is the mass per volume, or density $\rho$, of our fluid.  This is the same mass density that appears in equation~(\ref{e.hydrostatic-equilibrium-g}).  Equation~(\ref{e.ideal-gas-astro}) is the form most convenient for fluid dynamics, because it is in terms of intrinsic fluid properties rather than in terms of a laboratory quantity like volume.
+The quantity in parenthesis is the mass per volume, or density $\rho$, of our fluid.  This is the same mass density that appears in equation~(\ref{e.hydrostatic-equilibrium-g}).  Equation~(\ref{e.ideal-gas-astro}) is the form most convenient for fluid dynamics, because it is in terms of an intrinsic fluid property---the density $\rho$---rather than in terms of the volume.
 
 \begin{exercisebox}[The isothermal atmosphere]
 Let's take a stab at modeling Earth's atmosphere with equation~(\ref{e.hydrostatic-equilibrium-g}). Take Earth's atmosphere to be dry (no water, so we don't have to worry about condensation) and model it as an ideal gas. Also assume the temperature doesn't change with altitude. The molar weight of dry air is $\val{0.02897}{\kilo\gram\usk\mol^{-1}}$. Integrate eq.~(\ref{e.hydrostatic-equilibrium-g}) from $z=0$, where $P(z=0)=P_{0}$, to a height $z$. Show that the solution is $P(z) = P_{0}e^{-z/H_{P}}$, where $H_{P}$
