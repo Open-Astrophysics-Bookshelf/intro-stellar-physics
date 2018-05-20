@@ -4,26 +4,95 @@
 \label{s.hydrostatic-equilibrium}
 
 
-Let's consider a fluid at rest in a gravitational field. By \emph{at rest}, we simply mean that the fluid velocity is sufficiently small that we can neglect the inertia of the moving fluid in our equation for force balance.  By a \emph{fluid}, we mean that the pressure is isotropic\sidenote{Meaning the pressure is the same in all directions.} and directed perpendicular to a surface.  Let's now imagine a small fluid element, with thickness $\Delta r$ and cross-sectional area $\Delta A$, as depicted in Fig.~\ref{f.hydrostatic-equilibrium}.
+Consider a fluid at rest in a gravitational field. By a \emph{fluid}, we mean that the pressure is isotropic\sidenote{Meaning the pressure is the same in all directions.} and directed perpendicular to any given surface. Let's now imagine a small fluid element, as depicted in Fig.~\ref{f.hydrostatic-equilibrium}. The gravitational acceleration is in the direction $-\unitvector{r}$; the fluid element has thickness $\Delta r$ along the direction of the gravitational force and cross-sectional area $\Delta A$.
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{hydrostatic-equilibrium}
 \caption[A fluid element in hydrostatic equilibrium]{A fluid element in hydrostatic equilibrium.
 \label{f.hydrostatic-equilibrium}}
 \end{marginfigure}
 
-The force on the upper face is $\Delta A\times P(r+\Delta r)$; on the lower face, $\Delta A\times P(r)$.  Here $P(r)$ is the pressure.  For the element to be in hydrostatic equilibrium the forces must balance,
+Since our fluid is at rest, the forces must balance. This implies that the pressure only depends on $r$, so that there is no net sideways force on our fluid element. If the fluid has a density (mass per unit volume) $\rho$, then the mass of the fluid element is $\rho\Delta A\Delta r$, and the gravitational force on the fluid element is $-(\rho\Delta A \Delta r) g(r) \unitvector{r}$. This gravitational force is balanced by the \emph{difference} in pressure $P(r)$ between the upper and lower faces of the element.
+
+The pressure force on the upper face is $-\Delta A\times P(r+\Delta r)\unitvector{r}$; on the lower face, $\Delta A\times P(r)\unitvector{r}$. For the element to be in hydrostatic equilibrium the forces along $\unitvector{r}$ must balance,
 \[
-        \Delta A \left[ -P(r+\Delta r) + P(r) - \Delta r \rho g(r)  \right] = 0;
+        \Delta A \left[ -P(r+\Delta r) + P(r) - \Delta r \rho g(r)  \right] = 0.
 \]
-substituting for $g(r)$, dividing by $\Delta r$, taking the limit $\Delta r \to 0$ gives us the equation of hydrostatic equilibrium:
-\begin{equation}\label{e.hydrostatic-equilibrium}
-        \DD{P}{r} = -\rho \frac{Gm(r)}{r^{2}}.
+Dividing by $\Delta r$ and taking the limit $\Delta r \to 0$ gives us the equation of hydrostatic equilibrium:
+\begin{equation}\label{e.hydrostatic-equilibrium-g}
+        \DD{P}{r} = -\rho g(r).
 \end{equation}
-Here the mass enclosed within radius $r$ is
+This is a differential equation describing how the pressure varies in the star. We don't have enough information yet to solve it, because we haven't specified either the gravity $g(r)$ or the density $\rho$.
+
+\subsection{Constant gravity, incompressible fluid}
+
+Let's try a simple case: an incompressible (density is fixed) fluid in constant gravity. This isn't a good approximation for a star, but it is a good approximation to Earth's oceans: the density of sea water changes by less than 5\% between the surface and ocean floor.
+
+\begin{exercisebox}[Pressure increase in water]
+Water is nearly incompressible and has a density $\rho = \val{10^{3}}{\kilo\gram\usk\meter^{-3}}$. Solve eq.~(\ref{e.hydrostatic-equilibrium-g}) to get an equation for the pressure as a function of depth in the ocean. How deep would you need to dive for the pressure to increase by $\val{1}{\unitstyle{atm}} = \val{\sci{1.013}{5}}{\unitstyle{Pa}}$? Does this agree with your experience?
+\end{exercisebox}
+\marginnote[-3\baselineskip]{The SI unit of pressure is the \textbf{Pascal}: $\val{1}{\unitstyle{Pa}} = \val{1}{\unitstyle{N}\usk\meter^{-2}}$. The mean pressure at terrestrial sea level is $\val{1}{\unitstyle{atm}} = \val{\sci{1.013}{5}}{\unitstyle{Pa}}$. Other common units of pressure are the \textbf{bar} ($\val{1}{\unitstyle{bar}} = \val{10^{5}}{\unitstyle{Pa}}$) and the \textbf{Torr} ($\val{760}{\unitstyle{Torr}} = \val{1}{\unitstyle{atm}}$).}
+
+Let's look at this in a bit more detail.  Suppose we take our fluid layer to be thin, so that $g$ is approximately constant. Then we can write equation~(\ref{e.hydrostatic-equilibrium}) as
+\[ \int_{P_{0}}^{P_(z)} \dif P = -g\int_{0}^{z} \rho\,\dif z. \]
+Now consider a cylinder of cross-section $\Delta A$ that extends from $0$ to $z$.  The mass of that cylinder is
+\[ m(z) = \Delta A\times\int_{0}^{z}\rho \,\dif z.
+\]
+and its weight is $m(z)g$.
+\begin{marginfigure}
+\centering\includegraphics[width=0.8\linewidth]{column}
+\caption[The mass of a column of fluid]{
+The mass of a column of fluid.
+\label{f.column}}
+\end{marginfigure}
+
+The difference in pressure between the bottom and top of the cylinder is just
+\[ P_{0}-P(z) = g m(z)/\Delta A, \]
+that is, the weight per unit area of our column.  Let's apply this to our atmosphere:
+if we take the top of our column to infinity and the pressure at the top to zero, then the pressure at the bottom (sea level) is just the weight of a column of atmosphere with a cross-sectional area of $\val{1}{\meter^{2}}$.
+
+\subsection{The isothermal ideal gas}\label{s.ideal-gas}
+
+In general the density $\rho$ depends on the pressure $P$, and we need more information to solve for the atmospheric structure. A relation between pressure, density, and temperature is called an \textbf{equation of state}. Let's relax our condition of constant density, but keep gravity and temperature constant and assume the fluid is an ideal gas\sidenote[][\baselineskip]{By \emph{ideal} gas, we mean that the particles are non-interacting; as a result, the energy of the gas only depends on the kinetic energy of the particles and in particular is independent of the volume.}. For $N$ particles in a volume $V$ at pressure and temperature $P$ and $T$, the ideal gas equation of state is
+\begin{equation}\label{e.ideal-gas-eos}
+PV = N\kB T
+\end{equation}
+where $\kB = \val{\sci{1.381}{-23}}{\unitstyle{J}\usk\K^{-1}}$ is \textbf{Boltzmann's constant}.
+
+In chemistry, it is convenient to count the number of particles by \textbf{moles}.  One mole of a gas has $\NA = \sci{6.022}{23}$ particles\sidenote{The constant $\NA$ is known as \textbf{Avogadro's number}.}, and the number of moles in a sample is $n = N/\NA$.  If we divide and multiply equation~(\ref{e.ideal-gas-eos}) by $\NA$, then our ideal gas equation becomes
+\[ PV = n\left[\NA k\right]T \equiv n R T, \]
+where $R = \NA k = \val{8.314}{\unitstyle{J}\usk\K^{-1}\usk\mol^{-1}}$ is the gas constant. This is perhaps the most familiar form of the ideal gas law---but it is not in a form useful to astronomers.
+
+We astronomers don't care about little beakers of fluid---we have whole worlds to model! Let's take our ideal gas law and introduce the molar weight $m$ as the mass of one mole of our gas.  Then the ideal gas law can be written
+\begin{equation}\label{e.ideal-gas-astro}
+ P = \left(\frac{mN/\NA}{V}\right)\frac{k\NA}{m} T \equiv \rho \frac{k\NA}{m} T.
+\end{equation}
+The quantity in parenthesis is the mass per volume, or density $\rho$, of our fluid.  This is the same mass density that appears in equation~(\ref{e.hydrostatic-equilibrium-g}).  Equation~(\ref{e.ideal-gas-astro}) is the form most convenient for fluid dynamics, because it is in terms of intrinsic fluid properties rather than in terms of a laboratory quantity like volume.
+
+\begin{exercisebox}[The isothermal atmosphere]
+Let's take a stab at modeling Earth's atmosphere with equation~(\ref{e.hydrostatic-equilibrium-g}). Take Earth's atmosphere to be dry (no water, so we don't have to worry about condensation) and model it as an ideal gas. Also assume the temperature doesn't change with altitude. The molar weight of dry air is $\val{0.02897}{\kilo\gram\usk\mol^{-1}}$. Integrate eq.~(\ref{e.hydrostatic-equilibrium-g}) from $z=0$, where $P(z=0)=P_{0}$, to a height $z$. Show that the solution is $P(z) = P_{0}e^{-z/H_{P}}$, where $H_{P}$
+is the \textbf{pressure scale height}---the height over which the pressure decreases by a factor $1/e$. Evaluate $H_{P}$ for dry air at a temperature of $\val{288}{\K}$ ($\val{15}{^{\circ}\unitstyle{C}}$). Is the answer reasonable, based on your experience? Is the assumption of an isothermal atmosphere a good one? Explain why or why not.
+\end{exercisebox}
+
+\section{The mass distribution}
+
+Now let's look at how gravity varies within a star. Suppose we are at a distance $r$ from the stellar center. Newton discovered that the gravitational force inside a spherical shell vanished. This means that the net gravitational force arising from portions of the star exterior to our position vanishes. The gravitational force depends only on the amount of mass interior to our position. This mass is
 \begin{equation}\label{e.mass-continuity}
 	m(r) = 4\pi \int_{0}^{r}\rho(r)r^{2}\,\dif r,
 \end{equation}
-with $\rho$ being the mass density. We can't solve these equations yet because we don't have a relation---yet---between $P$ and $\rho$.  But rather than wait to develop all of the physics we need, we are going to leapfrog ahead by \emph{assuming} a simple form for $\rho(r)$ and using that to understand better how stars work.
+with $\rho$ being the mass density.
+
+Furthermore, the gravitational force from a spherically symmetric mass is identical to that of a point particle of the same mass. Thus, the gravitational force at a radius $r$ from the center is simply
+\[ g(r) = \frac{Gm(r)}{r^{2}}. \]
+Using this expression for $g$, we can write eq.~(\ref{e.hydrostatic-equilibrium-g}) as
+\begin{equation}\label{e.hydrostatic-equilibrium}
+        \DD{P}{r} = -\rho \frac{Gm(r)}{r^{2}}.
+\end{equation}
+
+\begin{exercisebox}[At the center]
+What happens to $m(r)$ and $g(r)$ at the center ($r\to0$)? Before doing any calculation, see if you can argue that $g(r)\to0$ at the center. If this is so, then what is $\dif P/\dif r$ at the center? Assuming that $\rho\to\rho_{c}\approx\mathrm{const.}$ near the center, integrate eq.~(\ref{e.mass-continuity}) over a small radius $\Delta r$ to get $m(\Delta r)$ and hence $g(\Delta r)$. Show explicitly that $g(\Delta r)\to 0$ as $\Delta r\to0$.
+\end{exercisebox}
+
+To recap, we now have two differential equations, (\ref{e.mass-continuity}) and (\ref{e.hydrostatic-equilibrium}), that describe the structure of a star. These equations are for the pressure $P(r)$ and density $\rho(r)$ in the star. We can't solve these equations yet, however, because we don't have a relation between $P$ and $\rho$. For example, the ideal gas equation of state relates $P$ and $\rho$ via a temperature $T$, so we need at least an equation for $T(r)$. Before doing that, let's see what we can learn from just these two equations; to proceed, we shall assume a simple form for $\rho(r)$, such as a constant density, and see what we can infer.
 
 \begin{exercisebox}[A star of constant density]
 \label{ex.constant-density-star}
@@ -49,7 +118,7 @@ where $\mb = 1/12\times(\textrm{mass of a \carbon\ atom})$ and $\mu$ is the mean
 \section{A closer look at hydrostatic equilibrium}
 \label{s.closer-look}
 
-Let's imagine what would happen if the star fell out of equilibrium.  Suppose we could turn off the pressure.  The star would collapse; how long would this take?  Let's calculate the amount of time a particle would need to free-fall from the surface to the center.  We can get this from Kepler's law. Start with a circular orbit and deform it while keeping the center at one focus, as shown in Fig.~\ref{f.fall-to-center}.  
+What would happen if the star fell out of equilibrium? Suppose we could turn off the pressure. If we did that, the star would implode. To understand how long this would take, let's calculate the amount of time a particle would need to free-fall from the surface to the center.  We can get this from Kepler's law. Start with a circular orbit and deform it while keeping the center at one focus, as shown in Fig.~\ref{f.fall-to-center}.  
 
 The limit of these increasingly eccentric orbits is a fall into the center.  The time is one-half of an orbital period, and the semi-major axis in this limiting case is $a = R/2$:
 \[
