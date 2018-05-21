@@ -46,6 +46,43 @@ We call $\ell$ the ``mean free path''.
     \caption[Mean free path of a hockey puck]{\label{f.MFP-2D}Schematic for Exercise~\ref{ex.MFP-2D}}
 \end{marginfigure}
 
+\newthought{Suppose we have a ray of light traversing some matter.} Over a small distance $\Delta s$, the probability of a photon being absorbed is $\mathcal{P} = n\sigma\Delta s$. Thus, out of every $N$ photons, $\Delta N = N \times\mathcal{P} = N\times n\sigma\Delta s$ are absorbed. Since the intensity $I_{\nu}$ is proportional to the number of photons, the change in intensity is just
+\[ \Delta I_{\nu} = -n\sigma I_{\nu}\Delta s; \]
+upon rearranging and taking the limit $\Delta s\to0$, we obtain an equation for the absorption of light,
+\begin{equation}\label{e.absorption-microscopic}
+\DD{I_{\nu}}{s} = -n\sigma I_{\nu}.
+\end{equation}
+Rather than work with the microscopic cross-section, it is convenient to define the \textbf{opacity},
+\[
+	\kapabs = \frac{n\sigma}{\rho},
+\]
+so that $\dif I_{\nu}/\dif s = -\rho\kapabs I_{\nu}$. The units of opacity are $\cm^{2}/\gram$. We use a subscript $\nu$ to indicate that the opacity is a function of frequency.
+
+\begin{exercisebox}
+A ray of light crosses a slab of absorbent material. Calculate the intensity $I_{\nu}$ as a function of distance traveled. Your expression should be in terms of $\rho$ and $\kapabs$. How far does the ray go before its intensity has dropped to $1/e$ of its original value?
+\end{exercisebox}
+
+\newthought{In addition to absorbing photons, the matter can also spontaneously emit them.} Denote the power emitted per wavelength per volume per angle by $\rho j_{\nu}$. After traveling a distance $\Delta s$, the ray has increased in intensity by $\rho j_{\nu}\Delta s$, or
+\begin{equation}\label{e.emission-microscopic}
+\DD{I_{\nu}}{s} = \rho j_{\nu}.
+\end{equation}
+
+\begin{exercisebox}
+Suppose a ray traverses matter that both absorbs (opacity $\kapabs$) and emits (emissivity $j_{\nu}$), so that
+\[	\DD{I_{\nu}}{s} = \rho j_{\nu} - \rho\kapabs I_{\nu}. \]
+Solve for $I_{\nu}(s)$, and show that as $s\to\infty$, $I_{\nu}\to j_{\nu}/\kapabs$.
+\end{exercisebox}
+
+\newthought{Finally, the matter can also scatter light.} This removes light, similar to absorption, but then the light is put back into a different ray. If the intensity in our ray is greater than the angle-average $J_{\nu}$, scattering will cause a net reduction in intensity as more photons are scattered out of the ray than are scattered into it. Conversely, if $I_{\nu} < J_{\nu}$, then more photons will be scattered into the ray than out of it. Thus, the effect of scattering can be described via
+\begin{equation}\label{e.scattering-microscopic}
+\DD{I_{\nu}}{s} = -\rho\kapscat \left(I_{\nu} - J_{\nu}\right).
+\end{equation}
+Putting everything together gives us our full expression for how the intensity changes,
+\begin{equation}\label{e.transfer-equation}
+\DD{I_{\nu}}{s} = -\rho\left(\kapabs + \kapscat\right) I_{\nu} + \rho j_{\nu} + \rho\kapscat J_{\nu}.
+\end{equation}
+This is a complicated \textbf{integro-differential} equation: it contains both the derivative $\dif I_{\nu}/\dif s$ of the intensity as well as its integral $J_{\nu} = (4\pi)^{-1}\int I_{\nu}\,\dif\Omega$.
+
 
 \section{Diffusion}\label{s.diffusion}
 
