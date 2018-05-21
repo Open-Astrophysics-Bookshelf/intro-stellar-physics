@@ -4,6 +4,35 @@ We saw in chapter~\ref{ch.basic-stellar-properties} that the equilibrium central
 
 \newthought{Photons in a plasma, such as in the interior of the sun, transport energy.}  Were the sun transparent, these photons would immediately stream out, and the sun would release its stored energy in a fiery blast.  This doesn't happen: a photon can only travel a short distance before being scattered or absorbed. The net effect is that radiation generated in the core must travel a tortuous path, rather like a pinball, before reaching the surface and escaping.
 
+\section{The radiation energy density}\label{s.radiation-energy-density}
+Before describing the interaction of radiation and matter, we need to extend the description of radiation from the introduction in Chapter~\ref{ch.starlight}. There we introduced
+\[
+I_{\lambda} \equiv \frac{\dif E}{\dif t\,\dif A\,\dif\lambda\,\dif\Omega}
+\]
+as the radiant energy $\dif E$ crossing an area $\dif A$ in a time $\dif t$, directed into a solid angle $\dif\Omega$, and carried by photons with wavelengths in a range $\dif\lambda$. Notice that in time $\dif t$, these photons will fill a volume $\dif V = c\dif t\times \dif A$. Hence we can write the intensity as
+\[
+I_{\lambda} = c\frac{\dif E}{\dif V\,\dif \lambda\,\dif\Omega}.
+\]
+Hence the radiant energy density per wavelength is
+\begin{equation}
+	U_{\lambda} \equiv \frac{\dif E}{\dif V\,\dif\lambda} = \frac{1}{c}\int I_{\lambda}\,\dif \Omega.
+\end{equation}
+If the radiation is thermal, that is, if $I_{\lambda} = B_{\lambda}$, then
+\[
+U_{\lambda} = \frac{B_{\lambda}}{c}\int_{0}^{2\pi}\int_{0}^{\pi}\sin\theta\,\dif\theta\,\dif\phi = \frac{4\pi}{c}B_{\lambda},
+\]
+and the total radiant energy density is
+\[
+U = \int_{0}^{\infty}U_{\lambda}\,\dif\lambda = \frac{4}{c}\pi\int_{0}^{\infty}B_{\lambda}\,\dif\lambda = \left[\frac{4\sigmaSB}{c}\right] T^{4}.
+\]
+In this expression, 
+\[ 
+a = \left[\frac{4\sigmaSB}{c}\right] = \val{\sci{7.566}{-16}}{\unitstyle{J}\usk\meter^{-3}\usk\K^{-4}}.
+\]
+and we have used equations~(\ref{e.outward-thermal-flux}) and (\ref{e.bolometric-thermal-flux}). The energy density of thermal radiation is $U = aT^{4}$.
+
+\section{Interaction of radiation and matter}\label{s.interaction-radiation-matter}
+
 How far does a photon---or any particle, for that matter---travel, on average, in the interior of the sun? Imagine a particle traveling with speed $v$.  Draw a cylinder, of length $\ell$ and cross-sectional area $\mathcal{A}$, around its future path, as shown in Fig.~\ref{f.MFP}. What the particle ``sees'' is that the cylinder is partly blocked by obstacles---other particles in its path. What is the probability of our particle making it through the cylinder unscathed?
 
 \begin{marginfigure}
@@ -47,9 +76,29 @@ We call $\ell$ the ``mean free path''.
 
 \section{Diffusion}\label{s.diffusion}
 
-Imagine a small cube with sides of length $\lambda$ and filled with photons. The total radiant energy in the cube is $\Delta E$. In a time $\Delta t = \lambda/c$, all of the energy will leave this cube. The total luminosity is $\Delta E/\Delta t = c\Delta E/\lambda$. If everything is isotropic, then the flux out of any one face is $1/6$ of the luminosity, divided by the area of that face:
+In the presence of scattering or absorption, the photons crossing the face can travel one mean free path $\ell$. Imagine a small cube with sides of length $\ell$ and filled with photons. The total radiant energy in the cube is $\Delta E$. In a time $\Delta t = \ell/c$, all of the energy will leave this cube. The total luminosity is $\Delta E/\Delta t = c\Delta E/\ell$. If everything is isotropic, then the flux out of any one face is $1/6$ of the luminosity, divided by the area of that face:
 \[
-	F = \frac{1}{6\lambda^{2}}\frac{c\Delta E}{\lambda} = \frac{1}{6}c U,
+	F = \frac{1}{6\ell^{2}}\frac{c\Delta E}{\ell} = \frac{1}{6}c U,
 \]
-where $U = E/\lambda^{3}$ is the radiative energy density.
+where $U = E/\ell^{3}$ is the radiative energy density. 
+
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{diffusive-flux}
+\caption{\label{f.diffusive-flux} Illustration of net flux crossing a face between regions with slightly different energy densities.}
+\end{marginfigure}
+Now place two of these cubes against one another, with their common face located at position $x$. The energy density of the two cubes need not be the same; the energy density of the left cube is $U(x-\ell)$ and of the right cube is $U(x+\ell)$ (see Fig.~\ref{f.diffusive-flux}). The net flux traveling in the $x$-direction through the common face is then
+\[
+	F = {\color{blue}\frac{1}{6} c U(x-\ell)} - {\color{red}\frac{1}{6} c U(x+\ell)} \approx -\frac{1}{3}c\ell \DDx{U}.
+\]
+This is an expression for a \textbf{diffusive flux}. Although we gave a heuristic explanation, the formula is in general true:
+\begin{eqnarray}
+\nonumber
+(\textrm{flux of something}) &=& -\frac{1}{3}\times(\textrm{speed of carriers})\times(\textrm{MFP of carriers})\\
+&&\times \grad(\textrm{density of something})
+\label{e.diffusive-flux}
+\end{eqnarray}
+For radiation, the ``something'' is ``radiative energy'' and the carriers are photons.
+
+\newthought{Relate to random walk}
+
 

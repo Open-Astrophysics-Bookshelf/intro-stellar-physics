@@ -143,7 +143,9 @@ Explain, without using mathematical expressions, why there is no net flux for th
 \end{exercisebox}
 
 Although the net flux is zero, if we just want the radiation escaping from our cavity, we only want to integrate over the angles $0\le\theta\le\pi/2$. If we do this, then our \emph{outward-going} specific flux is
-\[ F_{\lambda}(\mathrm{outward}) = B_{\lambda}\int_{0}^{2\pi}\int_{0}^{\pi/2}\cos\theta\,\sin\theta\,\dif\theta\,\dif\phi = \pi B_{\lambda}. \]
+\begin{equation}\label{e.outward-thermal-flux}
+ F_{\lambda}(\mathrm{outward}) = B_{\lambda}\int_{0}^{2\pi}\int_{0}^{\pi/2}\cos\theta\,\sin\theta\,\dif\theta\,\dif\phi = \pi B_{\lambda}.
+\end{equation}
 To find the total power emitted per area for thermal radiation, we need to integrate $F_{\lambda}$ over wavelength:
 \begin{equation}\label{e.bolometric-thermal-flux}
 F = \int_{0}^{\infty}F_{\lambda}(\mathrm{outward})\,\dif\lambda 
