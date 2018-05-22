@@ -29,12 +29,12 @@ The particle will suffer a collision when $\mathcal{P}\to 1$, or when
 \end{equation}
 We call $\ell$ the ``mean free path''.
 
-\begin{exercisebox}[Mean free path for electron scattering]
+\begin{exercisebox}[Mean free path for electron scattering]\label{ex.MFP}
     In the sun, free electrons scatter photons, and the cross-section is
     \[
     \sigma_{\mathrm{Th}} = \left(\frac{8\pi}{3}\right)\left(\frac{e^2}{m_e c^2}\right)^2 = \val{\sci{6.65}{-27}}{\meter^2}.
     \]
-    What is the mean free path against this process for a photon?
+    What is the mean free path against this process for a photon at the average density of the solar interior?
 \end{exercisebox}
 
 \begin{exercisebox}[Mean free path of a hockey puck]\label{ex.MFP-2D}
@@ -67,7 +67,7 @@ A ray of light crosses a slab of absorbent material. Calculate the intensity $I_
 \DD{I_{\nu}}{s} = \rho j_{\nu}.
 \end{equation}
 
-\begin{exercisebox}
+\begin{exercisebox}[Combined absorption and emission]
 Suppose a ray traverses matter that both absorbs (opacity $\kapabs$) and emits (emissivity $j_{\nu}$), so that
 \[	\DD{I_{\nu}}{s} = \rho j_{\nu} - \rho\kapabs I_{\nu}. \]
 Solve for $I_{\nu}(s)$, and show that as $s\to\infty$, $I_{\nu}\to j_{\nu}/\kapabs$.
@@ -83,6 +83,29 @@ Putting everything together gives us our full expression for how the intensity c
 \end{equation}
 This is a complicated \textbf{integro-differential} equation: it contains both the derivative $\dif I_{\nu}/\dif s$ of the intensity as well as its integral $J_{\nu} = (4\pi)^{-1}\int I_{\nu}\,\dif\Omega$.
 
+In general, eq.~(\ref{e.transfer-equation}) must be solved numerically; but conditions in the deep interior of the star and near the surface allow us to make simplifying approximations and to obtain a solution that gives some insight into the physics. First, let's clean up the equation: divide through by $\rho(\kapabs + \kapscat)$,
+\[
+	\frac{1}{\rho(\kapabs+\kapscat)}\dd{I_{\nu}}{s} = -I_{\nu} + \left[\frac{j_{\nu} + \kapscat J_{\nu}}{\kapabs + \kapscat}\right].
+\]
+Next, define a new quantity, the \textbf{optical depth} $\tau_{\nu}$ via the equation
+\[
+	\dd{\tau_{\nu}}{s} = \rho(\kapabs+\kapscat),
+\]
+which allows us to change variables, $\dif I_{\nu}/\dif s = (\dif I_{\nu}/\dif\tau_{\nu})\cdot(\dif\tau_{\nu}/\dif s)$; and finally define the \textbf{source function} $S_{\nu}$ as the term in $\left[\cdot\right]$. Doing all that gives us the simpler-looking equation,
+\[
+	\DD{I_{\nu}}{\tau_{\nu}} = -I_{\nu} + S_{\nu}.
+\]
+This doesn't advance us any closer to the solution, but notice! The optical depth has a simple meaning:
+\[
+	\tau_{\nu} = \int_{0}^{s} \rho(\kapabs+\kapscat)\,\dif s = \int_{0}^{s} n\sigma_{\nu}\,\dif s = \int_{0}^{s} \frac{\dif s}{\lambda}.
+\]
+That is, the optical depth measured the distance traveled, in units of mean free path. Said differently, if you have traveled one optical depth, then you have gone one mean free path.
+
+Thus, if your system has $\tau_{\nu}\ll 1$, then photons are hardly affected by the matter and we say the system is nearly transparent; if, on the other hand, $\tau_{\nu} \gg 1$, then photons cannot go through the system and we say that the system is opaque.
+
+\begin{exercisebox}[Optical depth of the solar center]
+For the electron scattering cross-section (Exercise~\ref{ex.MFP}), estimate the optical depth between the solar center and the solar photosphere.
+\end{exercisebox}
 
 \section{Diffusion}\label{s.diffusion}
 
