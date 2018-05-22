@@ -101,11 +101,28 @@ This doesn't advance us any closer to the solution, but notice! The optical dept
 \]
 That is, the optical depth measured the distance traveled, in units of mean free path. Said differently, if you have traveled one optical depth, then you have gone one mean free path.
 
-Thus, if your system has $\tau_{\nu}\ll 1$, then photons are hardly affected by the matter and we say the system is nearly transparent; if, on the other hand, $\tau_{\nu} \gg 1$, then photons cannot go through the system and we say that the system is opaque.
+Thus, if your object has $\tau_{\nu}\ll 1$, then photons are hardly affected by the medium and the object is nearly transparent; if, on the other hand, $\tau_{\nu} \gg 1$, then photons cannot go through the object: it is opaque.
 
 \begin{exercisebox}[Optical depth of the solar center]
 For the electron scattering cross-section (Exercise~\ref{ex.MFP}), estimate the optical depth between the solar center and the solar photosphere.
 \end{exercisebox}
+
+\newthought{Suppose we are in a cavity in which the radiation and matter are in a steady-state}. 
+The matter is not gaining or losing energy to the radiation. This requires balancing
+\[ \left(\textrm{energy emitted per unit volume}\right) = \rho\int j_{\nu}\,\dif\nu\,\dif\Omega\] 
+with
+\[ \left(\textrm{energy absorbed per unit volume}\right) = \rho\int \kapabs I_{\nu}\,\dif\nu\,\dif\Omega,\]
+or
+\begin{equation}\label{e.rad-equil}
+\int_{0}^{\infty}\! \left(j_{\nu} - \kapabs J_{\nu}\right)\,\dif\nu = 0.
+\end{equation}
+We don't include scattering because it doesn't transfer energy between the radiation and the gas.
+
+If, in addition, the matter and radiation are in thermal equilibrium, so that $J_{\nu} = B_{\nu}$, then
+\begin{equation}\label{e.detailed-balance}
+\frac{j_{\nu}}{\kapabs} = B_{\nu}(T).
+\end{equation}
+Notice that $j_{\nu}$ and $\kapabs$ are properties of the matter, and do not depend on the state of the radiation field. Hence, equation~(\ref{e.detailed-balance}) must hold whenever the matter is in equilibrium, \emph{regardless of the state of the radiation field}.
 
 \section{Diffusion}\label{s.diffusion}
 
