@@ -8,7 +8,7 @@ RM = rm -f
 CHAPTERS = frontmatter \
 	starlight \
 	hydrostatic-balance \
-	mean-free-path \
+	radiative-transport \
 	stellar-atmospheres \
 	classifying-stars \
 	convection \
@@ -27,8 +27,11 @@ FIGURES = frontmatter/cover-art.png \
 	classifying-stars/figs/spectral_types.pdf \
 	hydrostatic-balance/figs/fall-to-center.pdf \
 	hydrostatic-balance/figs/hydrostatic-equilibrium.pdf \
-	mean-free-path/figs/air-hockey-mfp.pdf \
-	mean-free-path/figs/mean-free-path.pdf \
+	radiative-transport/figs/air-hockey-mfp.pdf \
+	radiative-transport/figs/mean-free-path.pdf \
+	radiative-transport/figs/diffusive-flux.pdf \
+	radiative-transport/figs/radiative-transfer-exercise.pdf \
+	radiative-transport/figs/random-walk.pdf \
 	stellar-atmospheres/figs/legendre.pdf \
 	degeneracy/figs/fermions.pdf \
 	degeneracy/figs/scattering-classical.pdf \
