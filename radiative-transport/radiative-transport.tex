@@ -156,13 +156,14 @@ I_{\nu}^{(1)} = -\mu\DD{B_{\nu}}{\tau_{\nu}}.
 $B_{\nu}$ depends on the temperature $T$, so $\dif B_{\nu}/\dif\tau_{\nu} = \dif B_{\nu}/\dif T \cdot \dif T/\dif \tau_{\nu}$. To get the flux, multiply eq.~(\ref{e.perturbation-radiative-transfer}) by $\mu$ and integrate over angles:
 \[ F_{\nu} = \int\mu I_{\nu}^{(1)}\,\dif\Omega = -\int \mu^{2}\DD{B_{\nu}}{T}\,\DD{T}{\tau_{\nu}}\,\dif \Omega = -\frac{4\pi}{3} \DD{B_{\nu}}{T}\,\DD{T}{\tau_{\nu}}. \]
 We can switch back to the radial coordinate:
-\[
+\begin{equation}\label{e.specific-radiative-transport}
 	F_{\nu} = -\frac{4\pi}{3}\left[\frac{1}{\rho\kappa_{\nu}}\dd{B_{\nu}}{T}\right]\DD{T}{r}.
-\]
-The term in $\left[\cdot\right]$ is interesting, as it controls which frequencies are most responsible for energy transport.
+\end{equation}
+The term in $\left[\cdot\right]$ controls which frequencies are most responsible for energy transport.
 
-\begin{exercisebox}
-Let's examine the transport more closely. Fig.~\ref{f.planck} shows $B_{\nu}$ and $\dif B_{\nu}/\dif T$ (top panel) and a hypothetical $\kappa_{\nu}$ (middle). Sketch $F_{\nu}$ on the bottom panel.  For which frequencies is it maximum?
+\begin{exercisebox}[Transport by frequency]
+\label{ex.radiative-transfer}
+Let's examine the term $\left[\cdot\right]$ in eq.~(\ref{e.specific-radiative-transport}) more closely. Fig.~\ref{f.planck} shows $B_{\nu}$ and $\dif B_{\nu}/\dif T$ (top panel) and a hypothetical $\kappa_{\nu}$ (middle). Sketch $F_{\nu}$ on the bottom panel.  For which frequencies is it maximum?
 \end{exercisebox}
 
 \begin{marginfigure}
@@ -179,13 +180,12 @@ Here we've defined the \newterm{Rosseland mean} of the opacity:
 \begin{equation}\label{e.rosseland-opacity}
 	\frac{1}{\kappa_{\mathrm{R}}} = \left(\int_{0}^{\infty} \dd{B_{\nu}}{T}\,\dif\nu\right)^{-1}\int_{0}^{\infty} \frac{1}{\kappa_{\nu}}\dd{B_{\nu}}{T}\,\dif\nu.
 \end{equation}
-This is done to put the equation in more familiar terms. Since (cf.\ eq.~[\ref{e.bolometric-thermal-flux}]) $\int B_{\nu}\,\dif\nu = \sigmaSB T^{4}/\pi$, we can write the equation for the flux as
-\begin{eqnarray}
-	F &=& -\frac{4\pi}{3}\frac{1}{\rho\kappa_{\mathrm{R}}}\DD{}{r}\frac{\sigmaSB T^{4}}{\pi}\nonumber\\
-	&=& -\frac{1}{3}\frac{c}{\rho\kappa_{\mathrm{R}}}\DD{}{r}aT^{4},
+This is done to put the equation in more familiar terms. Since (cf.\ eq.~[\ref{e.bolometric-thermal-flux}]) $\int B_{\nu}\,\dif\nu = \sigmaSB T^{4}/\pi = c a T^{4}/4\pi$, we can write the equation for the flux as
+\begin{equation}
+	F = -\frac{1}{3}\frac{c}{\rho\kappa_{\mathrm{R}}}\DD{}{r}aT^{4}.
 \label{e.radiative-transfer}
-\end{eqnarray}
-where we define the radiation constant $a \equiv 4\sigmaSB/c$. Equation (\ref{e.radiative-transfer}) is known as the equation for radiative diffusion, for reasons that will become apparent in the next section.
+\end{equation}
+Equation (\ref{e.radiative-transfer}) is known as the equation for radiative diffusion, for reasons that will become apparent in the next section.
 
 \begin{exercisebox}[Radiative transfer equation]
 Let's dissect eq.~(\ref{e.radiative-transfer}) to see how it sets the luminosity.  
@@ -227,18 +227,18 @@ For radiation, the ``something'' is ``radiative energy'' and the carriers are ph
 \end{marginfigure}
 
 \begin{exercisebox}[Rosseland weighting]
-In terms of your response and our crude diffusion model,
+Compare this crude diffusion model,
 \[
 	F = -\frac{1}{3}c\lambda\DD{U}{r},
 \]
-give a succinct description for why the mean free path is weighted by $\partial B_{\nu}/\partial T$.
+with eq.~(\ref{e.radiative-transfer}). Using the results of exercise~\ref{ex.radiative-transfer}, give a succinct description for why the mean free path $\lambda = 1/(\rho\kappa_{\mathrm{R}})$ is computed using a weighting function $\partial B_{\nu}/\partial T$.
 \end{exercisebox}
 
-\newthought{Relate to random walk}
-
-Now let's do an alternate take on our estimation. Do you remember the random walk? If not, review Appendix C.2 of the \href{http://www.pa.msu.edu/~ebrown/docs/AST208-notes.pdf}{notes from AST 208}. Let's imagine the photon starting at the center of the star and moving along a line that runs from one side of the star to the other.  The photon moves at speed $c$, but it can only go one step, of length $\lambda$, at a time. Before each step, the photon flips a coin: heads to go right, tails to go left. On average, the photon doesn't get anywhere; but if it takes enough hops, there is some probability for it to reach the edge of the star. The plot below shows the distribution for increasingly larger numbers of steps $n$. If there is an edge, say at the red vertical lines, then after some number of steps the photon will reach the edge and escape.
+\newthought{As an alternate take on our estimation, let's model the transport as a photon that is randomly walking throughout the interior.}
+Now let's . Do you remember the random walk? If not, review Appendix C.2 of the \href{http://www.pa.msu.edu/~ebrown/docs/AST208-notes.pdf}{notes from AST 208}. The photon moves at speed $c$, but it can only go one step, of length $\lambda$, at a time. Before each step, the photon flips a coin: heads to go right, tails to go left. On average, the photon doesn't get anywhere; but if it takes enough hops, there is some probability for it to reach the edge of the star. The plot below shows the distribution for increasingly larger numbers of steps $n$. If there is an edge, say at the red vertical lines, then after some number of steps the photon will reach the edge and escape.
 
 \begin{figure}[htbp]
+\forceversofloat
 \includegraphics[width=\linewidth]{random-walk}
 \caption{\label{f.random-walk} Distribution of positions after $n$ steps in a random walk.}
 \end{figure}
