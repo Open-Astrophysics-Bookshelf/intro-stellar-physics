@@ -235,7 +235,13 @@ with eq.~(\ref{e.radiative-transfer}). Using the results of exercise~\ref{ex.rad
 \end{exercisebox}
 
 \newthought{As an alternate take on our estimation, let's model the transport as a photon that is randomly walking throughout the interior.}
-Now let's . Do you remember the random walk? If not, review Appendix C.2 of the \href{http://www.pa.msu.edu/~ebrown/docs/AST208-notes.pdf}{notes from AST 208}. The photon moves at speed $c$, but it can only go one step, of length $\lambda$, at a time. Before each step, the photon flips a coin: heads to go right, tails to go left. On average, the photon doesn't get anywhere; but if it takes enough hops, there is some probability for it to reach the edge of the star. The plot below shows the distribution for increasingly larger numbers of steps $n$. If there is an edge, say at the red vertical lines, then after some number of steps the photon will reach the edge and escape.
+If not, review Appendix C.2 of the \href{http://www.pa.msu.edu/~ebrown/docs/AST208-notes.pdf}{notes from AST 208}. The photon moves at speed $c$, but it can only go one step, of length $\lambda$, at which point it is sent off in a random direction. It's path therefore will look something like that in Fig.~\ref{f.random-walk-schematic}.
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{random-walk-schematic}
+\caption{\label{f.random-walk-schematic}Schematic of a random walk.}
+\end{marginfigure}
+
+Before each step, the photon flips a coin: heads to go right, tails to go left. On average, the photon doesn't get anywhere; but if it takes enough hops, there is some probability for it to reach the edge of the star. The plot below shows the distribution for increasingly larger numbers of steps $n$. If there is an edge, say at the red vertical lines, then after some number of steps the photon will reach the edge and escape.
 
 \begin{figure}[htbp]
 \forceversofloat
