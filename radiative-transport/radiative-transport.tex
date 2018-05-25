@@ -56,7 +56,7 @@ Rather than work with the microscopic cross-section, it is convenient to define 
 \[
 	\kapabs = \frac{n\sigma}{\rho},
 \]
-so that $\dif I_{\nu}/\dif s = -\rho\kapabs I_{\nu}$. The units of opacity are $\cm^{2}/\gram$. We use a subscript $\nu$ to indicate that the opacity is a function of frequency.
+so that $\dif I_{\nu}/\dif s = -\rho\kapabs I_{\nu}$. The units of opacity are $\cm^{2}/\gram$. We use a subscript $\nu$ to indicate that the opacity is a function of frequency. The photon mean free path is therefore $\ell = (\rho\kapabs)^{-1}$.
 
 \begin{exercisebox}[Attenuation of light in an absorbing medium]
 A ray of light crosses a slab of absorbent material. Calculate the intensity $I_{\nu}$ as a function of distance traveled. Your expression should be in terms of $\rho$ and $\kapabs$. How far does the ray go before its intensity has dropped to $1/e$ of its original value?
@@ -188,16 +188,17 @@ This is done to put the equation in more familiar terms. Since (cf.\ eq.~[\ref{e
 Equation (\ref{e.radiative-transfer}) is known as the equation for radiative diffusion, for reasons that will become apparent in the next section.
 
 \begin{exercisebox}[Radiative transfer equation]
+\label{ex.radiative-transfer-diffusion}
 Let's dissect eq.~(\ref{e.radiative-transfer}) to see how it sets the luminosity.  
 \begin{enumerate}
 \item\label{p.F-L}
-Assume that $F$ is constant and that $aT^{4}$ is linear in $r$---that is, $aT^{4} = aT_{c}^{4}(1-r/R)$.  Since $F$ is constant, you can express it in terms of the luminosity $L$.  Use this to transform equation (\ref{e.radiative-transfer}) into an expression for $L$ in terms of $R$ and $T_{c}$ (along with $\rho$, $\kappa_{\mathrm{R}}$, and $c$).
+To keep the algebra simple, assume that $F$ is constant throughout the star and that $aT^{4}$ is linear in $r$---that is, $aT^{4} = aT_{c}^{4}(1-r/R)$.  Since $F$ is constant, you can express it in terms of the luminosity at the surface $L$.  Use this to transform eq.~(\ref{e.radiative-transfer}) into an expression for $L$ in terms of $R$ and $T_{c}$ (along with $\rho$, $\kappa_{\mathrm{R}}$, and $c$).
 
 \item\label{p.L-tau}
-Write the luminosity as $E_{\gamma}/\tau$, where $E_{\gamma}$ is the total radiative energy of the star, and $\tau$ some as-yet-undetermined \emph{diffusion timescale}.  Give an estimate of $E_{\gamma}$ in terms of the mean temperature $T$ and the radius $R$ of the star.
+Write the luminosity as $L = E_{\gamma}/\tau$, where $E_{\gamma}$ is the total radiative energy of the star, and $\tau$ some as-yet-undetermined \emph{diffusion timescale}.  Give an estimate of $E_{\gamma}$ in terms of the mean temperature $T$ and the radius $R$ of the star.
 
-\item
-Finally, assume that the mean free path $\lambda = (\rho\kappa_{\mathrm{R}})^{-1}$ is constant.  Substitute the results from parts \ref{p.F-L} and \ref{p.L-tau} into equation~(\ref{e.radiative-transfer}).  After simplifying, you should end up with a simple expression for $\tau$ in terms of $c$, $R$, and $\lambda$.  For Thomson scattering, what is $\tau$ (express in years)?
+\item\label{p.tau}
+Finally, assume that the photon mean free path $\lambda = (\rho\kappa_{\mathrm{R}})^{-1}$ is constant.  Substitute the results from parts \ref{p.F-L} and \ref{p.L-tau} into equation~(\ref{e.radiative-transfer}).  After simplifying, you should end up with a simple expression for $\tau$ in terms of $c$, $R$, and $\lambda$.  For Thomson scattering, what is $\tau$ (express in years)?
 \end{enumerate}
 \end{exercisebox}
 
@@ -231,45 +232,48 @@ Compare this crude diffusion model,
 \[
 	F = -\frac{1}{3}c\lambda\DD{U}{r},
 \]
-with eq.~(\ref{e.radiative-transfer}). Using the results of exercise~\ref{ex.radiative-transfer}, give a succinct description for why the mean free path $\lambda = 1/(\rho\kappa_{\mathrm{R}})$ is computed using a weighting function $\partial B_{\nu}/\partial T$.
+with eq.~(\ref{e.radiative-transfer}). Using the results of exercise~\ref{ex.radiative-transfer}, give a succinct description for why the effective mean free path $\lambda = 1/(\rho\kappa_{\mathrm{R}})$ is computed using a weighting function $\partial B_{\nu}/\partial T$.
 \end{exercisebox}
 
-\newthought{As an alternate take on our estimation, let's model the transport as a photon that is randomly walking throughout the interior.}
-If not, review Appendix C.2 of the \href{http://www.pa.msu.edu/~ebrown/docs/AST208-notes.pdf}{notes from AST 208}. The photon moves at speed $c$, but it can only go one step, of length $\lambda$, at which point it is sent off in a random direction. It's path therefore will look something like that in Fig.~\ref{f.random-walk-schematic}.
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{random-walk-schematic}
-\caption{\label{f.random-walk-schematic}Schematic of a random walk.}
+\caption{\label{f.random-walk-schematic}Schematic of a random walk of 50 steps.}
 \end{marginfigure}
+\newthought{As an alternate take on our estimation, let's model the transport as a photon that is randomly walking throughout the interior.}
+The photon moves at speed $c$, but it can only go one mean free path $\lambda$ before being absorbed or scattered, at which point it is sent off in a random direction.\marginnote{To keep things simple, we'll imagine that after absorption the atom immediately emits an identical photon in a random direction.} The path of the photon will therefore look something like that in Fig.~\ref{f.random-walk-schematic}.
 
-Before each step, the photon flips a coin: heads to go right, tails to go left. On average, the photon doesn't get anywhere; but if it takes enough hops, there is some probability for it to reach the edge of the star. The plot below shows the distribution for increasingly larger numbers of steps $n$. If there is an edge, say at the red vertical lines, then after some number of steps the photon will reach the edge and escape.
-
+We will just do our calculation for motion along a diameter, with the photon starting at the center. At each hop, the photon either goes left or right with equal probability. On average, the photon doesn't go anywhere; but after enough hops, there is some probability for the photon to reach the edge of the star and escape. Figure~\ref{f.random-walk} shows the distribution of positions for walks of length $n = 10, 30, 100, 300$ steps, with each step having length 1.0. Suppose the edge of the star is at $x=\pm 10$ (red dotted lines).  Although the average position is at $x=0$, for $n \gtrsim 100$ steps, there is a reasonable probability of the photon escaping.
 \begin{figure}[htbp]
 \forceversofloat
 \includegraphics[width=\linewidth]{random-walk}
 \caption{\label{f.random-walk} Distribution of positions after $n$ steps in a random walk.}
 \end{figure}
 
-Let us recall the basics features of our random walk. It is described by a binomial distribution: after $n$ steps, the probability that $m$ are to the right is
+To make this into a workable model, let us first recall the basic features of a random walk. It is described by a binomial distribution: after $n$ steps, the probability that $m$ of them were to the right is
 \begin{equation}\label{e.binomial}
-    \binom{n}{m}{p} = {n\choose m} p^{m}(1-p)^{n-m}.
+    \binom{n}{m}{p} = \frac{n!}{m!(n-m)!} p^{m}(1-p)^{n-m}.
 \end{equation}
-Here $p$ is the probability of the coin flip being heads (for a fair coin, $p=1/2$).  The mean and root variance of $m$ are
+Here $p$ is the probability of any single step being to the right.
+The mean and root variance of $m$ are
 \begin{eqnarray}
 	\mean{m} &=& np \label{e.mean-binomial} \\
 	\left[\mean{\left(m-\mean{m}\right)^{2}}\right]^{1/2} &=& \left[np(1-p)\right]^{1/2}. \label{e.var-binomial}
 \end{eqnarray}
 We can use these to estimate the diffusion timescale $\tau$.
 
-\begin{exercisebox}[Estimate of the radiative diffusion timescale]
+\begin{exercisebox}[Radiative diffusion as a random walk]
 \begin{enumerate}
 \item
-First, make sure you understand equations~(\ref{e.mean-binomial}) and (\ref{e.var-binomial}): show from equation~(\ref{e.mean-binomial}) that the mean distance traveled by the photon after $n$ steps is $d = \lambda(2np-n)$, so for $p=1/2$, $d = 0$.
+Show from equation~(\ref{e.mean-binomial}) that the mean distance traveled by the photon after $n$ steps is $\langle d\rangle = \lambda(2np-n)$, so for $p=1/2$, $\langle d\rangle = 0$.
 
 \item
-We want the distribution (see Fig.~\ref{f.random-walk}) to be wide enough to reach the edge of the star.  If the step length $\lambda$ is the same throughout the star, how many steps would it take to travel from center to edge (at a distance $R$ from the center) if all the steps were the same direction?  Set the root variance---a measure of the width of the probability distribution---equal to this number, and use equation~(\ref{e.var-binomial}) to get an expression for $n$ in terms of $R$ and $\lambda$. This $n$ is the number of steps needed to ensure that the photon has some probability of reaching the edge.
+If all the steps were in the same direction, how many steps are needed to reach the edge, at a a distance $R$ from the center? Assume all steps have the same length $\lambda$.
+
+\item\label{p.straight-line-steps}
+We want the distribution of steps (cf.\ Fig.~\ref{f.random-walk}) to be wide enough to reach the edge. Set the root variance---a measure of the width of the probability distribution---equal to this number of steps in part~\ref{p.straight-line-steps}, and use equation~(\ref{e.var-binomial}) to find $n_{\mathrm{edge}}$ in terms of $R$ and $\lambda$.
 
 \item
-What is the \emph{total} distance traveled by the photon after $n$ steps? If the photon traveled at speed $c$, how long did it take?  And how does this compare with $\tau$?
+What is the \emph{total} distance traveled by the photon after $n_{\mathrm{edge}}$ steps? If the photon traveled at speed $c$, how long did it take? Compare your answer with that for part~\ref{p.tau} of exercise~\ref{ex.radiative-transfer-diffusion}.
 
 \end{enumerate}
 \end{exercisebox}
