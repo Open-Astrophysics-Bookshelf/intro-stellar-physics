@@ -167,7 +167,7 @@
 \newenvironment{sidebar}[1][]{%
 \vspace{\baselineskip}
 \refstepcounter{sidebar}
-\begin{tcolorbox}[breakable,title=Box \thesidebar\ #1]
+\begin{tcolorbox}[breakable,title=Box \thesidebar\ #1,title after break=Box \thesidebar\ continued]
 \ifnum\value{sidebar} = 1%
 \addtocontents{lob}{\protect\addvspace{10\p@}}%
 \fi
