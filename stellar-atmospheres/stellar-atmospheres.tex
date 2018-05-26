@@ -1,6 +1,71 @@
 % !TEX root = ../intro-stellar-physics.tex
 
-We are now ready to investigate heat transport near the edge, where the optical depth $\tau_{\nu} \lesssim 1$ and photons begin to freely escape.
+We are now ready to investigate heat transport near the edge, where the optical depth $\tau_{\nu} \lesssim 1$ and photons begin to freely escape. We can no longer use the approximation of radiative diffusion, because conditions in the star are now changing over distances of a mean free path. Let's return to equation~(\ref{e.transfer-equation}) for radiative transport:
+\[
+	\DD{I_{\nu}}{s} = -\rho\left(\kapabs + \kapscat\right) I_{\nu} + \rho j_{\nu} + \rho\kapscat J_{\nu}.
+\]
+In general, this is difficult to solve: for some frequencies, the atmosphere will be nearly transparent, while for other frequencies it is quite opaque. Rather than develop the numerical machinery to solve the equation, we shall adopt a simple approximation that will allow us to obtain an approximate solution for the temperature of the stellar atmosphere.
+
+\marginnote[\baselineskip]{\colorbox{yellow}{\textbf{Assumption: Grey opacity}}}We assume that the opacity is gray. That is, the opacity is independent of frequency. This is unphysical, but the solutions for temperature and pressure will have the correct overall behavior.
+
+We next must define a coordinate system. Since we are in a thin layer near the edge of the star, we will adopt planar coordinates, with $z$ being the altitude above some point. We'll pick $z=0$ to be a point deep enough in the star that $I_{\nu}\approx B_{\nu}$. Then we define the optical depth as
+\begin{equation}\label{e.optical-depth-planar}
+	\tau = \int_{z}^{\infty} \rho\left(\kappa^{\mathrm{abs}}+\kappa^{\mathrm{sca}}\right)\,\dif z ;
+\end{equation}
+differentiating this expression gives
+\[
+	\DD{\tau_{\nu}}{z} = -\rho\left(\kappa^{\mathrm{abs}}+\kappa^{\mathrm{sca}}\right).
+\]
+Note the ``$-$'': in these coordinates, as $z$ gets larger, $\tau$ gets smaller.
+
+We may rewrite the equation (\ref{e.hydrostatic-equilibrium-g}) of hydrostatic balance as
+\begin{eqnarray*}
+	-\rho g = \DD{P}{z} &=& \DD{P}{\tau}\DD{\tau}{z} = -\rho\kappa,\\
+	\DD{P}{\tau} &=& \frac{g}{\kappa}.
+\end{eqnarray*}
+Since we are in a thin layer, we can take the gravitational acceleration $g$ as being approximately constant. Integrate hydrostatic equilibrium to where $\tau = 1$, and if $\kappa$ is approximately constant over this layer,
+\[
+	P_{\mathrm{ph}} = \int_{0}^{P_{\mathrm{ph}}}\,\dif P = \int_{0}^{1}\frac{g}{\kappa}\,\dif\tau \approx \frac{g}{\kappa}.
+\]
+\emph{The surface gravity sets the pressure at the \textbf{photosphere}, the location where the optical depth is of order unity and where photons can escape from the star.}
+
+\begin{exercisebox}[Photospheric pressure]
+Suppose you observe a star that has a 10\% larger mass and 10\% larger radius than the Sun. All else being equal, how does the pressure at the photosphere of this star compare to that of the Sun?
+\end{exercisebox}
+
+\marginnote[\baselineskip]{\colorbox{yellow}{\textbf{ASSUMPTION: Steady-state, LTE}}}
+Next, we assume that the matter is in \newterm{local thermal equilibrium} (LTE). This means there is a well-defined temperature at each depth. Furthermore, the emissivity is related to the absorption opacity,
+\[
+	j_{\nu} = \kappa^{\mathrm{abs}}B_{\nu}.
+\]
+Note that this does \emph{not} imply anything about the radiation field. We can now take the radiative transfer equation (\ref{e.transfer-equation}) and substitue our definition of optical depth (eq.~[\ref{e.optical-depth-planar}]) to obtain
+\begin{equation}\label{e.transfer-gray}
+	\mu\DD{I_{\nu}}{\tau} = I_{\nu} - S_{\nu}.
+\end{equation}
+Here
+\[
+	S_{\nu} = \frac{j_{\nu} + \kappa^{\mathrm{sca}} J_{\nu}}{\kappa}
+	= \frac{\kappa^{\mathrm{abs}} B_{\nu} + \kappa^{\mathrm{sca}} J_{\nu}}{\kappa}.
+\]
+If, in addition, the matter is in steady-state, then the rate at which energy is absorbed from the radiation field, $\int\kappa^{\mathrm{abs}}I_{\nu}\,\dif\nu\,\dif\Omega$, must equal the rate at which energy is emitted, $\int j_{\nu}\,\dif\nu\,\dif\Omega$. Since we are in LTE,
+\[
+	\int \left(j_{\nu} - \kappa^{\mathrm{abs}}I_{\nu}\right)\,\dif\nu\,\dif\Omega
+	= 4\pi\kappa^{\mathrm{abs}}\int\left(B_{\nu} - J_{\nu}\right)\,\dif\nu = 0.
+\]
+The average intensity, $J_{\nu} = (4\pi)^{-1}\int I_{\nu}\,\dif\Omega$ may not be equal to $B_{\nu}$, but it has to balance when integrated over all angles.
+
+Let's use this: integrate equation~(\ref{e.transfer-gray}) over all angles and frequencies. Since $\tau$ is gray, we can pull the derivative out from the integral,
+\begin{eqnarray*}
+	\DD{}{\tau}\int \mu I_{\nu}\,\dif\nu\,\dif\Omega &=& \int I_{\nu}\,\dif\nu\,\dif\Omega - \frac{\kappa^{\mathrm{abs}}}{\kappa}\int B_{\nu}\,\dif\nu\,\dif\Omega - \frac{\kappa^{\mathrm{sca}}}{\kappa} \int J_{\nu}\,\dif\nu\,\dif\Omega\\
+	\DD{}{\tau}\int F_{\nu}\,\dif\nu &=& \frac{4\pi}{\kappa}\left[
+		(\kappa^{\mathrm{abs}}+\kappa^{\mathrm{sca}})\int J_{\nu}\,\dif\nu
+		- \kappa^{\mathrm{abs}}\int B_{\nu}\,\dif\nu
+		- \kappa^{\mathrm{sca}}\int J_{\nu}\,\dif\nu\right]\\
+	&=& 4\pi\frac{\kappa^{\mathrm{abs}}}{\kappa}\int\left(J_{\nu}-B_{\nu}\right) = 0.
+\end{eqnarray*}
+Here we used $\kappa = \kappa^{\mathrm{abs}}+\kappa^{\mathrm{sca}}$ to simplify the right-hand side.
+
+\newthought{We have our first result!} For a steady-state gray atmosphere in local thermal equilibrium, the total flux $F = \int F_{\nu}\,\dif\nu$ is constant. The radiative energy is just passing through.
 
 \begin{sidebar}[Momentum transport and radiation pressure]
 \label{sb.radiation-pressure}
