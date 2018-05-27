@@ -28,7 +28,8 @@ def plot_one(n,ax):
     ax.xaxis.set_tick_params(direction='inout')
     ax.yaxis.set_tick_params(direction='inout')
     
-plt.figure(figsize=(6.6,3.3))
+# plt.figure(figsize=(6.6,3.3))
+plt.figure(figsize=(4,2.5))
 plt.style.use('text-sans')
 plt.rc('xtick',**{'color':'0.5'})
 plt.rc('ytick',**{'color':'0.5'})

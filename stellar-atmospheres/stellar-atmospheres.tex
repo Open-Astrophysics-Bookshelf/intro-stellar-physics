@@ -70,7 +70,7 @@ Here we used $\kappa = \kappa^{\mathrm{abs}}+\kappa^{\mathrm{sca}}$ to simplify 
 \[
 	\DD{}{\tau}\int\mu^{2}I_{\nu}\,\dif\nu\,\dif\Omega = F - \int \mu S_{\nu}\dif\nu\,\dif\Omega = F.
 \]
-The last term vanishes because $S_{\nu}$ is independent of angle and $\int_{0}^{2\pi} \cos\theta\,\sin\theta\,\dif\theta = 0$.  The term on the left-hand side is just $c\,\dif\Prad/\dif\tau$, where $\Prad$ is the radiation pressure (Box~\ref{sb.radiation-pressure}). Since $F$ is constant, we can integrate this equation to obtain
+The last term vanishes because $S_{\nu}$ is independent of angle and $\int_{-1}^{1} \mu\,\dif\mu = 0$.  The term on the left-hand side is just $c\,\dif\Prad/\dif\tau$, where $\Prad$ is the radiation pressure (Box~\ref{sb.radiation-pressure}). Since $F$ is constant, we can integrate this equation to obtain
 \[
 	c\Prad = F(\tau + \tau_{0}),
 \]
@@ -104,7 +104,7 @@ and we can integrate over frequency to get the total pressure,
 Note that the pressure is $1/3$ of the energy density. This is in general true for a gas of relativistic particles that have momentum proportional to energy.
 \end{sidebar}
 
-By itself, the expression for the radiation pressure doesn't help: we have an additional equation, but also an additional unknown, namely $\Prad$. But notice! At great depths, where $I_{\nu}\to B_{\nu}$, we have (eq.~[\ref{e.radiation-pressure}]) $\Prad = aT^{4}/3 = (4\pi/3c)J$, where $J=\int J_{\nu}\,\dif\nu$. In desperation, we might try the assumption that this holds everywhere. This assumption is clearly wrong; but desperation often masquerades as genius. Our desperate act is equivalent to expressing the intensity as a \emph{linear} function in $\cos\theta$, which looks like a reasonable approximation scheme, and is in fact called the \emph{Eddington approximation.}
+By itself, the expression for the radiation pressure doesn't help: we have an additional equation, but also an additional unknown, namely $\Prad$. But notice! At great depths, where $I_{\nu}\to B_{\nu}$, we have (eq.~[\ref{e.radiation-pressure}]) $\Prad = aT^{4}/3 = (4\pi/3c)J$, where $J=\int J_{\nu}\,\dif\nu$. In desperation, we might try the assumption that this holds everywhere. This assumption is clearly wrong; but desperation often masquerades as genius. Our desperate act is equivalent to expressing the intensity as a \emph{linear} function in $\cos\theta$, which looks like a reasonable approximation scheme (see Box~\ref{sb.intensity-decomposition}), and is in fact called the \emph{Eddington approximation.}
 \marginnote{\colorbox{yellow}{\textbf{APPROXIMATION: intensity is linear in $\mu$}}}
 
 Going back to our starting equation (\ref{e.transfer-gray}), we can integrate over all frequencies. Since $\int(J_{\nu}-B_{\nu})\,\dif\nu = 0$, it is easy to show that $S = J$, where $S=\int S_{\nu}\,\dif\nu$. But $J = 3c\Prad/4\pi = (3/4\pi)F(\tau + \tau_{0})$, and so eq.~(\ref{e.transfer-gray}) becomes
@@ -127,24 +127,23 @@ T^{4} = \frac{3}{4}\Teff^{4}\left(\tau + \frac{2}{3}\right).
 \end{equation}
 This equation, along with eq.~(\ref{e.P-tau}), determines the structure of the stellar atmosphere.
 
-\section{Whatever this is}
+\begin{sidebar}[Decomposition on intensity into moments]
+\label{sb.intensity-decomposition}
 You may recall from electrostatics that we can decompose the field from a set of charges into a sum of moments: dipole, quadrupole, and so on. The basis functions for this are the Legendre polynomials $\Pl{n}(\cos\theta)$, defined by the expansion
-\begin{equation}
+\[
 	\frac{1}{\sqrt{1 - 2\mu z + z^{2}}} = \sum_{n=0}^{\infty}\Pl{n}(\mu)z^{n},
-\end{equation}
+\]
 for $-1<\mu<1,\;|z| < 1$. The first three polynomials are
-\begin{eqnarray}
-	\Pl{0}(\mu) &=& 1 \nonumber\\
-	\Pl{1}(\mu) &=& \mu \nonumber\\
-	\Pl{2}(\mu) &=& \frac{1}{2}(3\mu^{2}-1).
-\end{eqnarray}
-The first eight Legendre polynomials are plotted below.
+\begin{eqnarray*}
+	\Pl{0}(\mu) &=& 1 \\
+	\Pl{1}(\mu) &=& \mu \\
+	\Pl{2}(\mu) &=& \frac{1}{2}(3\mu^{2}-1),
+\end{eqnarray*}
+and the first eight Legendre polynomials are plotted below.
 
-\begin{figure*}
-\includegraphics[width=\linewidth]{legendre}
-\caption[Legendre polynomials]{\label{f.legendre}
-Polar plots of $\Pl{n}(\cos\theta)$ for $n=0,\ldots,7$.}
-\end{figure*}
+\includegraphics{legendre}
+
+\noindent As $n$ increases, the angular scale of variations becomes finer.
 
 The Legendre polynomials are \emph{orthogonal} in the following sense:
 \begin{equation}\label{e.orthogonal}
@@ -154,11 +153,10 @@ The Legendre polynomials are \emph{orthogonal} in the following sense:
 	\frac{2}{2n+1} & m=n
 \end{array}\right..
 \end{equation}
-As a result, we can decompose the radiative intensity into multipoles:
+As a result of this orthogonality, we can decompose the radiative intensity into multipoles:
 \begin{equation}\label{e.decomposition}
 	I = \sum_{n=0}^{\infty} I_{n} \Pl{n}(\mu).
 \end{equation}
-As $n$ increases, the angular scale of variations becomes finer.
 
 \newthought{To take moments of the intensity}, notice that we can write the weighting factors in terms of Legendre polynomials:
 \begin{eqnarray*}
@@ -181,6 +179,8 @@ Applying the Eddington approximation, i.e., setting $K = J/3$, means that we mus
 	I(\tau,\mu) = J(\tau) + 3H \Pl{1}(\mu) + \cdots \approx J(\tau) + 3H\cos\theta,
 \]
 which neglects the higher order terms $I_{n}\Pl{n},\forall n > 2$.
+\end{sidebar}
+
 
 \newcommand*{\DDtt}[1]{\frac{\dif^{2} #1}{\dif t^{2}}}
 \newcommand*{\wt}{\omega t}
