@@ -6,7 +6,11 @@ We are now ready to investigate heat transport near the edge, where the optical 
 \]
 In general, this is difficult to solve: for some frequencies, the atmosphere will be nearly transparent, while for other frequencies it is quite opaque. Rather than develop the numerical machinery to solve the equation, we shall adopt a simple approximation that will allow us to obtain an approximate solution for the temperature of the stellar atmosphere.
 
-\marginnote[\baselineskip]{\colorbox{yellow}{\textbf{Assumption: Grey opacity}}}We assume that the opacity is gray. That is, the opacity is independent of frequency. This is unphysical, but the solutions for temperature and pressure will have the correct overall behavior.
+\marginnote[\baselineskip]{\colorbox{yellow}{\textbf{Assumption: Grey opacity}}}We assume that the opacity is gray. That is, the opacity is independent of frequency. This is unphysical, but the solutions for temperature and pressure will have the correct overall behavior. Because the opacity is gray, we shall drop the ``$\nu$'' subscript in $\kappa$ and $\tau$.
+
+\begin{exercisebox}[Gray emissivity?]
+For matter with a gray opacity in thermal equilibrium, is the emissivity $j_{\nu}$ also gray?
+\end{exercisebox}
 
 We next must define a coordinate system. Since we are in a thin layer near the edge of the star, we will adopt planar coordinates, with $z$ being the altitude above some point. We'll pick $z=0$ to be a point deep enough in the star that $I_{\nu}\approx B_{\nu}$. Then we define the optical depth as
 \begin{equation}\label{e.optical-depth-planar}
@@ -14,7 +18,7 @@ We next must define a coordinate system. Since we are in a thin layer near the e
 \end{equation}
 differentiating this expression gives
 \[
-	\DD{\tau_{\nu}}{z} = -\rho\left(\kappa^{\mathrm{abs}}+\kappa^{\mathrm{sca}}\right).
+	\DD{\tau}{z} = -\rho\left(\kappa^{\mathrm{abs}}+\kappa^{\mathrm{sca}}\right).
 \]
 Note the ``$-$'': in these coordinates, as $z$ gets larger, $\tau$ gets smaller.
 
@@ -24,7 +28,7 @@ We may rewrite the equation (\ref{e.hydrostatic-equilibrium-g}) of hydrostatic b
 	\DD{P}{\tau} &=& \frac{g}{\kappa}.
 \label{e.P-tau}
 \end{eqnarray}
-Since we are in a thin layer, we can take the gravitational acceleration $g$ as being approximately constant. Integrate hydrostatic equilibrium to where $\tau = 1$, and if $\kappa$ is approximately constant over this layer,
+Since we are in a thin layer, we can take the gravitational acceleration $g$ as being approximately constant. By integrating hydrostatic equilibrium from where $\tau = 0, P = 0$ to where $\tau = 1$, we can get an approximate value of the photospheric pressure,
 \[
 	P_{\mathrm{ph}} = \int_{0}^{P_{\mathrm{ph}}}\,\dif P = \int_{0}^{1}\frac{g}{\kappa}\,\dif\tau \approx \frac{g}{\kappa}.
 \]
