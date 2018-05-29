@@ -6,18 +6,17 @@ We saw in chapter~\ref{ch.basic-stellar-properties} that the equilibrium central
 
 \section{Interaction of radiation and matter}\label{s.interaction-radiation-matter}
 
-How far does a photon---or any particle, for that matter---travel, on average, in the interior of the sun? Imagine a particle traveling with speed $v$.  Draw a cylinder, of length $\ell$ and cross-sectional area $\mathcal{A}$, around its future path, as shown in Fig.~\ref{f.MFP}. What the particle ``sees'' is that the cylinder is partly blocked by obstacles---other particles in its path. What is the probability of our particle making it through the cylinder unscathed?
-
+How far does a photon---or any particle, for that matter---travel, on average, in the interior of the sun? Imagine a particle traveling with speed $v$.  Draw a cylinder, of length $\ell$ and cross-sectional area $\mathcal{A}$, around its path, as shown in Fig.~\ref{f.MFP}. What the particle ``sees'' is that the cylinder is partly blocked by obstacles---other particles in its path.
 \begin{marginfigure}
     \includegraphics[width=\linewidth]{mean-free-path}
     \caption{\label{f.MFP} Schematic of a particle incident on a group of scattering or absorbing particles.}
 \end{marginfigure}
 
-The probability of the particle making it through is the ratio
+\newthought{What is the probability of our particle making it through the cylinder unscathed?} The probability of the particle hitting an obstacle is the ratio
 \[
     \mathcal{P} = \frac{\textrm{total area covered by obstacles}}{\textrm{area of cylinder}}
 \]
-Denote the cross-sectional area of the other particles by $\sigma$.  If the density of obstacles is $n$, then the number of obstacles in the cylinder is $n\times(\mathcal{A}\ell)$, and therefore the fraction of the area blocked by the obstacles is
+Denote the cross-sectional area of the other particles by $\sigma$. If the density of obstacles is $n$, then the number of obstacles in the cylinder is $n\times(\mathcal{A}\ell)$, and therefore the fraction of the area blocked by the obstacles is
 \begin{equation}
     \mathcal{P} = \frac{n\times(\mathcal{A}\ell)\times\sigma}{\mathcal{A}} = n\sigma\ell.
 \label{e.prob-MFP}
@@ -29,42 +28,43 @@ The particle will suffer a collision when $\mathcal{P}\to 1$, or when
 \end{equation}
 We call $\ell$ the ``mean free path''.
 
+\begin{marginfigure}[3\baselineskip]
+    \includegraphics[width=\linewidth]{air-hockey-mfp}
+    \caption[Mean free path of a hockey puck]{\label{f.MFP-2D}Schematic for Exercise~\ref{ex.MFP-2D}}
+\end{marginfigure}
+\begin{exercisebox}[Mean free path of a hockey puck]\label{ex.MFP-2D}
+    Suppose we have a flat surface on which pucks are sliding around, as shown in Fig.~\ref{f.MFP-2D} (Think of an air hockey table). The pucks bounce off the walls as they slide around.  Suppose there are $N$ pucks, each with a unit diameter, and the table is square with sides of length $L$.  Estimate the mean free path of a puck.
+\end{exercisebox}
+
+Although we have motivated this derivation with a classical picture, the cross-section $\sigma$ is just related to the probability of an interaction and can therefore be defined for quantum mechanical systems.
+
 \begin{exercisebox}[Mean free path for electron scattering]\label{ex.MFP}
-    In the sun, free electrons scatter photons, and the cross-section is
+    In the sun, free electrons scatter photons; the cross-section for this is
     \[
     \sigma_{\mathrm{Th}} = \left(\frac{8\pi}{3}\right)\left(\frac{e^2}{m_e c^2}\right)^2 = \val{\sci{6.65}{-27}}{\meter^2}.
     \]
     What is the mean free path against this process for a photon at the average density of the solar interior?
 \end{exercisebox}
 
-\begin{exercisebox}[Mean free path of a hockey puck]\label{ex.MFP-2D}
-    Suppose we have a flat surface on which pucks are sliding around, as shown in Fig.~\ref{f.MFP-2D} (Think of an air hockey table). The pucks bounce off the walls as they slide around.  Suppose there are $N$ pucks, each with a unit diameter, and the table is square with sides of length $L$.  Estimate the mean free path of a puck.
-\end{exercisebox}
-
-\begin{marginfigure}[-5\baselineskip]
-    \includegraphics[width=\linewidth]{air-hockey-mfp}
-    \caption[Mean free path of a hockey puck]{\label{f.MFP-2D}Schematic for Exercise~\ref{ex.MFP-2D}}
-\end{marginfigure}
-
-\newthought{Suppose we have a ray of light traversing some matter.} Over a small distance $\Delta s$, the probability of a photon being absorbed is $\mathcal{P} = n\sigma\Delta s$. Thus, out of every $N$ photons, $\Delta N = N \times\mathcal{P} = N\times n\sigma\Delta s$ are absorbed. Since the intensity $I_{\nu}$ is proportional to the number of photons, the change in intensity is just
-\[ \Delta I_{\nu} = -n\sigma I_{\nu}\Delta s; \]
-upon rearranging and taking the limit $\Delta s\to0$, we obtain an equation for the absorption of light,
+As the ray of light traverses a small distance $\Delta s$ through some matter, the probability of a photon being absorbed is $\mathcal{P} = n\sigma\Delta s$. Thus, out of every $N$ photons, $\Delta N = N \times\mathcal{P} = N\times n\sigma\Delta s$ are absorbed. Since the intensity $I_{\nu}$ is proportional to the number of photons, the change in intensity is just
+\[ \Delta I_{\nu} = -n\sigma I_{\nu}\Delta s. \]
+Taking the limit $\Delta s\to0$, we obtain an equation for the absorption of light,
 \begin{equation}\label{e.absorption-microscopic}
-\DD{I_{\nu}}{s} = -n\sigma I_{\nu}.
+\left.\DD{I_{\nu}}{s}\right|_{\mathrm{absorption}} = -n\sigma I_{\nu}.
 \end{equation}
-Rather than work with the microscopic cross-section, it is convenient to define the \textbf{opacity},
+Rather than work with the microscopic cross-section, it is convenient to define the \textbf{absorption opacity},
 \[
 	\kapabs = \frac{n\sigma}{\rho},
 \]
-so that $\dif I_{\nu}/\dif s = -\rho\kapabs I_{\nu}$. The units of opacity are $\cm^{2}/\gram$. We use a subscript $\nu$ to indicate that the opacity is a function of frequency. The photon mean free path is therefore $\ell = (\rho\kapabs)^{-1}$.
+so that $\dif I_{\nu}/\dif s = -\rho\kapabs I_{\nu}$. The units of opacity are $\cm^{2}/\gram$. We use a subscript $\nu$ to indicate that the opacity is a function of frequency. In terms of the opacity, the photon mean free path is $\ell = (\rho\kapabs)^{-1}$.
 
 \begin{exercisebox}[Attenuation of light in an absorbing medium]
 A ray of light crosses a slab of absorbent material. Calculate the intensity $I_{\nu}$ as a function of distance traveled. Your expression should be in terms of $\rho$ and $\kapabs$. How far does the ray go before its intensity has dropped to $1/e$ of its original value?
 \end{exercisebox}
 
-\newthought{In addition to absorbing photons, the matter can also spontaneously emit them.} Denote the power emitted per wavelength per volume per angle by $\rho j_{\nu}$. After traveling a distance $\Delta s$, the ray has increased in intensity by $\rho j_{\nu}\Delta s$, or
+\newthought{In addition to absorbing photons, the matter can also spontaneously emit them.} Denote the power emitted per wavelength per volume per angle by $\rho j_{\nu}$. After traveling a distance $\Delta s$ through matter with this \newterm{emissivity}, the ray will increase in intensity by $\rho j_{\nu}\Delta s$; or
 \begin{equation}\label{e.emission-microscopic}
-\DD{I_{\nu}}{s} = \rho j_{\nu}.
+\left.\DD{I_{\nu}}{s}\right|_{\mathrm{emission}} = \rho j_{\nu}.
 \end{equation}
 
 \begin{exercisebox}[Combined absorption and emission]
@@ -74,11 +74,16 @@ Solve for $I_{\nu}(s)$, and show that as $s\to\infty$, $I_{\nu}\to j_{\nu}/\kapa
 \label{ex.intensity-at-large-depth}
 \end{exercisebox}
 
-\newthought{Finally, the matter can also scatter light.} This removes light, similar to absorption, but then the light is put back into a different ray. If the intensity in our ray is greater than the angle-average $J_{\nu}$, scattering will cause a net reduction in intensity as more photons are scattered out of the ray than are scattered into it. Conversely, if $I_{\nu} < J_{\nu}$, then more photons will be scattered into the ray than out of it. Thus, the effect of scattering can be described via
+\newthought{Finally, the matter can also scatter light.} This removes photons from a ray, similar to absorption, but it also adds them into a ray propagating in a different direction. 
+If we assume that the direction into which the photon is scattered is random and isotropic (as is most often the case), then if the intensity in our ray is greater than the angle-average $J_{\nu}$, scattering will cause a net reduction in intensity as more photons are scattered out of the ray than are scattered into it. Conversely, if $I_{\nu} < J_{\nu}$, then more photons will be scattered into the ray than out of it. Thus, the effect of scattering can be described via
 \begin{equation}\label{e.scattering-microscopic}
-\DD{I_{\nu}}{s} = -\rho\kapscat \left(I_{\nu} - J_{\nu}\right).
+\left.\DD{I_{\nu}}{s}\right|_{\mathrm{scattering}} = -\rho\kapscat \left(I_{\nu} - J_{\nu}\right).
 \end{equation}
-Putting everything together gives us our full expression for how the intensity changes,
+
+\section{The equation of radiative transfer}
+\label{s.equation-radiative-transfer}
+
+Combining our expressions for absorption, emission, and scattering gives us the full expression for how the intensity changes along a ray,
 \begin{equation}\label{e.transfer-equation}
 \DD{I_{\nu}}{s} = -\rho\left(\kapabs + \kapscat\right) I_{\nu} + \rho j_{\nu} + \rho\kapscat J_{\nu}.
 \end{equation}
@@ -100,9 +105,9 @@ This prettifying doesn't advance us any closer to the solution, but notice! The 
 \[
 	\tau_{\nu} = \int_{0}^{s} \rho\kappa_{\nu}\,\dif s = \int_{0}^{s} n\sigma_{\nu}\,\dif s = \int_{0}^{s} \frac{\dif s}{\lambda}.
 \]
-That is, the optical depth measured the distance traveled, in units of mean free path. Said differently, if you have traveled one optical depth, then you have gone one mean free path. We also see from this equation that $I_{\nu}\to S_{\nu}$ as $\tau_{\nu}\to\infty$ (cf.\ exercise~\ref{ex.intensity-at-large-depth}).
+That is, the optical depth measures distance along the ray in units of mean free path. Said differently, if you have traveled one optical depth, then you have gone one mean free path. We also see from this equation that $I_{\nu}\to S_{\nu}$ as $\tau_{\nu}\to\infty$ (cf.\ exercise~\ref{ex.intensity-at-large-depth}).
 
-Thus, if your object has $\tau_{\nu}\ll 1$, then photons are hardly affected by the medium and the object is nearly transparent; if, on the other hand, $\tau_{\nu} \gg 1$, then photons cannot go through the object: it is opaque, and the emission is determined by the emissivity (via $S_{\nu}$) of the matter.
+Thus, if your object has $\tau_{\nu}\ll 1$, then photons are hardly affected by the medium and the object is nearly transparent; if, on the other hand, $\tau_{\nu} \gg 1$, then photons cannot go through the object: it is opaque, and the emission is determined by the emissivity (via the source function $S_{\nu}$) of the matter.
 
 \begin{exercisebox}[Optical depth of the solar center]
 For the electron scattering cross-section (Exercise~\ref{ex.MFP}), estimate the optical depth between the solar center and the solar photosphere.
@@ -119,11 +124,11 @@ so that
 \end{equation}
 We don't include scattering in this expression because scattering doesn't transfer energy between the radiation and the gas.
 
-If, in addition, the matter and radiation are in thermal equilibrium, so that $J_{\nu} = B_{\nu}$, then
+If, in addition, the matter and radiation are in thermal equilibrium, so that $J_{\nu} = B_{\nu}$, then eq.~(\ref{e.rad-equil}) implies that
 \begin{equation}\label{e.detailed-balance}
 \frac{j_{\nu}}{\kapabs} = B_{\nu}(T).
 \end{equation}
-Notice that $j_{\nu}$ and $\kapabs$ are properties of the matter, and do not depend on the state of the radiation field. Hence, equation~(\ref{e.detailed-balance}) must hold whenever the matter is in equilibrium, \emph{regardless of the state of the radiation field}.
+Now $j_{\nu}$ and $\kapabs$ are properties of the matter, and do not depend on the state of the radiation field. Hence, equation~(\ref{e.detailed-balance}) must hold whenever the matter is in equilibrium, \emph{regardless of the state of the radiation field}.
 
 \section{Radiative diffusion}
 
