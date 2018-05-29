@@ -148,13 +148,13 @@ Since $\dif r = \mu\,\dif s$, where $\mu=\cos\theta$ is the cosine between $\dif
 \]
 If we are far from the surface of the star, then we should expect the intensity to change over lengthscales comparable to $\Rsun$. Of course, it won't be exactly this, but---as we'll show---the exact value doesn't matter so long as $|\dif I_{\nu}/\dif s|$ is in the ballpark of $I_{\nu}/\Rsun$. Notice the enormous disparity in scales:
 \[
-	\frac{|\dif I_{\nu}/\dif s|}{\rho\kappa_{\nu}I_{\nu}} \sim \frac{\lambda}{\Rsun};
+	\frac{|\dif I_{\nu}/\dif r|}{\rho\kappa_{\nu}I_{\nu}} \sim \frac{\lambda}{\Rsun};
 \]
 the left-hand side is smaller than the terms on the right by the ratio of the mean free path to the solar radius. This implies that conditions are nearly homogeneous. They are also isotropic, so that $I_{\nu} = J_{\nu}$. We expect that collisions are fast enough so that the matter is in thermal equilibrium and $j_{\nu} = \kapabs B_{\nu}$. We also know from exercise~\ref{ex.intensity-at-large-depth} that $I_{\nu} \to j_{\nu}/\kapabs = B_{\nu}$.
 
-We can't have $I_{\nu} = B_{\nu}$, however, since in that case there is no net flux! So, we'll take
+We can't have $I_{\nu} = B_{\nu}$ exactly, however, since in that case there is no net flux! We'll treat the intensity as a perturbation to its thermal value:
 \[ I_{\nu} = B_{\nu} + I_{\nu}^{(1)}, \]
-where the superscript ``(1)'' indicates that this is a small correction. Inserting this into eq.~(\ref{e.transfer-equation}), and keeping only the lowest-order terms on each side gives
+where the superscript ``(1)'' indicates that this is a small correction. Inserting this expansion into eq.~(\ref{e.transfer-equation}) and keeping only the lowest-order terms on each side gives
 \begin{equation}\label{e.perturbation-radiative-transfer}
 I_{\nu}^{(1)} = -\mu\DD{B_{\nu}}{\tau_{\nu}}.
 \end{equation}
@@ -191,6 +191,12 @@ This is done to put the equation in more familiar terms. Since (cf.\ eq.~[\ref{e
 \label{e.radiative-transfer}
 \end{equation}
 Equation (\ref{e.radiative-transfer}) is known as the equation for radiative diffusion, for reasons that will become apparent in the next section.
+
+If we multiply the flux by the surface area of a shell in the star we obtain the luminosity $L = 4\pi r^{2} F$; we can therefore recast eq.~(\ref{e.radiative-transfer}) into an equation for the thermal gradient:
+\begin{equation}
+    \label{e.gradient-temperature}
+    \DD{T}{r} = -\frac{3\rho\kappa_{R}}{4acT^3}\frac{L(r)}{4\pi r^2}.
+\end{equation}
 
 \begin{exercisebox}[Radiative transfer equation]
 \label{ex.radiative-transfer-diffusion}
