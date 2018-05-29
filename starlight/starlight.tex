@@ -206,6 +206,34 @@ J_{\lambda} = \frac{1}{4\pi}\int I_{\lambda}\,\dif\Omega;
 the specific energy density is thus
 \[ U_{\lambda} = \frac{4\pi}{c}J_{\lambda}. \]
 
+\begin{sidebar}[Momentum transport and radiation pressure]
+\label{sb.radiation-pressure}
+In chapter~\ref{ch.starlight} we defined the flux and radiative energy density, and related both the the intensity $I_{\nu}$. You will learn in your quantum mechanics course that the momentum of a photon of energy $h\nu$ traveling along direction $\unitk$ is
+\[ \bvec{p} = \frac{h\nu}{c}\unitk = \frac{h}{\lambda}\unitk. \]
+Here $\nu$ and $\lambda = c/\nu$ are the frequency and wavelength of the photon. If we now have a ray of light with intensity $I_{\nu}$ traveling along $\unitk$, then $I_{\nu}$ is the amount of energy carried by photons per area per time along the direction $\unitk$. Hence the momentum transported by those photons per area per time along direction $\unitk$ is $(I_{\nu}/c)\unitk$.
+
+Now suppose we have a sheet of absorbing material with a normal $\unitn$. As the photons are absorbed, they transfer to momentum to the material. The rate of momentum transfer per area is
+\begin{eqnarray}
+P_{\!\nu} &=& \frac{1}{c}\int I_{\nu}
+	{\color{red}\underbrace{\left(\unitn\vdot\unitk\right)}_{\textrm{proj.~area}}}
+	{\color{blue}\underbrace{\left(\unitn\vdot\unitk\right)}_{\textrm{comp.\ of $\bvec{p}$ along $\unitn$}}}
+	\,\dif\Omega \nonumber\\
+	&=& \frac{1}{c}\int_{0}^{2\phi}\int_{-1}^{1}I_{\nu} \mu^{2}\,\dif \mu\,\dif\phi.
+\label{e.momentum-transfer}
+\end{eqnarray}
+A change in momentum per time is a force; hence equation~(\ref{e.momentum-transfer}) represents the force per area, or \newterm{pressure}, exerted by photons with frequencies in $[\nu,\nu+\dif\nu]$ on the material. The two factors of $\mu=\cos\theta$ account for the projected area and the component of momentum along the normal to the surface $\unitn$.
+
+If the radiation is thermal, then $I_{\nu} = B_{\nu}$, which is independent of angle. Hence
+\[
+	P_{\!\nu} = \frac{4\pi}{3c}B_{\nu},
+\]
+and we can integrate over frequency to get the total pressure,
+\begin{equation}\label{e.radiation-pressure}
+	\Prad = \frac{4\pi}{3c}\int_{0}^{\infty}B_{\nu}\,\dif\nu = \frac{4}{3c}\sigmaSB T^{4} = \frac{1}{3}aT^{4}.
+\end{equation}
+Note that the pressure is $1/3$ of the energy density. This is in general true for a gas of relativistic particles that have momentum proportional to energy.
+\end{sidebar}
+
 \section{Magnitudes}
 \label{s.magnitudes}
 
