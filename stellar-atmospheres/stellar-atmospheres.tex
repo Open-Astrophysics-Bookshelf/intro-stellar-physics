@@ -59,14 +59,19 @@ If, in addition, the matter is in steady-state, then the rate at which energy is
 	\int \left(j_{\nu} - \kappa^{\mathrm{abs}}I_{\nu}\right)\,\dif\nu\,\dif\Omega
 	= 4\pi\kappa^{\mathrm{abs}}\int\left(B_{\nu} - J_{\nu}\right)\,\dif\nu = 0.
 \]
-The average intensity, $J_{\nu} = (4\pi)^{-1}\int I_{\nu}\,\dif\Omega$ may not be equal to $B_{\nu}$, but it has to balance when integrated over all angles.
+Since $J = \int J_{\nu}\,\dif\nu = \int B_{\nu}\,\dif\nu = B$, it follows that $S = \int S_{\nu}\,\dif\nu = B$ as well:
+\begin{quote}
+\emph{For a gray atmosphere in steady-state, local thermal equilibrium, the integrated source function and mean intensity equal the Planck value:}
+\[ S(\tau) = J(\tau) = B(\tau), \]
+\end{quote}
+Note that this does \emph{not} imply that $I_{\nu}=B_{\nu}$ or $J_{\nu}=B_{\nu}$.
 
-\marginnote[\baselineskip]{\colorbox{yellow}{\textbf{Intensity is linear in $\mu$}}}
 We still have the problem that eq.~(\ref{e.transfer-gray}) includes both the derivative and integral of $I_{\nu}$. To get around this, we are going to expand $I_{\nu}$ in Legendre polynomials,
 \[
 	I_{\nu}(\tau,\mu) = I_{\nu,0}(\tau)\Pl{0}(\mu) + I_{\nu,1}(\tau)\Pl{1}(\mu) + I_{\nu,2}(\tau)\Pl{2}(\mu) + \ldots
 \]
 and then only include the first two terms, $\Pl{0}(\mu) = 1, \Pl{1} = \mu$. Thus, $I_{\nu}$ is \emph{linear} in $\mu$: $I_{\nu} = I_{\nu,0}(\tau) + I_{\nu,1}(\tau)\mu$. 
+\marginnote{\colorbox{yellow}{\textbf{Intensity is linear in $\mu$}}}
 
 In terms of this expansion, the angle-averaged specific intensity is
 \[
@@ -130,37 +135,41 @@ Insert the expansion (\ref{e.intensity-expanded}) into the radiative transfer eq
 \end{eqnarray*}
 Here we used $\kappa = \kappa^{\mathrm{abs}}+\kappa^{\mathrm{sca}}$ to simplify the right-hand side.
 
-\newthought{We have our first result!} For a steady-state gray atmosphere in local thermal equilibrium, the total flux $F = \int F_{\nu}\,\dif\nu$ is constant. The radiative energy is just passing through. We know that outside the star, the flux is $F = \sigmaSB\,\Teff^{4}$, so we can write the intensity as
-\[
-	I_{\nu}(\mu,\tau) = \frac{c}{4\pi} U_{\nu}(\tau) + \frac{3\mu}{4\pi}\sigmaSB\Teff^{4}.
-\]
-To solve for $U_{\nu}(\tau)$, multiply eq.~(\ref{e.transfer-gray}) by $\mu$ and integrate over all frequencies and angles:
-\[
-	\DD{}{\tau}\int\mu^{2}I_{\nu}\,\dif\nu\,\dif\Omega = F - \int \mu S_{\nu}\dif\nu\,\dif\Omega = F.
-\]
-The last term vanishes because $S_{\nu}$ is independent of angle and $\int_{-1}^{1} \mu\,\dif\mu = 0$.  The term on the left-hand side is just $c\,\dif\Prad/\dif\tau$, where $\Prad$ is the radiation pressure (Box~\ref{sb.radiation-pressure}). Since $F$ is constant, we can integrate this equation to obtain
-\[
-	c\Prad = F(\tau + \tau_{0}),
-\]
-where $\tau_{0}$ is an integration constant.
+\begin{quote}
+\emph{For a steady-state gray atmosphere in local thermal equilibrium, the total flux $F = \int F_{\nu}\,\dif\nu$ is constant.}
+\end{quote}
+The radiative energy is just passing through. Since the flux at $\tau=0$, outside the star, is $F = \sigmaSB\,\Teff^{4}$, we can substitute that value in our expression for the intensity,
+\begin{equation}
+\label{e.Inu-expansion}
+	I(\mu,\tau) = \frac{c}{4\pi} U(\tau) + \frac{3\mu}{4\pi}\sigmaSB\Teff^{4}.
+\end{equation}
+To solve for $U_{\nu}(\tau)$, multiply eq.~(\ref{e.transfer-gray}) by $\mu$ and integrate over all angles and frequencies:
+\begin{eqnarray}
+	\DD{}{\tau}\int\mu^{2}I\,\dif\Omega\,\dif\nu &=& \int\mu I\,\dif\Omega\,\dif\nu
+		- \int \mu S\,\dif\Omega\,\dif\nu\nonumber\\
+	\frac{c}{4\pi}\DD{}{\tau} \mu^{2}U\,\dif\Omega 
+		+ \frac{3}{4\pi}\sigmaSB\Teff^{4}\int\mu^{3}\,\dif\Omega &=& F - \int \mu S\,\dif\Omega\nonumber\\
+	\frac{c}{3}\DD{U}{\tau} &=& \sigmaSB\Teff^{4}
+\label{e.ODE-U}
+\end{eqnarray}
+In going from the first to the second line we have used eq.~(\ref{e.Inu-expansion}). In going from the second to the third line, the integrals of $\mu^{3}$ and $\mu S$ vanish because $S$ is independent of angle and $\int_{-1}^{1} \mu\,\dif\mu = \int_{-1}^{1}\mu^{3}\,\dif\mu = 0$. 
 
-By itself, the expression for the radiation pressure doesn't help: we have an additional equation, but also an additional unknown, namely $\Prad$. But notice! At great depths, where $I_{\nu}\to B_{\nu}$, we have (eq.~[\ref{e.radiation-pressure}]) $\Prad = aT^{4}/3 = (4\pi/3c)J$, where $J=\int J_{\nu}\,\dif\nu$. In desperation, we might try the assumption that this holds everywhere. This assumption is clearly wrong; but desperation often masquerades as genius. Our desperate act is equivalent to expressing the intensity as a \emph{linear} function in $\cos\theta$, which looks like a reasonable approximation scheme (see Box~\ref{sb.intensity-decomposition}), and is in fact called the \emph{Eddington approximation.}
+Equation~(\ref{e.ODE-U}) is a first-order ODE, which upon integration yields
+\begin{equation}\label{e.energy-density-Eddington}
+	U(\tau) = \frac{3}{c}F(\tau + \tau_{0}),
+\end{equation}
+where $\tau_{0}$ is an integration constant. Our intensity is thus
+\[
+	I(\mu,\tau) = \frac{3}{4\pi}\sigmaSB\Teff^{4}\left(\tau + \tau_{0} + \mu\right).
+\]
+To fix the integration constant $\tau_{0}$, let's go to where $\tau=0$. Here all of the radiation must be outward-bound. Hence if we integrate $\mu I(\mu,\tau=0)$ over $0\le\mu\le 1$, we should recover the flux:
+\[
+	\sigmaSB\Teff^{4} = \int_{0}^{2\pi}\int_{0}^{1} \mu I(\mu,\tau=0)\,\dif\mu\,\dif\phi
+	= \frac{3}{4}\sigmaSB\Teff^{4}\left(\tau_{0} + \frac{2}{3}\right),
+\]
+which fixes $\tau_{0} = 2/3$.
 
-Going back to our starting equation (\ref{e.transfer-gray}), we can integrate over all frequencies. Since $\int(J_{\nu}-B_{\nu})\,\dif\nu = 0$, it is easy to show that $S = J$, where $S=\int S_{\nu}\,\dif\nu$. But $J = 3c\Prad/4\pi = (3/4\pi)F(\tau + \tau_{0})$, and so eq.~(\ref{e.transfer-gray}) becomes
-\[
-	\mu \DD{I}{\tau} = I -\frac{3}{4\pi} F (\tau +\tau_{0}).
-\]
-This is a first-order ordinary differential, and is easily solved. The solution is
-\[
-	I(\mu,\tau=0) = \frac{3}{4\pi}F(\mu + \tau_{0})
-\]
-Now, at $\tau=0$, all of the radiation is outward-bound ($0\le\mu\le 1$). So let's integrate this equation,
-\[
-	F = 2\pi\int_{0}^{1}\mu I(\mu,\tau=0)\,\dif\mu = \frac{3}{2}F\int_{0}^{1} (\mu^{2} + \mu\tau_{0}),\dif\mu = F\left(\frac{1}{2} + \frac{3}{4}\tau_{0}\right).
-\]
-This fixes $\tau_{0} = 2/3$.
-
-Now we can assemble all of the pieces and wrap up this long derivation. Since the total flux $F$ is constant, we can set it to its value at $\tau=0$, namely $F = \sigmaSB\Teff^{4}$. Then we can write $\Prad = (1/3) a T^{4}$ and use our solution $c\Prad = F(\tau+\tau_{0})$ along with the relation $\sigmaSB = ac/4$ to obtain
+To finish this, we note that $J = B$ since we are in steady-state local thermal equilibrium. The radiative energy density is thus $U = (4\pi/c) J = (4\pi/c)B = 4\sigmaSB/c T^{4}$. Substituting this into eq.~(\ref{e.energy-density-Eddington}) then yields
 \begin{equation}\label{e.T-tau}
 T^{4} = \frac{3}{4}\Teff^{4}\left(\tau + \frac{2}{3}\right).
 \end{equation}
