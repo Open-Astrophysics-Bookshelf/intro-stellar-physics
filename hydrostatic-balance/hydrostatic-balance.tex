@@ -68,6 +68,21 @@ We astronomers don't care about little beakers of fluid---we have whole stars to
 \end{equation}
 The quantity in parenthesis is the mass per volume, or density $\rho$, of our fluid.  This is the same mass density that appears in equation~(\ref{e.hydrostatic-equilibrium-g}).  Equation~(\ref{e.ideal-gas-astro}) is the form most convenient for fluid dynamics, because it is in terms of an intrinsic fluid property---the density $\rho$---rather than in terms of the volume.
 
+\begin{table}[htbp]\caption{\label{t.gm-mol}Selected gram-molecular weights.}
+\centering
+\begin{tabular}{l|rrr}
+nuclide & $A$ & $\mathcal{A}$ & $(|\mathcal{A}-A|/A) \times 100$\\
+\hline
+\neutron & 1 & 1.00865 & 0.865\\
+\hydrogen & 1 & 1.00783 & 0.783\\
+\helium & 4 & 4.00260 & 0.065\\
+\carbon & 12 & 12.00000 & 0.000\\
+\oxygen & 16 & 15.99491 & 0.032\\
+\silicon & 28 & 27.97693 & 0.082\\
+\iron & 56 & 55.93494 & 0.116\\
+\end{tabular}
+\end{table}
+
 \begin{exercisebox}[The isothermal atmosphere]
 Let's take a stab at modeling Earth's atmosphere with equation~(\ref{e.hydrostatic-equilibrium-g}). Take Earth's atmosphere to be dry (no water, so we don't have to worry about condensation) and model it as an ideal gas. Also assume the temperature doesn't change with altitude. The molar weight of dry air is $\val{0.02897}{\kilo\gram\usk\mol^{-1}}$. Integrate eq.~(\ref{e.hydrostatic-equilibrium-g}) from $z=0$, where $P(z=0)=P_{0}$, to a height $z$. Show that the solution is $P(z) = P_{0}e^{-z/H_{P}}$, where $H_{P}$
 is the \newterm{pressure scale height}---the height over which the pressure decreases by a factor $1/e$. Evaluate $H_{P}$ for dry air at a temperature of $\val{288}{\K}$ ($\val{15}{^{\circ}\unitstyle{C}}$). Is the answer reasonable, based on your experience? Is the assumption of an isothermal atmosphere a good one? Explain why or why not.
@@ -326,7 +341,7 @@ Using this in equation~(\ref{e.mean-T}) gives us the mean temperature, and hence
 These are comparable to the central values, eqn.~(\ref{e.Tc}) and (\ref{e.Pc}).
 
 \begin{table}
-\caption{\label{t.stellar-properties} Masses, radii, and luminosities for selected stellar types. The type---B2, B8, F0, and so forth---indicates what features are present in the star's spectrum and indicates the star's surface effective temperature.}
+\caption[Masses, radii, and luminosities for selected stellar types]{\label{t.stellar-properties} Masses, radii, and luminosities for selected stellar types. The type---B2, B8, F0, and so forth---indicates what features are present in the star's spectrum and indicates the star's surface effective temperature.}
 \begin{tabular}{ld{4.2}d{3.2}d{1.2}d{1.2}d{1.2}d{2.3}}
  & \tabhead{B2} & \tabhead{B8} & \tabhead{F0} & \tabhead{G5} & \tabhead{M0} & \tabhead{M7}\\ 
 \hline
