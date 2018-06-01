@@ -59,16 +59,29 @@ PV = N\kB T
 where $\kB = \val{\sci{1.381}{-23}}{\unitstyle{J}\usk\K^{-1}}$ denotes \newterm{Boltzmann's constant}.
 
 In chemistry, it is convenient to count the number of particles by \newterm{moles}.  One mole of a gas has $\NA = \sci{6.022}{23}$ particles\sidenote{The constant $\NA$ is known as \newterm{Avogadro's number}.}, and the number of moles in a sample is $n = N/\NA$.  If we divide and multiply equation~(\ref{e.ideal-gas-eos}) by $\NA$, then our ideal gas equation becomes
-\[ PV = n\left[\NA k\right]T \equiv n R T, \]
-where $R = \NA k = \val{8.314}{\unitstyle{J}\usk\K^{-1}\usk\mol^{-1}}$ is the gas constant. This is perhaps the most familiar form of the ideal gas law---but it is not in a form useful to astronomers.
+\[ PV = n\left[\NA \kB\right]T \equiv n R T, \]
+where $R = \NA\kB = \val{8.314}{\unitstyle{J}\usk\K^{-1}\usk\mol^{-1}}$ is the gas constant. This is perhaps the most familiar form of the ideal gas law---but it is not in a form useful to astronomers.
 
-We astronomers don't care about little beakers of fluid---we have whole stars to model! Let's go back to equation (\ref{e.ideal-gas-eos}) and introduce the molar weight $m$ as the mass of one mole of our gas. We then multiply and divide eq.~(\ref{e.ideal-gas-eos}) by $m/\NA$ and obtain
+We astronomers don't care about little beakers of fluid---we have whole stars to model! Put another way, volume isn't a useful quantity since we are working in the middle of a large mass of fluid. Define the \newterm{number density} as the number of particles per volume, $N/V$. The mass of each particle is $\mathcal{A}\times\mb$, where $\mb$ has a mass of one \newterm{atomic mass unit}.\sidenote{$\val{1}{\amu} = \val{\sci{1.661}{-27}}{\kilo\gram}$ is 1/12 of the mass of \val{1}{\mol} of \carbon\ atoms in their ground state} Hence the mass per volume of our fluid is
+\[
+	\rho = \mathcal{A}\mb \times\frac{N}{V}.
+\]
+We call $\rho$ the \newterm{mass density}, or density for short. This quantity appears in equation~(\ref{e.hydrostatic-equilibrium-g}).
+
+Starting with eq.~(\ref{e.ideal-gas-eos}), dividing by $V$ and then multiplying and dividing by $\mathcal{A}\mb$ gives
 \begin{equation}\label{e.ideal-gas-astro}
- P = \left(\frac{mN/\NA}{V}\right)\frac{k\NA}{m} T \equiv \rho \frac{k\NA}{m} T.
+ P = \left(\frac{\mathcal{A}\mb N}{V}\right)\frac{\kB}{\mathcal{A}\mb} T \equiv \rho \frac{\kB}{\mathcal{A}\mb} T.
 \end{equation}
-The quantity in parenthesis is the mass per volume, or density $\rho$, of our fluid.  This is the same mass density that appears in equation~(\ref{e.hydrostatic-equilibrium-g}).  Equation~(\ref{e.ideal-gas-astro}) is the form most convenient for fluid dynamics, because it is in terms of an intrinsic fluid property---the density $\rho$---rather than in terms of the volume.
+Equation~(\ref{e.ideal-gas-astro}) is the form most convenient for fluid dynamics, because it is in terms of an intrinsic fluid property---the density $\rho$---rather than in terms of the volume.
 
-\begin{table}[htbp]\caption{\label{t.gm-mol}Selected gram-molecular weights.}
+\begin{exercisebox}[The isothermal atmosphere]
+Let's take a stab at modeling Earth's atmosphere with equation~(\ref{e.hydrostatic-equilibrium-g}). Take Earth's atmosphere to be dry (no water, so we don't have to worry about condensation) and model it as an ideal gas. Also assume the temperature doesn't change with altitude. The average molecular mass of dry air is $\mathcal{A} = 28.97$. Integrate eq.~(\ref{e.hydrostatic-equilibrium-g}) from $z=0$, where $P(z=0)=P_{0}$, to a height $z$. Show that the solution is $P(z) = P_{0}e^{-z/H_{P}}$, where $H_{P}$
+is the \newterm{pressure scale height}---the height over which the pressure decreases by a factor $1/e$. Evaluate $H_{P}$ for dry air at a temperature of $\val{288}{\K}$ ($\val{15}{^{\circ}\unitstyle{C}}$). Is the answer reasonable, based on your experience? Is the assumption of an isothermal atmosphere a good one? Explain why or why not.
+\end{exercisebox}
+
+The mass $\mathcal{A}$ of an atom or nuclei, when expressed in atomic mass units, is approximately equal to the atomic number $A$ (Table~\ref{t.gm-mol}). The electron mass is $m_{e} = \val{0.0005485}{\amu}$. Unless we need high accuracy, we can neglect the electron mass and take the mass of an atom or nuclide to be $A\times\mb$.
+
+\begin{margintable}\caption{\label{t.gm-mol}Selected atomic masses}
 \centering
 \begin{tabular}{l|rrr}
 nuclide & $A$ & $\mathcal{A}$ & $(|\mathcal{A}-A|/A) \times 100$\\
@@ -81,11 +94,30 @@ nuclide & $A$ & $\mathcal{A}$ & $(|\mathcal{A}-A|/A) \times 100$\\
 \silicon & 28 & 27.97693 & 0.082\\
 \iron & 56 & 55.93494 & 0.116\\
 \end{tabular}
-\end{table}
+\end{margintable}
 
-\begin{exercisebox}[The isothermal atmosphere]
-Let's take a stab at modeling Earth's atmosphere with equation~(\ref{e.hydrostatic-equilibrium-g}). Take Earth's atmosphere to be dry (no water, so we don't have to worry about condensation) and model it as an ideal gas. Also assume the temperature doesn't change with altitude. The molar weight of dry air is $\val{0.02897}{\kilo\gram\usk\mol^{-1}}$. Integrate eq.~(\ref{e.hydrostatic-equilibrium-g}) from $z=0$, where $P(z=0)=P_{0}$, to a height $z$. Show that the solution is $P(z) = P_{0}e^{-z/H_{P}}$, where $H_{P}$
-is the \newterm{pressure scale height}---the height over which the pressure decreases by a factor $1/e$. Evaluate $H_{P}$ for dry air at a temperature of $\val{288}{\K}$ ($\val{15}{^{\circ}\unitstyle{C}}$). Is the answer reasonable, based on your experience? Is the assumption of an isothermal atmosphere a good one? Explain why or why not.
+\section{Mass density and the mean molecular weight}
+\label{s.mean-molecular-weight}
+
+For a mixture with different types of particles, it is useful to introduce the \newterm{mean molecular weight} $\mu$. This is computed by taking the total mass of a sample of particles and dividing by the total number of particles, so that
+\begin{equation}\label{e.mean-mol-weight}
+\mu = \frac{\rho}{\mb n_{\mathrm{tot}}} = \frac{1}{\mb}\frac{\sum_{i}m_{i}\,n_{i}}{\sum_{i}n_{i}}.
+\end{equation}
+Some examples may make this clearer. Suppose we star with molecular hydrogen ($\mathrm{H}_{2}$). The mass of a sample of $n$ molecules is $\approx \val{2}{\mb}\times n$, since each molecule has 2 nucleons. The total number of particles in our sample is $n$, so
+\[
+	\mu(\mathrm{H_{2}}) = \frac{2\mb \times n}{n\mb} = 2.
+\]
+Now suppose we raise the temperature and dissociate those molecules into individual atoms. For $n$ atoms, the mass is $\val{1}{\amu}\times n$, so $\mu = 1$. It becomes a little trickier when the atoms are ionized. Let's raise the temperature further, so that the gas ionizes into electrons and nuclei (protons). The electrons contribute negligibly to the mass, so if we have $n$ atoms, the mass is still $\val{1}{\amu}\times n$. The total number of particles has \emph{doubled}, however, since for each atom there are now 2 particles (electron and nucleus). The mean molecular weight is therefore
+\[
+	\mu(\hydrogen + e^{-}) = \frac{n\mb}{2n\mb} = \frac{1}{2}.
+\]
+In terms of the mean molecular weight, the ideal gas EOS becomes
+\begin{equation}\label{e.eos}
+P = \rho\left(\frac{\kB}{\mu\mb}\right) T.
+\end{equation}
+
+\begin{exercisebox}[Mean molecular weight for ionized helium]
+What is $\mu$ for a fully ionized \helium\ gas ($A=4$, with 2 electrons per atom)? 
 \end{exercisebox}
 
 \section{The mass distribution}
@@ -122,11 +154,7 @@ In what follows, you should be able to express everything in terms of the star's
 \item\label{Pc} Use this expression for $m(r)$ and your expression for $\rho$ to integrate equation~(\ref{e.hydrostatic-equilibrium}) and to find the pressure at the center, $P_{c} = P(r=0)$.
 
 \item
-Now that we have an expression for the central pressure in terms of $M$ and $R$, let's try to understand what it means. For an ideal gas, the pressure, density, and temperature are related:
-\begin{equation}\label{e.eos}
-P = \rho\left(\frac{\kB}{\mu\mb}\right) T,
-\end{equation}
-where $\mb = 1/12\times(\textrm{mass of a \carbon\ atom})$ and $\mu$ is the mean molecular weight---the average mass of a particle in the gas.  We'll show how to compute $\mu$ later; for now, just treat it as a constant. Use your result from parts \ref{Pc} and \ref{rhoc}, as well as equation~(\ref{e.eos}) to find the central temperature of the star, in terms of $G$, $M$, $R$, and the mean molecular weight of the gas $\mu$.  Evaluate $T_{c}$ for $M=M_{\odot}$, $R=R_{\odot}$, and $\mu = 0.6$.  Do you get a reasonable result?
+Now that we have an expression for the central pressure in terms of $M$ and $R$, let's try to understand what it means. Use your result from parts \ref{rhoc} and \ref{Pc}, as well as equation~(\ref{e.eos}) to find the central temperature of the star, in terms of $G$, $M$, $R$, and the mean molecular weight of the gas $\mu$.  Evaluate $T_{c}$ for $M=M_{\odot}$, $R=R_{\odot}$, and $\mu = 0.6$.  Do you get a reasonable result?
 \end{enumerate}
 \end{exercisebox}
 
