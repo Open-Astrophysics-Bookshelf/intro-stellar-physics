@@ -93,15 +93,19 @@ As we have seen, the temperature of the stellar atmosphere determines which spec
 \begin{sidebar}[The driven damped oscillator]
 Let's begin with a simple system: a mass $m$ attached to a spring with force $F = -kx$.
 
-If we put the origin of our coordinate system where the mass is at rest with the spring relaxed, then the equation of motion of the mass is
+\begin{center}
+\includegraphics[width=0.5\linewidth]{simple-spring}
+\end{center}
+
+\noindent If we put the origin of our coordinate system where the mass is at rest with the spring relaxed, then the equation of motion of the mass is
 \begin{equation}\label{e.SHO-basic}
 	\DDtt{x} + \frac{k}{m} x = 0.
 \end{equation}
-You have solved this before: the most general solution is
+You have solved this equation before: the most general solution is
 \begin{equation}\label{e.SHO-general-solution}
 	x(t) = x_{0}\cos(\wot) + \frac{v_{0}}{\omega_{0}}\sin(\wot)
 \end{equation}
-with $\omega_{0}^{2} = k/m$ and with $x_{0}$ and $v_{0}$ being the initial position and velocity of the mass.
+with $\omega_{0}^{2} = k/m$ and with $x_{0}$ and $v_{0}$ being the initial position and velocity of the mass. The angular frequency $\omega_{0}$ is related to the period of oscillation $T$ as $\omega_{0} = 2\pi/T$.
 
 \newthought{Now let's push on our mass with an oscillating force, $F\cos(\omega t)$ with $\omega\neq\omega_{0}$.} A real world example would be holding a vibrating tuning fork near another fork tuned to a different frequency.  The equation of motion is now
 \begin{equation}\label{e.SHO-driven}
@@ -137,9 +141,9 @@ The solution to this is straightforward to find, although the algebra is tedious
 \label{e.general-solution-ddo}
 \lefteqn{x(t) = \frac{F\womw/m}{\womw^{2}+\gw}\cos(\omega t)} && \\
 	&+& \frac{\Gamma\omega F/m}{\womw^{2}+\gw}\sin(\omega t)\nonumber \\
-	&+& \left[x_{0}-\frac{F\womw/m}{\womw^{2}+\gw}\right]{\color{red}e^{-\Gamma t/2}} \cos(\omega_{\Gamma}t) \nonumber\\
-	&+& \left[\frac{v_{0}}{\omega_{\Gamma}}-\frac{\Gamma\omega F/m}{\womw^{2}+\gw}
-	\,\frac{\omega}{\omega_{\Gamma}}\right]{\color{red}e^{-\Gamma t/2}} \sin(\omega_{\Gamma}t), 
+	&+& {\color{red}\left[x_{0}-\frac{F\womw/m}{\womw^{2}+\gw}\right] e^{-\Gamma t/2} \cos(\omega_{\Gamma}t)} \nonumber\\
+	&+& {\color{red}\left[\frac{v_{0}}{\omega_{\Gamma}}-\frac{\Gamma\omega F/m}{\womw^{2}+\gw}
+	\,\frac{\omega}{\omega_{\Gamma}}\right]e^{-\Gamma t/2} \sin(\omega_{\Gamma}t)}, 
 	\nonumber
 \end{eqnarray}
 with
@@ -147,24 +151,25 @@ with
     \omega_{\Gamma} = 
         \omega_{0}\left(1-\frac{\Gamma^{2}}{4\omega_{0}^{2}}\right)^{1/2}.
 \]
-Let's simplify this to the most relevant case.  First, the last two terms decay as {\color{red}$e^{-\Gamma t/2}$}: these are transients set by the initial conditions. After a time $2/\Gamma$ there will only be the first two terms, which oscillate at frequency $\omega$. 
+Let's simplify this a bit.  First, the last two terms decay as $e^{-\Gamma t/2}$: these are transients set by the initial conditions. After a time $t \gg 2/\Gamma$ only the first two terms, which oscillate at the driving frequency $\omega$, will remain. 
 
-We can simplify these first two terms even further: write
+We can simplify these first two terms even further: if we write
 \[ \cos(\wt) = \frac{e^{i\wt}+e^{-i\wt}}{2},\quad \sin(\wt) 
-    = \frac{e^{i\wt}-e^{-i\wt}}{2i}; \]
-and combine terms to find
+    = \frac{e^{i\wt}-e^{-i\wt}}{2i}, \]
+we can combine them and obtain
 \begin{eqnarray}
     x(t) &=& \frac{F}{2m}\left[\frac{1}{\left(\omega_0^2-\omega^2\right) + i\Gamma\omega}\right]e^{i\wt} \nonumber\\
     && + \frac{F}{2m}\left[\frac{1}{\left(\omega_0^2-\omega^2\right) - i\Gamma\omega}\right]e^{-i\wt} \nonumber\\
     &=& \Re\left\{\frac{F}{m}\left[\frac{1}{\left(\omega_0^2-\omega^2\right) + i\Gamma\omega}\right]e^{i\wt}\right\}\label{e.oscillator-expression}
 \end{eqnarray}
 We use the symbol ``$\Re$'' to denote taking the real part of a complex quantity.
+The oscillation can be described as the real part of a complex quantity $Ae^{i\wt}$, with
+\[
+    A = \frac{F}{m}\left[\frac{1}{\left(\omega_0^2-\omega^2\right) + i\Gamma\omega}\right]
+\]
+being the (complex) amplitude.
 \end{sidebar} 
 
-From Eq.~(\ref{e.oscillator-expression}), we see that the oscillator can be described as the real part of a complex quantity $Ae^{i\wt}$, with
-\[
-    A = \frac{F}{m}\left[\frac{1}{\left(\omega_0^2-\omega^2\right) + i\Gamma\omega}\right].
-\]
 For $\omega \approx \omega_0$, we write $(\omega_0^2-\omega^2)\approx 2\omega_0(\omega_0-\omega)$ and take the square of the amplitude to find,
 \begin{eqnarray}
     \left|A\right|^2 &=& \left(\frac{F}{2m\omega_0}\right)^2
