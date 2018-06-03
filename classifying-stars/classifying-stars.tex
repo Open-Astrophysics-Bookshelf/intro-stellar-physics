@@ -90,15 +90,8 @@ These arguments apply to other species present in the stellar photosphere.  In t
 
 As we have seen, the temperature of the stellar atmosphere determines which species are present and hence which lines are present. The width of the line conveys information about the pressure at the photosphere. To understand this, we need to digress briefly on the shape of the line.
 
-Let's begin with a simple system: a mass $m$ attached to a spring with force constant $k$ as shown in Fig.~\ref{f.simple-spring}.
-
-\begin{marginfigure}[-8\baselineskip]
-\includegraphics[width=\linewidth]{simple-spring}
-\caption[A simple harmonic oscillator]{A simple harmonic oscillator: a mass $m$ on a frictionless surface attached to a  spring with force $F = -kx$.
-\label{f.simple-spring}}
-\end{marginfigure}
-
-\subsection{With no driving force}
+\begin{sidebar}[The driven damped oscillator]
+Let's begin with a simple system: a mass $m$ attached to a spring with force $F = -kx$.
 
 If we put the origin of our coordinate system where the mass is at rest with the spring relaxed, then the equation of motion of the mass is
 \begin{equation}\label{e.SHO-basic}
@@ -110,9 +103,7 @@ You have solved this before: the most general solution is
 \end{equation}
 with $\omega_{0}^{2} = k/m$ and with $x_{0}$ and $v_{0}$ being the initial position and velocity of the mass.
 
-\subsection{With driving at frequency $\omega \neq \omega_{0}$}
-
-Now let's push on our mass with an oscillating force, $F\cos(\omega t)$ with $\omega\neq\omega_{0}$. A real world example would be holding a vibrating tuning fork near another fork tuned to a different frequency.  The equation of motion is now
+\newthought{Now let's push on our mass with an oscillating force, $F\cos(\omega t)$ with $\omega\neq\omega_{0}$.} A real world example would be holding a vibrating tuning fork near another fork tuned to a different frequency.  The equation of motion is now
 \begin{equation}\label{e.SHO-driven}
 	\DDtt{x} + \omega_{0}^{2}x = \frac{F}{m}\cos(\wt).
 \end{equation}
@@ -136,9 +127,8 @@ and we write the solution as
 \end{equation}
 This illustrates the phenomena of beats: the oscillation consists of a carrier signal at frequency $\omega_{m}$ with the amplitude modulated at the slower frequency $\Delta /2$.  Notice that the amplitude increases as $\Delta \to0$, i.e., $\omega\to\omega_{0}$.
 
-\subsection{With both driving and damping}
-
-Now let's make our model even more realistic by adding some damping.  We add a frictional force that is proportional to velocity, $F_{\mathrm{friction}} = -m\Gamma \dif x/\dif t$. Our complete equation of motion is then
+\newthought{Now let's make our model even more realistic by adding some damping.}
+We add a frictional force that is proportional to velocity, $F_{\mathrm{friction}} = -m\Gamma \dif x/\dif t$. Our complete equation of motion is then
 \begin{equation}
 	\DDtt{x} + \Gamma \DDt{x} + \omega_{0}^{2}x = \frac{F}{m}\cos(\omega t).
 \end{equation}
@@ -167,7 +157,8 @@ and combine terms to find
     x(t) &=& \frac{F}{2m}\left[\frac{1}{\left(\omega_0^2-\omega^2\right) + i\Gamma\omega}\right]e^{i\wt} + \frac{F}{2m}\left[\frac{1}{\left(\omega_0^2-\omega^2\right) - i\Gamma\omega}\right]e^{-i\wt} \nonumber\\
     &=& \Re\left\{\frac{F}{m}\left[\frac{1}{\left(\omega_0^2-\omega^2\right) + i\Gamma\omega}\right]e^{i\wt}\right\}\label{e.oscillator-expression}
 \end{eqnarray}
-We use the symbol ``$\Re$'' to denote taking the real part of a complex quantity.  
+We use the symbol ``$\Re$'' to denote taking the real part of a complex quantity.
+\end{sidebar} 
 
 From Eq.~(\ref{e.oscillator-expression}), we see that the oscillator can be described as the real part of a complex quantity $Ae^{i\wt}$, with
 \[
