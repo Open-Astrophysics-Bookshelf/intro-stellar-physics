@@ -2,6 +2,39 @@
 
 \nocite{Mihalas1978Stellar-Atmosph,LeBlanc2010An-Introduction,Carroll2006An-Introduction}
 
+To recap, we have established a description for the basic features of self-gravitating fluid:
+\begin{enumerate}
+
+\item For a set mass and radius, hydrostatic equilibrium (balance of pressure and gravity) is established on the time needed for a sound wave to cross the star. Once this equilibrium is established, the central pressure, density, and temperature are established.
+
+\item The gradient in temperature from center to surface drives a luminosity, which is controlled by the opacity of material in the stellar interior.
+
+\item The pressure and temperature near the stellar photosphere (where $\tau \sim 1$) are set by the surface gravity and opacity.
+
+\end{enumerate}
+
+What we haven't yet established is how the luminosity is generated: if nuclear reaction are not operating, then the star must contract (on a Kelvin-Helmholtz timescale) until the central temperature is sufficiently hot for reactions to generate the required luminosity.
+Before discussing this, however, we shall explore how the emergent spectra of stars serve as diagnostic indicators of ambient conditions in the stellar photosphere. 
+
+\section{Overview}
+
+By passing the solar light through a grating, a spectrum can be created, such as the highly detailed one show in Fig.~\ref{f.solar-spectrum}. Especially noticeable are the dark \newterm{absorption lines}.
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{sunsqa}
+\caption{\label{f.solar-spectrum} Visible spectrum of the Sun. Wavelength increases along a row from left to right, and by rows from bottom to top. \emph{Credit:
+N.A.Sharp, NOAO/NSO/Kitt Peak FTS/AURA/NSF. Image copyright }}
+\end{marginfigure}
+Beginning in the late 1800's, astronomers began classifying stars by the observed absorption lines in the spectra. At this time, Edward Pickering and Williamina Fleming of the Harvard College Observatory began amassing a vast catalog of stellar spectra. They classified these spectra according to the strength of observed hydrogen Balmer lines (the first four are H$\alpha$: \val{657}{\nano\meter}; H$\beta$: \val{486}{\nano\meter}; H$\gamma$: \val{434}{\nano\meter}; H$\delta$: \val{410}{\nano\meter}). Stars, such as Vega, with the strongest Balmer lines were classified as type ``A'', those with the next strongest were type ``B'', and so forth. In Annie Jump Cannon, who had joined the group in 1896 and would later succeed Fleming as curator of astronomical photography at the observatory, simplified and reorganized the scheme, and added decimal subdivisions ($0\ldots9$) for each type\sidenote{For example, the Sun's type is G2}. When stellar color is taken into account, the ordering of stars, from blue to red, is ``OBAFGKM''.
+
+In an influential PhD thesis, \citetalt{Payne1925Stellar-Atmosph} applied the Boltzmann and Saha equations to show that different stellar spectra were consistent with changes in temperature, rather than composition, of the stellar photosphere. The sequence of stellar types is therefore a temperature sequence, with ``O'' stars being the hottest. In the 1990's the ``L'' and ``T'' classes were added\cite{Kirkpatrick1999Dwarfs-Cooler-t} for cool stars and brown dwarfs (stellar-like objects that do not reach central temperature sufficient for fusion of hydrogen into helium).
+
+Standard stellar spectra for selected types at optical wavelength are shown in Fig.~\ref{f.spectral-types}.
+
+\begin{figure*}[hbp]
+\includegraphics[width=\linewidth]{spectral_types}
+\caption[Standard stellar types]{\label{f.spectral-types} Spectra from main-sequence stars of spectral types O--K. Data from \protect\citet{Jacoby1984A-library-of-st}.}
+\end{figure*}
+
 \section{The Boltzmann Equation}
 \label{s.boltzmann-eqn}
 
@@ -75,18 +108,10 @@ The factor of 2 appears because each box can hold 2 electrons.  Recognizing that
 
 \section{Classifying stars by spectra}
 
-\subsection{Surface temperature}
 
-In an influential PhD thesis, \citetalt{Payne1925Stellar-Atmosph} applied the Boltzmann and Saha equations to show that different stellar spectra were consistent with changes in temperature, rather than composition, of the stellar photosphere.  Standard stellar spectra at optical wavelength are shown in Fig.~\ref{f.spectral-types}.  The Balmer lines, which correspond to transitions $2\to3$, $2\to 4$, \ldots, are most prominent in A stars.  These stars have $\Teff = \valrng[--]{7\,500}{9\,500}{\K}$. At lower temperatures, the population of hydrogen atoms in the level $n=2$ decreases as $e^{-E_{2}/kT}$ and the lines become weak.  At higher temperatures, the number of neutral hydrogen atoms decreases; most of the hydrogen is ionized, and the Balmer lines again become weaker.
+The Balmer lines, which correspond to transitions $2\to3$, $2\to 4$, \ldots, are most prominent in A stars. These stars have $\Teff = \valrng[--]{7\,500}{9\,500}{\K}$. At lower temperatures, the population of hydrogen atoms in the level $n=2$ decreases as $e^{-E_{2}/kT}$ and the lines become weak. At higher temperatures, the number of neutral hydrogen atoms decreases; most of the hydrogen is ionized, and the Balmer lines again become weaker.
 
 These arguments apply to other species present in the stellar photosphere.  In the hottest stars (type O: $\Teff > \val{30\,000}{\K}$), hydrogen is mostly ionized and the lines are He\,\textsc{ii} and multiply-ionized metals. As temperature cool into the B and A series, the hydrogen lines increase in strength. Going from F into G ($\Teff = \valrng[--]{5\,000}{6\,000}{\K}$, the hydrogen lines decrease, while lines from singly-ionized and neutral metals such as Ca\,\textsc{ii}, Ca\,\textsc{i}, Fe\,\textsc{i} become strong.  At still lower temperatures in the K and M ($\Teff < \val{3\,500}{\K}$) types, absorption from molecules such as TiO becomes prominant.  An example is the broad trough seen in the K spectrum near $\lambda = \val{500}{\nano\meter}$ in Fig.~\ref{f.spectral-types}.
-
-\begin{figure*}[hb]
-\includegraphics[width=\linewidth]{spectral_types}
-\caption[Standard stellar types]{\label{f.spectral-types} Spectra from main-sequence stars of spectral types O--K. Data from \protect\citet{Jacoby1984A-library-of-st}.}
-\end{figure*}
-
-\subsection{Surface gravity}
 
 As we have seen, the temperature of the stellar atmosphere determines which species are present and hence which lines are present. The width of the line conveys information about the pressure at the photosphere. To understand this, we need to digress briefly on the shape of the line.
 
