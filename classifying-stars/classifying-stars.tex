@@ -34,10 +34,45 @@ Hertzsprung and Russell independently noticed that most stars tended to lie alon
 \caption{\label{f.HR} Hertzsprung-Russell diagram showing standard main-sequence stars. Colors are approximate translations of the spectra.}
 \end{marginfigure}
 
-In an influential PhD thesis, Cecilia Payne-Gaposhkin\cite{Payne1925Stellar-Atmosph} applied the Boltzmann and Saha equations to show that different stellar spectra were consistent with changes in temperature, rather than composition, of the stellar photosphere. The sequence of stellar types is therefore a temperature sequence, with ``O'' stars being the hottest. 
+In an influential PhD thesis, Cecilia Payne-Gaposhkin\cite{Payne1925Stellar-Atmosph} applied the Boltzmann and Saha equations to show that different stellar spectra were consistent with changes in temperature, rather than composition, of the stellar photosphere. The sequence of stellar types is therefore a temperature sequence, with ``O'' stars being the hottest. In the following section, we shall explore how it is that the Balmer lines are strongest in a certain range of temperatures.
 
 \section{The Boltzmann Equation}
 \label{s.boltzmann-eqn}
+
+The electrons bound to an atom or molecule can only occupy states having a discrete set of energies. For example, the electron in a hydrogen atom only has energies
+\begin{equation}\label{e.H-levels}
+        E_{n} = -\val{13.6}{\eV}\times \frac{1}{n^{2}},
+\end{equation}
+where $n > 0$ is an integer known as the principal quantum number.  These energies are negative, relative to a free electron.  For example, it takes \val{13.6}{\eV} to remove an electron in its ground state from the atom.
+
+Because the electrons in an atom can only have certain energies, the atom can only absorb or emit light at specific wavelengths, such that the energy of the photon matches the difference in energy between two levels.  For example, a hydrogen atom can absorb a photon of energy
+\[
+        E_{1\to2} = -\val{13.6}{\eV} \left(\frac{1}{2^{2}} - \frac{1}{1^{2}}\right)
+                 = \val{10.2}{\eV}
+\]
+corresponding to the energy required to move the electron from  $n=1$ to $n=2$.
+
+The wavelengths that can be emitted or absorbed by a hydrogen atom at rest can be found by substituting $E = hc/\lambda$ into equation~(\ref{e.H-levels}):
+\begin{equation}
+        \lambda_{m\to n} = \lambda_{0}\left(\frac{1}{n^{2}}-\frac{1}{m^{2}}\right)^{-1},
+\end{equation}
+where $\lambda_{0} = \val{91.2}{\nano\meter}$.
+The transitions to the lowest levels are named after their discoverers: Lyman for $m\to1$, Balmer for $m\to2$, Paschen for $m\to3$. A greek letter is used to denote the higher state: for example Lyman $\alpha$ (abbr.\ Ly$\alpha$) means $2\to1$, with $\lambda_{\mathrm{Ly}\alpha} = \val{121.6}{\nano\meter}$.  The first line transition in the Balmer series is $3\to2$, and is designated H$\alpha$: $\lambda_{\mathrm{H}\alpha} = \val{656.3}{\nano\meter}$. The first 50 lines for the Lyman ($m\to1$), Balmer ($m\to2$), and Paschen ($m\to3$) are shown in Fig.~\ref{f.H-spectrum}; note the $4\to3$ transition is outside the plot range.
+
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{H-spectrum}
+\caption{Spectral lines of neutral hydrogen. 
+\label{f.H-spectrum}}
+\end{marginfigure}
+
+The wavelengths that can be emitted or absorbed by a hydrogen atom at rest can be found by substituting $E = hc/\lambda$ into equation~(\ref{e.H-levels}):
+\begin{equation}
+        \lambda_{m\to n} = \lambda_{0}\left(\frac{1}{n^{2}}-\frac{1}{m^{2}}\right)^{-1},
+\end{equation}
+where $\lambda_{0} = \val{91.2}{\nano\meter}$.
+The transitions to the lowest levels are named after their discoverers: Lyman for $m\to1$, Balmer for $m\to2$, Paschen for $m\to3$. A greek letter is used to denote the higher state: for example Lyman $\alpha$ (abbr.\ Ly$\alpha$) means $2\to1$, with $\lambda_{\mathrm{Ly}\alpha} = \val{121.6}{\nano\meter}$.  The first line transition in the Balmer series is $3\to2$, and is designated H$\alpha$: $\lambda_{\mathrm{H}\alpha} = \val{656.3}{\nano\meter}$. The first 50 lines for the Lyman ($m\to1$), Balmer ($m\to2$), and Paschen ($m\to3$) are shown in Fig.~\ref{f.H-spectrum}; note the $4\to3$ transition is outside the plot range.
+
+
 
 Suppose we have a sample of atoms, all of the same species.  The electrons in those atoms can be in any number of energy levels; we'll denote the energy of level $n$ as $E_{n}$.  There may be many different states with the same energy; we'll denote the total number of possible states\sidenote{Known as the \emph{degeneracy} of a given energy} with energy $E_{n}$ as $g_{n}$.  For example, in a neutral hydrogen atom, the energy and degeneracy of level $n$ are
 \begin{eqnarray*}
