@@ -44,20 +44,18 @@ The electrons bound to an atom or molecule can only occupy states having a discr
 \begin{equation}\label{e.H-levels}
         E_{n} = -\val{13.6}{\eV}\times \frac{1}{n^{2}},
 \end{equation}
-where $n > 0$ is an integer known as the principal quantum number.  These energies are negative, relative to a free electron.  For example, it takes \val{13.6}{\eV} to remove an electron in its ground state from the atom.
+where $n > 0$ is an integer known as the principal quantum number.  These energies are negative, relative to a free electron.  For example, the ground state ($n=1$) has energy $\ERy = -\val{13.6}{\eV}$, meaning that it takes \val{13.6}{\eV} to remove an electron in its ground state from the atom.
 
-Because the electrons in an atom can only have certain energies, the atom can only absorb or emit light at specific wavelengths, such that the energy of the photon matches the difference in energy between two levels.  For example, a hydrogen atom can absorb a photon of energy
+Because the electrons in an atom can only have certain energies, the atom can only absorb or emit light at specific wavelengths, such that the energy of the photon matches the difference in energy between two levels. For example, a hydrogen atom in its ground state can absorb a photon of energy
 \[
-        E_{1\to2} = -\val{13.6}{\eV} \left(\frac{1}{2^{2}} - \frac{1}{1^{2}}\right)
+        E_{1\to2} = -\ERy \left(\frac{1}{2^{2}} - \frac{1}{1^{2}}\right)
                  = \val{10.2}{\eV}
 \]
-corresponding to the energy required to move the electron from  $n=1$ to $n=2$.
-
-The wavelengths that can be emitted or absorbed by a hydrogen atom at rest can be found by substituting $E = hc/\lambda$ into equation~(\ref{e.H-levels}):
+corresponding to the energy required to move the electron from $n=1$ to $n=2$. The wavelengths that can be absorbed by a hydrogen atom at rest can be found by substituting $E = hc/\lambda$ into equation~(\ref{e.H-levels}):
 \begin{equation}
         \lambda_{m\to n} = \lambda_{0}\left(\frac{1}{n^{2}}-\frac{1}{m^{2}}\right)^{-1},
 \end{equation}
-where $\lambda_{0} = \val{91.2}{\nano\meter}$.
+where $\lambda_{0} = \val{91.2}{\nano\meter}$ and $n > m$.
 The transitions to the lowest levels are named after their discoverers: Lyman for $m\to1$, Balmer for $m\to2$, Paschen for $m\to3$. A greek letter is used to denote the higher state: for example Lyman $\alpha$ (abbr.\ Ly$\alpha$) means $2\to1$, with $\lambda_{\mathrm{Ly}\alpha} = \val{121.6}{\nano\meter}$.  The first line transition in the Balmer series is $3\to2$, and is designated H$\alpha$: $\lambda_{\mathrm{H}\alpha} = \val{656.3}{\nano\meter}$. The first 20 lines for the Lyman ($m\to1$), Balmer ($m\to2$), and Paschen ($m\to3$) are shown in Fig.~\ref{f.H-spectrum}; note the $4\to3$ transition is outside the plot range. The Balmer lines lie in the visible range. Note that $\lambda_{m\to n} < \lambda_{0}$; photons with wavelengths $\lambda < \val{91.2}{\nano\meter}$ have sufficient energy to knock the electron out of the atom, thereby producing a hydrogen ion and a free electron.
 
 \begin{marginfigure}[-8\baselineskip]
@@ -74,26 +72,48 @@ In order to produce a Balmer absorption line, we must have some hydrogen atoms i
 \frac{N_{i}}{N_{j}} = \frac{g_{i}}{g_{j}} 
 \exp\left(-\frac{E_{i}-E_{j}}{\kB T}\right).
 \end{equation}
-Here the number $g_{n}$ gives the number of quantum mechanical states having energy $E_{n}$.\sidenote{$g_{n}$ is known as the \emph{degeneracy} of a given energy} For energy
-\[
-	E_{n} = -\val{13.6}{\eV}\frac{1}{n^{2}},
-\]
-there are $n^{2}$ possible states, each having a different angular momentum. For each of these $n^{2}$ states, both the electron and proton may each have 2 possible spins. The total number of states for energy $E_{n}$ is therefore
-\[
-	g_{n} = 2\times2\times n^{2}.
-\]
+Here the number $g_{n}$ gives the number\sidenote{$g_{n}$ is known as the \emph{degeneracy} of a given level $n$} of quantum mechanical states having energy $E_{n} = -\ERy/n^{2}$. For an energy level $n$, there are $n^{2}$ possible states, each having a different angular momentum. For each of these $n^{2}$ states, both the electron and proton may each have 2 possible spins. The total number of states for energy $E_{n}$ is therefore $g_{n} = 2\times2\times n^{2}$.
 
 Suppose we wish to know the fraction of atoms in a given state $i$: that is, we want to know
 \[	x_{i} = \frac{N_{i}}{N_{1}+N_{2}+\ldots+N_{i}+\ldots} ? \]
 Using equation~(\ref{e.boltzmann}), we can express $x_{i}$ as 
 \begin{eqnarray}
-  x_{i} &=& \frac{N_{i}/N_{1}}{1+N_{2}/N_{1}+\ldots+N_{i}/N_{1}+\ldots}\nonumber\\
-        &=& \frac{g_{i}e^{-E_{i}/\kB T}}{g_{1}e^{-E_{1}/\kB T}+g_{2}e^{-E_{2}/\kB T}+\ldots+g_{i}e^{-E_{i}/\kB T}+\ldots} \nonumber\\
+  x_{i} &=& \frac{g_{i}e^{-E_{i}/\kB T}}{g_{1}e^{-E_{1}/\kB T}+g_{2}e^{-E_{2}/\kB T}+\ldots+g_{i}e^{-E_{i}/\kB T}+\ldots} \nonumber\\
         &\equiv& \frac{g_{i}e^{-E_{i}/\kB T}}{\pfcn}.
 \end{eqnarray}
 The quantity 
-\[ \pfcn = \sum_{i} g_{i}\exp\left(-\frac{E_{i}}{\kB T}\right) \]
+\begin{equation}\label{e.partition-function}
+	\pfcn = \sum_{n} g_{n}\exp\left(-\frac{E_{n}}{\kB T}\right)
+\end{equation}
 is called the \emph{partition function}: loosely speaking, it indicates the number of ways the sample of atoms can be partitioned among the different energy levels.
+
+\begin{sidebar}[The partition function for neutral hydrogen]
+The partition function for neutral hydrogen, eq.~(\ref{e.partition-function}), has some interesting features. Substituting $g_{n}=4n^{2}$ and $E_{n} = -\ERy/n^{2}$ and factoring out common terms gives,
+\[	\pfcn = 4e^{\beta\ERy}\sum_{n} n^{2} e^{-\beta\ERy(1-1/n^{2})}. \]
+Here we have used the shorthand $\beta = (\kB T)^{-1}$. Written in this fashion, it is clear that for $n\gg 1$, the sum diverges, since the individual terms go as $n^{2}e^{-\beta\ERy}$ as $n\to\infty$. In practice, this isn't a problem, as there is an upper limit on $n$. The mean distance of the electron is $\approx \abohr n^{2}$, where $\abohr = \val{\sci{5.29}{-11}}{\cm}$ is the Bohr radius. As a result, each atom takes up a volume $\approx \abohr^{3}n^{6}$; if we want the atoms to not overlap, then the volume per atom must be at least twice this. Thus for $N$ atoms, the number per volume (denoted by $\xi$ here to avoid confusion) must be
+\[
+\xi = \frac{N}{V} < \frac{N}{N\cdot 2\abohr^{3}n^{6}}.
+\]
+Thus the maximum level is $n < (2\abohr^{3}\xi)^{-1/6}$.
+
+You might worry that we have been sloppy in defining this cutoff. The terms in the partition function are quite small, however, until $n$ becomes quite large. For example, at $T=\val{10^{4}}{\K}$,
+\begin{center}
+\begin{tabular}{rrr}
+$n$ & $n^{2} e^{\beta\ERy(1-1/n^{2}}$ & $4\sum_{i=1}^{n} i^{2}e^{-\beta\ERy(1-1/i^{2})}$ \\
+\hline
+   1 & 1.00e+00 &  4.0000 \\
+   2 & 2.88e-05 &  4.0001 \\
+   3 & 7.23e-06 &  4.0001 \\
+  \multicolumn{1}{c}{\ldots} \\
+  26 & 9.62e-05 &  4.0038 \\
+  \multicolumn{1}{c}{\ldots} \\
+  52 & 3.78e-04 &  4.0274 \\
+  \multicolumn{1}{c}{\ldots} \\
+ 268 & 9.99e-03 &  7.5901 \\
+\end{tabular}
+\end{center}
+For a typical A-star photospheric density $\xi\sim \val{10^{15}}{\cm^{-3}}$, the density cutoff is $n \lesssim 35$; regardless of the precise value of the cutoff, it is reasonably accurate to set the sum to unity, so that $Q\approx 4e^{\beta\ERy}$.
+\end{sidebar}
 
 \begin{exercisebox}[Partition function for neutral hydrogen]
 For a neutral hydrogen atom, what is the limit of $\pfcn_{\mathrm{H}}(T)$ for $\kB T \ll \val{13.6}{\eV}$?  How does $\pfcn_{\mathrm{H}}(T)$ qualitatively change with temperature: does it increase, decrease, or something else?
