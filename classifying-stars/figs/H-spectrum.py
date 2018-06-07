@@ -14,7 +14,7 @@ plt.style.use('text-sans')
 plt.rc('xtick',**{'direction':'out'})
 plt.rc('font',**{'size':8})
 
-Nlines = 50
+Nlines = 20
 greek = [r'$\alpha$',r'$\beta$',r'$\gamma$',r'$\delta$',r'$\epsilon$']
 
 Lyman = [ wavelength(1,m) for m in range(2,2+Nlines) ]
