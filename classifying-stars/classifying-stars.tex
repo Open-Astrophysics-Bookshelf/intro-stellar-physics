@@ -87,42 +87,52 @@ The quantity
 \end{equation}
 is called the \emph{partition function}: loosely speaking, it indicates the number of ways the sample of atoms can be partitioned among the different energy levels.
 
+\begin{exercisebox}[Partition function for neutral hydrogen]
+Assuming that the first term $g_{1}e^{-E_{1}/\kB T}$ dominates the sum in the partition function (see Box~\ref{sb.partition-function}), plot the fraction of neutral hydrogen in its $n=2$ state as a function of temperature, for $\val{5\,000}{\K} < T < \val{20\,000}{\K}$.
+\end{exercisebox}
+
 \begin{sidebar}[The partition function for neutral hydrogen]
+\label{sb.partition-function}
 The partition function for neutral hydrogen, eq.~(\ref{e.partition-function}), has some interesting features. Substituting $g_{n}=4n^{2}$ and $E_{n} = -\ERy/n^{2}$ and factoring out common terms gives,
 \[	\pfcn = 4e^{\beta\ERy}\sum_{n} n^{2} e^{-\beta\ERy(1-1/n^{2})}. \]
-Here we have used the shorthand $\beta = (\kB T)^{-1}$. Written in this fashion, it is clear that for $n\gg 1$, the sum diverges, since the individual terms go as $n^{2}e^{-\beta\ERy}$ as $n\to\infty$. In practice, this isn't a problem, as there is an upper limit on $n$. The mean distance of the electron is $\approx \abohr n^{2}$, where $\abohr = \val{\sci{5.29}{-11}}{\cm}$ is the Bohr radius. As a result, each atom takes up a volume $\approx \abohr^{3}n^{6}$; if we want the atoms to not overlap, then the volume per atom must be at least twice this. Thus for $N$ atoms, the number per volume (denoted by $\xi$ here to avoid confusion) must be
+Here we have used the shorthand $\beta = (\kB T)^{-1}$. Written in this fashion, it is clear that for $n\gg 1$, the sum diverges, since the individual terms go as $n^{2}e^{-\beta\ERy}$ as $n\to\infty$. In practice, this isn't a problem, as there is an upper limit on $n$ set by ambient conditions. For example, the mean distance of the electron from the nucleus is $\approx \abohr n^{2}$, where $\abohr = \val{\sci{5.29}{-11}}{\cm}$ is the Bohr radius. As a result, each atom takes up a volume $\approx \abohr^{3}n^{6}$; if we want the atoms to not overlap, then the volume per atom, $V/N = 1/xi$, must be larger than this by some factor. Suppose we set that the volume of an atom must be less than half of that available in our gas; then
 \[
 \xi = \frac{N}{V} < \frac{N}{N\cdot 2\abohr^{3}n^{6}}.
 \]
-Thus the maximum level is $n < (2\abohr^{3}\xi)^{-1/6}$.
+Thus the maximum level is $n < (2\abohr^{3}\xi)^{-1/6}$. For a typical A-star photospheric density $\xi\sim \val{10^{15}}{\cm^{-3}}$, the density cutoff is $n \lesssim 35$. In practice the cutoff will be even lower.
 
-You might worry that we have been sloppy in defining this cutoff. The terms in the partition function are quite small, however, until $n$ becomes quite large. For example, at $T=\val{10^{4}}{\K}$,
+The precise maximum value of $n$ is not that important for most applications. The reason is that the in the partition function increase only slowly. For example, at $T=\val{10^{4}}{\K}$, the terms and cumulative sum in the partition function are as follows.
 \begin{center}
 \begin{tabular}{rrr}
-$n$ & $n^{2} e^{\beta\ERy(1-1/n^{2}}$ & $4\sum_{i=1}^{n} i^{2}e^{-\beta\ERy(1-1/i^{2})}$ \\
+$n$ & $n^{2} e^{\beta\ERy(1-1/n^{2})}$ & $4\sum_{i=1}^{n} i^{2}e^{-\beta\ERy(1-1/i^{2})}$ \\
 \hline
    1 & 1.00e+00 &  4.0000 \\
    2 & 2.88e-05 &  4.0001 \\
    3 & 7.23e-06 &  4.0001 \\
-  \multicolumn{1}{c}{\ldots} \\
+  \multicolumn{3}{c}{\vdots} \\
   26 & 9.62e-05 &  4.0038 \\
-  \multicolumn{1}{c}{\ldots} \\
+  \multicolumn{3}{c}{\vdots} \\
   52 & 3.78e-04 &  4.0274 \\
-  \multicolumn{1}{c}{\ldots} \\
+  \multicolumn{3}{c}{\vdots} \\
  268 & 9.99e-03 &  7.5901 \\
 \end{tabular}
 \end{center}
-For a typical A-star photospheric density $\xi\sim \val{10^{15}}{\cm^{-3}}$, the density cutoff is $n \lesssim 35$; regardless of the precise value of the cutoff, it is reasonably accurate to set the sum to unity, so that $Q\approx 4e^{\beta\ERy}$.
+As we can see from the cumulative sum (rightmost column), the partition function is insensitive to the precise value of the cutoff; indeed, it is reasonably accurate to just use the first term, $Q\approx 4e^{\beta\ERy}$. 
 \end{sidebar}
-
-\begin{exercisebox}[Partition function for neutral hydrogen]
-For a neutral hydrogen atom, what is the limit of $\pfcn_{\mathrm{H}}(T)$ for $\kB T \ll \val{13.6}{\eV}$?  How does $\pfcn_{\mathrm{H}}(T)$ qualitatively change with temperature: does it increase, decrease, or something else?
-\end{exercisebox}
 
 \section{Ionization: The Saha equation}
 \label{s.saha-eqn}
 
-As the temperature in the gas rises, collisions between atoms become sufficiently energetic to eject electrons from atoms.  In astronomy, the ionization state is denoted by a small Roman numeral: Fe\,\textsc{i} denotes neutral iron, Fe\,\textsc{ii} denotes singly-ionized iron, Fe\,\textsc{iii} denotes doubly-ionized iron, and so on. We'd like to extend equation~(\ref{e.boltzmann}) to find the ratios of two ionization states $N\,(i+1)/N\,(i)$.  There are some complications, however, and deriving this ratio is beyond the scope of this course. What we will do is look at the equation for this ratio, known as the \emph{Saha equation}, and try to understand how it works.  The Saha equation for the ratio of ionized to neutron hydrogen is
+As the temperature in the gas rises, there are more photons with sufficient energy to eject electrons from an atom. In addition, collisions between atoms also become sufficiently energetic to ionize the atom. In astronomical nomenclature, the ionization state is denoted by a small Roman numeral: \ion{Fe}{i} denotes neutral iron, \ion{Fe}{ii} denotes singly-ionized iron (charge $+1$), \ion{Fe}{iii} denotes doubly-ionized iron (charge $+2$), and so on. In thermal equilibrium, the rate at which atoms are ionized must equal the rate at which ions and electrons recombine: for example, in a gas consisting of hydrogen atoms, hydrogen ions (i.e., protons), and electrons we have
+\[
+	\ion{H}{ii} + e \longleftrightarrow \ion{H}{i}
+\]
+
+
+We'd like to extend equation~(\ref{e.boltzmann}) to find the ratios of two ionization states $N\,(i+1)/N\,(i)$.  
+
+
+What we will do is look at the equation for this ratio, known as the \emph{Saha equation}, and try to understand how it works.  The Saha equation for the ratio of ionized to neutron hydrogen is
 \begin{equation}\label{e.saha}
 \frac{N\,\textrm{\scshape ii}}{N\,\textrm{\scshape i}} 
 = {\color{red}\left[\frac{2}{n_{e}}
