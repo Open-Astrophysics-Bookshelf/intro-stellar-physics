@@ -179,21 +179,65 @@ We can then write eq.~(\ref{e.saha})---with the approximation that the partition
 \]
 Now the factor $g_{i+1,1}/g_{i,1}$ is of order unity. Hence, when the gas ionizes and $N_{i+1,1}\approx N_{i,1}$, we must have that $\zeta\approx \beta E_{\mathrm{ion}}$; put differently, the ionization temperature will not be $E_{\mathrm{ion}}/\kB$ but rather $E_{\mathrm{ion}}/\kB\zeta$. Under conditions in the photosphere of an A star ($T \approx \val{10^{4}}{\K}$, $n\sim \val{10^{15}}{\cm^{-3}}$), $\zeta \approx 15$.
 
+In more intuitive terms, this means that when an electron is ejected from an atom, it has an enormously large number $\sim e^{15}$ number of different states available. To rejoin with an ion requires being in the right place at the right time with the right energy. The large number of available states makes this unlikely, so the electron must wander through a vast and desolate phase space until at long last it recombines with an ion. In a sense, the large number of available states per electron means it is easier to ionize than recombine; as a result the temperature at which ionization occurs is considerably lower than $E_{\mathrm{ion}}/\kB$.
 
-\section{Classifying stars by spectra}
+\begin{exercisebox}[Conditions for strong Balmer lines]
+\label{ex.strong-Balmer}
+Let $n_{\textsc{i}}$ be the density of \ion{H}{i} and $n_{\textsc{ii}}$ be the density of \ion{H}{ii}. Denote the fraction of neutral hydrogen as $x = n_{\textsc{i}}/(n_{\textsc{i}}+n_{\textsc{ii}})$, so that $1-x = n_{\textsc{ii}}/(n_{\textsc{i}}+n_{\textsc{ii}})$ is the fraction of ionized hydrogen. Take $n_{\textsc{i}}+n_{\textsc{ii}} = \val{10^{15}}{\cm^{-3}}$, and assume that all free electrons come from the ionization of hydrogen, so that $n_{e} = n_{\textsc{ii}}$. Plot $x$ as a function of temperature for $\val{7\,500}{\K}\le T\le \val{15\,000}{\K}$, and find the temperature at which $x = 1/2$. Then multiply $x$ by the fraction $n_{2}/n_{1}$ set by the Boltzmann equation to find the fraction of hydrogen in the $n=2$ level.
+\end{exercisebox}
 
-The Balmer lines, which correspond to transitions $2\to3$, $2\to 4$, \ldots, are most prominent in A stars. These stars have $\Teff = \valrng[--]{7\,500}{9\,500}{\K}$. At lower temperatures, the population of hydrogen atoms in the level $n=2$ decreases as $e^{-E_{2}/kT}$ and the lines become weak. At higher temperatures, the number of neutral hydrogen atoms decreases; most of the hydrogen is ionized, and the Balmer lines again become weaker.
+As shown in exercise~\ref{ex.strong-Balmer}, the Balmer lines, which correspond to transitions $2\to3$, $2\to 4$, \ldots, are most prominent in A stars. These stars have $\Teff = \valrng[--]{7\,500}{9\,500}{\K}$. At lower temperatures, the population of hydrogen atoms in the level $n=2$ decreases as $e^{-E_{2}/\kB T}$ and the lines become weak. At higher temperatures, the number of neutral hydrogen atoms decreases; most of the hydrogen is ionized, and the Balmer lines again become weaker.
 
-These arguments apply to other species present in the stellar photosphere.  In the hottest stars (type O: $\Teff > \val{30\,000}{\K}$), hydrogen is mostly ionized and the lines are He\,\textsc{ii} and multiply-ionized metals. As temperature cool into the B and A series, the hydrogen lines increase in strength. Going from F into G ($\Teff = \valrng[--]{5\,000}{6\,000}{\K}$, the hydrogen lines decrease, while lines from singly-ionized and neutral metals such as Ca\,\textsc{ii}, Ca\,\textsc{i}, Fe\,\textsc{i} become strong.  At still lower temperatures in the K and M ($\Teff < \val{3\,500}{\K}$) types, absorption from molecules such as TiO becomes prominant.  An example is the broad trough seen in the K spectrum near $\lambda = \val{500}{\nano\meter}$ in Fig.~\ref{f.spectral-types}, which displays standard stellar spectra for selected types at optical wavelength.
+These arguments apply to other species present in the stellar photosphere.  In the hottest stars (type O: $\Teff > \val{30\,000}{\K}$), hydrogen is mostly ionized and the lines are from \ion{He}{ii} and multiply-ionized metals. As the temperature cools into the B and A series, the hydrogen lines increase in strength. Going from F into G ($\Teff = \valrng[--]{5\,000}{6\,000}{\K}$, the hydrogen lines decrease, while lines from singly-ionized and neutral metals such as \ion{Ca}{ii}, \ion{Ca}{i}, and \ion{Fe}{i} become strong.  At still lower temperatures in the K and M ($\Teff < \val{3\,500}{\K}$) types, absorption from molecules such as TiO becomes prominant.  An example is the broad trough seen in the K spectrum near $\lambda = \val{500}{\nano\meter}$ in Fig.~\ref{f.spectral-types}, which displays standard stellar spectra for selected types at optical wavelength.
 
 \begin{figure}[hbp]
 \includegraphics[width=\linewidth]{spectral_types}
 \caption[Standard stellar types]{\label{f.spectral-types} Spectra from main-sequence stars of spectral types O--K. Data from \protect\citet{Jacoby1984A-library-of-st}.}
 \end{figure}
 
-As we have seen, the temperature of the stellar atmosphere determines which species are present and hence which lines are present. The width of the line conveys information about the pressure at the photosphere. To understand this, we need to digress briefly on the shape of the line.
+\section{Pressure broadening of lines}
+
+We've now demonstrated how stars may be classified by the absorption lines in their spectra, and how this classification gives us the photosphere effective temperature. We can obtain information about the pressure at the photosphere, and hence the surface gravity of the star, by looking at the shape of the absorption lines. A zoomed-in view of the H$\gamma$ line ($5\to2$ transition in \ion{H}{i}) from a main-sequence A1 star is show in Fig.~\ref{f.single-line}. The line is spread over a few nanometers, compared against a central value of $\val{434}{\nano\meter}$.
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{single-line}
+\caption{\label{f.single-line} H$\gamma$ absorption line observed from the main-sequence A1 star HD16608. Spectrum from \protect\citet{Jacoby1984A-library-of-st}.}
+\end{marginfigure}
+
+\newthought{To understand what sets the shape, and width, of the absorption line,} we need to model our atomic transition. Consider an electronic transition in an atom between two energy levels, $E_m$ and $E_n$. The natural frequency of this transition is $\nu_0 = |E_n-E_m|/h$. Light incident on the atom with frequency $\nu\neq\nu_0$ drives the electron at frequency $\nu$. 
+
+Since the transition between two states has a definite frequency associated with it, let's start with a simple harmonic oscillator, which is described by an equation
+\[
+	\DDtt{x} + \omega_{0}^{2} x = 0.
+\]
+Here $\omega_{0} = 2\pi\nu_{0}$. Light is described as an electromagnetic wave, so classically the electron feels a force $eE\cos(\wt)$, where $\omega = 2\pi \nu$. An accelerating electron radiates, which damps the acceleration of the electron. The damping can be modeled as a force that is proportional to the velocity, $-m\Gamma \dif x/\dif t$. Classically, the transition in an atom can therefore be modeled as an electromagnetic oscillator with damping and driving terms,
+\[
+	\DDtt{x} + m\Gamma\DDt{x} + \omega_{0}^{2}x = \frac{eE}{m}\cos(\wt).
+\]
+This has a well known solution (see Box~\ref{sb.damped-driven-oscillator}). The amplitude of oscillation is proportional to the energy removed from the incident light, which is proportional to the cross-section. The classical cross-section for absorption of radiant energy by an electromagnetic oscillator is thus
+\begin{equation}\label{e.semi-classical}
+    \sigma = \left(\frac{\pi e^2}{m_e c}\right)
+    \left\{\frac{\Gamma/4\pi}{(\nu_0-\nu)^2 + (\Gamma/4\pi)^2}\right\}.
+\end{equation}
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{comparison}
+\caption[Comparison of Lorentzian and Gaussian distributions]{\label{f.comparison}
+Comparison of a Lorentzian ($\mathcal{L}$, solid line) and a Gaussian ($\mathcal{G}$, dotted line), both with $\mathrm{FWHM}=1$. The area under each curve is unity.}
+\end{marginfigure}
+The function
+\[
+    \mathcal{L}(\nu;\Gamma) = \frac{1}{\pi} 
+        \frac{\Gamma/4\pi}{(\nu_0-\nu)^2 + (\Gamma/4\pi)^2}
+\]
+is known as a Lorentzian.  In contrast to a Gaussian, a Lorentzian is characterized by broad ``wings'' (Fig.~\ref{f.comparison}) as it goes to zero away from the central frequency $\omega_{0}$.
+The actual value of the cross-section must be calculated using quantum mechanics. The overall shape of the cross-section is still in the form of equation~(\ref{e.semi-classical}), however, so the opacity is just
+\begin{equation}
+    \rho\kappa_\nu = n_{\mathrm{ion}} \left(\frac{\pi e^2}{m_e c}\right) f_{mn}
+        \left\{\frac{\Gamma/4\pi}{(\nu_0-\nu)^2 + (\Gamma/4\pi)^2}\right\}.
+\end{equation}
+In this equation, $f_{mn}$ is a number, called the \emph{oscillator strength}, that results from the calculation of the transition probability from state $m$ to state $n$, and $n_{\mathrm{ion}}$ is the density of atoms in state $m$.  The key point is that $f_{mn}$ depends only on the details of the transition: the energies, spins, and parities of the atomic states.  It does not depend on environmental parameters such as temperature and pressure.  As a result, $f_{mn}$ can be measured or computed once and then tabulated.
 
 \begin{sidebar}[The driven damped oscillator]
+\label{sb.damped-driven-oscillator}
 Let's begin with a simple system: a mass $m$ attached to a spring with force $F = -kx$.
 
 \begin{center}
@@ -208,7 +252,7 @@ You have solved this equation before: the most general solution is
 \begin{equation}\label{e.SHO-general-solution}
 	x(t) = x_{0}\cos(\wot) + \frac{v_{0}}{\omega_{0}}\sin(\wot)
 \end{equation}
-with $\omega_{0}^{2} = k/m$ and with $x_{0}$ and $v_{0}$ being the initial position and velocity of the mass. The angular frequency $\omega_{0}$ is related to the period of oscillation $T$ as $\omega_{0} = 2\pi/T$.
+with $\omega_{0}^{2} = k/m$ and with $x_{0}$ and $v_{0}$ being the initial position and velocity of the mass. The angular frequency $\omega_{0}$ is related to the period of oscillation $T$ as $\omega_{0} = 2\pi/T = 2\pi\nu$.
 
 \newthought{Now let's push on our mass with an oscillating force, $F\cos(\omega t)$ with $\omega\neq\omega_{0}$.} A real world example would be holding a vibrating tuning fork near another fork tuned to a different frequency.  The equation of motion is now
 \begin{equation}\label{e.SHO-driven}
@@ -271,7 +315,6 @@ The oscillation can be described as the real part of a complex quantity $Ae^{i\w
     A = \frac{F}{m}\left[\frac{1}{\left(\omega_0^2-\omega^2\right) + i\Gamma\omega}\right]
 \]
 being the (complex) amplitude.
-\end{sidebar} 
 
 For $\omega \approx \omega_0$, we write $(\omega_0^2-\omega^2)\approx 2\omega_0(\omega_0-\omega)$ and take the square of the amplitude to find,
 \begin{eqnarray}
@@ -280,102 +323,10 @@ For $\omega \approx \omega_0$, we write $(\omega_0^2-\omega^2)\approx 2\omega_0(
     &=& \frac{\pi}{2\Gamma}\left(\frac{F}{m\omega_0}\right)^2
         \left\{\frac{1}{\pi}\frac{\Gamma/2}{(\omega_0-\omega)^2 + (\Gamma/2)^2}\right\}
 \end{eqnarray}
-We rewrote the amplitude in the second line so that the term in $\{\cdot\}$ is normalized. The function
-\[
-    \mathcal{L}(\omega;\Gamma) = \frac{1}{\pi} 
-        \frac{\Gamma/2}{(\omega_0-\omega)^2 + (\Gamma/2)^2}
-\]
-is known as a Lorentzian.  In contrast to a Gaussian, a Lorentzian is characterized by broad ``wings'' (Fig.~\ref{f.comparison}) as it goes to zero away from the central frequency $\omega_{0}$.
-\begin{marginfigure}[-4\baselineskip]
-\includegraphics[width=\linewidth]{comparison}
-\caption[Comparison of Lorentzian and Gaussian distributions]{\label{f.comparison}
-Comparison of a Lorentzian ($\mathcal{L}$, solid line) and a Gaussian ($\mathcal{G}$, dotted line), both with $\mathrm{FWHM}=1$. The area under each curve is unity.}
-\end{marginfigure}
+We rewrote the amplitude in the second line so that the term in $\{\cdot\}$ is normalized. 
+\end{sidebar} 
 
-\newthought{Consider an electronic transition in an atom between two energy levels, $E_m$ and $E_n$.} The natural frequency of this transition is $\nu_0 = |E_n-E_m|/h$. Light incident on the atom with frequency\sidenote{We are switching from angular frequency $\omega$ to frequency $\nu = \omega/2\pi$.} $\nu\neq\nu_0$ drives the electron at frequency $\nu$. An accelerating electron radiates, which damps the acceleration of the electron.  Classically, the transition in an atom is an electromagnetic oscillator with damping and driving terms, with cross-section\sidenote{For details, see the Box~\ref{b.line-emission}.}
-\begin{equation}\label{e.semi-classical}
-    \sigma = \left(\frac{\pi e^2}{m_e c}\right)
-    \left\{\frac{\Gamma/4\pi}{(\nu_0-\nu)^2 + (\Gamma/4\pi)^2}\right\}.
-\end{equation}
-The actual value of the cross-section must be calculated using quantum mechanics. The overall shape of the cross-section is still in the form of equation~(\ref{e.semi-classical}) with opacity
-\begin{equation}
-    \rho\kappa_\nu = n_i \left(\frac{\pi e^2}{m_e c}\right) f_{mn}
-        \left\{\frac{\Gamma/4\pi}{(\nu_0-\nu)^2 + (\Gamma/4\pi)^2}\right\}.
-\end{equation}
-In this equation, $f_{mn}$ is a number, called the \emph{oscillator strength}, that results from the calculation of the transition probability from state $m$ to state $n$, and $n_i$ is the density of atoms in state $m$.  The key point is that $f_{mn}$ depends only on the details of the transition: the energies, spins, and parities of the atomic states.  It does not depend on environmental parameters such as temperature and pressure.  As a result, $f_{mn}$ can be measured or computed once and then tabulated.
-
-
-\begin{sidebar}[Treating line emission as a driven damped oscillator]
-\label{b.line-emission}
-NB. In this box, Gaussian CGS units are used for the electromagnetic field. To convert to MKS, make the following substitutions:
-\begin{eqnarray*}
-e &\to& \frac{1}{\sqrt{4\pi\varepsilon_0}}e\\
-\bvec{E} &\to& \sqrt{4\pi\varepsilon_0}\bvec{E}\\
-c &\to& (\mu_0\varepsilon_0)^{-1/2}.
-\end{eqnarray*}
-
-\newthought{Suppose we have a classical charged harmonic oscillator.}  The instantaneous power emitted by the oscillator is
-\begin{equation}\label{e.larmor-power}
-	 P(t) = \frac{2}{3}\frac{e^{2}}{c^{3}} |\dot{\vu}|^{2},
-\end{equation}
-and when averaged over a cycle is
-\begin{equation}\label{e.oscillator-power}
-	 \left\langle P(t) \right\rangle = \frac{e^{2}}{3c^{3}}x_{0}^{2} \omega^{4},
-\end{equation}
-since $\dot{\vu} = -\omega^{2}\bvec{x}_{0}\cos \omega t$. Since the oscillator is radiating, it is losing energy and is damped. Let us write the damping as $\bvec{F}_{\mathrm{rad}}\vdot \vu$; to find $\bvec{F}_{\mathrm{rad}}$, we integrate the power loss over a cycle,
-\[  -\int_{t_{1}}^{t_{2}}\!\dif t\;\frac{2}{3}\frac{e^{2}}{c^{3}}\dot{\vu}\vdot\dot{\vu} 
-	= -\left.\frac{2}{3}\frac{e^{2}}{c^{3}}\dot{\vu}\vdot\vu\right|_{t_{1}}^{t_{2}} 
-	+ \frac{2}{3}\frac{e^{2}}{c^{3}} \int_{t_{1}}^{t_{2}}\!\dif t\;\ddot{\vu}\vdot\vu. 
-\]
-Since the motion is periodic, the first term vanishes and we can therefore identify 
-\[ 
-	\bvec{F}_{\mathrm{rad}} = \frac{2}{3}\frac{e^{2}}{c^{3}}\ddot{\vu} 
-	= -m\left(\frac{2e^{2}\omega^{2}}{3c^{3}m}\right)\vu
-\]
-as the radiation damping term with the term in parenthesis being the damping constant $\gamma$. 
-If there is an driving electric field on our oscillator, then its equation of motion becomes
-\begin{equation}\label{e.eq-sho}
-	m\ddot{\bvec{x}} = -m\omega_{0}^{2}\bvec{x} + e\bvec{E}e^{i\omega t} - m\gamma \dot{\bvec{x}}.
-\end{equation}
-Using a trial function $\bvec{x}\propto e^{i\omega t}$ gives
-\[
-	\bvec{x} = \frac{e}{m}\frac{E e^{i\omega t}}{(\omega_{0}^{2}-\omega^{2}) + i\omega\gamma}.
-\]
-Taking the second derivative w.r.t.\ time of $\bvec{x}$, substituting into eq.~(\ref{e.larmor-power}), and averaging over a cycle gives the power radiated by the oscillator,
-\[
-	\left\langle P(t)\right\rangle = \frac{e^{4}\omega^{4} E^{2}}{3 c^{2}m^{2}}
-	\frac{1}{(\omega_{0}^{2}-\omega^{2})^{2} + \gamma^{2}\omega^{2}}.
-\]
-Dividing $\langle P(t)\rangle$ by the incident power per unit area, $cE^{2}/(8\pi)$, gives the cross-section:
-\begin{equation}\label{e.classical-oscillator-cross-section}
-	\sigma = \frac{8\pi}{3}\frac{e^{4}}{m^{2}c^{3}}
-	\frac{\omega^{4}}{(\omega_{0}^{2}-\omega^{2})^{2} + \gamma^{2}\omega^{2}}.
-\end{equation}
-Now, for $\omega \approx \omega_{0}$, we can expand $(\omega_{0}^{2}-\omega^{2})^{2} \approx 4\omega_{0}^{2}(\omega_{0}-\omega)^{2}$; furthermore, we identify $2e^{2}\omega_{0}^{2}/(3c^{3}m) = \gamma$ and equation~(\ref{e.classical-oscillator-cross-section}) becomes
-\begin{equation}\label{e.cross-section-lorentz}
-	\sigma = \pi\left(\frac{e^{2}}{mc}\right)\frac{\gamma}{(\omega_{0}-\omega)^{2} + (\gamma/2)^{2}}.
-\end{equation}
-The line profile is Lorentzian, with a width $\gamma$. In terms of wavelength, the width is
-\[ 
-	\Delta \lambda = \left|\frac{\dif\lambda}{\dif\omega}\right|\gamma = \frac{2\pi c}{\omega^{2}}\gamma
-	= \val{\sci{1.2}{-4}}{\textrm{\AA}}.
-\]
-This width is independent of the transition frequency (it is just the classical electron radius), and it is very, very small.  In a stellar atmosphere, the width is set by interactions and doppler broadening.
-
-\newthought{To understand how impacts affect the line width}, suppose we model the oscillator as being started and stopped by impacts; in between impacts it just goes as $e^{i\omega_{0}t}$.  To get the spectrum, we take the Fourier transform,
-\[
-	F(\omega,t) = \int_{0}^{t}\!\dif t'\; \exp[i(\omega_{0}-\omega)t'],
-\]
-where $t$ is some time between impacts. Now if the impacts are distributed randomly and are uncorrelated, then the distribution of wait times follows a Poisson distribution,
-\[ W(t)\,\dif t = e^{-t/\tau}\,\dif t/\tau, \]
-where $\tau$ is the average time between collisions.  Using this to compute the energy spectrum, we obtain
-\[ E(\omega) = \frac{1}{2\pi\tau}\int_{0}^{\infty}\!\dif t\; F(\omega,t)F^{*}(\omega,t)W(t) = \frac{1}{\pi\tau} 
-	\frac{1}{(\omega_{0}-\omega)^{2} + (1/\tau)^{2}};
-\]
-the line profile is again Lorentzian, with a FWHM $2/\tau$.
-\end{sidebar}
-
-\newthought{There is an intrinsic width $\Gamma$ that is set by the finite lifetime of the energy levels;} in practice, however, this is not important.  In a stellar atmosphere, the width $\Gamma$ is set by collisions.  For example, when an electron passes close by our atom, the electric field shifts the energy levels of the atom\sidenote{This is an application of the \emph{Stark} effect that you learn about in quantum mechanics.}.  The greater the collision rate, the larger the width.
+\newthought{In a stellar atmosphere, the width $\Gamma$ is set by collisions.} For example, when an electron passes close by our atom, the electric field shifts the energy levels of the atom\sidenote{This is an application of the \emph{Stark} effect that you learn about in quantum mechanics.}.  The greater the collision rate, the larger the width.
 If we have two stars of the same photospheric temperature (so that both stars have the same lines), then a way to increase the collision rate is to increase the pressure. Recall, however, that in the stellar atmosphere $P = (g/\kappa)\tau$; as a result, stars with a higher surface gravity will have broader lines. The inset in Figure~\ref{f.compare_grav} illustrates the broadening of the Balmer H$\gamma$ line ($5\to 2$) in the spectrum of a main-sequence A1 star compared with that of a supergiant A1 star.
 
 \begin{figure}[hp]
@@ -385,23 +336,95 @@ If we have two stars of the same photospheric temperature (so that both stars ha
     }
 \end{figure}
 
-In addition to the width set by collisions, the line is also broadened by thermal motion: the atoms are in ceaseless motion; those headed towards us absorb at a blueshifted frequency, while those headed away from us absorb at a redshifted frequency.  Because the atomic velocities follow a Maxwell-Boltzmann distribution, the net effect is to make the core of the line (that is, near the center) assume a Gaussian profile.  Because a Gaussian falls off more quickly than a Lorentzian profile (see Fig.~\ref{f.comparison}), the wings of the line are still determined by the collision rate.
+%In addition to the width set by collisions, the line is also broadened by thermal motion: the atoms are in ceaseless motion; those headed towards us absorb at a blueshifted frequency, while those headed away from us absorb at a redshifted frequency.  Because the atomic velocities follow a Maxwell-Boltzmann distribution, the net effect is to make the core of the line (that is, near the center) assume a Gaussian profile.  Because a Gaussian falls off more quickly than a Lorentzian profile (see Fig.~\ref{f.comparison}), the wings of the line are still determined by the collision rate.
+%
+%We might be inclined to treat the atoms as hard spheres, but this gives a large $\tau$, or equivalently a narrow line width. We are therefore led to consider longer-range interactions for setting the intrinsic line width. Table~\ref{t.perturbers} lists such interactions. For a given impact parameter, the interaction perturbs the energy levels; by integrating over a distribution of  impact parameters one gets the intrinsic damping. Of course, we should really use a quantum mechanical calculation.  We can scale our cross-section to the classical result (eq.~[\ref{e.cross-section-lorentz}]), however, by writing
+%\begin{equation}\label{e.cross-section}
+%	 \sigma_{\nu} = \left(\frac{\pi e^{2}}{m_{e}c}\right) f \phi_{\nu}, 
+%\end{equation}
+%where $\phi_{\nu}$ is the line profile (dimension $\sim \Hz^{-1}$) and $f$ is a dimensionless cross-section called the \newterm{oscillator strength}.
+%
+%\begin{table}[htbp]
+%\caption{Interactions in stellar atmospheres}\label{t.perturbers}
+%\begin{tabular}{crcc}
+%\hline
+%perturbation & form & source & affects\\
+%\hline\hline
+%linear Stark & $C_{2} r^{-2}$ & $e^{-}$, $p$, ions & H (H$\alpha$, H$\beta$, \ldots)\\
+%quadratic Stark & $C_{4} r^{-4}$ & $e^{-}$ & non-hydrogenic ions\\
+%van der Waals & $C_{6}r^{-6}$ & atoms, H & most atomic lines, esp.\ in cool stars\\
+%\hline
+%\end{tabular}
+%\end{table}
 
-We might be inclined to treat the atoms as hard spheres, but this gives a large $\tau$, or equivalently a narrow line width. We are therefore led to consider longer-range interactions for setting the intrinsic line width. Table~\ref{t.perturbers} lists such interactions. For a given impact parameter, the interaction perturbs the energy levels; by integrating over a distribution of  impact parameters one gets the intrinsic damping. Of course, we should really use a quantum mechanical calculation.  We can scale our cross-section to the classical result (eq.~[\ref{e.cross-section-lorentz}]), however, by writing
-\begin{equation}\label{e.cross-section}
-	 \sigma_{\nu} = \left(\frac{\pi e^{2}}{m_{e}c}\right) f \phi_{\nu}, 
-\end{equation}
-where $\phi_{\nu}$ is the line profile (dimension $\sim \Hz^{-1}$) and $f$ is a dimensionless cross-section called the \newterm{oscillator strength}.
 
-\begin{table}[htbp]
-\caption{Interactions in stellar atmospheres}\label{t.perturbers}
-\begin{tabular}{crcc}
-\hline
-perturbation & form & source & affects\\
-\hline\hline
-linear Stark & $C_{2} r^{-2}$ & $e^{-}$, $p$, ions & H (H$\alpha$, H$\beta$, \ldots)\\
-quadratic Stark & $C_{4} r^{-4}$ & $e^{-}$ & non-hydrogenic ions\\
-van der Waals & $C_{6}r^{-6}$ & atoms, H & most atomic lines, esp.\ in cool stars\\
-\hline
-\end{tabular}
-\end{table}
+%
+%\begin{sidebar}[Treating line emission as a driven damped oscillator]
+%\label{b.line-emission}
+%NB. In this box, Gaussian CGS units are used for the electromagnetic field. To convert to MKS, make the following substitutions:
+%\begin{eqnarray*}
+%e &\to& \frac{1}{\sqrt{4\pi\varepsilon_0}}e\\
+%\bvec{E} &\to& \sqrt{4\pi\varepsilon_0}\bvec{E}\\
+%c &\to& (\mu_0\varepsilon_0)^{-1/2}.
+%\end{eqnarray*}
+%
+%\newthought{Suppose we have a classical charged harmonic oscillator.}  The instantaneous power emitted by the oscillator is
+%\begin{equation}\label{e.larmor-power}
+%	 P(t) = \frac{2}{3}\frac{e^{2}}{c^{3}} |\dot{\vu}|^{2},
+%\end{equation}
+%and when averaged over a cycle is
+%\begin{equation}\label{e.oscillator-power}
+%	 \left\langle P(t) \right\rangle = \frac{e^{2}}{3c^{3}}x_{0}^{2} \omega^{4},
+%\end{equation}
+%since $\dot{\vu} = -\omega^{2}\bvec{x}_{0}\cos \omega t$. Since the oscillator is radiating, it is losing energy and is damped. Let us write the damping as $\bvec{F}_{\mathrm{rad}}\vdot \vu$; to find $\bvec{F}_{\mathrm{rad}}$, we integrate the power loss over a cycle,
+%\[  -\int_{t_{1}}^{t_{2}}\!\dif t\;\frac{2}{3}\frac{e^{2}}{c^{3}}\dot{\vu}\vdot\dot{\vu} 
+%	= -\left.\frac{2}{3}\frac{e^{2}}{c^{3}}\dot{\vu}\vdot\vu\right|_{t_{1}}^{t_{2}} 
+%	+ \frac{2}{3}\frac{e^{2}}{c^{3}} \int_{t_{1}}^{t_{2}}\!\dif t\;\ddot{\vu}\vdot\vu. 
+%\]
+%Since the motion is periodic, the first term vanishes and we can therefore identify 
+%\[ 
+%	\bvec{F}_{\mathrm{rad}} = \frac{2}{3}\frac{e^{2}}{c^{3}}\ddot{\vu} 
+%	= -m\left(\frac{2e^{2}\omega^{2}}{3c^{3}m}\right)\vu
+%\]
+%as the radiation damping term with the term in parenthesis being the damping constant $\gamma$. 
+%If there is an driving electric field on our oscillator, then its equation of motion becomes
+%\begin{equation}\label{e.eq-sho}
+%	m\ddot{\bvec{x}} = -m\omega_{0}^{2}\bvec{x} + e\bvec{E}e^{i\omega t} - m\gamma \dot{\bvec{x}}.
+%\end{equation}
+%Using a trial function $\bvec{x}\propto e^{i\omega t}$ gives
+%\[
+%	\bvec{x} = \frac{e}{m}\frac{E e^{i\omega t}}{(\omega_{0}^{2}-\omega^{2}) + i\omega\gamma}.
+%\]
+%Taking the second derivative w.r.t.\ time of $\bvec{x}$, substituting into eq.~(\ref{e.larmor-power}), and averaging over a cycle gives the power radiated by the oscillator,
+%\[
+%	\left\langle P(t)\right\rangle = \frac{e^{4}\omega^{4} E^{2}}{3 c^{2}m^{2}}
+%	\frac{1}{(\omega_{0}^{2}-\omega^{2})^{2} + \gamma^{2}\omega^{2}}.
+%\]
+%Dividing $\langle P(t)\rangle$ by the incident power per unit area, $cE^{2}/(8\pi)$, gives the cross-section:
+%\begin{equation}\label{e.classical-oscillator-cross-section}
+%	\sigma = \frac{8\pi}{3}\frac{e^{4}}{m^{2}c^{3}}
+%	\frac{\omega^{4}}{(\omega_{0}^{2}-\omega^{2})^{2} + \gamma^{2}\omega^{2}}.
+%\end{equation}
+%Now, for $\omega \approx \omega_{0}$, we can expand $(\omega_{0}^{2}-\omega^{2})^{2} \approx 4\omega_{0}^{2}(\omega_{0}-\omega)^{2}$; furthermore, we identify $2e^{2}\omega_{0}^{2}/(3c^{3}m) = \gamma$ and equation~(\ref{e.classical-oscillator-cross-section}) becomes
+%\begin{equation}\label{e.cross-section-lorentz}
+%	\sigma = \pi\left(\frac{e^{2}}{mc}\right)\frac{\gamma}{(\omega_{0}-\omega)^{2} + (\gamma/2)^{2}}.
+%\end{equation}
+%The line profile is Lorentzian, with a width $\gamma$. In terms of wavelength, the width is
+%\[ 
+%	\Delta \lambda = \left|\frac{\dif\lambda}{\dif\omega}\right|\gamma = \frac{2\pi c}{\omega^{2}}\gamma
+%	= \val{\sci{1.2}{-4}}{\textrm{\AA}}.
+%\]
+%This width is independent of the transition frequency (it is just the classical electron radius), and it is very, very small.  In a stellar atmosphere, the width is set by interactions and doppler broadening.
+%
+%\newthought{To understand how impacts affect the line width}, suppose we model the oscillator as being started and stopped by impacts; in between impacts it just goes as $e^{i\omega_{0}t}$.  To get the spectrum, we take the Fourier transform,
+%\[
+%	F(\omega,t) = \int_{0}^{t}\!\dif t'\; \exp[i(\omega_{0}-\omega)t'],
+%\]
+%where $t$ is some time between impacts. Now if the impacts are distributed randomly and are uncorrelated, then the distribution of wait times follows a Poisson distribution,
+%\[ W(t)\,\dif t = e^{-t/\tau}\,\dif t/\tau, \]
+%where $\tau$ is the average time between collisions.  Using this to compute the energy spectrum, we obtain
+%\[ E(\omega) = \frac{1}{2\pi\tau}\int_{0}^{\infty}\!\dif t\; F(\omega,t)F^{*}(\omega,t)W(t) = \frac{1}{\pi\tau} 
+%	\frac{1}{(\omega_{0}-\omega)^{2} + (1/\tau)^{2}};
+%\]
+%the line profile is again Lorentzian, with a FWHM $2/\tau$.
+%\end{sidebar}
