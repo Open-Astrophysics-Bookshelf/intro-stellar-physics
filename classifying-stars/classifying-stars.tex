@@ -123,27 +123,27 @@ As we can see from the cumulative sum (rightmost column), the partition function
 \section{Ionization: The Saha equation}
 \label{s.saha-eqn}
 
-As the temperature in the gas rises, there are more photons with sufficient energy to eject electrons from an atom. In addition, collisions between atoms also become sufficiently energetic to ionize the atom. In astronomical nomenclature, the ionization state is denoted by a small Roman numeral: \ion{Fe}{i} denotes neutral iron, \ion{Fe}{ii} denotes singly-ionized iron (charge $+1$), \ion{Fe}{iii} denotes doubly-ionized iron (charge $+2$), and so on. In thermal equilibrium, the rate at which atoms are ionized must equal the rate at which ions and electrons recombine: for example, in a gas consisting of hydrogen atoms, hydrogen ions (i.e., protons), and electrons we have
+As the temperature in the gas rises, there are more photons with sufficient energy to eject electrons from an atom. In addition, collisions between atoms also become sufficiently energetic to ionize the atom. In astronomical nomenclature, the ionization state is denoted by a small Roman numeral: \ion{Fe}{i} denotes neutral iron, \ion{Fe}{ii} denotes singly-ionized iron (charge $+1$), \ion{Fe}{iii} denotes doubly-ionized iron (charge $+2$), and so on. In thermal equilibrium, the rate at which atoms are ionized must equal the rate at which ions and electrons recombine: for example, in a gas consisting of hydrogen atoms, hydrogen ions (i.e., protons), and electrons the reaction
 \[
 	\ion{H}{ii} + e \longleftrightarrow \ion{H}{i}
 \]
-
-
-We'd like to extend equation~(\ref{e.boltzmann}) to find the ratios of two ionization states $N\,(i+1)/N\,(i)$.  
-
-
-What we will do is look at the equation for this ratio, known as the \emph{Saha equation}, and try to understand how it works.  The Saha equation for the ratio of ionized to neutron hydrogen is
+is in equilibrium. We'd like to extend equation~(\ref{e.boltzmann}) to find the ratio of two ionization states $N_{i+1}/N_{i}$. Although deriving this equation, termed the \newterm{Saha equation}\sidenote{Derived by Meghnad Saha in 1920}, is beyond the scope of the course, what we shall do is take the equation apart and try to understand how it works.  The Saha equation for the ratio of two ionization states $N(i+1)$ and $N(i)$ is
 \begin{equation}\label{e.saha}
-\frac{N\,\textrm{\scshape ii}}{N\,\textrm{\scshape i}} 
+\frac{N_{i+1}}{N_{i}} 
 = {\color{red}\left[\frac{2}{n_{e}}
-\left(\frac{2\pi m_{e}kT}{h^{2}}\right)^{3/2}\right]}
-\frac{\pfcn_{\mathrm{II}}}{\pfcn_{\mathrm{I}}} \exp\left(-\frac{E_{\mathrm{ion}}}{\kB T}\right).
+\left(\frac{2\pi m_{e}\kB T}{h^{2}}\right)^{3/2}\right]}
+{\color{blue}\frac{\pfcn_{i+1}}{\pfcn_{i}}}.
 \end{equation}
-In this equation, $n_{e}$ denotes the electron density---the number of free electrons per unit volume---and $m_{e}$ is the electron mass.
+In this equation, $n_{e}$ denotes the electron density---the number of free electrons per unit volume---and $m_{e}$ is the electron mass. The terms $\pfcn_{i+1}$ and $\pfcn_{i}$ are the partition functions for the two states, \emph{both measured with the same zero-point for energy}.
 
-Let us interpret equation~(\ref{e.saha}) in terms of eq.~(\ref{e.boltzmann}).  First, there is the factor $\exp(-E_{\mathrm{ion}}/\kB T)$. Here $E_{\mathrm{ion}}$ is the difference in energy between the ground states of the different ionization stages (for this example, $E_{\mathrm{ion}} = \val{13.6}{\eV}$).  That is just as in equation~(\ref{e.boltzmann}). To understand the factor $\pfcn_{\mathrm{II}}/\pfcn_{\mathrm{I}}$, consider that we are asking for the ratio between the total number of ionized atoms to the total number of neutral atoms; and this means summing over all of the states with electrons in different energy states. It is plausible, therefore, that the factor $g_{i}/g_{j}$ from equation~(\ref{e.boltzmann}) would be replaced by $\pfcn_{\mathrm{II}}/\pfcn_{\mathrm{I}}$.
+Let's start with the term $\color{blue} Q_{i+1}/Q_{i}$. If both partition functions are dominated by the ground state term\sidenote{see Box~\ref{sb.partition-function}} then
+\begin{eqnarray*}
+	\frac{Q_{i+1}}{Q_{i}} &=& \frac{g_{i+1,1}}{g_{i,1}} e^{-\beta (E_{i+1,1}-E_{i,1})}\\
+	&=& \frac{g_{i+1,1}}{g_{i,1}} e^{-\beta\,E_{\mathrm{ion}}}
+\end{eqnarray*}
+Here $E_{\mathrm{ion}} = E_{i+1,1} - E_{i,1}$ is the energy needed to remove an electron from an ion in state $i$. Thus $Q_{i+1}/Q_{i}$ resembles equation~(\ref{e.boltzmann}).
 
-In addition to the number of possible states for the ion, we need to allow for the number of possible electron states.  When the atom is ionized, each electron quickly acquires an average kinetic energy $(3/2)\kB T$. There are many different states with this energy: the electron can be in different locations, and moving in different directions.  At first, you might think that there would be an infinitude of possible electron states.  Quantum mechanics, however, sets limitations on the number of electron states.
+The term in $\color{red}\left[\cdot\right]$ in eq.~(\ref{e.saha}) arises because we also need to allow for the number of possible electron states. When the atom is ionized, each electron quickly acquires an average kinetic energy $(3/2)\kB T$. There are many different states with this energy: the electron can be in different locations and moving in different directions.  You might think that there would be an infinitude of possible electron states.  Quantum mechanics, however, sets limitations on this number.
 
 First, we have the Pauli exclusion principle: no two electrons can be in the same location with the same momentum and same spin. What do we mean by same location and momentum?  Recall the Heisenberg uncertainty principle: the electrons $x$-position and $x$-momentum are spread about a range of values $\Delta x$ and $\Delta p_{x}$, and these uncertainties are related via
 \[ \Delta x\,\Delta p_{x} \gtrsim h. \]
@@ -168,6 +168,17 @@ If our volume $V$ contains $N_{e}$ electrons, then the number of boxes---which i
 	\frac{2V}{N_{e}\Delta V} \sim \frac{2V}{N_{e}}\frac{\left(m_{e}\kB T\right)^{3/2}}{h^{3}}.
 \]
 The factor of 2 appears because each box can hold 2 electrons.  Recognizing that $N_{e}/V = n_{e}$, we see that this number of states per free electrons corresponds to the factor in $\color{red}\left[\;\right]$ in equation~(\ref{e.saha}). When the numerical calculation is done correctly, the additional factor of $2\pi$ arises.
+
+The number of states per free electron plays an important role in setting the temperature at which a species ionizes. You might expect, since a term $e^{-E_{\mathrm{ion}}/\kB T}$ appears in the ratio $N_{i+1}/N_{i}$, that a species would ionize at a temperature $E_{\mathrm{ion}}/\kB$. In fact the ionization temperature is much lower. To see how this works, define
+\[
+	\zeta = \ln\left[\frac{1}{n_{e}}\left(\frac{2\pi m_{e}\kB T}{h^{2}}\right)^{3/2}\right].
+\]
+We can then write eq.~(\ref{e.saha})---with the approximation that the partition functions are dominated by the ground state---as
+\[
+	\frac{N_{i+1}}{N_{i}} = \frac{2g_{i+1,1}}{g_{i,1}}\exp\left(\zeta - \beta E_{\mathrm{ion}}\right).
+\]
+Now the factor $g_{i+1,1}/g_{i,1}$ is of order unity. Hence, when the gas ionizes and $N_{i+1,1}\approx N_{i,1}$, we must have that $\zeta\approx \beta E_{\mathrm{ion}}$; put differently, the ionization temperature will not be $E_{\mathrm{ion}}/\kB$ but rather $E_{\mathrm{ion}}/\kB\zeta$. Under conditions in the photosphere of an A star ($T \approx \val{10^{4}}{\K}$, $n\sim \val{10^{15}}{\cm^{-3}}$), $\zeta \approx 15$.
+
 
 \section{Classifying stars by spectra}
 
