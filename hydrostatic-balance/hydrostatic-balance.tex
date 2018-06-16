@@ -357,9 +357,9 @@ By using the ideal gas law, $\bar{P} = \bar{\rho}(\kB/\mu\mb)\bar{T}$, we find
 As a concrete example, let's compute $\Omega$ for a constant density sphere.
 If we bring a small amount of mass $\dif m$ from infinity onto a sphere of mass $m$ and radius $r$, then the change in potential is \[ \dif\Omega = -\frac{Gm}{r}\,\dif m. \]
 For a constant density, $r = R(m/M)^{1/3}$; upon substituting for $r$ we have
-\[
+\begin{equation}\label{e.energy-constant-density-sphere}
 	\Omega_{\textrm{const.\ den.}} = - \int_{0}^{M}\frac{GM^{1/3} m^{2/3}}{R}\,\dif m = -\frac{3}{5}\frac{GM^{2}}{R}.
-\]
+\end{equation}
 Using this in equation~(\ref{e.mean-T}) gives us the mean temperature, and hence pressure, for a constant density sphere,
 \begin{eqnarray}\label{e.mean-T-rho}
 \bar{T} &=& \frac{1}{5}\frac{GM}{R}\frac{\mu\mb}{\kB},\\
@@ -388,8 +388,6 @@ We can infer a great deal from our simple virial scalings. Table~\ref{t.stellar-
 Using the constant density model, compute $\rho/\rho_{\odot}$, $T_{c}/T_{c,\odot}$, and $P_{c}/P_{c,\odot}$. You should find that each quantity depends only on $m=M/\Msun$ and $r=R/\Rsun$. Describe your findings: do $P_{c}/P_{c,\odot}$, $\rho/\rho_{\odot}$, and $T_{c}/T_{c,\odot}$ vary in a similar fashion? If not, how do they change with stellar type?
 \end{exercisebox}
 
-%Notice that $P_{c}$ and $\rho_{c}$ are larger for lower-mass stars. An even more surprising finding from this table is how little $T_{c}$ varies. This table spans nearly two decades in mass and six decades in luminosity, and yet $T_{c}$ varies by only a factor of three.  As we'll derive later, this is a consequence of the fusion reactions being extremely sensitive to temperature.
-
 \section{Contraction to the main sequence}
 \label{s.stellar-contraction}
 
@@ -404,9 +402,12 @@ the time to radiate this energy away is
 t_{\mathrm{KH}} = \frac{|E_{\odot}|}{\Lsun} \approx \frac{G\Msun^{2}}{\Rsun\Lsun} \approx \val{\sci{3}{7}}{\yr}.
 \end{equation}
 This timescale is called the \emph{Kelvin-Helmholtz timescale}.  Since $t_{\mathrm{KM}} \gg t_{\mathrm{dyn}}$ the star is, to an excellent approximation, in hydrostatic equilibrium throughout the whole contraction.
-%
-%As the star contracts and $R$ decreases, the central density, pressure, and temperature increase.  When the central temperature becomes sufficiently hot, the heating from nuclear reactions rapidly increases and supplies enough energy to offset that radiated from the surface.  At this point the star is on the main-sequence, where it remains until the hydrogen fuel is exhausted from its core.
 
 \begin{exercisebox}[Contraction of a constant density protostar]
-Using the constant-density model (note that constant here means ``constant throughout the star at any given time'' and the virial relations, give a qualitative sketch for how the pressure, density, temperature, radius, and total energy change with time as the protostar contracts.
+Using the constant-density model (constant here means ``constant throughout the star at any given time'') and the virial relations, give a qualitative sketch for how the pressure, density, temperature, radius, and total energy change with time as the protostar contracts.
 \end{exercisebox}
+
+\begin{exercisebox}[The relation between energy and temperature]
+Using the constant density model, derive an expression for the total energy (kinetic plus potential) as a function of central temperature. Plot this relation.  What happens to the central temperature if additional heat is injected into the star?
+\end{exercisebox}
+
