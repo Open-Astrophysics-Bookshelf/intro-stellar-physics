@@ -14,7 +14,6 @@ CHAPTERS = frontmatter \
 	convection \
 	nuclear-burning \
 	main-sequence \
-	degeneracy \
 	post-main-sequence
 
 TEX_SRC = $(foreach chap, $(CHAPTERS), $(wildcard $(chap)/*.tex))
@@ -33,15 +32,15 @@ FIGURES = frontmatter/cover-art.png \
 	radiative-transport/figs/radiative-transfer-exercise.pdf \
 	radiative-transport/figs/random-walk.pdf \
 	stellar-atmospheres/figs/legendre.pdf \
-	degeneracy/figs/fermions.pdf \
-	degeneracy/figs/scattering-classical.pdf \
-	degeneracy/figs/scattering-quantum.pdf \
 	convection/figs/convection-1.jpg \
 	convection/figs/convection-2.jpg \
 	convection/figs/convective.pdf \
 	nuclear-burning/figs/tunnel-schematic.pdf \
 	nuclear-burning/figs/coulomb_integrand.pdf \
-	main-sequence/figs/luminosity-eqn.pdf
+	main-sequence/figs/luminosity-eqn.pdf \
+	main-sequence/figs/fermions.pdf \
+	main-sequence/figs/scattering-classical.pdf \
+	main-sequence/figs/scattering-quantum.pdf
 
 
 BIBS = bibs/stellar-astro.bib
