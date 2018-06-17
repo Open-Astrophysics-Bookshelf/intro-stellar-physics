@@ -170,6 +170,23 @@ Recall that for a non-relativistic gas the pressure is $P = (2/3)(E/V)$.  Hence 
 \end{equation}
 Notice that the pressure is independent of the temperature.
 
+The electrons, being more than 1000 times lighter than the nuclei, become degenerate first. Suppose our composition consists of species with charge $Z_{i}$ and mass number $A_{i}$. Then the number of electrons per unit volume\marginnote{assuming complete ionizaton} is
+\[
+	n_{e} = \sum_{i} n_{i} Z_{i} = \frac{\rho}{\mb}\sum_{i} X_{i}\frac{Z_{i}}{A_{i}}.
+\]
+By analogy with the mean molecular weight, we define an electron mean weight
+\begin{equation}\label{e.electron-mean-weight}
+\mu_{e} \equiv \left(\sum_{i}X_{i}\frac{Z_{i}}{A_{i}}\right)^{-1}
+\end{equation}
+so that $n_{e} = \rho/(\mb\mu_{e})$.
+
+\begin{exercisebox}
+\label{ex.degenerate-mass-radius}
+Use equation~(\ref{e.electron-mean-weight}) in eq.~(\ref{e.pressure-electrons}) to express the pressure as a function of mass density $\rho$. The use the virial scalings for $P(M,R)$ and $\rho(M,R)$ to obtain a relation $R(M)$ for a degenerate object. \emph{Hint:} this may be easier to do in a Jupyter notebook.
+\end{exercisebox}
+
+As you found in exercise~\ref{ex.degenerate-mass-radius}, when the star becomes degenerate, there is a unique radius for a given mass and composition. This is in contrast to the non-degenerate case, for which a star of a given mass can have a wide range of possible radii depending on the internal temperature.
+
 \section{Hydrogen burning}
 
 \subsection{Hydrogen burning via pp reactions: the lower main sequence}
