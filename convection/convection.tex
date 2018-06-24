@@ -37,30 +37,43 @@ We can use Archimedes' law---which is an application of hydrostatic equilibrium-
 \frac{\dif P}{\dif r} = -\rho g.
 \end{equation}
 with a temperature gradient is unstable to convection. Imagine moving a blob of fluid upwards from $r$ to $r+h$.  We move the blob slowly enough that it is in hydrostatic equilibrium with its new surroundings, $P_{b}(r+h) = P(r+h)$, where the subscript $b$ refers to ``blob.'' We do move the blob quickly enough, however, that it does not exchange heat with its surroundings and doesn't therefore remain in \emph{thermal} equilibrium with its surroundings. 
-\marginnote[-3\baselineskip]{Recall that pressure equilibrium in the blob is established over the time a sound wave takes to cross the blob. Thus, moving the blob slowly enough to maintain pressure equilibrium means that the motion is quite subsonic. Moving the blob quickly enough to prevent heat transport means (cf.\ exercise~\ref{ex.random-walk-diffusion}) that the blob is much larger than a mean free path so the time for photons to random walk across the blob is longer than it takes to lift the blob a distance $h$.}
+\marginnote[-6\baselineskip]{Recall that pressure equilibrium in the blob is established over the time a sound wave takes to cross the blob. Thus, moving the blob slowly enough to maintain pressure equilibrium means that the motion is quite subsonic. Moving the blob quickly enough to prevent heat transport means (cf.\ exercise~\ref{ex.random-walk-diffusion}) that the blob is much larger than a mean free path so the time for photons to random walk across the blob is longer than it takes to lift the blob a distance $h$.}
 
-The entropy of the blob is therefore constant, 
-$S_{b}(r+h) = S_{b}(r) = S(r)$, and is therefore not, in general, equal to the entropy of the surrounding gas at $r+h$: $S_{b}(r+h)  \neq S(r+h)$.  
+As a result of this lack of heat exchange, the upward motion of the blob is \newterm{adiabatic}.  To understand what this means, recall the first law of thermodynamics\cite{Fermi1956Thermodynamics}, which relates the change in internal energy $\dif U$ and in volume $\dif V$ to the heat transferred $\dif Q = T\,\dif S$:
+\begin{equation}\label{e.first-law-thermo}
+	\dif Q = T\,\dif S = \dif U + P\,\dif V,
+\end{equation}
+where $P$ is the pressure and $S$ is the entropy. During an adiabatic process, $\dif Q = T\,\dif S = 0$. The entropy of the blob\sidenote{We'll use the subscript $b$ to denote properties of the blob; quantities without a subscript refer to the background fluid.} is therefore constant, 
+$S_{b}(r+h) = S_{b}(r) = S(r)$, and is therefore not equal, in general, to the entropy of the surrounding gas at $r+h$: $S_{b}(r+h)  \neq S(r+h)$. The pressure in the blob, however, is the same as in the surrounding gas: $P_{b}(r+h) = P(r+h)$.
 
-As the blob rises, it displaces some of the surrounding fluid. Archimedes tells us that if the displaced fluid is less massive than the blob, then the blob will sink.  We can rephrase this in terms of the volume occupied by a unit mass of fluid $V$: if the volume occupied by the blob is less than the volume of an equal mass of background, then the blob will sink. Translating this into an equation: if
-\begin{eqnarray}
-\lefteqn{V[P(r+h),S(r+h)] - V_{b}[P_{b}(r+h),S_{b}(r+h)] =}\nonumber\\
-&&  V[P(r+h),S(r+h)] - V[P(r+h),S(r)] > 0
-\label{e.archimedes}
-\end{eqnarray}
-then the blob will sink. If condition (\ref{e.archimedes}) is violated, the blob will continue to rise, and the system is unstable to convection.  
-Figure~\ref{f.convective-schematic} has a cartoon of this process.
-
+After the blob has moved from $r$ to $r+h$, it has expanded to occupy a volume
+\[
+	V_{b}(r+h) = V[P_{b}(r+h),S_{b}(r+h)] = V[P(r+h),S(r)].
+\]
+Here we've written the volume as a function of pressure and entropy: $V(P,S)$. Now we can apply Archimedes' law: if the volume of the blob is less than the volume occupied by an equal mass of the surrounding fluid, then the buoyant force will be less than the weight of the blob; as a consequence, the blob will sink back to its original location. The fluid is thus stable. In contrast, if the volume occupied by the blob is larger than that occupied by an equivalent mass of the surrounding fluid, then the buoyant force is greater than the weight of the blob; a result, the fluid is unstable, as a small perturbation leads to the acceleration of the blob upwards. Figure~\ref{f.convective-schematic} has a schematic of this criterion.
 \begin{marginfigure}
 \includegraphics[width=\textwidth]{convective}
 \caption[Illustration of criteria for convective instability.]{\label{f.convective-schematic}Illustration of criteria for convective instability.  On the left, raising a blob a distance $h$ adiabatically and in pressure balance with its surrounding results in a higher density $V_{b} < V$.  This is stable: the blob will sink back.  On the right, the blob is less dense and hence buoyant: it will continue to rise.}
 \end{marginfigure}
 
-Taking $h$ to be an infinitesimal displacement and expanding the left-hand side of equation~(\ref{e.archimedes}) gives us a local condition for stability:
+Thus, for the fluid to be stable, we require that the volume of the displaced blob be less than teh volume of an equal mass of surrounding fluid:
+\begin{eqnarray}
+V_{b}(r+h) &<& V(r+h) \nonumber\\
+V[P_{b}(r+h),S_{b}(r+h)] &<& V[P(r+h),S(r+h)] \nonumber\\
+V[P(r+h),S(r)] &<& V[P(r+h),S(r+h)].
+\label{e.archimedes}
+\end{eqnarray}
+If condition (\ref{e.archimedes}) is satisfied, then the blob will be restored to its original location after a perturbation, and the system is stable. If condition (\ref{e.archimedes}) is not satisfied, then the blob will continue to rise following a perturbation, and the system is unstable to convection.
+
+Since $h$ is an infinitesimal displacement, we can expand eq.~(\ref{e.archimedes}):
+\[
+	V[P(r+h),S(r)] < V[P(r+h),S(r+h)] \approx V[P(r+h),S(r)] + \tderiv{V}{S}{P}\DD{S}{r}.
+\]
+Here the notation $(\partial V/\partial S)_{P}$ means taking the derivative of $V$ with respect to $S$ while holding $P$ fixed. The condition for stability is therefore
 \begin{equation}\label{e.convective-stability}
-V[P(r+h),S(r)] + \tderiv{V}{S}{P}\frac{\dif S}{\dif r} - V[P(r+h),S(r)]  = \tderiv{V}{S}{P}\frac{\dif S}{\dif r} > 0 .
+ \tderiv{V}{S}{P}\frac{\dif S}{\dif r} > 0 .
 \end{equation}
-Noting that
+Changing variables from entropy $S$ to temperature $T$ via
 \begin{eqnarray*}
 \tderiv{V}{T}{P} &=& \tderiv{V}{S}{P}\tderiv{S}{T}{P}\\
  &=& \frac{C_{P}}{T}\tderiv{V}{S}{P},
@@ -83,11 +96,7 @@ We saw that the temperature gradient in the star is (eq.~[\ref{e.gradient-temper
 \]
 Here $\kappa$ is the opacity and $L(r)$ is the luminosity at radius $r$: $L/4\pi r^2$ is the flux. If this thermal gradient, $|\dif T/\dif r|$, becomes too large, however, the fluid becomes unstable: warm fluid begins to rise while cold fluid sinks to take its places.  This usually occurs quickly enough that there is little exchange of heat between the upwelling warm current and the sinking cold one.
 
-As a result of this lack of heat exchange, the motions are termed \newterm{adiabatic}.  To understand what this means, recall the first law of thermodynamics\cite{Fermi1956Thermodynamics}, which relates the change in internal energy $\dif U$ and in volume $\dif V$ to the heat transferred $\dif Q$:
-\begin{equation}\label{e.first-law-thermo}
-	\dif Q = \dif U + P\dif V,
-\end{equation}
-where $P$ is the pressure. Now, we aren't using volume to describe our fluid so let's apply this equation to a fixed mass of fluid, say $m = \val{1}{\kilo\gram}$, and divide both sides of Equation~(\ref{e.first-law-thermo-astro}) by the mass. Then $Q$ refers to the heat transferred \emph{per kilogram}, and $U$ refers to the internal energy \emph{per kilogram}.  Instead of $\dif V$, we then have $\dif(V/m) = \dif(1/\rho) = -\rho^{-2}\dif\rho$.  Our first law, rewritten in terms of mass-specific quantities, is thus
+Now, we aren't using volume to describe our fluid so let's apply this equation to a fixed mass of fluid, say $m = \val{1}{\kilo\gram}$, and divide both sides of Equation~(\ref{e.first-law-thermo-astro}) by the mass. Then $Q$ refers to the heat transferred \emph{per kilogram}, and $U$ refers to the internal energy \emph{per kilogram}.  Instead of $\dif V$, we then have $\dif(V/m) = \dif(1/\rho) = -\rho^{-2}\dif\rho$.  Our first law, rewritten in terms of mass-specific quantities, is thus
 \begin{equation}\label{e.first-law-thermo-astro}
 	\dif Q = \dif U -\frac{P}{\rho^{2}}\dif \rho.
 \end{equation}
