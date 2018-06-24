@@ -66,24 +66,26 @@ V[P(r+h),S(r)] &<& V[P(r+h),S(r+h)].
 If condition (\ref{e.archimedes}) is satisfied, then the blob will be restored to its original location after a perturbation, and the system is stable. If condition (\ref{e.archimedes}) is not satisfied, then the blob will continue to rise following a perturbation, and the system is unstable to convection.
 
 Since $h$ is an infinitesimal displacement, we can expand eq.~(\ref{e.archimedes}):
-\[
-	V[P(r+h),S(r)] < V[P(r+h),S(r+h)] \approx V[P(r+h),S(r)] + \tderiv{V}{S}{P}\DD{S}{r}.
-\]
-Here the notation $(\partial V/\partial S)_{P}$ means taking the derivative of $V$ with respect to $S$ while holding $P$ fixed. The condition for stability is therefore
+\begin{eqnarray*}
+	V[P(r+h),S(r)] &<& V[P(r+h),S(r+h)] \\
+	&\approx& V[P(r+h),S(r)] + \tderiv{V}{S}{P}\DD{S}{r}.
+\end{eqnarray*}
+Here the notation $(\partial V/\partial S)_{P}$ means taking the derivative of $V$ with respect to $S$ while holding $P$ fixed. The condition for stability is therefore, after canceling common factors,
 \begin{equation}\label{e.convective-stability}
  \tderiv{V}{S}{P}\frac{\dif S}{\dif r} > 0 .
 \end{equation}
-Changing variables from entropy $S$ to temperature $T$ via
-\begin{eqnarray*}
-\tderiv{V}{T}{P} &=& \tderiv{V}{S}{P}\tderiv{S}{T}{P}\\
- &=& \frac{C_{P}}{T}\tderiv{V}{S}{P},
- \end{eqnarray*}
- we can rewrite equation~(\ref{e.convective-stability}) as
- \[
- \frac{T}{C_{P}}\tderiv{V}{T}{P}\frac{\dif S}{\dif r} > 0.
- \]
-Now, $(\partial V/\partial T)_{P}$ is positive (gas expands on being heated), so our condition for stability is simply
- \begin{equation}\label{e.entropy-condition}
+We can put this into a more useful form by changing variables from entropy $S$ to temperature $T$ via
+\[
+\tderiv{V}{T}{P} = \tderiv{V}{S}{P}\tderiv{S}{T}{P}.
+\]
+Inserting this into eq.~(\ref{e.convective-stability}) gives
+\[
+ \frac{T}{C_{P}}\tderiv{V}{T}{P}\frac{\dif S}{\dif r} > 0,
+\]
+since the specific heat at constant pressure is $C_{P}\equiv T(\dif S/\dif T)_{P}$. 
+
+Now, $(\partial V/\partial T)_{P}$ is positive (gas expands on being heated) and so is $C_{P}$, so the condition for stability is satisfied wherever
+\begin{equation}\label{e.entropy-condition}
 \frac{\dif S}{\dif r} > 0.
 \end{equation}
 In a convectively stable star, the entropy must increase with radius. if $\dif S/\dif r < 0$, then convection occurs and carries high-entropy material outward, where it will eventually mix with the ambient medium.  As a result, convection drives the entropy gradient toward the marginally stable configuration $\dif S/\dif r = 0$.  If a star is fully convective and mixes efficiently, then the interior of the star lies along an adiabat. 
