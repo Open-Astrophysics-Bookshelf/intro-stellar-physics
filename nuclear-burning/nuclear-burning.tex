@@ -2,24 +2,29 @@
 
 \section{The nucleus}
 
-Experimentally, nuclei are on the order of femtometers\sidenote{Sometimes called a \emph{Fermi}} ($\val{1}{\fermi} = \val{10^{-15}}{\meter}$) in size. Like an atom, the nucleus also has excited states; typical energies for these are on the order of MeV ($\val{1}{\MeV} = \val{10^{6}}{\eV}$). \marginnote{Recall that an \newterm{electron volt} (eV) is the energy acquired by an electron being accelerated through a potential difference of 1 volt.} It therefore makes sense to use fm and MeV as our units of length and energy. In these units, the combination
+Experimentally, nuclei are on the order of femtometers\sidenote{Sometimes called a \emph{Fermi}} ($\val{1}{\fermi} = \val{10^{-15}}{\meter}$) in size. Like an atom, the nucleus also has excited states; typical energies for these are on the order of MeV ($\val{1}{\MeV} = \val{10^{6}}{\eV}$). \marginnote{An \newterm{electron volt} (eV) is the energy acquired by an electron being accelerated through a potential difference of 1 volt.} It therefore makes sense to use fm and MeV as our units of length and energy. In these units, the combination
 \[	\hbar c = \val{197}{\MeV\,\fermi} \]
 to three significant figures. In quantum field theory, the strength of the electromagnetic interaction is characterized by the dimensionless constant
-\[	\alphaF = \frac{e^{2}}{4\pi\epsilon_{0}\hbar c} = (137)^{-1}, \]
-again to three significant figures. From these two quantities, we see that
+\[	\alphaF = \frac{e^{2}}{4\pi\epsilon_{0}\hbar c} = \frac{1}{137}, \]
+again to three significant figures. From these two quantities, we find the electron (or proton) charge in these units,
 \[
 	\frac{e^{2}}{4\pi\epsilon_{0}} = \alphaF\hbar c = \val{1.44}{\MeV\,\fermi}.
 \]
 Put another way, the potential energy between two protons of charge $e$ separated by $\val{1}{\fermi}$ is $\val{1.44}{\MeV}$.
 
-The strong nuclear force differs from electromagnetism and gravity in that it is short-range: the interaction vanishes for distances $\gtrsim\val{2}{\fermi}$. It is weakly attractive for distances $\approx\val{1}{\fermi}$ and becomes strongly repulsive at short-range, $\ll\val{1}{\fermi}$. The nuclear force does not distinguish between neutrons and protons. Because the force is weakly attractive for separations $\val{1}{\fermi}\lesssim r\lesssim\val{2}{\fermi}$ and repulsive at shorter distances, in large nuclei there is a characteristic distance between nucleons that is a bit larger than $\val{1}{\fermi}$.
+The strong nuclear force differs from electromagnetism and gravity in that it is short-range: the interaction vanishes for distances $\gtrsim\val{2}{\fermi}$. It is weakly attractive for distances $\val{1}{\fermi}\lesssim r\lesssim\val{2}{\fermi}$ and becomes strongly repulsive at distances $\ll\val{1}{\fermi}$. The potential between the neutron and proton in a deuterium (\hydrogen[2]) nucleus must therefore look something like that in Fig.~\ref{f.nuclear-potential}. Deuterium has only one energy level (black dotted line) and is weakly bound by $\val{2.2}{\MeV}$.
 
-\begin{marginfigure}
+\begin{marginfigure}[-8\baselineskip]
 \includegraphics[width=\linewidth]{nuclear-potential}
 \caption{\label{f.nuclear-potential}Schematic of the nuclear potential for a deuteron (\hydrogen[2]). The binding energy of the deuteron is shown as a black dotted line.}
 \end{marginfigure}
 
-Unlike electromagnetism, the strong nuclear force does not obey superposition: we cannot write the energy of the nucleus as a sum over the potential between all pairs of nucleons. Moreover, the strong nuclear force is not a central force, meaning that it depends on more than just the distance between any two nucleons. The behavior of an atomic nucleus is thus much more complicated to describe than the electronic structure of the atom.
+\begin{exercisebox}[Depth of nuclear well]
+We can estimate the depth of the well in Fig.~\ref{f.nuclear-potential}. Since this is a two-body problem, transfer to center-of-mass coordinates and treat this as a single particle with a reduced mass $m_{p}m_{n}/(m_{p}+m_{n}) \approx m_{n}/2$. Use the uncertainty principle, with $\Delta x$ being the width of the well, to get an estimate of $p\sim\Delta p$ and from this estimate the kinetic energy of the particle. Finally, use the small value of the binding energy (sum of potential and kinetic) to construct an estimate for the depth of the potential well.
+\end{exercisebox}
+
+The nuclear force does not distinguish between neutrons and protons. 
+Because the force is weakly attractive for separations  and repulsive at shorter distances, in large nuclei there is a characteristic distance between nucleons that is a bit larger than $\val{1}{\fermi}$. Unlike electromagnetism, the strong nuclear force does not obey superposition: we cannot write the energy of the nucleus as a sum over the potential between all pairs of nucleons. Moreover, the strong nuclear force is not a central force, meaning that it depends on more than just the distance between any two nucleons. The behavior of an atomic nucleus is thus much more complicated to describe than the electronic structure of the atom.
 
 \newthought{Despite these complications, there are many properties of the nucleus that we can deduce.}
 
