@@ -31,17 +31,24 @@ Unlike electromagnetism, the strong nuclear force does not obey superposition: w
 \]
 where $B(Z,N)$ is the \newterm{binding energy}---the amount of energy that must be supplied to the nucleus in order to break it into its constituent protons and neutrons.
 
-Because the nuclear force is weakly attractive for separations  and repulsive at shorter distances (Fig.~\ref{f.nuclear-potential}), there is a characteristic distance between nucleons that is a bit larger than $\val{1}{\fermi}$. In a large nucleus, we therefore expect the nucleons to be spaced by roughly this distance, so that the size of the nucleus is roughly
+Because the nuclear force is weakly attractive for separations  and repulsive at shorter distances (Fig.~\ref{f.nuclear-potential}), there is a characteristic distance between nucleons that is a bit larger than $\val{1}{\fermi}$. In a large nucleus, we therefore expect the nucleons to have a roughly constant density, so that the volume of the nucleus is proportional to $A$; experimentally, the radius of the nucleus is roughly\sidenote{The value of the radius depends somewhat on how it is measured; these values come from scattering with various light particles (protons, neutrons, alpha, electrons).}
 \[
-	r_{A} \approx \val{1.14}{\fermi}\,A^{1/3}.
+	r_{A} = \valrng{1.1}{1.8}{\fermi}\times A^{1/3}.
 \]
-Notice that because the nucleon-nucleon potential is so short-ranged, nucleons in a big nucleus only interact with their nearest neighbors. Indeed the nucleon-nucleon in similar in form to the potential between molecules in a fluid. This motivates developing a simple formula that gives a decent approximation for the binding energy. For the first term, we estimate the binding energy of a large nucleus as the binding energy of a single nucleon with its neighbors, multiplied by the number of nucleons. It is energetically favorable to have equal numbers of neutrons and protons. We therefore define an asymmetry parameter $\eta \equiv (N-Z)/(N+Z) = 1-2Z/A$, $-1\le\eta\le1$. The binding energy is maximum for $\eta = 0$; because the nuclear force does not distinguish between neutrons and protons, the binding energy is quadratic in $\eta$. Thus our first approximation for the binding energy is $B \approx (a_{V} - a_{A}\eta^{2}) A$. Here $a_{V}$ and $a_{A}$ are as-yet-undetermined coefficients.
+Notice that because the nucleon-nucleon potential is short-ranged, nucleons in a large nucleus only interact with their nearest neighbors. Indeed the nucleon-nucleon interaction in similar in form to the potential between molecules in a fluid, such as a water drop. This motivates developing a simple formula that gives a decent approximation for the binding energy. For the first term, we estimate the binding energy of a large nucleus as the binding energy of a single nucleon with its neighbors, multiplied by the number of nucleons. Experimentally, it is found that for large nuclei this is the case: the binding energy per nucleon is roughly constant: we say that the nuclear interaction \newterm{saturates}.
 
-For smaller nuclei, there should be a correction because nucleons near the surface would be bound less. We therefore subtract a term proportional to the surface area, $\propto r_{A}^{2} \propto A^{2/3}$. The next iteration of our liquid-drop approximation is thus $B \approx (a_{V}- a_{A}\eta^{2})A - a_{S}A^{2/3} $. Finally, the protons repel one another and this repulsion reduces the binding energy. We expect the repulsion to be proportional to $Z^{2}/r_{A}\propto Z^{2}/A^{1/3}$, so we add another term to our mass formula to obtain
+\begin{exercisebox}[If the strong force were long-range]
+To see how the nuclear force differs from the long-range Coulomb and gravitational force, suppose instead that the nuclear force acted like a super-gravity. Use the results from our constant-density model of a star (eq.~[\ref{e.energy-constant-density-sphere}]) to derive how the binding energy would scale with $A$ in this case.
+\end{exercisebox}
+
+It is energetically favorable to have equal numbers of neutrons and protons. We therefore define an asymmetry parameter $\eta \equiv (N-Z)/(N+Z) = 1-2Z/A$, so that $-1\le\eta\le1$. The binding energy is maximum for $\eta = 0$; because the nuclear force does not distinguish between neutrons and protons, the binding energy is quadratic in $\eta$. Thus our first approximation for the binding energy is $B \approx (a_{V} - a_{A}\eta^{2}) A$. Here $a_{V}$ and $a_{A}$ are as-yet-undetermined coefficients.
+
+In a fluid drop there is a correction for the surface tension. Heuristically, we imagine that nuclei in the surface have fewer neighbors and are therefore not as bound. We therefore subtract from our formula a term proportional to the surface area, $\propto r_{A}^{2} \propto A^{2/3}$. The next iteration of our liquid-drop approximation is thus $B \approx (a_{V}- a_{A}\eta^{2})A - a_{S}A^{2/3} $. Finally, the protons in the nucleus repel one another and this repulsion also reduces the binding energy. We therefore subtract a term $\propto Z^{2}/r_{A}\propto Z^{2}/A^{1/3}$ from our mass formula to obtain
 \begin{equation}\label{e.liquid-drop}
 B = \left(a_{V} -a_{A}\eta^{2}\right) A -  a_{S}A^{2/3} - a_{C} \frac{Z^{2}}{A^{1/3}}. 
 \end{equation}
-We then adjust the coefficients $a_{V},a_{A},a_{S},a_{C}$ to obtain the best fit\sidenote{Strictly speaking this fit applies to nuclei with even numbers of both neutrons and protons; the nucleons form pairs with a lower energy.}
+This is a version of the \newterm{semi-empirical mass formula}, also known as the \newterm{Bethe-Weizs\"acker mass formula}.
+The coefficients $a_{V},a_{A},a_{S},a_{C}$ are found by fitting the formula to known nuclear masses\sidenote{This fit should have another term to account for the pairing of neutrons and protons, so that the binding energy is  increased for even $Z$ and $N$. We omit that term here for simplicity.}
 for measured nuclear masses (Table~\ref{t.liquid-drop}).
 \begin{margintable}
 \caption[Liquid-drop coefficients]{\label{t.liquid-drop} Coefficients for hte fit to nuclear masses, (\protect\ref{e.liquid-drop}), in units of MeV.}
@@ -104,7 +111,9 @@ Putting this all together, we write the reaction cross-section as
 \begin{equation}\label{e.s-def}
 \sigma(E) = \frac{S(E)}{E}\exp\left[-\left(\frac{\EG}{E}\right)\right].
 \end{equation}
-It turns out that $S(E)$ is nearly constant\sidenote{This is true as long as we are not close to a resonance---an energy level in the compound nucleus that matches the energy of the incoming particle.}, which helps with extrapolating the cross-section from laboratory energies  to the much lower stellar energies.
+For many reactions that $S(E)$ is nearly constant,
+%\sidenote{This is true as long as we are not close to a resonance---an energy level in the compound nucleus that matches the energy of the incoming particle.}
+which helps with extrapolating the cross-section from laboratory energies  to the much lower stellar energies.
 
 \section{The reaction rate}
 Recall that the mean-free path of a particle is $\ell = (n\sigma)^{-1}$, where $n$ is the density of targets.  For a particle traveling at speed $v$, the mean time between collisions is therefore $\ell/v$; in a large ensemble of particles, this gives the mean rate, $r = n\sigma v$.  Here $v = |\bvec{v}_{1}-\bvec{v}_{2}|$ is the relative velocity between the particles.  Since the cross-section depends on energy, the rate at which any given particle 1 will react with particles of type 2 having velocities $\bvec{v}_{2}$ in a range $\dif^{3}v_{2}$ is
