@@ -12,21 +12,54 @@ again to three significant figures. From these two quantities, we find the elect
 \]
 Put another way, the potential energy between two protons of charge $e$ separated by $\val{1}{\fermi}$ is $\val{1.44}{\MeV}$.
 
-The strong nuclear force differs from electromagnetism and gravity in that it is short-range: the interaction vanishes for distances $\gtrsim\val{2}{\fermi}$. It is weakly attractive for distances $\val{1}{\fermi}\lesssim r\lesssim\val{2}{\fermi}$ and becomes strongly repulsive at distances $\ll\val{1}{\fermi}$. The potential between the neutron and proton in a deuterium (\hydrogen[2]) nucleus must therefore look something like that in Fig.~\ref{f.nuclear-potential}. Deuterium has only one energy level (black dotted line) and is weakly bound by $\val{2.2}{\MeV}$.
+The strong nuclear force differs from electromagnetism and gravity in that it is short-range: the interaction vanishes for distances $\gtrsim\val{2}{\fermi}$. It is weakly attractive for distances $\val{1}{\fermi}\lesssim r\lesssim\val{2}{\fermi}$ and becomes strongly repulsive at distances $\ll\val{1}{\fermi}$. The potential between the neutron and proton in a deuterium (\hydrogen[2]) nucleus (called a deuteron) must therefore look something like that in Fig.~\ref{f.nuclear-potential}. The deuteron's ground state (black dotted line) is at $E_{d} = -\val{2.2}{\MeV}$, so the nucleus is weakly bound ($|E_{d}| \ll |V|$, where $V$ is the depth of the potential well).
 
 \begin{marginfigure}[-8\baselineskip]
 \includegraphics[width=\linewidth]{nuclear-potential}
-\caption{\label{f.nuclear-potential}Schematic of the nuclear potential for a deuteron (\hydrogen[2]). The binding energy of the deuteron is shown as a black dotted line.}
+\caption[Schematic of the nuclear potential]{\label{f.nuclear-potential}Schematic of the nuclear potential for a deuteron (\hydrogen[2]). The binding energy of the deuteron is shown as a black dotted line.}
 \end{marginfigure}
 
 \begin{exercisebox}[Depth of nuclear well]
 We can estimate the depth of the well in Fig.~\ref{f.nuclear-potential}. Since this is a two-body problem, transfer to center-of-mass coordinates and treat this as a single particle with a reduced mass $m_{p}m_{n}/(m_{p}+m_{n}) \approx m_{n}/2$. Use the uncertainty principle, with $\Delta x$ being the width of the well, to get an estimate of $p\sim\Delta p$ and from this estimate the kinetic energy of the particle. Finally, use the small value of the binding energy (sum of potential and kinetic) to construct an estimate for the depth of the potential well.
 \end{exercisebox}
 
-The nuclear force does not distinguish between neutrons and protons. 
-Because the force is weakly attractive for separations  and repulsive at shorter distances, in large nuclei there is a characteristic distance between nucleons that is a bit larger than $\val{1}{\fermi}$. Unlike electromagnetism, the strong nuclear force does not obey superposition: we cannot write the energy of the nucleus as a sum over the potential between all pairs of nucleons. Moreover, the strong nuclear force is not a central force, meaning that it depends on more than just the distance between any two nucleons. The behavior of an atomic nucleus is thus much more complicated to describe than the electronic structure of the atom.
+Unlike electromagnetism, the strong nuclear force does not obey superposition: we cannot write the energy of the nucleus as a sum over the potential between all pairs of nucleons. Moreover, the strong nuclear force is not a central force, meaning that it depends on more than just the distance between any two nucleons. The behavior of an atomic nucleus is thus much more complicated to describe than the electronic structure of the atom.
 
-\newthought{Despite these complications, there are many properties of the nucleus that we can deduce.}
+\newthought{Despite these complications, there are many properties of the nucleus that we can deduce.} Let us write the mass of a nucleus with $A$ nucleons---$Z$ protons and $N=A-Z$ neutrons---as
+\[
+	M(Z,N) = Zm_{p} + Nm_{n} - B(Z,N)/c^{2},
+\]
+where $B(Z,N)$ is the \newterm{binding energy}---the amount of energy that must be supplied to the nucleus in order to break it into its constituent protons and neutrons.
+
+Because the nuclear force is weakly attractive for separations  and repulsive at shorter distances (Fig.~\ref{f.nuclear-potential}), there is a characteristic distance between nucleons that is a bit larger than $\val{1}{\fermi}$. In a large nucleus, we therefore expect the nucleons to be spaced by roughly this distance, so that the size of the nucleus is roughly
+\[
+	r_{A} \approx \val{1.14}{\fermi}\,A^{1/3}.
+\]
+Notice that because the nucleon-nucleon potential is so short-ranged, nucleons in a big nucleus only interact with their nearest neighbors. Indeed the nucleon-nucleon in similar in form to the potential between molecules in a fluid. This motivates developing a simple formula that gives a decent approximation for the binding energy. For the first term, we estimate the binding energy of a large nucleus as the binding energy of a single nucleon with its neighbors, multiplied by the number of nucleons. It is energetically favorable to have equal numbers of neutrons and protons. We therefore define an asymmetry parameter $\eta \equiv (N-Z)/(N+Z) = 1-2Z/A$, $-1\le\eta\le1$. The binding energy is maximum for $\eta = 0$; because the nuclear force does not distinguish between neutrons and protons, the binding energy is quadratic in $\eta$. Thus our first approximation for the binding energy is $B \approx (a_{V} - a_{A}\eta^{2}) A$. Here $a_{V}$ and $a_{A}$ are as-yet-undetermined coefficients.
+
+For smaller nuclei, there should be a correction because nucleons near the surface would be bound less. We therefore subtract a term proportional to the surface area, $\propto r_{A}^{2} \propto A^{2/3}$. The next iteration of our liquid-drop approximation is thus $B \approx (a_{V}- a_{A}\eta^{2})A - a_{S}A^{2/3} $. Finally, the protons repel one another and this repulsion reduces the binding energy. We expect the repulsion to be proportional to $Z^{2}/r_{A}\propto Z^{2}/A^{1/3}$, so we add another term to our mass formula to obtain
+\begin{equation}\label{e.liquid-drop}
+B = \left(a_{V} -a_{A}\eta^{2}\right) A -  a_{S}A^{2/3} - a_{C} \frac{Z^{2}}{A^{1/3}}. 
+\end{equation}
+We then adjust the coefficients $a_{V},a_{A},a_{S},a_{C}$ to obtain the best fit\sidenote{Strictly speaking this fit applies to nuclei with even numbers of both neutrons and protons; the nucleons form pairs with a lower energy.}
+for measured nuclear masses (Table~\ref{t.liquid-drop}).
+\begin{margintable}
+\caption[Liquid-drop coefficients]{\label{t.liquid-drop} Coefficients for hte fit to nuclear masses, (\protect\ref{e.liquid-drop}), in units of MeV.}
+\begin{tabular}{rrrr}
+$a_V$ & $a_A$ & $a_S$ & $a_C$ \\
+\hline
+15.5 & 22.7 & 16.6 & 0.71\\
+\end{tabular}
+\end{margintable}
+
+\begin{exercisebox}[The nuclear landscape]
+For a given nuclear mass number $A$, derive an expression for the charge number $Z_{\star}(A)$ that maximizes the binding energy (eq.~[\ref{e.liquid-drop}] with coefficients from Table~\ref{t.liquid-drop}).
+\begin{enumerate}
+\item Plot the ratio $Z_{\star}/A$ for $4\le A\le 128$. Give a physical explanation for the behavior of $Z_{\star}/A$.
+\item Plot the binding energy per nucleon $B/A$ as a function of $Z_{\star}$ and $A$, for $4\le A\le 128$.
+\item Find the atomic number $Z$ and atomic mass $A$ of the nucleus with the maximum $B/A$.
+\end{enumerate}
+\end{exercisebox}
 
 \section{The Coulomb barrier}
 
