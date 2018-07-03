@@ -86,9 +86,22 @@ the change in mass is
 Fusion of hydrogen into helium entails converting 4 hydrogen atoms (including the 4 electrons) into 1 helium atom (2 protons, 2 neutrons, 2 electrons) with $B = \val{28.296}{\MeV}$. What is the heat evolved \emph{per hydrogen atom}? Assume that the sun has been shining with its current luminosity over its life. What mass of hydrogen atoms would need to undergo fusion to supply this energy? How large is this mass relative to the total mass of the sun? 
 \end{exercisebox}
 
-\section{The Coulomb barrier}
+\newthought{You might at first think that because the nuclear interaction is short-range, the cross-section is something like $\pi r_{\mathrm{n}}^{2}$, where $r_{\mathrm{n}}\approx\valrng[--]{1}{2}{\fermi}$.} Things are a bit more subtle, however, and in this section we are going to take the reaction-rate apart to understand how it works. First, the ``size'' of a particle is in general proportional to the ``size'' of the wavefunction, which is set by the uncertainty principle, 
+\[\pi\left(\frac{\lambda}{2\pi}\right)^{2} = \pi \left(\frac{\hbar}{p}\right)^{2} = \pi\frac{\hbar^{2}}{2mE}.\]
+Notice that if we multiply and divide by $c^{2}$, then we can estimate the area as
+\[
+	\frac{(\hbar c)^{2}}{m_{p} c^{2}} \frac{1}{E} \sim \val{\sci{4}{4}}{\fermi^{2}} \times \left(\frac{\keV}{E}\right) = \val{400}{\barn}\left(\frac{\keV}{E}\right).
+\]	
+Here we've introduced a convenient unit for cross-sections, the \newterm{barn}\sidenote{as in hitting the broad side of}, with $\val{1}{\barn} = \val{10^{-28}}{\meter^{2}} = \val{100}{\fermi^{2}}$.
 
-To get the reaction rate, we need the cross-section. Because protons repel one another, the potential at long-range is not the nuclear potential shown in Fig.~\ref{f.nuclear-potential}, but rather the Coulomb potential (Fig.~\ref{f.tunneling}). Consider the case of two nuclei with masses\sidenote{When doing kinematics, we shall make the approximation $m\approx A\mb$.} $A_{1}\mb$ and $A_{2}\mb$. Transform to the center-of-mass frame; the problem then reduces to that of one particle, mass $A\mb = A_{1}A_{2}/(A_{1}+A_{2})\times\mb$, moving in a potential, which at $r\gtrsim\val{2}{\fermi}$, is purely Coulomb,
+The key point is that the size of the wave packet is $\propto 1/E$, which is in general true. This geometrical size of the wave packet is then multiplied by the probability of the nucleons forming a bound state, so we write the nuclear portion of the cross-section as
+\[
+	\sigma_{\mathrm{nuclear}}(E) \propto \frac{S(E)}{E}.
+\]
+The function $S(E)$ contains the details of the nuclear interaction; in general it is measured experimentally at higher energies and then extrapolated to typical stellar energies.
+
+The final part of the cross-section concerns the Coulomb potential.
+Because protons repel one another, the potential at long-range is not the nuclear potential shown in Fig.~\ref{f.nuclear-potential}, but rather the Coulomb potential (Fig.~\ref{f.tunneling}). Consider the case of two nuclei with masses\sidenote{When doing kinematics, we shall make the approximation $m\approx A\mb$.} $A_{1}\mb$ and $A_{2}\mb$. Transform to the center-of-mass frame; the problem then reduces to that of one particle, mass $A\mb = A_{1}A_{2}/(A_{1}+A_{2})\times\mb$, moving in a potential, which at $r\gtrsim\val{2}{\fermi}$, is purely Coulomb,
 \[ \frac{Z_{1}Z_{2}e^{2}}{4\pi\epsilon_{0}r} = \val{1.44}{\MeV}\times Z_{1}Z_{2}\left(\frac{\val{1}{\fermi}}{r}\right). \]
 Fig.~\ref{f.tunneling} has a schematic of the potential. While at short distances the nuclear interaction forms a deep potential well (blue curve), outside the nucleus the Coulomb potential dominates (red curve).
 \begin{marginfigure}
@@ -102,7 +115,8 @@ Fig.~\ref{f.tunneling} has a schematic of the potential. While at short distance
 For the sun, typical center-of-mass energies are $E \sim \val{1}{\keV}$ (horizontal black line in Fig.~\ref{f.tunneling}). Suppose we have two protons heading towards one another with this kinetic  energy. What is their distance of closest approach?
 \end{exercisebox}
 
-As shown in Exercise~\ref{ex.turning-radius}, the turning radius at typical stellar energies is much bigger than the nuclear radius.  Classically the particle can't go in the region $r<r_{E}$.
+As shown in Exercise~\ref{ex.turning-radius}, the turning radius $r_{E}$ at typical stellar energies is much bigger than the nuclear radius.  Classically the particle can't go in the region $r<r_{E}$ (dotted black line, Fig.~\ref{f.tunneling}) and thus there would be no nuclear reactions at typical stellar temperatures because two particles would never find themselves close enough to be bound by the nuclear force.
+
 The world is quantum, however: the particle wavefunction (thin gray line) decreases exponentially in this region, but there is a finite probability for the particle to reach $r\sim\val{1}{\fermi}$.  This probability is
 \[ \mathcal{P}\approx \exp\left[-2\pi^{2}\frac{r_{E}}{\lambda}\right] \]
 where $\lambda = h/p$, $p$ being the momentum of the particle.
@@ -118,7 +132,6 @@ with
 \[ \EG \equiv \textrm{``Gamow Energy''} = \left[\frac{2\pi^{2}Z_{1}Z_{2}e^{4}m}{\hbar^{2}}\right] = Z_{1}^{2}Z_{2}^{2}A \times \val{979}{\keV}.
 \]
 
-\section{The cross-section}
 The cross-section for scattering in general is proportional to the ``size'' of the wavefunction, 
 \[\sigma\propto \pi\left(\frac{\lambda}{2\pi}\right)^{2} = \pi \left(\frac{\hbar}{p}\right)^{2} = \pi\frac{\hbar^{2}}{2mE}.\]
 To get the cross-section for a reaction, we multiply this by the probability of tunneling through the Coulomb barrier, $\mathcal{P} = \exp\left[-\left(\EG/E\right)^{1/2}\right]$, and a term $S(E)$ that accounts for the nuclear interaction.
