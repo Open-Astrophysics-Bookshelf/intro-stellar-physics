@@ -35,23 +35,28 @@ ax.xaxis.set_ticks([3.0])
 ax.xaxis.set_ticklabels([r'$r_E$'])
 ax.yaxis.set_ticks([])
 ax.set_xlabel(r'$r$')
-ax.set_ylabel(r'$E$, $\psi$')
+ax.set_ylabel(r'$E$, $V$, $\psi$')
 
 # Coulomb
 rc = np.linspace(0.3,8.0)
 Ec = 3.0/rc
 plt.plot(rc,Ec,color='r',linewidth=1,solid_capstyle='round',solid_joinstyle='round')
+plt.annotate(r'$V_{\mathrm{C}}$',[0.5,6.0],color='r',ha='left',va='top',size='small',xytext=(2,0),textcoords='offset points')
 # nuclear
 plt.plot([0.05,0.05,0.5,0.5],[6.0,-5.0,-5.0,6.0],color='b',linewidth=1,solid_capstyle='round',solid_joinstyle='round')
+plt.annotate(r'$V_n$',[0.5,-5.0],color='b',ha='left',va='bottom',size='small',xytext=(2,0),textcoords='offset points')
 
 # energy
 plt.plot([0.05,0.5],[1.0,1.0],color='k',linestyle='-')
 plt.plot([0.5,3.0],[1.0,1.0],color='k',linestyle=':')
 plt.plot([3.0,8.0],[1.0,1.0],color='k',linestyle='-')
+plt.annotate(r'$E$',[8.0,1.0],color='k',ha='right',va='bottom',size='small')
 
 # wavefunction
-plt.plot(x_i,psi_i,color='0.2',linewidth=0.5)
-plt.plot(x_t,psi_t,color='0.2',linewidth=0.5)
-plt.plot(x_o,psi_o,color='0.2',linewidth=0.5)
+plt.plot(x_i,psi_i,color='0.5',linewidth=0.5)
+plt.plot(x_t,psi_t,color='0.5',linewidth=0.5)
+plt.plot(x_o,psi_o,color='0.5',linewidth=0.5)
+plt.annotate(r'$\psi$',[x_o[-1],psi_o[-1]],color='0.5',
+    ha = 'right',va='bottom',size='small')
 
 plt.savefig('tunnel-schematic.pdf',format='pdf')

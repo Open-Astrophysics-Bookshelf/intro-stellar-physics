@@ -96,17 +96,17 @@ Here we've introduced a convenient unit for cross-sections, the \newterm{barn}\s
 
 The key point is that the size of the wave packet is $\propto 1/E$, which is in general true. This geometrical size of the wave packet is then multiplied by the probability of the nucleons forming a bound state, so we write the nuclear portion of the cross-section as
 \[
-	\sigma_{\mathrm{nuclear}}(E) \propto \frac{S(E)}{E}.
+	\sigma_{\mathrm{nuclear}}(E) = \frac{S(E)}{E}.
 \]
-The function $S(E)$ contains the details of the nuclear interaction; in general it is measured experimentally at higher energies and then extrapolated to typical stellar energies.
+The function $S(E)$ contains the details of the nuclear interaction; in general $S(E)$ must be measured experimentally.
 
 The final part of the cross-section concerns the Coulomb potential.
-Because protons repel one another, at large separations the nuclei interact via the Coulomb potential. Consider the case of two nuclei with masses\sidenote{When doing kinematics, we shall make the approximation $m\approx A\mb$.} $A_{1}\mb$ and $A_{2}\mb$. Transform to the center-of-mass frame; the problem then reduces to that of one particle, mass $A\mb = A_{1}A_{2}/(A_{1}+A_{2})\times\mb$, moving in a potential, which at $r\gtrsim\val{2}{\fermi}$, is purely Coulomb,
+Because protons repel one another, at large separations the nuclei interact via the Coulomb potential. Consider the case of two nuclei with masses\sidenote{When doing kinematics, we shall make the approximation $m\approx A\mb$.} $A_{1}\mb$ and $A_{2}\mb$. Transform to the center-of-mass frame; the problem then reduces to that of one particle, mass $A\mb = A_{1}A_{2}/(A_{1}+A_{2})\times\mb$, moving in a potential, which at large separations is purely Coulomb,
 \[ \frac{Z_{1}Z_{2}e^{2}}{4\pi\epsilon_{0}r} = \val{1.44}{\MeV}\times Z_{1}Z_{2}\left(\frac{\val{1}{\fermi}}{r}\right). \]
 Fig.~\ref{f.tunneling} has a schematic of the potential. While at short distances the nuclear interaction forms a deep potential well (blue curve), outside the nucleus the Coulomb potential dominates (red curve).
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{tunnel-schematic}
-\caption{Tunneling through the Coulomb potential barrier.}
+\caption{Tunneling through the Coulomb potential barrier. Not to scale.}
 \label{f.tunneling}
 \end{marginfigure}
 
@@ -115,26 +115,27 @@ Fig.~\ref{f.tunneling} has a schematic of the potential. While at short distance
 For the sun, typical center-of-mass energies are $E \sim \val{1}{\keV}$ (horizontal black line in Fig.~\ref{f.tunneling}). Suppose we have two protons heading towards one another with this kinetic  energy. What is their distance of closest approach?
 \end{exercisebox}
 
-As shown in Exercise~\ref{ex.turning-radius}, the turning radius $r_{E}$ at typical stellar energies is much bigger than the nuclear radius.  Classically the particle can't go in the region $r<r_{E}$ (dotted black line, Fig.~\ref{f.tunneling}), and thus there could be no nuclear reactions at typical stellar temperatures because two particles would never find themselves close enough to be bound by the nuclear force.
+As shown in Exercise~\ref{ex.turning-radius}, the turning radius $r_{E}$ at typical stellar energies is much larger than the nuclear radius.  Classically the particle can't penetrate the region $r_{n} < r < r_{E}$ where $E < V$ (dotted black line, Fig.~\ref{f.tunneling}); under classical physics, there would be no nuclear reactions at typical stellar temperatures because two particles would never find themselves close enough to be bound by the nuclear force.
 
-The world is quantum, however, and the uncertainty in position means there is a small probability for the nucleons to be close enough for the nuclear force to come into play. In the classically forbidden region $r_{n}r < r_{E}$, the particle wavefunction (thin gray line, Fig.~\ref{f.tunneling}) decreases exponentially, so that the probability to reach $r\sim\val{1}{\fermi}$ is
+The world is quantum, however, and the uncertainty in a particle's position means there is a small probability for the nucleons to be close enough for the nuclear force to come into play. In the classically forbidden region $r_{n} < r < r_{E}$, the particle wavefunction (thin gray line, Fig.~\ref{f.tunneling}) decreases exponentially, so that the probability to reach $r\sim\val{1}{\fermi}$ is
 \[ \mathcal{P}\approx \exp\left[-2\pi^{2}\frac{r_{E}}{\lambda}\right] \]
 where $\lambda = h/p$, $p$ being the momentum of the particle.
-In terms of the particle energy,
+It is convenient to rewrite the argument of the exponential in terms of the particle energy,
 \[ \frac{2\pi^{2}r_{E}}{\lambda} = 2\pi^{2}\left(\frac{Z_{1}Z_{2}e^{2}}{E}\right)
-	\left(\frac{p}{h}\right) = \left[\sqrt{2}\pi \frac{Z_{1}Z_{2}e^{2}}{\hbar}\right]\left(\frac{1}{E}\right)^{1/2}, \]
+	\left(\frac{p}{h}\right) = \left[\pi \frac{Z_{1}Z_{2}e^{2}\sqrt{2m}}{\hbar}\right]\left(\frac{1}{E}\right)^{1/2}, \]
 so that the probability of ``tunneling'' through the Coulomb barrier is
 \begin{equation}
 \mathcal{P} \approx \exp\left[-\left(\frac{\EG}{E}\right)^{1/2}\right],
 \end{equation}
 with
-\[ \EG \equiv \textrm{``Gamow Energy''} = \left[\frac{2\pi^{2}Z_{1}Z_{2}e^{4}m}{\hbar^{2}}\right] = Z_{1}^{2}Z_{2}^{2}A \times \val{979}{\keV}.
+\[ \EG \equiv \textrm{``Gamow Energy''} = \left[\frac{2\pi^{2}Z_{1}^{2}Z_{2}^{2}e^{4}m}{\hbar^{2}}\right] = Z_{1}^{2}Z_{2}^{2}A \times \val{979}{\keV}.
 \]
-Putting this all together, we write the reaction cross-section as
+
+Our reaction cross-section is therefore the nuclear cross-section multiplied by the probability of tunneling, 
 \begin{equation}\label{e.s-def}
 \sigma(E) = \frac{S(E)}{E}\exp\left[-\left(\frac{\EG}{E}\right)\right].
 \end{equation}
-For many reactions that $S(E)$ is nearly constant,
+For many reactions $S(E)$ is nearly constant,
 %\sidenote{This is true as long as we are not close to a resonance---an energy level in the compound nucleus that matches the energy of the incoming particle.}
 which helps with extrapolating the cross-section from laboratory energies  to the much lower stellar energies.
 
@@ -222,16 +223,14 @@ as you can verify for yourself. In the table, the exponent is evaluated at $T = 
 \begin{table}[hb]
 \caption{\label{t.reaction} Parameters for non-resonant reactions}
 \begin{tabular}{lrrrrrr}
+ & $p+p$ & $p+\helium[3]$ & $\helium[3]+\helium[3]$ & $p+\lithium[7]$ & $p+\carbon$\\
 \hline
-Reaction & $p+p$ & $p+\helium[3]$ & $\helium[3]+\helium[3]$ & $p+\lithium[7]$ & $p+\carbon$\\
-\hline\hline
 $A$ & 1/2 & 3/4 & 3/2 & 0.88 & 0.92 \\
 $Z_{1}Z_{2}$ & 1 & 2 & 4 & 3 & 6 \\
 $\EG$ (MeV) & 0.489 & $2.94$ & $23.5$ & $7.70$ & $32.5$\\
 $\EG/(4k)$ (GK) & $1.4$ & $8.5$ & $68.0$ & $22.0$ & $94.0$ \\
 $\Epk|_{T=\val{10^{7}}{\K}}$ (keV) & 4.5 & 8.2 & 16.3 & 11.3 & 18.2\\
-$\Delta/\Epk|_{T=\val{10^{7}}{\K}}$ & 1.0 & 0.75 & 0.53 & 0.64 & 0.50 \\
+%$\Delta/\Epk|_{T=\val{10^{7}}{\K}}$ & 1.0 & 0.75 & 0.53 & 0.64 & 0.50 \\
 $n(T = \val{10^{7}}{\K})$ & 4.6 & 8.8 & 18.3 & 12.4 & 20.5\\
-\hline
 \end{tabular}
 \end{table}
