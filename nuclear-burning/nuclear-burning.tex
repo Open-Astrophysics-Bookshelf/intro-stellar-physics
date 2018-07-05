@@ -149,7 +149,7 @@ As a result, reactions predominately occur in a narrow window of energies \Epk\ 
 \[	\Epk = \frac{\EG^{1/3}(\kB T)^{2/3}}{4^{1/3}}. \]
 The reaction rate is suppressed for $E\ll\Epk$ because the probability of penetrating the Coulomb barrier is so small; the reaction rate is suppressed for $E\gg\Epk$ because there simply aren't enough particles with the relevant center-of-mass energy.
 
-\begin{sidebar}[The thermally averaged cross section]
+\begin{sidebar}[The thermally averaged cross-section]
 \label{sb.thermally-averaged-cross-section}
 Since the cross-section depends on energy, the rate at which any given particle of type 1, traveling with velocity $\bvec{v}_{1}$, will react with particles of type 2 having velocities $\bvec{v}_{2}$ in a range $\dif^{3}v_{2}$ is
 \[ n_{2} \sigma |\bvec{v}_{1}-\bvec{v}_{2}| \left(\frac{m_{2}}{2\pi \kB T}\right)^{3/2}\exp\left(-\frac{m_{2}v_{2}^{2}}{2\kB T}\right) \,\dif^{3}v_{2}. \]
@@ -221,7 +221,7 @@ Defining a variable $\Delta = 4(\Epk \kB T/3)^{1/2}$, our integral becomes
 Another simplification can be made because both the Gaussian and the original integrand go to zero as $E\to 0$.  As a result, we can extend the lower bound of our integral (eq.~[\ref{e.integral2}]) to $-\infty$, which allows us to evaluate the integral analytically and obtain
 \begin{eqnarray}\label{e.rate2}
 \langle\sigma v\rangle &\approx& \left(\frac{8}{\pi m}\right)^{1/2}\left(\frac{1}{\kB T}\right)^{3/2} S(\Epk) \exp\left[-3\left(\frac{\EG}{4\kB T}\right)^{1/3}\right]\frac{\Delta}{2}\nonumber\\
- &=& \frac{2^{13/6}}{\sqrt{3m}}\frac{\EG^{1/6}}{(\kB T)^{2/3}} \exp\left[-3\left(\frac{\EG}{4\kB T}\right)^{1/3}\right]  S(\Epk).
+ &=& \frac{2^{13/6}}{\sqrt{3m}}\frac{\EG^{1/6}S(\Epk)}{(\kB T)^{2/3}} \exp\left[-3\left(\frac{\EG}{4\kB T}\right)^{1/3}\right]  .
 \end{eqnarray}
 \end{sidebar}
 
@@ -231,13 +231,16 @@ Another simplification can be made because both the Gaussian and the original in
 %\label{f.integrand}
 %\end{marginfigure}
 
-Using this approximation the rate can be evaluated, with $\langle\sigma v\rangle$ being given by eq.~(\ref{e.rate2}).
-At stellar energies, reaction rates are incredibly sensitive to temperature. To quantify this, approximate the rate at a given temperature as a power-law, $r(T)\propto T^{n}$. Then the exponent is
+Using this approximation the rate can be evaluated, with $\langle\sigma v\rangle$ being given by eq.~(\ref{e.rate2}). The rate has the temperature dependence
+\[
+	r \propto T^{-2/3} \exp\left[-3\left(\frac{\EG}{4\kB T}\right)^{1/3}\right];
+\]
+since $\EG \propto Z_{1}^{2}Z_{2}^{2}A$, at any given temperature lighter nuclei have much faster reaction rates. Also note that at stellar energies, reaction rates are incredibly sensitive to temperature. To quantify this, approximate the rate at a given temperature as a power-law, $r(T)\propto T^{n}$. Then the exponent is
 \begin{equation}\label{e.exponent}
  n(T) = \dd{\ln r}{\ln T} = -\frac{2}{3} + \left(\frac{\EG}{4\kB T}\right)^{1/3},
 \end{equation}
 as you can verify for yourself (Exercise~\ref{ex.power-law}). On to some numbers. Table~\ref{t.reaction} lists quantities for some common reactions. 
-In the table, the exponent $n(T)$ is evaluated at $T = \val{10^{7}}{\K}$. Note the large value of $n(T)$ at stellar temperatures. 
+In the table, the exponent $n(T)$ is evaluated at $T = \val{10^{7}}{\K}$ ($\kB T = \val{0.86}{\keV}$). Note the large value of $n(T)$ at stellar temperatures---this is a consequence of the largeness of $\EG/\kB T$.
  
 \begin{table}[hb]
 \caption{\label{t.reaction} Parameters for non-resonant reactions}
@@ -263,11 +266,27 @@ Suppose we wish to approximate a function $f(x)$ at a point $x_{0}$ with a power
 Apply this to the reaction rate, eq.~(\ref{e.rate2}), and thus derive eq.~(\ref{e.exponent}).
 \end{exercisebox}
 
-\section{Hydrogen burning}
+\section{Stellar nuclear reactions}
 
-\subsection{Hydrogen burning via pp reactions: the lower main sequence}
+\subsection{Hydrogen burning via pp reactions: the weak nuclear interaction}
 
-In a contracting pre-main sequence star, the reaction $\hydrogen[2]+p\to\gamma+\helium[3]$ proceeds rapidly owing to the small Coulomb barrier; in fact, this reaction can occur in objects as small as $\approx \val{12}{M_{\mathrm{Jupiter}}}$.  The small primordial abundance of deuterium, however, prevents this reaction from doing anything more than slowing contraction slightly.  The reaction $\pt +\pt$ is much slower, because there is no bound nucleus \helium[2]; the only possible way to form a nucleus is to have a weak interaction as well, giving the reaction $\pt+\pt\to e^{+}+\nu_{e}+\hydrogen[2]$.
+In the previous section, we established that lighter nuclei, because of their lower Coulomb repulsion, will tend to fuse at lower temperatures. Thus we expect that the first reaction that can occur is $\pt+\pt$ and therein lies a problem; for there is no bound state of \helium[2]. The first reaction that can actually occur in a contracting pre-main sequence star is
+$\hydrogen[2]+p\to\gamma+\helium[3]$; in fact, this reaction can occur in objects as small as $\approx \val{12}{M_{\mathrm{Jupiter}}}$.  The small primordial abundance of deuterium, however, prevents this reaction from doing anything more than slowing contraction slightly. 
+In order for two protons to fuse, we need one of the protons to spontaneously turn into a neutron as well, so that $\pt + \pt \to \hydrogen[2]$.
+
+The reaction $\pt +\pt$ is much slower, because there is no bound nucleus \helium[2]; the only possible way to form a nucleus is to have a weak interaction as well, giving the reaction
+\begin{equation}\label{e.pp}
+	\pt + \pt \to \hydrogen[2] + e^{+} + \nu_{e}.
+\end{equation}
+This is possible, because there are two nuclear forces: the strong and the weak. The strong is what binds nuclei together\marginnote{more precisely, what the strong force mainly does is bind quarks into neutrons or protons.}; under the weak interaction, a neutron can turn into a proton or vice versa. Two leptons are also involved (either emitted or absorbed) in a weak reaction: an electron (or its anti-particle, the positron) and an electron neutrino (or anti-neutrino). The reaction, like all nuclear reactions, is subject to three rules:
+\begin{enumerate}
+\item\label{i.baryon-conservation} the number of nucleons is conserved;
+\item\label{i.charge-conservation} the charge is conserved; and
+\item\label{i.lepton-conservation} the number of leptons is conserved.
+\end{enumerate}
+With regard to item \ref{i.lepton-conservation}, electrons ($e^{-}$) and electron neutrinos ($\nu_{e}$) have lepton number $+1$ while positrons ($e^{+}$) and anti-electron neutrinos ($\bar{\nu}_{e}$) have lepton number $-1$. Neutrinos, as the name implied, do not carry charge.
+
+Applying these rules to the reaction (\ref{e.pp}), the number of nucleons on both sides of this reaction is the same, so rule \ref{i.baryon-conservation} is satisfied. On the right hand side the positron balances charge to satisfy rule \ref{i.charge-conservation}. Finally, the electron neutrino on output ensures that the lepton number on the right-hand side is zero to satisfy rule \ref{i.lepton-conservation}.
 
 The weak cross section goes roughly as $\sigma_{\mathrm{weak}} \sim \val{10^{-20}}{\barn}\left(E/\keV\right)$, so that
 \[ \frac{\sigma_{\mathrm{weak}}}{\sigma_{\mathrm{nuc}}} \sim 10^{-23}\left(\frac{E}{\keV}\right). \]
@@ -287,29 +306,23 @@ furthermore, at slightly higher temperatures \beryllium[7] can capture a proton 
 \end{eqnarray}
  The end result of these chains is the conversion of hydrogen to helium, although the amount of energy carried away by neutrinos differs from one chain to the next.
 
-\subsection[The CNO cycle]{Hydrogen burning via the CNO cycle: the upper main sequence}
+\subsection{Hydrogen burning via the CNO cycle}
 
 As we saw in the previous section, the smallness of the $\pt+\pt$ cross-section means that captures onto heavier nuclei can be competitive at stellar temperatures.  Let's get a rough estimate of how charged a nucleus can be before the Coulomb barrier makes the reaction slower than $\pt+\pt$.  Assuming $A = 2Z$, and taking the $S$-factor for $\pt+\pt$ to be $10^{-22}$ times smaller that that for $\pt + \mathrm{^{A}Z}$ gives us the rough equation
 \[ 10^{-22}\exp\left(-\frac{33.81}{T_{6}^{1/3}}\right) \approx \exp\left(-\frac{41.47 Z^{2/3}}{T_{6}^{1/3}}\right), \]
 where the factors in the exponentials come from the peak energy for the reaction (see the handout on nuclear burning), and $T_{6}\equiv (T/\val{10^{6}}{\K})$.  Solving for $Z$, we see that at $T_{6} = 10$, proton captures onto \carbon\ have a comparable cross-section to $\pt + \pt$; at $T_{6} = 20$, proton captures onto \oxygen\ have a comparable cross-section.
 
-Thus at temperatures slightly greater than that in the solar center, the following catalytic cycle becomes possible.
-\begin{center}
-\begin{tabular}{rr}
-reaction & $\log[(\tau/\yr) \times (\rho X_{H}/\val{100}{\grampercc})]$\\
-\hline
-$\carbon(\mathbf{p},\gamma)\nitrogen[13]$ & 3.82\\
-$\nitrogen[13](,e^{+}\nu_{e})\carbon[13]$ & $\tau=\val{870}{\second}$\\
-$\carbon[13](\mathbf{p},\gamma)\nitrogen[14]$ & 3.21\\
-$\nitrogen[14](\mathbf{p},\gamma)\oxygen[15]$ & 5.89 \\
-$\oxygen[15](,e^{+}\nu_{e})\nitrogen[15]$ & $\tau = \val{178}{\second}$\\
-$\nitrogen[15](\mathbf{p},\mathbf{^4He})\carbon$ & 1.50 \\
-\hline
-\end{tabular}
-\end{center}
-As indicated by the boldfaced symbols, this cycle takes in 4 protons and releases 1 helium nucleus.
-The reaction timescales are evaluated at a temperature of $\val{20}{\Mega\K}$.
-The reaction $\nitrogen+\pt\to\gamma+\oxygen[15]$ is by far the slowest step in the cycle; as a result, all of the CNO elements are quickly converted into \nitrogen\ in the stellar core, and this reaction controls the rate of heating.  At $T = \val{\sci{2}{7}}{\K}$, $\dif \ln \varepsilon_{\mathrm{CNO}}/\dif\ln T = 18$; in contrast the $\pt+\pt$ reaction has a temperature exponent of only 4.5.
+Thus at temperatures slightly greater than that in the solar center, the following catalytic cycle becomes possible:
+\begin{eqnarray*}
+\carbon + \pt &\to& \nitrogen[13]\\
+\nitrogen[13] &\to& \carbon[13] + e^{+} + \nu_{e}\\
+\carbon[13] + \pt &\to& \nitrogen[14]\\
+\nitrogen[14] + \pt &\to& \oxygen[15]\\
+\oxygen[15] &\to& \nitrogen[15] + e^{+} + \nu_{e}\\
+\nitrogen[15] + \pt &\to& \carbon + \helium
+\end{eqnarray*}
+The net result of this cycle is the ingestion of 4 protons and release of 1 \helium\ nucleus.
+The reaction $\nitrogen+\pt\to\oxygen[15]$ is by far the slowest step in the cycle; as a result, all of the CNO elements are quickly converted into \nitrogen\ in the stellar core, and this reaction controls the rate of heating.  At $T = \val{\sci{2}{7}}{\K}$, $\partial \ln \varepsilon_{\mathrm{CNO}}/\partial\ln T = 18$; in contrast the $\pt+\pt$ reaction has a temperature exponent of only 4.5.
 
 The strong temperature dependence of the CNO burning has two effects on the structure of the star.  First, it makes the central temperature nearly constant over a wide range of stellar masses for $M > \val{1}{\Msun}$. A constant central temperature implies, via the virial theorem, that $R \propto M$ on the upper main sequence.  A second consequence is that nearly all of the star's luminosity is generated in a small mass about the stellar center.  This drives the cores of massive stars to be convective.
 
