@@ -130,16 +130,21 @@ so that the probability of ``tunneling'' through the Coulomb barrier is
 with
 \[ \EG \equiv \textrm{``Gamow Energy''} = \left[\frac{2\pi^{2}Z_{1}^{2}Z_{2}^{2}e^{4}m}{\hbar^{2}}\right] = Z_{1}^{2}Z_{2}^{2}A \times \val{979}{\keV}.
 \]
-
 Our reaction cross-section is therefore the nuclear cross-section multiplied by the probability of tunneling, 
 \begin{equation}\label{e.s-def}
 \sigma(E) = \frac{S(E)}{E}\exp\left[-\left(\frac{\EG}{E}\right)\right].
 \end{equation}
-For many reactions $S(E)$ is nearly constant,
-%\sidenote{This is true as long as we are not close to a resonance---an energy level in the compound nucleus that matches the energy of the incoming particle.}
-which helps with extrapolating the cross-section from laboratory energies  to the much lower stellar energies.
+For many reactions $S(E)$ is nearly constant over the range of typical energies in a stellar plasma; this is helpful, as the reaction cross-section can be measured in the lab at higher energies and then extrapolated to the much lower stellar energies.
 
-To get the reaction rate, recall that the mean-free path of a particle is $\ell = (n\sigma)^{-1}$, where $n$ is the density of targets.  For a particle traveling at speed $v$, the mean time between collisions is therefore $\ell/v$; in a large ensemble of particles, this gives the mean rate, $r = n\sigma v$.  Here $v = |\bvec{v}_{1}-\bvec{v}_{2}|$ is the relative velocity between the particles.  
+\newthought{To get the reaction rate from the cross-section,} recall that the mean-free path of a particle is $\ell = (n\sigma)^{-1}$, where $n$ is the density of targets. For definiteness, let us consider a particle of type 1. The mean-free path of this particle against reactions with particles of type 2 is therefore $\ell = (n_{2}\sigma)^{-1}$. If the particles are traveling with relative speed $v = |\bvec{v}_{1}-\bvec{v}_{2}|$, then the mean time between collisions is $\ell/v$. Thus in a large ensemble of particles, the mean rate of reactions is
+\[
+	r_{12} = \frac{n_{1} v}{\ell} = n_{2}n_{1}\langle\sigma v\rangle.
+\]
+Here $\langle \sigma v\rangle$ is the mean value of $\sigma v$ for all pairs of particles in the plasma.
+For reactions between particles of the same type, we replace $n_{1}n_{2}$ with $n^{2}/2$; the factor of $1/2$ is to avoid double-counting.
+
+A detailed calculation of the thermally averaged cross-section $\langle\sigma v\rangle$ is presented in Box~\ref{sb.thermally-averaged-cross-section}; here we'll just give a brief physical explanation for its value. There are two competing terms. First, the cross-section has an exponential term $\exp[-(\EG/E)^{1/2}]$ that increases rapidly with energy: more energetic particles have a much higher probability of tunneling through the Coulomb barrier. On the other hand, however, in a plasma the number of particles with energy $E$ decreases as $\exp(-E/\kB T)$.
+
 
 \begin{sidebar}[The thermally averaged cross section]
 \label{sb.thermally-averaged-cross-section}
