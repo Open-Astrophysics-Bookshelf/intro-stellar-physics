@@ -143,12 +143,12 @@ To get the reaction rate, recall that the mean-free path of a particle is $\ell 
 
 \begin{sidebar}[The thermally averaged cross section]
 \label{sb.thermally-averaged-cross-section}
-Since the cross-section depends on energy, the rate at which any given particle 1 will react with particles of type 2 having velocities $\bvec{v}_{2}$ in a range $\dif^{3}v_{2}$ is
-\[ n_{2} \sigma |\bvec{v}_{1}-\bvec{v}_{2}| \left(\frac{m_{2}}{2\pi kT}\right)^{3/2}\exp\left(-\frac{m_{2}v_{2}^{2}}{2kT}\right) \,\dif^{3}v_{2}. \]
+Since the cross-section depends on energy, the rate at which any given particle of type 1, traveling with velocity $\bvec{v}_{1}$, will react with particles of type 2 having velocities $\bvec{v}_{2}$ in a range $\dif^{3}v_{2}$ is
+\[ n_{2} \sigma |\bvec{v}_{1}-\bvec{v}_{2}| \left(\frac{m_{2}}{2\pi \kB T}\right)^{3/2}\exp\left(-\frac{m_{2}v_{2}^{2}}{2\kB T}\right) \,\dif^{3}v_{2}. \]
 The extra terms are because the particles have a Maxwell-Boltzmann distribution of velocities. To get the total rate per unit volume, we then have to multiply by the number of particles of type 1 having velocities $\bvec{v}_{1}$ in a range $\dif^{3} v_{1}$ and integrate over $\dif^{3}v_{1}\,\dif^{3}v_{2}$:
 \begin{eqnarray}\label{e.rate-joint}
-\lefteqn{r_{12} = n_{1}n_{2}  \left[\frac{m_{1}m_{2}}{(2\pi kT)^{2}}\right]^{3/2}}
-  \nonumber\\ &&\times\int\! \sigma(E) v\exp\left(-\frac{m_{1}v_{1}^{2}}{2kT}-\frac{m_{2}v_{2}^{2}}{2kT}\right)  \,\dif^{3} v_{1}\,\dif^{3}v_{2}.
+\lefteqn{r_{12} = n_{1}n_{2}  \left[\frac{m_{1}m_{2}}{(2\pi \kB T)^{2}}\right]^{3/2}}
+  \nonumber\\ &&\times\int\! \sigma(E) v\exp\left(-\frac{m_{1}v_{1}^{2}}{2\kB T}-\frac{m_{2}v_{2}^{2}}{2\kB T}\right)  \,\dif^{3} v_{1}\,\dif^{3}v_{2}.
 \end{eqnarray}
 Now $E$ and $v$ are the relative energies and velocity in the center-of-mass frame.  We can change variable using the relations
 \begin{eqnarray*}
@@ -157,55 +157,63 @@ Now $E$ and $v$ are the relative energies and velocity in the center-of-mass fra
 \end{eqnarray*}
 where $V$ is the center-of-mass velocity. It is straightforward to show that $\dif v_{1,x}\,\dif v_{2,x} = \dif V_{x}\dif v_{x}$, and likewise for the $y,z$ directions.  Furthermore, $m_{1}v_{1}^{2} + m_{2}v_{2}^{2} = (m_{1}+m_{2})V^{2} + m v^{2}$, and multiplying and dividing the integral in equation~(\ref{e.rate-joint}) by $m_{1}+m_{2}$ allows us to write
 \begin{eqnarray*}
-\lefteqn{r_{12} = n_{1}n_{2} \left(\frac{m_{1}+m_{2}}{2kT}\right)^{3/2}\left(\frac{m}{2kT}\right)^{3/2}}\\
-&&\times \int\!\dif^{3}V \int\!\dif^{3}v \,\sigma(E)v \exp\left[-\frac{mv^{2}}{2kT}\right]
- \exp\left[-\frac{(m_{1}+m_{2})V^{2}}{2kT}\right].
+\lefteqn{r_{12} = n_{1}n_{2} \left(\frac{m_{1}+m_{2}}{2\kB T}\right)^{3/2}\left(\frac{m}{2\kB T}\right)^{3/2}}\\
+&&\times \int\!\dif^{3}V \int\!\dif^{3}v \,\sigma(E)v \exp\left[-\frac{mv^{2}}{2\kB T}\right]
+ \exp\left[-\frac{(m_{1}+m_{2})V^{2}}{2\kB T}\right].
 \end{eqnarray*}
 The integral over $\dif^{3}V$ can be factored out and is normalized to unity. Hence we have for the reaction rate between a pair of particles 1 and 2, 
 \begin{eqnarray}\label{e.rate}
-r_{12} &=& n_{1}n_{2}\left\{\left(\frac{m}{2\pi kT}\right)^{3/2}\int_{0}^{\infty}\! \sigma(E) v \exp\left(-\frac{mv^{2}}{2kT}\right)  4\pi v^{2}\,\dif v\right\}.\nonumber\\
+r_{12} &=& n_{1}n_{2}\left\{\left(\frac{m}{2\pi\kB T}\right)^{3/2}\int_{0}^{\infty}\! \sigma(E) v \exp\left(-\frac{mv^{2}}{2\kB T}\right)  4\pi v^{2}\,\dif v\right\}.\nonumber\\
  &\equiv& n_{1}n_{2}\langle\sigma v\rangle.
 \end{eqnarray}
 The term in $\{\}$ is the averaging over the joint distribution of the cross-section times the velocity, and is usually denoted as $\langle\sigma v\rangle$. Note that if particles 1 and 2 were identical, then we would need to divide $r_{12}$ by 2.
 
 Changing variables to $E = mv^{2}/2$ in equation~(\ref{e.rate}) and inserting the formula for the cross-section, equation~(\ref{e.s-def}), gives
 \begin{equation}\label{e.integral}
-\langle\sigma v\rangle = \left(\frac{8}{\pi m}\right)^{1/2}\left(\frac{1}{kT}\right)^{3/2}\int_{0}^{\infty}\!S(E)\exp\left[-\left(\frac{\EG}{E}\right)^{1/2}-\frac{E}{kT}\right]\,\dif E.
+\langle\sigma v\rangle = \left(\frac{8}{\pi m}\right)^{1/2}\left(\frac{1}{\kB T}\right)^{3/2}\int_{0}^{\infty}\!S(E)\exp\left[-\left(\frac{\EG}{E}\right)^{1/2}-\frac{E}{\kB T}\right]\,\dif E.
 \end{equation}
-Now, we've assumed that $S(E)$ varies slowly; but look at the argument of the exponential. This is a competition between a rapidly rising term $\exp[-(\EG/E)^{1/2}]$ and a rapidly falling term $\exp(-E/kT)$. As a result, the exponential will have a strong peak, and we can expand the integrand in a Taylor series about the maximum. Let 
+Now, we've assumed that $S(E)$ varies slowly; but look at the argument of the exponential. This is a competition between a rapidly rising term $\exp[-(\EG/E)^{1/2}]$ and a rapidly falling term $\exp(-E/\kB T)$. As a result, the exponential will have a strong peak, and we can expand the integrand in a Taylor series about the maximum. Let 
 \[
-f(E) = -\left(\frac{\EG}{E}\right)^{1/2} - \frac{E}{kT}.
+f(E) = -\left(\frac{\EG}{E}\right)^{1/2} - \frac{E}{\kB T}.
 \]
 Then we can write 
 \begin{eqnarray*}
-\lefteqn{\int_{0}^{\infty}\!S(E)\exp\left[-\left(\frac{\EG}{E}\right)^{1/2}-\frac{E}{kT}\right]\,\dif E}\\
+\lefteqn{\int_{0}^{\infty}\!S(E)\exp\left[-\left(\frac{\EG}{E}\right)^{1/2}-\frac{E}{\kB T}\right]\,\dif E}\\
 &\approx&
-	\int_{0}^{\infty}\! S(\Epk)\exp\left[f(\Epk) + \frac{1}{2}\left.\frac{\dif^{2} f}{\dif E^{2}}\right|_{E=\Epk}\left(E-\Epk\right)^{2}\right].
+	\int_{0}^{\infty}\! S(\Epk)\exp\left[f(\Epk) + \frac{1}{2}\left.\frac{\dif^{2} f}{\dif E^{2}}\right|_{E=\Epk}\left(E-\Epk\right)^{2}\right]\,\dif E.
 \end{eqnarray*}
-Here $\Epk$ is found by solving $(\dif f/\dif E)|_{E=\Epk} = 0$. This trick allows us to turn the integral into a Gaussian!
+Here $\Epk$ is found by solving $(\dif f/\dif E)|_{E=\Epk} = 0$. By expanding the argument of the exponential, we have approximated the integrand by a Gaussian,
+\[
+	\exp\left[-\frac{(E-\Epk)^{2}}{2\varsigma^{2}}\right]
+\]
+where
+\[
+	\frac{1}{\varsigma^{2}} = -\left.\frac{\dif^{2} f}{\dif E^{2}}\right|_{E=\Epk}.
+\]
+This trick of approximately a steeply peaked function as a Gaussian, is known as the \newterm{method of steepest descent}.
 
 Solving for \Epk, we get
 \[
-\Epk = \frac{\EG^{1/3}(kT)^{2/3}}{2^{2/3}},
+\Epk = \frac{\EG^{1/3}(\kB T)^{2/3}}{2^{2/3}},
 \]
 and 
-\[ \exp\left[f(\Epk)\right] = \exp\left[-3\left(\frac{\EG}{4kT}\right)^{1/3}\right].
+\[ \exp\left[f(\Epk)\right] = \exp\left[-3\left(\frac{\EG}{4\kB T}\right)^{1/3}\right].
 \]
 Further,
 \[
-\left.\frac{1}{2}\frac{\dif^{2}f}{\dif E^{2}}\right|_{E=\Epk} = -\frac{3}{2(2\EG)^{1/3}(kT)^{5/3}} = -\frac{3}{4\Epk kT}.
+\left.\frac{1}{2}\frac{\dif^{2}f}{\dif E^{2}}\right|_{E=\Epk} = -\frac{3}{2(2\EG)^{1/3}(\kB T)^{5/3}} = -\frac{3}{4\Epk \kB T}.
 \]
-Defining a variable $\Delta = 4(\Epk kT/3)^{1/2}$, our integral becomes
+Defining a variable $\Delta = 4(\Epk \kB T/3)^{1/2}$, our integral becomes
 \begin{eqnarray}\label{e.integral2}
-\lefteqn{\langle\sigma v\rangle = \left(\frac{8}{\pi m}\right)^{1/2}\left(\frac{1}{kT}\right)^{3/2} S(\Epk)} \nonumber\\
+\lefteqn{\langle\sigma v\rangle = \left(\frac{8}{\pi m}\right)^{1/2}\left(\frac{1}{\kB T}\right)^{3/2} S(\Epk)} \nonumber\\
 &&\times 
-  \exp\left[-3\left(\frac{\EG}{4kT}\right)^{1/3}\right]\int_{0}^{\infty}\!\exp\left[-\frac{(E-\Epk)^{2}}{(\Delta/2)^{2}}\right]\,\dif E.
+  \exp\left[-3\left(\frac{\EG}{4\kB T}\right)^{1/3}\right]\int_{0}^{\infty}\!\exp\left[-\frac{(E-\Epk)^{2}}{(\Delta/2)^{2}}\right]\,\dif E.
 \end{eqnarray}
 %How well does this approximation do?  Figure~\ref{f.integrand} shows the integrand (\emph{solid line}) and the approximation by a Gaussian (\emph{dashed line}).  Although the integrand is skewed to the right, the area is approximately the same.
 Another simplification can be made because both the Gaussian and the original integrand go to zero as $E\to 0$.  As a result, we can extend the lower bound of our integral (eq.~[\ref{e.integral2}]) to $-\infty$, and obtain
 \begin{eqnarray}\label{e.rate2}
-\langle\sigma v\rangle &\approx& \left(\frac{8}{\pi m}\right)^{1/2}\left(\frac{1}{kT}\right)^{3/2} S(\Epk) \exp\left[-3\left(\frac{\EG}{4kT}\right)^{1/3}\right]\frac{\Delta}{2}\nonumber\\
- &=& \frac{2^{13/6}}{\sqrt{3m}}\frac{\EG^{1/6}}{(kT)^{2/3}} \exp\left[-3\left(\frac{\EG}{4kT}\right)^{1/3}\right]  S(\Epk).
+\langle\sigma v\rangle &\approx& \left(\frac{8}{\pi m}\right)^{1/2}\left(\frac{1}{\kB T}\right)^{3/2} S(\Epk) \exp\left[-3\left(\frac{\EG}{4\kB T}\right)^{1/3}\right]\frac{\Delta}{2}\nonumber\\
+ &=& \frac{2^{13/6}}{\sqrt{3m}}\frac{\EG^{1/6}}{(\kB T)^{2/3}} \exp\left[-3\left(\frac{\EG}{4\kB T}\right)^{1/3}\right]  S(\Epk).
 \end{eqnarray}
 \end{sidebar}
 
@@ -217,7 +225,7 @@ Another simplification can be made because both the Gaussian and the original in
 
 At stellar energies, the reaction rates are incredibly sensitive to temperature. To quantify this, approximate the rate at a given temperature as a power-law, $r(T)\propto T^{n}$. Then the exponent is
 \begin{equation}\label{e.exponent}
- n(T) = \dd{\ln r}{\ln T} = -\frac{2}{3} + \left(\frac{\EG}{4kT}\right)^{1/3},
+ n(T) = \dd{\ln r}{\ln T} = -\frac{2}{3} + \left(\frac{\EG}{4\kB T}\right)^{1/3},
 \end{equation}
 as you can verify for yourself (Exercise~\ref{ex.power-law}). On to some numbers. Table~\ref{t.reaction} lists quantities for some common reactions. 
 In the table, the exponent $n(T)$ is evaluated at $T = \val{10^{7}}{\K}$. Note the large value of $n(T)$ at stellar temperatures. 
