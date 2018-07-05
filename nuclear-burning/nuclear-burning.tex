@@ -139,9 +139,11 @@ For many reactions $S(E)$ is nearly constant,
 %\sidenote{This is true as long as we are not close to a resonance---an energy level in the compound nucleus that matches the energy of the incoming particle.}
 which helps with extrapolating the cross-section from laboratory energies  to the much lower stellar energies.
 
+To get the reaction rate, recall that the mean-free path of a particle is $\ell = (n\sigma)^{-1}$, where $n$ is the density of targets.  For a particle traveling at speed $v$, the mean time between collisions is therefore $\ell/v$; in a large ensemble of particles, this gives the mean rate, $r = n\sigma v$.  Here $v = |\bvec{v}_{1}-\bvec{v}_{2}|$ is the relative velocity between the particles.  
+
 \begin{sidebar}[The thermally averaged cross section]
 \label{sb.thermally-averaged-cross-section}
-Recall that the mean-free path of a particle is $\ell = (n\sigma)^{-1}$, where $n$ is the density of targets.  For a particle traveling at speed $v$, the mean time between collisions is therefore $\ell/v$; in a large ensemble of particles, this gives the mean rate, $r = n\sigma v$.  Here $v = |\bvec{v}_{1}-\bvec{v}_{2}|$ is the relative velocity between the particles.  Since the cross-section depends on energy, the rate at which any given particle 1 will react with particles of type 2 having velocities $\bvec{v}_{2}$ in a range $\dif^{3}v_{2}$ is
+Since the cross-section depends on energy, the rate at which any given particle 1 will react with particles of type 2 having velocities $\bvec{v}_{2}$ in a range $\dif^{3}v_{2}$ is
 \[ n_{2} \sigma |\bvec{v}_{1}-\bvec{v}_{2}| \left(\frac{m_{2}}{2\pi kT}\right)^{3/2}\exp\left(-\frac{m_{2}v_{2}^{2}}{2kT}\right) \,\dif^{3}v_{2}. \]
 The extra terms are because the particles have a Maxwell-Boltzmann distribution of velocities. To get the total rate per unit volume, we then have to multiply by the number of particles of type 1 having velocities $\bvec{v}_{1}$ in a range $\dif^{3} v_{1}$ and integrate over $\dif^{3}v_{1}\,\dif^{3}v_{2}$:
 \begin{eqnarray}\label{e.rate-joint}
@@ -162,9 +164,9 @@ where $V$ is the center-of-mass velocity. It is straightforward to show that $\d
 The integral over $\dif^{3}V$ can be factored out and is normalized to unity. Hence we have for the reaction rate between a pair of particles 1 and 2, 
 \begin{eqnarray}\label{e.rate}
 r_{12} &=& n_{1}n_{2}\left\{\left(\frac{m}{2\pi kT}\right)^{3/2}\int_{0}^{\infty}\! \sigma(E) v \exp\left(-\frac{mv^{2}}{2kT}\right)  4\pi v^{2}\,\dif v\right\}.\nonumber\\
- &\equiv& \frac{1}{1+\delta_{12}}n_{1}n_{2}\langle\sigma v\rangle.
+ &\equiv& n_{1}n_{2}\langle\sigma v\rangle.
 \end{eqnarray}
-The term in $\{\}$ is the averaging over the joint distribution of the cross-section times the velocity, and is usually denoted as $\langle\sigma v\rangle$. 
+The term in $\{\}$ is the averaging over the joint distribution of the cross-section times the velocity, and is usually denoted as $\langle\sigma v\rangle$. Note that if particles 1 and 2 were identical, then we would need to divide $r_{12}$ by 2.
 
 Changing variables to $E = mv^{2}/2$ in equation~(\ref{e.rate}) and inserting the formula for the cross-section, equation~(\ref{e.s-def}), gives
 \begin{equation}\label{e.integral}
@@ -180,7 +182,7 @@ Then we can write
 &\approx&
 	\int_{0}^{\infty}\! S(\Epk)\exp\left[f(\Epk) + \frac{1}{2}\left.\frac{\dif^{2} f}{\dif E^{2}}\right|_{E=\Epk}\left(E-\Epk\right)^{2}\right].
 \end{eqnarray*}
-Here $\Epk$ is found by solving $(\dif f/\dif E)|_{E=\Epk} = 0$. This trick allows us to turn the integral into a Gaussian! (Before the internet, all there was to do for fun were integrals.)
+Here $\Epk$ is found by solving $(\dif f/\dif E)|_{E=\Epk} = 0$. This trick allows us to turn the integral into a Gaussian!
 
 Solving for \Epk, we get
 \[
@@ -195,42 +197,52 @@ Further,
 \]
 Defining a variable $\Delta = 4(\Epk kT/3)^{1/2}$, our integral becomes
 \begin{eqnarray}\label{e.integral2}
-\lefteqn{\langle\sigma v\rangle = \left(\frac{8}{\pi m}\right)^{1/2}\left(\frac{1}{kT}\right)^{3/2}}\nonumber\\
-&&\times S(\Epk)
-  \exp\left[-3\left(\frac{\EG}{4kT}\right)^{1/3}\right]
-  \int_{0}^{\infty}\!\exp\left[-\frac{(E-\Epk)^{2}}{(\Delta/2)^{2}}\right]\,\dif E.
+\lefteqn{\langle\sigma v\rangle = \left(\frac{8}{\pi m}\right)^{1/2}\left(\frac{1}{kT}\right)^{3/2} S(\Epk)} \nonumber\\
+&&\times 
+  \exp\left[-3\left(\frac{\EG}{4kT}\right)^{1/3}\right]\int_{0}^{\infty}\!\exp\left[-\frac{(E-\Epk)^{2}}{(\Delta/2)^{2}}\right]\,\dif E.
 \end{eqnarray}
-How well does this approximation do?  Figure~\ref{f.integrand} shows the integrand (\emph{solid line}) and the approximation by a Gaussian (\emph{dashed line}).  Although the integrand is skewed to the right, the area is approximately the same.  
-\end{sidebar}
-
-\begin{marginfigure}
-\includegraphics[width=\linewidth]{coulomb_integrand}
-\caption[Terms in integrand for calculating Coulomb barrier]{Integrand of eq.~(\protect\ref{e.integral}) (\emph{solid line}) and the Gaussian (\emph{dot-dashed line}) constructed by expanding to second order the argument of the exponential. The parameters for $\EG$ were taken from the $p+p$ reactions ($Z_{1}Z_{2}=1$, $A = 1/2$), and the temperature is $\val{10^{7}}{\K}$.  Note that the grey curves, showing the two terms of the exponential, have been rescaled to fit on the same plot.}
-\label{f.integrand}
-\end{marginfigure}
-
+%How well does this approximation do?  Figure~\ref{f.integrand} shows the integrand (\emph{solid line}) and the approximation by a Gaussian (\emph{dashed line}).  Although the integrand is skewed to the right, the area is approximately the same.
 Another simplification can be made because both the Gaussian and the original integrand go to zero as $E\to 0$.  As a result, we can extend the lower bound of our integral (eq.~[\ref{e.integral2}]) to $-\infty$, and obtain
 \begin{eqnarray}\label{e.rate2}
 \langle\sigma v\rangle &\approx& \left(\frac{8}{\pi m}\right)^{1/2}\left(\frac{1}{kT}\right)^{3/2} S(\Epk) \exp\left[-3\left(\frac{\EG}{4kT}\right)^{1/3}\right]\frac{\Delta}{2}\nonumber\\
  &=& \frac{2^{13/6}}{\sqrt{3m}}\frac{\EG^{1/6}}{(kT)^{2/3}} \exp\left[-3\left(\frac{\EG}{4kT}\right)^{1/3}\right]  S(\Epk).
 \end{eqnarray}
-On to some numbers. Table~\ref{t.reaction} lists quantities for some common reactions. A couple of notes. First, $\Delta/\Epk$ indicates how well our Gaussian approximation works---you will see it is less than 1 in all cases. We evaluated $\Delta/\Epk$, which decreases with temperature as $T^{-1/6}$, at $T = \val{10^{7}}{\K}$. Second, the quantity $n(T)$ is the exponent if we want to approximate the reaction rate as a power-law, $r\propto T^{n}$.  We compute this as 
+\end{sidebar}
+
+%\begin{marginfigure}
+%\includegraphics[width=\linewidth]{coulomb_integrand}
+%\caption[Terms in integrand for calculating Coulomb barrier]{Integrand of eq.~(\protect\ref{e.integral}) (\emph{solid line}) and the Gaussian (\emph{dot-dashed line}) constructed by expanding to second order the argument of the exponential. The parameters for $\EG$ were taken from the $p+p$ reactions ($Z_{1}Z_{2}=1$, $A = 1/2$), and the temperature is $\val{10^{7}}{\K}$.  Note that the grey curves, showing the two terms of the exponential, have been rescaled to fit on the same plot.}
+%\label{f.integrand}
+%\end{marginfigure}
+
+At stellar energies, the reaction rates are incredibly sensitive to temperature. To quantify this, approximate the rate at a given temperature as a power-law, $r(T)\propto T^{n}$. Then the exponent is
 \begin{equation}\label{e.exponent}
  n(T) = \dd{\ln r}{\ln T} = -\frac{2}{3} + \left(\frac{\EG}{4kT}\right)^{1/3},
 \end{equation}
-as you can verify for yourself. In the table, the exponent is evaluated at $T = \val{10^{7}}{\K}$; the exponent $n$ depends on temperature. Finally, note the size of $\EG/(4k)$.  This makes the argument of the exponential in equation~(\ref{e.rate2}) large in absolute value, and sets the temperature scale at which a given reaction comes into play.
+as you can verify for yourself (Exercise~\ref{ex.power-law}). On to some numbers. Table~\ref{t.reaction} lists quantities for some common reactions. 
+In the table, the exponent $n(T)$ is evaluated at $T = \val{10^{7}}{\K}$. Note the large value of $n(T)$ at stellar temperatures. 
  
 \begin{table}[hb]
 \caption{\label{t.reaction} Parameters for non-resonant reactions}
 \begin{tabular}{lrrrrrr}
- & $p+p$ & $p+\helium[3]$ & $\helium[3]+\helium[3]$ & $p+\lithium[7]$ & $p+\carbon$\\
+ & $\pt+\pt$ & $\pt+\helium[3]$ & $\helium[3]+\helium[3]$ & $\pt+\lithium[7]$ & $\pt+\carbon$\\
 \hline
-$A$ & 1/2 & 3/4 & 3/2 & 0.88 & 0.92 \\
-$Z_{1}Z_{2}$ & 1 & 2 & 4 & 3 & 6 \\
+%$A$ & 1/2 & 3/4 & 3/2 & 0.88 & 0.92 \\
+%$Z_{1}Z_{2}$ & 1 & 2 & 4 & 3 & 6 \\
 $\EG$ (MeV) & 0.489 & $2.94$ & $23.5$ & $7.70$ & $32.5$\\
-$\EG/(4k)$ (GK) & $1.4$ & $8.5$ & $68.0$ & $22.0$ & $94.0$ \\
+%$\EG/(4k)$ (GK) & $1.4$ & $8.5$ & $68.0$ & $22.0$ & $94.0$ \\
 $\Epk|_{T=\val{10^{7}}{\K}}$ (keV) & 4.5 & 8.2 & 16.3 & 11.3 & 18.2\\
 %$\Delta/\Epk|_{T=\val{10^{7}}{\K}}$ & 1.0 & 0.75 & 0.53 & 0.64 & 0.50 \\
 $n(T = \val{10^{7}}{\K})$ & 4.6 & 8.8 & 18.3 & 12.4 & 20.5\\
 \end{tabular}
 \end{table}
+
+\begin{exercisebox}[Approximating a function as a power-law]
+\label{ex.power-law}
+Suppose we wish to approximate a function $f(x)$ at a point $x_{0}$ with a power-law, $p(x;A,n) = Ax^{n}$. Impose the condition $p(x_{0};A,n) = f(x_{0})$ and $\dif p/\dif x |_{x=x_{0}} = \dif f/\dif x|_{x=x_{0}}$ to find the parameters $A$ and $n$, and show that
+\[
+	n = \DD{\ln f}{\ln x}.
+\]
+Apply this to the reaction rate, eq.~(\ref{e.rate2}), and thus derive eq.~(\ref{e.exponent}).
+\end{exercisebox}
+
