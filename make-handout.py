@@ -32,9 +32,6 @@ frontmatter=r'''% !TEX TS-program = xelatex
 \usepackage{colortbl}
 
 \newcommand*{\maintitle}{Stars}
-\newcommand*{\notice}{\thanks{\ccCopy\ 2016 Edward Brown; \ccbyncsa\ Except where explicitly noted, this work is licensed under the Creative Commons
-Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA
-4.0) license.}}
 
 \author{Edward Brown}
 %\publisher{Open Astrophysics Bookshelf}
