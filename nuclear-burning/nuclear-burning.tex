@@ -86,13 +86,14 @@ the change in mass is
 Fusion of hydrogen into helium entails converting 4 hydrogen atoms (including the 4 electrons) into 1 helium atom (2 protons, 2 neutrons, 2 electrons) with $B = \val{28.296}{\MeV}$. What is the heat evolved \emph{per hydrogen atom}? Assume that the sun has been shining with its current luminosity over its life. What mass of hydrogen atoms would need to undergo fusion to supply this energy? How large is this mass relative to the total mass of the sun? 
 \end{exercisebox}
 
-\newthought{You might at first think that because the nuclear interaction is short-range, the cross-section is something like $\pi r_{n}^{2}$, where $r_{n}\approx\valrng[--]{1}{2}{\fermi}$.} Things are a bit more subtle, however, and in this section we are going to take the reaction-rate apart to understand how it works. First, the ``size'' of a particle is in general proportional to the ``size'' of the wavefunction, which is set by the uncertainty principle, 
-\[\pi\left(\frac{\lambda}{2\pi}\right)^{2} = \pi \left(\frac{\hbar}{p}\right)^{2} = \pi\frac{\hbar^{2}}{2mE}.\]
-Notice that if we multiply and divide by $c^{2}$, then we can estimate the area as
+\newthought{You might at first think that because the nuclear interaction is short-range, the cross-section is something like $\pi r_{n}^{2}$, where $r_{n}\approx\valrng{1}{2}{\fermi}$.} Things are a bit more subtle, however, and in this section we are going to take the reaction-rate apart to understand how it works. First, the ``size'' of a particle is in general proportional to the ``size'' of the wavefunction, which is set by the uncertainty principle, 
+\[\pi\,\Delta x^{2} \approx \pi \left(\frac{\hbar}{\Delta p}\right)^{2} = \pi\frac{\hbar^{2}}{2mE}.\]
+where we've taken $\Delta p\sim p$.
+Notice that if we multiply and divide by $c^{2}$, then we can estimate the area of the wavepacket as
 \[
 	\frac{(\hbar c)^{2}}{m_{p} c^{2}} \frac{1}{E} \sim \val{\sci{4}{4}}{\fermi^{2}} \times \left(\frac{\keV}{E}\right) = \val{400}{\barn}\left(\frac{\keV}{E}\right).
 \]	
-Here we've introduced a convenient unit for cross-sections, the \newterm{barn}\sidenote{as in hitting the broad side of}, with $\val{1}{\barn} = \val{10^{-28}}{\meter^{2}} = \val{100}{\fermi^{2}}$.
+Here we've introduced a convenient unit for cross-sections, the \newterm{barn}\sidenote{as in hitting the broad side of} (b), with $\val{1}{\barn} = \val{10^{-28}}{\meter^{2}} = \val{100}{\fermi^{2}}$.
 
 The key point is that the size of the wave packet is $\propto 1/E$, which is in general true. This geometrical size of the wave packet is then multiplied by the probability of the nucleons forming a bound state, so we write the nuclear portion of the cross-section as
 \[
@@ -274,11 +275,11 @@ In the previous section, we established that lighter nuclei, because of their lo
 $\hydrogen[2]+p\to\gamma+\helium[3]$; in fact, this reaction can occur in objects as small as $\approx \val{12}{M_{\mathrm{Jupiter}}}$.  The small primordial abundance of deuterium, however, prevents this reaction from doing anything more than slowing contraction slightly. 
 In order for two protons to fuse, we need one of the protons to spontaneously turn into a neutron as well, so that $\pt + \pt \to \hydrogen[2]$.
 
-The reaction $\pt +\pt$ is much slower, because there is no bound nucleus \helium[2]; the only possible way to form a nucleus is to have a weak interaction as well, giving the reaction
+The reaction $\pt +\pt$ is much slower, because there is no bound nucleus \helium[2]; the only possible way to form one of the protons to transmute into a neutron, giving the reaction
 \begin{equation}\label{e.pp}
 	\pt + \pt \to \hydrogen[2] + e^{+} + \nu_{e}.
 \end{equation}
-This is possible, because there are two nuclear forces: the strong and the weak. The strong is what binds nuclei together\marginnote{more precisely, what the strong force mainly does is bind quarks into neutrons or protons.}; under the weak interaction, a neutron can turn into a proton or vice versa. Two leptons are also involved (either emitted or absorbed) in a weak reaction: an electron (or its anti-particle, the positron) and an electron neutrino (or anti-neutrino). The reaction, like all nuclear reactions, is subject to three rules:
+This reaction is possible because there are two nuclear forces: the strong and the weak. The strong is what binds nuclei together\marginnote{more precisely, what the strong force mainly does is bind quarks into neutrons or protons.}; the weak interaction mediates the conversion of a neutron into a proton (and vice versa). Two leptons are also involved (either emitted or absorbed) in this type of weak reaction: an electron (or its anti-particle, the positron) and an electron neutrino (or anti-neutrino). The rules for determining which particles are based on three conservation laws:
 \begin{enumerate}
 \item\label{i.baryon-conservation} the number of nucleons is conserved;
 \item\label{i.charge-conservation} the charge is conserved; and
