@@ -1,6 +1,6 @@
 % !TEX root = ../intro-stellar-physics.tex
 
-We now have almost all of the physics necessary to describe the lift of a star. The nuclear physics enters in an equation for the luminosity, which we shall derive next. We then need to discuss departures from the classical ideal gas equation of state; this becomes important for low-mass stars and sets the minimum stellar mass.
+We now have almost all of the physics necessary to describe the life of a star. The nuclear physics enters in an equation for the luminosity, which we shall derive next. We then need to discuss departures from the classical ideal gas equation of state; this becomes important for low-mass stars and sets the minimum stellar mass.
 
 \section{The luminosity equation}
 
@@ -54,14 +54,14 @@ Suppose we have two identical particles in a quantum state. Since the particles 
 \begin{quote}\itshape
     There are two types of particles in this world: those that change sign under exchange; and those that don't.
 \end{quote}
-Particles that don't change sign under exchange are called \newterm{bosons} and have integer spin. Photons are bosons. Particles that change sign under exchange are called \newterm{fermions} and have half-integer spin. Electrons, neutrinos, protons, and neutrons are all fermions. 
+Particles that don't change sign under exchange are called \newterm{bosons} and have integer spin. Photons ($\textrm{spin} = 1$) are bosons. Particles that change sign under exchange are called \newterm{fermions} and have half-integer spin. Electrons, neutrinos, protons, and neutrons ($\textrm{spin} = 1/2$) are all fermions. 
 
 A consequence of the fermion wavefunction changing sign when any two particles are exchanged is that the wavefunction vanishes if any two particles are in the same state---that is, they have the same position, momentum, and spin. For spin-half particles like electrons, then means we can put at most two such electrons in the same position and momentum state; we do this by having their spins antiparallel.
 
 \begin{sidebar}[Identical Particles]
 \label{sb.identical-particles}
-To understand how the interchange of identical particles works in more detail, let's start by recalling some features of quantum mechanics. This discussion is based on the treatment of \citet{Feynman1989The-Feynman-Lec}.
-We denote a state as $\ket{a}$, where $a$ is just a label.  For example, $a$ could be "electron with such-and-such momentum".  The probability of finding the electron in some other state $\phi$ is given by $|\braket{\phi}{a}|^2$, where $\braket{\phi}{a}$ is a complex number known as the probability amplitude.
+To understand how the interchange of identical particles works in more detail, let's start by recalling some features of quantum mechanics. This discussion is based on  \citet{Feynman1989The-Feynman-Lec}.
+We denote a particle's state as $\ket{a}$, where $a$ is just a label.  For example, $a$ could be "electron with such-and-such momentum".  The probability of finding the electron in some other state $\ket{\phi}$ is given by $|\braket{\phi}{a}|^2$, where $\braket{\phi}{a}$ is a complex number known as the probability amplitude formed via an inner product of $\ket{\phi}$ and $\ket{a}$.
 
 Now suppose we have two particles, a and b, and we scatter them so that one particle ends up in detector 1 and the other ends up in detector 2. There are two ways this can go, as shown here.
 \begin{center}
@@ -94,11 +94,11 @@ There are now two indistinguishable ways of arriving at the final state---in thi
 \end{eqnarray}
 The probability of scattering an electron into detector 1 is the classical value plus the \emph{additional} interference term in $\color{red}[\cdot]$.
 
-\newthought{To see the effect on the thermal properties,} let's imagine putting two particles into the same small volume.  To do this, we imagine the detectors 1 and 2 sliding together until they overlap, as shown here.  
+\newthought{To see the effect of this interference term on the thermal properties of the system,} let's imagine putting two particles into the same small volume.  To do this, we imagine the detectors 1 and 2 sliding together until they overlap, as shown here.  
 \begin{center}
 \includegraphics{fermions}
 \end{center}
-Since detectors 1 and 2 are approaching one another, we must have that
+Since detectors 1 and 2 are approaching one another, we must have
 \begin{equation}
     |\braket{1}{a}\braket{2}{b}|^2 = |\braket{2}{a}\braket{1}{b}|^2.
 \end{equation}
@@ -182,10 +182,44 @@ so that $n_{e} = \rho/(\mb\mu_{e})$.
 
 \begin{exercisebox}[The mass-radius relation for a degenerate EOS]
 \label{ex.degenerate-mass-radius}
-Use equation~(\ref{e.electron-mean-weight}) in eq.~(\ref{e.pressure-electrons}) to express the pressure as a function of mass density $\rho$. The use the virial scalings for $P(M,R)$ and $\rho(M,R)$ to obtain a relation $R(M)$ for a degenerate object. \emph{Hint:} this may be easier to do in a Jupyter notebook.
+Use equation~(\ref{e.electron-mean-weight}) in eq.~(\ref{e.pressure-electrons}) to express the pressure as a function of mass density $\rho$. The use the virial scalings for $P(M,R)$ and $\rho(M,R)$ to obtain a relation $R(M)$ for a degenerate object. \emph{Hint:} this may be easier to do numerically, e.g., within a Jupyter notebook.
 \end{exercisebox}
 
 As you found in exercise~\ref{ex.degenerate-mass-radius}, when the star becomes degenerate, there is a unique radius for a given mass and composition. This is in contrast to the non-degenerate case, for which a star of a given mass can have a wide range of possible radii depending on the internal temperature.
+
+Let's apply this to a contracting pre-main-sequence star. Initially, the star is at low density and the equation of state is that of an ideal non-degenerate gas. According to the virial theorem, as the radius decreases, both the central temperature and density increase. 
+The radius decreases because the star is radiating away energy, and a star with an ideal, non-degenerate equation of state has a total energy that depends on its radius.
+
+At some density, the equation of state will become degenerate. At this point, contraction comes to a halt. The star continues to radiate energy, but instead of contracting, the star simply cools while remaining at constant radius. If the contracting pre-main-sequence star to become a main-sequence star, then, it much reach temperatures sufficient for hydrogen fusion to occur \emph{before} becoming degenerate.
+
+\begin{exercisebox}[Limits on the stellar initial mass]
+\begin{enumerate}
+\item The equation of state becomes degenerate roughly where $\kB T = \EF$, with $\EF$ begin given by eq.~(\ref{e.fermi-energy}). Take the logarithm of $\kB T = \EF$, and use eq.~(\ref{e.electron-mean-weight}) for a composition with $X_{\mathrm{H}} = 0.7$ and $X_{\mathrm{He}}=0.3$ to find a relation between $\log(T)$ and $\log(\rho)$ where the electrons become degenerate. Plot this relation, and on the plot indicate which side of the relation is degenerate.
+
+\item The equation of state becomes dominated by radiation roughly where $P(\textrm{ideal gas}) = P(\textrm{radiation})$. From this, derive a relation between $\log(T)$ and $\log(\rho)$. Plot this relation, and indicate which side of this relation is radiation-pressure dominated.
+
+\item\label{ex.ZAMS} Table \ref{t.stellar-rhoT} lists the central densities and temperatures for stars that have just begun fusing hydrogen into helium in their cores. Plot these points on the figure  and label the points by their stellar mass.
+
+\item Use the expression for the average density to get a relation for the radius in terms of $M$ and $\rho$. Then insert this into the ideal gas virial relation for the central temperature to get an expression for $\log T_{c}$ in terms of $M$ and $\log\rho_{c}$. Use this expression to plot, for each mass in part \ref{ex.ZAMS}, the path followed by the central temperature and density as the star contracted.
+
+\item Stars that have a degenerate equation of state no longer contract: they stay at a fixed pressure and density and gradually become ever cooler. Stars that are radiation-pressure dominated tend to be unstable: they have strong winds and rapidly shrink in mass. What do your findings in this exercise imply for the mass range of main-sequence stars?
+\end{enumerate} 
+\end{exercisebox}
+
+\begin{margintable}
+\caption{\label{t.stellar-rhoT}Selected central densities and temperatures of zero-age main-sequence stars, computed with the \mesa\ stellar evolution code \citep{Paxton2010Modules-for-Exp}.}
+\begin{tabular}{rrr}
+$M/\Msun$ & $\log(\rho_{c}/\kilo\gram\,\meter^{-3})$ & $\log(T_{c}/K)$\\
+\hline
+0.09 & 5.70 & 6.60\\
+0.15 & 5.35 & 6.75\\
+0.30 & 5.00 & 6.87\\
+2.0 & 4.80 & 7.30\\
+10.0 & 4.00 & 7.50\\
+25.0 & 3.60 & 7.55\\
+100.0 & 3.25 & 7.63\\
+\end{tabular}
+\end{margintable}
 
 \section{Summary}
 
