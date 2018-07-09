@@ -271,15 +271,11 @@ Apply this to the reaction rate, eq.~(\ref{e.rate2}), and thus derive eq.~(\ref{
 
 \subsection{Hydrogen burning via pp reactions: the weak nuclear interaction}
 
-In the previous section, we established that lighter nuclei, because of their lower Coulomb repulsion, will tend to fuse at lower temperatures. Thus we expect that the first reaction that can occur is $\pt+\pt$ and therein lies a problem; for there is no bound state of \helium[2]. The first reaction that can actually occur in a contracting pre-main sequence star is
-$\hydrogen[2]+p\to\gamma+\helium[3]$; in fact, this reaction can occur in objects as small as $\approx \val{12}{M_{\mathrm{Jupiter}}}$.  The small primordial abundance of deuterium, however, prevents this reaction from doing anything more than slowing contraction slightly. 
-In order for two protons to fuse, we need one of the protons to spontaneously turn into a neutron as well, so that $\pt + \pt \to \hydrogen[2]$.
-
-The reaction $\pt +\pt$ is much slower, because there is no bound nucleus \helium[2]; the only possible way to form one of the protons to transmute into a neutron, giving the reaction
+In the previous section, we established that lighter nuclei, because of their lower Coulomb repulsion, will tend to fuse at lower temperatures. Thus we expect that the first reaction that can occur is $\pt+\pt$ and therein lies a problem; for there is no bound state of \helium[2]. The only possible way for two protons to fuse is for one of the protons to transmute into a neutron, giving the reaction
 \begin{equation}\label{e.pp}
 	\pt + \pt \to \hydrogen[2] + e^{+} + \nu_{e}.
 \end{equation}
-This reaction is possible because there are two nuclear forces: the strong and the weak. The strong is what binds nuclei together\marginnote{more precisely, what the strong force mainly does is bind quarks into neutrons or protons.}; the weak interaction mediates the conversion of a neutron into a proton (and vice versa). Two leptons are also involved (either emitted or absorbed) in this type of weak reaction: an electron (or its anti-particle, the positron) and an electron neutrino (or anti-neutrino). The rules for determining which particles are based on three conservation laws:
+This reaction is possible because there are two nuclear forces: the strong and the weak. The strong is what binds nuclei together\marginnote{More precisely, what the strong force mainly does is bind quarks into neutrons or protons.}; the weak interaction mediates the conversion of a neutron into a proton (and vice versa). Two leptons are also involved (either emitted or absorbed) in this type of weak reaction: an electron (or its anti-particle, the positron) and an electron neutrino (or anti-neutrino). The rules for determining which particles are based on three conservation laws:
 \begin{enumerate}
 \item\label{i.baryon-conservation} the number of nucleons is conserved;
 \item\label{i.charge-conservation} the charge is conserved; and
@@ -291,39 +287,42 @@ Applying these rules to the reaction (\ref{e.pp}), the number of nucleons on bot
 
 The weak cross section goes roughly as $\sigma_{\mathrm{weak}} \sim \val{10^{-20}}{\barn}\left(E/\keV\right)$, so that
 \[ \frac{\sigma_{\mathrm{weak}}}{\sigma_{\mathrm{nuc}}} \sim 10^{-23}\left(\frac{E}{\keV}\right). \]
-The $S$-factor for the $\pt+\pt$ reaction is very small, and as a result the characteristic temperature for this reaction to occur is $\approx \val{\sci{1.5}{7}}{\K}$; at this temperature, the lifetime of a proton to forming deuterium via capture of another proton is about $\val{6}{\Giga\yr}$.  Once a deuterium nucleus is formed, it is immediately destroyed via $\hydrogen[2]+p\to\gamma+\helium[3]$. The nucleus \lithium[4] is unbound with a lifetime of $\val{10^{-22}}{\second}$; the nucleus \beryllium[6] is likewise unbound ($\tau \sim \val{\sci{5}{-21}}{\second}$). As a result, the next reaction that can occur is $\helium[3]+\helium[3]\to 2\pt+\helium$.  Despite having a much greater Gamow energy than $\pt + \pt$, this reaction still is much faster than $\pt+\pt$ owing to the small weak cross-section.
+As a result the characteristic temperature for this reaction to occur is $\approx \val{\sci{1.5}{7}}{\K}$, much higher than the temperature at which $\pt+\hydrogen[2]$ occurs; at this temperature, the lifetime of a proton to forming deuterium via capture of another proton is about $\val{6}{\Giga\yr}$.
+\marginnote{Because the weak cross section is so small, the first reaction that occurs in a contracting pre-main sequence star is $\hydrogen[2]+p\to\helium[3]$; in fact, this reaction can occur in objects as small as $\approx \val{12}{M_{\mathrm{Jupiter}}}$. The small primordial abundance of deuterium, however, prevents this reaction from doing anything more than slowing contraction slightly.}
+Once a deuterium nucleus is formed, it is immediately destroyed via $\hydrogen[2]+p\to+\helium[3]$. The nucleus \lithium[4] is unbound with a lifetime of $\val{10^{-22}}{\second}$; the nucleus \beryllium[6] is likewise unbound ($\tau \sim \val{\sci{5}{-21}}{\second}$). As a result, the next reaction that can occur is $\helium[3]+\helium[3]\to 2\pt+\helium$. Despite having a much greater Gamow energy than $\pt + \pt$, this reaction still is much faster than $\pt+\pt$ owing to the small weak cross-section.
 
-In addition to capturing another \helium[3], it is also possible that
+In addition to capturing another \helium[3], it is also possible for \helium[3] to react with \helium\ and trigger the reactions
+\marginnote{In eq.~(\ref{e.pp-2}) and (\ref{e.pp-3}), $\tau$ refers to the half-life for the nucleus on the left.}
 \begin{eqnarray}
 \helium[3] + \helium &\to& \beryllium[7] + \gamma\nonumber\\
  \beryllium[7] + e^{-} &\to& \lithium[7] +  \nu_{e}\qquad(\tau=\val{53}{\unitstyle{d}})\nonumber \\
  \lithium[7] + \pt &\to& 2\helium + \gamma;
- \end{eqnarray}
-furthermore, at slightly higher temperatures \beryllium[7] can capture a proton instead of an electron, giving the third branch
+\label{e.pp-2}
+\end{eqnarray}
+furthermore, at slightly higher temperatures \beryllium[7] can capture a proton instead of an electron to yield
 \begin{eqnarray}
 \beryllium[7] + \pt &\to& \boron[8] + \gamma\nonumber\\
 \boron[8] &\to& \beryllium[8] + e^{+} + \nu_{e}\qquad(\tau = \val{770}{\milli\second})\nonumber\\
 \beryllium[8] &\to& 2\helium\qquad(\tau= \val{10^{-16}}{\second}).
+\label{e.pp-3}
 \end{eqnarray}
- The end result of these chains is the conversion of hydrogen to helium, although the amount of energy carried away by neutrinos differs from one chain to the next.
+The end result of these chains is the conversion of hydrogen to helium, although the amount of energy carried away by neutrinos differs from one chain to the next.
 
 \subsection{Hydrogen burning via the CNO cycle}
 
-As we saw in the previous section, the smallness of the $\pt+\pt$ cross-section means that captures onto heavier nuclei can be competitive at stellar temperatures.  Let's get a rough estimate of how charged a nucleus can be before the Coulomb barrier makes the reaction slower than $\pt+\pt$.  Assuming $A = 2Z$, and taking the $S$-factor for $\pt+\pt$ to be $10^{-22}$ times smaller that that for $\pt + \mathrm{^{A}Z}$ gives us the rough equation
-\[ 10^{-22}\exp\left(-\frac{33.81}{T_{6}^{1/3}}\right) \approx \exp\left(-\frac{41.47 Z^{2/3}}{T_{6}^{1/3}}\right), \]
-where the factors in the exponentials come from the peak energy for the reaction (see the handout on nuclear burning), and $T_{6}\equiv (T/\val{10^{6}}{\K})$.  Solving for $Z$, we see that at $T_{6} = 10$, proton captures onto \carbon\ have a comparable cross-section to $\pt + \pt$; at $T_{6} = 20$, proton captures onto \oxygen\ have a comparable cross-section.
-
+As we saw in the previous section, the smallness of the $\pt+\pt$ cross-section means that proton captures onto heavier nuclei can occur at similar, or even faster rates, than $\pt+\pt$ despite the larger Coulomb barrier. 
+At $T_{6} = 10$, proton captures onto \carbon\ have a comparable cross-section to $\pt + \pt$; at $T_{6} = 20$, proton captures onto \oxygen\ have a comparable cross-section.
 Thus at temperatures slightly greater than that in the solar center, the following catalytic cycle becomes possible:
 \begin{eqnarray*}
-\carbon + \pt &\to& \nitrogen[13]\\
+\carbon + {\color{red}\pt} &\to& \nitrogen[13]\\
 \nitrogen[13] &\to& \carbon[13] + e^{+} + \nu_{e}\\
-\carbon[13] + \pt &\to& \nitrogen[14]\\
-\nitrogen[14] + \pt &\to& \oxygen[15]\\
+\carbon[13] + {\color{red}\pt} &\to& \nitrogen[14]\\
+\nitrogen[14] + {\color{red}\pt} &\to& \oxygen[15]\\
 \oxygen[15] &\to& \nitrogen[15] + e^{+} + \nu_{e}\\
-\nitrogen[15] + \pt &\to& \carbon + \helium
+\nitrogen[15] + {\color{red}\pt} &\to& \carbon + {\color{red}\helium}
 \end{eqnarray*}
 The net result of this cycle is the ingestion of 4 protons and release of 1 \helium\ nucleus.
-The reaction $\nitrogen+\pt\to\oxygen[15]$ is by far the slowest step in the cycle; as a result, all of the CNO elements are quickly converted into \nitrogen\ in the stellar core, and this reaction controls the rate of heating.  At $T = \val{\sci{2}{7}}{\K}$, $\partial \ln \varepsilon_{\mathrm{CNO}}/\partial\ln T = 18$; in contrast the $\pt+\pt$ reaction has a temperature exponent of only 4.5.
+The reaction $\nitrogen+\pt\to\oxygen[15]$ is by far the slowest step in the cycle; as a result, all of the CNO elements are quickly converted into \nitrogen\ in the stellar core, and this reaction controls the rate of heating. At $T = \val{\sci{2}{7}}{\K}$, $\partial \ln \varepsilon_{\mathrm{CNO}}/\partial\ln T = 18$; in contrast the $\pt+\pt$ reaction has a temperature exponent of only 4.5.
 
-The strong temperature dependence of the CNO burning has two effects on the structure of the star.  First, it makes the central temperature nearly constant over a wide range of stellar masses for $M > \val{1}{\Msun}$. A constant central temperature implies, via the virial theorem, that $R \propto M$ on the upper main sequence.  A second consequence is that nearly all of the star's luminosity is generated in a small mass about the stellar center.  This drives the cores of massive stars to be convective.
+The strong temperature dependence of the CNO burning has two effects on the structure of the star. First, it makes the central temperature nearly constant over a wide range of stellar masses for $M > \val{1}{\Msun}$. A constant central temperature implies, via the virial theorem, that $R \propto M$ on the upper main sequence. A second consequence is that nearly all of the star's luminosity is generated in a small mass about the stellar center.
 
