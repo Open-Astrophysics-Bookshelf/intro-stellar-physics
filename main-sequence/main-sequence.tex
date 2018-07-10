@@ -33,11 +33,28 @@ This reduces to our fourth equation of stellar structure,
 \label{e.luminosity}
 \DD{L}{r} = 4\pi r^{2}\rho\varepsilon.
 \end{equation}
-These equations are supplemented by an equation of state $P = P(\rho,T)$.
+
+\begin{sidebar}[The equations of stellar structure in Lagrangian form]
+\label{sb.lagrangian-equations}
+The equations (\ref{e.mass}), (\ref{e.pressure}), (\ref{e.temperature-radiative})-(\ref{e.temperature-convective}), and (\ref{e.luminosity}) must in general be solved numerically. In practice, the radius $r$ is not the most convenient variable to use as a coordinate. In one-dimension, the mass in each shell remains distinct, so the enclosed mass
+\[
+	m(r) = \int_{0}^{r} 4\pi r^{2}\rho\,\dif r
+\]
+makes a useful coordinate. This is called a \newterm{Lagrangian} description of the star.  Upon changing variables, the structure equations become
+\begin{eqnarray}
+\DD{r}{m} &=& \frac{1}{4\pi r^{2}\rho}\label{e.lagrange-r}\\
+\DD{P}{m} &=& \DD{P}{r}\DD{r}{m} = -\frac{Gm}{4\pi r^{4}}\label{e.lagrange-P}\\
+\DD{T}{m} &=& - \frac{3\kappa L}{64\pi^{2} r^{4} acT^{3}}\qquad \textrm{where radiative}\label{e.lagrange-T-radiative}\\
+\DD{T}{m} &=& -\frac{T}{P}\tderiv{\ln T}{\ln P}{S}\frac{Gm}{4\pi r^{4}} \quad \textrm{where convective}\label{e.lagrange-T-convective}\\
+\DD{L}{m} &=& \varepsilon.\label{e.lagrange-L}
+\end{eqnarray}
+\end{sidebar}
+
+Equations (\ref{e.mass})--(\ref{e.luminosity}), or equivalently (\ref{e.lagrange-r})--(\ref{e.lagrange-L}), are supplemented by an equation of state $P = P(\rho,T)$ and opacity $\kappa = \kappa(\rho,T)$, as well as equations for the change in composition ($\dif X/\dif t$) due to nuclear burning. Note that we've also omitted terms allowing for expansion or contraction ($\dif r/\dif t$) from these equations.
 
 \section{Contraction to the main sequence}
 \label{s.contraction-to-main-sequence}
-When the core is too cool for nuclear reactions to power the luminosity from the surface (remember, the luminosity is set by the mass of the star and its opacity) then the star must contract.\marginnote{When the radius is changing, an extra term appears in eq.~(\ref{e.luminosity}) giving the luminosity evolved from gravitational contraction.}
+When the core is too cool for nuclear reactions to power the luminosity from the surface (remember, the luminosity is set by the mass of the star and its opacity) then the star must contract.
 
 \begin{margintable}
 \caption[Central densities and temperatures of zero-age main-sequence stars]{\label{t.stellar-rhoT}Selected central densities and temperatures of zero-age main-sequence stars, computed with the \mesa\ stellar evolution code \citep{Paxton2010Modules-for-Exp}.}
@@ -53,6 +70,7 @@ $M/\Msun$ & $\log(\rho_{c}/\kilo\gram\,\meter^{-3})$ & $\log(T_{c}/K)$\\
 100.0 & 3.25 & 7.63\\
 \end{tabular}
 \end{margintable}
+
 \begin{exercisebox}[Central temperature and density of a contracting pre-main-sequence star]
 \label{ex.contraction-to-main-sequence}
 This exercise revisits problem~\ref{ex.contraction-constant-density-protostar}. In that exercise you modeled how the density and temperature changed as a pre-main-sequence star contracted. Table~\ref{t.stellar-rhoT} gives central densities and temperatures of stars at the onset of hydrogen fusion (known as the \newterm{zero-age main sequence}). These temperatures and densities are plotted below and labeled by stellar mass. Assume an ideal-gas equation of state and use the virial relations for the temperature and central density to plot the tracks in this plane each star followed during its contraction.
