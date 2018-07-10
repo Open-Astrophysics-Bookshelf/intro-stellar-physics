@@ -217,39 +217,44 @@ At some density, the equation of state will become degenerate. At this point, co
 
 \begin{exercisebox}[Minimum stellar mass]
 \label{ex.minimum-stellar-mass}
-The equation of state becomes degenerate roughly where $\kB T \approx \EF$, with $\EF$ begin given by eq.~(\ref{e.fermi-energy}). Take the logarithm of $\kB T = \EF$, and use eq.~(\ref{e.electron-mean-weight}) for a composition with $X_{\mathrm{H}} = 0.7$ and $X_{\mathrm{He}}=0.3$ to find a relation between $\log(T)$ and $\log(\rho)$ where the electrons become degenerate. Plot this relation on the phase diagram in exercise~\ref{ex.contraction-to-main-sequence}, and on the plot indicate which side of the relation is degenerate.
+The equation of state becomes degenerate roughly where $\kB T=\EF$, with $\EF$ begin given by eq.~(\ref{e.fermi-energy}). From this and eq.~(\ref{e.electron-mean-weight}), assuming a H-He composition with $X_{\mathrm{H}} = 0.7$ and $X_{\mathrm{He}}=0.3$, derive a relation between $\log(T)$ and $\log(\rho)$. Plot this relation on the phase diagram in exercise~\ref{ex.contraction-to-main-sequence}, and on the plot indicate which side of the relation is degenerate.
 Given that contraction halts when the equation of state becomes degenerate, what does this plot imply for the minimum mass required to initiate hydrogen fusion?
 \end{exercisebox}
 
 \subsection{Radiation pressure}
 \label{s.radiation-pressure}
 
-Radiation in thermal equilibrium exerts a pressure (eq.~\ref{e.radiation-pressure}): $\Prad = aT^{4}/3$. Because the pressure goes as $T^{4}$, radiation pressure becomes an increasingly large fraction of the total pressure for massive stars.
-\begin{exercisebox}[Radiation pressure]
-Use the virial relations for density and temperature to estimate how the ratio $\Prad/P_{\!\mathrm{gas}}$ depends on the mass of the star.
-\end{exercisebox}
-Stars that are radiation-pressure dominated tend to be unstable: they have strong winds, violent fits of mass ejection (see the image of Eta Carinae, Fig.~\ref{f.eta-carinae}). As a result, they lose copious amounts of mass while on the main sequence.
+Radiation in thermal equilibrium exerts a pressure (eq.~\ref{e.radiation-pressure}): $\Prad = aT^{4}/3$. Because the pressure goes as $T^{4}$, radiation pressure becomes an increasingly large fraction of the total pressure for massive stars. Stars that are radiation-pressure dominated tend to be unstable: they have strong winds and violent fits of mass ejection (see the image of Eta Carinae, Fig.~\ref{f.eta-carinae}). As a result, they lose copious amounts of mass while on the main sequence.
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{etacarinae_hubble_900}
 \caption{\label{f.eta-carinae} Image of the massive star Eta Carinae. Credit: J. Morse (Arizona State U.), K. Davidson (U. Minnesota) et al., WFPC2, HST, NASA.}
 \end{marginfigure}
+
+
+\begin{exercisebox}[Radiation pressure]
+Use the virial relations for density and temperature to estimate how the ratio $\Prad/P_{\!\mathrm{gas}}$ depends on the mass of the star.
+\end{exercisebox}
 
 \begin{exercisebox}[Maximum stellar mass]
 \label{ex.maximum-stellar-mass}
 The equation of state becomes dominated by radiation roughly where $P(\textrm{ideal gas}) \approx P(\textrm{radiation})$. Derive from this criterion a relation between $\log(T)$ and $\log(\rho)$, and plot this relation on the figure for exercise~\ref{ex.contraction-to-main-sequence}. Indicate which side of this relation is radiation-pressure dominated. What do your findings in this exercise imply for the mass range of main-sequence stars?
 \end{exercisebox}
 
-\section{Summary}
+\section{Life on the main-sequence}
 
-This convective zone changes the structure of the star, so that $L\sim M^{3.5}$ rather than the $M^{3}$ scaling we derived earlier.  It also means the star can burn more of the hydrogen in its interior.  The hotter $\Teff$ means, however, that the opacity is less strong in the surface layers of upper main sequence stars, and so the outer layers are radiative.  Table~\ref{t.MS-characteristics} gives a summary of the properties of main sequence stars.
-\begin{margintable}
-\caption{\label{t.MS-characteristics} Characteristics of main-sequence stars}
-\centering
-\begin{tabular}{lll}
-characteristic & $M\lesssim\Msun$ & $M\gtrsim\Msun$\\
-\hline
-hydrogen burning & pp & CNO\\
-core & radiative  & convective\\
-envelope & convective & radiative\\
-\end{tabular}
-\end{margintable}
+The strong temperature dependence of the CNO burning has two effects on the structure of the star. First, it makes the central temperature nearly constant over a wide range of stellar masses for $M > \val{1}{\Msun}$. A constant central temperature implies, via the virial theorem, that $R \propto M$ on the upper main sequence. A second consequence is that nearly all of the star's luminosity is generated in a small mass about the stellar center.
+
+This convective zone changes the structure of the star, so that $L\sim M^{3.5}$ rather than the $M^{3}$ scaling we derived earlier.  It also means the star can burn more of the hydrogen in its interior.  The hotter $\Teff$ means, however, that the opacity is less strong in the surface layers of upper main sequence stars, and so the outer layers are radiative.  
+
+%Table~\ref{t.MS-characteristics} gives a summary of the properties of main sequence stars.
+%\begin{margintable}
+%\caption{\label{t.MS-characteristics} Characteristics of main-sequence stars}
+%\centering
+%\begin{tabular}{lll}
+%characteristic & $M\lesssim\Msun$ & $M\gtrsim\Msun$\\
+%\hline
+%hydrogen burning & pp & CNO\\
+%core & radiative  & convective\\
+%envelope & convective & radiative\\
+%\end{tabular}
+%\end{margintable}
