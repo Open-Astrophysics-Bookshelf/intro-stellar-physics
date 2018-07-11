@@ -9,10 +9,9 @@ CHAPTERS = frontmatter \
 	starlight \
 	hydrostatic-balance \
 	radiative-transport \
-	stellar-atmospheres \
 	classifying-stars \
-	convection \
 	nuclear-burning \
+	convection \
 	main-sequence \
 	post-main-sequence
 
@@ -31,12 +30,12 @@ FIGURES = frontmatter/cover-art.png \
 	radiative-transport/figs/diffusive-flux.pdf \
 	radiative-transport/figs/radiative-transfer-exercise.pdf \
 	radiative-transport/figs/random-walk.pdf \
-	stellar-atmospheres/figs/legendre.pdf \
+	radiative-transport/figs/legendre.pdf \
+	nuclear-burning/figs/tunnel-schematic.pdf \
+	nuclear-burning/figs/coulomb_integrand.pdf \
 	convection/figs/convection-1.jpg \
 	convection/figs/convection-2.jpg \
 	convection/figs/convective.pdf \
-	nuclear-burning/figs/tunnel-schematic.pdf \
-	nuclear-burning/figs/coulomb_integrand.pdf \
 	main-sequence/figs/luminosity-eqn.pdf \
 	main-sequence/figs/fermions.pdf \
 	main-sequence/figs/scattering-classical.pdf \
