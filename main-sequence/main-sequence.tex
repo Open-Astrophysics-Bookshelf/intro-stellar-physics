@@ -1,30 +1,10 @@
 % !TEX root = ../intro-stellar-physics.tex
 
-We now have almost all of the physics necessary to describe the life of a star. The nuclear physics enters in an equation for the luminosity, which we shall derive next. We then need to discuss departures from the classical ideal gas equation of state; this becomes important for low-mass stars and sets the minimum stellar mass.
+We now have almost all of the physics necessary to describe the life of a star. 
+The nuclear physics enters in an equation for the luminosity, which we shall derive next. We shall also consider whether the fluid is at rest or whether there are circulatory flows present. Finally, we need to discuss departures from the classical ideal gas equation of state; this becomes important for low-mass stars and sets the minimum stellar mass.
 
 \section{The luminosity equation}
 
-We've established the relations for the enclosed mass,
-\begin{equation}\label{e.mass}
-\DD{m}{r} = 4\pi r^{2}\rho,
-\end{equation}
-the pressure,
-\begin{equation}\label{e.pressure}
-\DD{P}{r} = -\rho\frac{Gm}{r^{2}},
-\end{equation}
-and the temperature,
-\begin{eqnarray}\label{e.temperature-radiative}
-\DD{T}{r} &=& - \frac{L}{4\pi r^{2}}\frac{3\rho\kappa}{4ac T^{3}}\qquad \textrm{in radiative regions;} \\ 
-\label{e.temperature-convective}
-\DD{T}{r} &=& \frac{T}{P}\tderiv{\ln T}{\ln P}{S}\DD{P}{r} \quad \textrm{in convective regions}.
-\end{eqnarray}
-We need an equation for the luminosity $L(r)$, which we now derive.
-
-\begin{marginfigure}
-\includegraphics[width=\linewidth]{luminosity-eqn}
-\caption[Heat balance in a mass shell]{Heat balance in a shell $\Delta m$.}
-\label{f.luminosity}
-\end{marginfigure}
 Suppose we have a shell of mass $\Delta m$ lying between surfaces $r$ and $r+\Delta r$ (Fig.~\ref{f.luminosity}). The shell gains heat from nuclear reactions at a rate $\Delta m \times \varepsilon$, where $\varepsilon$ is the heating rate per unit mass.  In addition, there is heat entering the shell from below at a rate $L(r)$ and heat leaving the top of the shell at a rate $-L(r+\Delta r)$.
 If the shell is neither gaining or losing heat, then these terms must balance:
 \[ 4\pi r^{2}\rho\varepsilon\,\Delta r + L(r) - L(r+\Delta r) = 0. \]
@@ -33,6 +13,231 @@ This reduces to our fourth equation of stellar structure,
 \label{e.luminosity}
 \DD{L}{r} = 4\pi r^{2}\rho\varepsilon.
 \end{equation}
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{luminosity-eqn}
+\caption[Heat balance in a mass shell]{Heat balance in a shell $\Delta m$.}
+\label{f.luminosity}
+\end{marginfigure}
+
+\section{Convection}\label{s.convection}
+
+We've established that in the interior of the star a temperature gradient,
+\[
+	\DD{T}{r} = -\frac{3\rho\kappa_{R}}{4acT^3}\frac{L(r)}{4\pi r^2},
+\]
+arises to transport heat outward (cf.\ eq.~[\ref{e.gradient-temperature}]).
+This gradient becomes steeper as we increases either the flux $L/4\pi r^{2}$ or the mean opacity $\kappa_{\mathrm{R}}$. There is a limit, however, to the magnitude of $|\dif T/\dif r|$; if the gradient is too steep, the warm fluid becomes buoyant relative to the cooler fluid above it and begins to rise. You are familiar with this phenomenon: picture a hot summer day. As the ground absorbs sunlight, it warms the air just above the ground. The warm air rises and forms updrafts. You have perhaps seen hawks riding these updrafts on such a day. Glider pilots also take advantage of these rising thermals to stay aloft. This circulation of fluid induced by a temperature gradient is known as \newterm{convection}. 
+
+You can do a home demonstration of convection.  Brew tea, and pour the hot tea into a saucepan that is on an unlit burner. Use a straw with your thumb over the top to insert a layer of cold milk under the warm tea in the saucepan. The temperature difference between the tea and milk will inhibit their mixing. Light the burner, and watch for the development of convection---you will know it when you see it (Fig.~\ref{f.tea}).
+
+\begin{figure}[htbp]
+\includegraphics[width=0.5\linewidth]{convection-1}\includegraphics[width=0.5\linewidth]{convection-2}
+\caption{Onset of convection in a tea-milk mixture.\label{f.tea}}
+\end{figure}
+
+Convection can also occur in stars, in regions of high flux and/or high opacity. During convection, the fluid velocities in question are typically quite subsonic, so we have hydrostatic equilibrium to excellent approximation. But the fluid motions make an enormous difference for heat transport! Warm fluid is carried upward and cool fluid sinks. The net result is that heat is transported upward much faster than it would have been if only diffusion had been operating. This upward transport of heat modifies the temperature gradient. In this chapter, we shall derive the condition for the onset of convection, and the value of the temperature gradient in the presence of subsonic, efficient convective heat transport.
+
+\subsection{The onset of convection}\label{s.convection-onset}
+
+To understand when convection starts, it helps to recall why a parcel of warm air rises. Recall Archimedes' law:
+\begin{quote}\itshape
+The buoyant force on an object, either wholly or partially immersed in a fluid under a constant gravitational acceleration, equals the weight of the fluid it displaces.
+\end{quote}
+What does this mean? A boat of mass $m$ displaces (pushes aside) a volume of water $v$ when floating. The weight of this displaced water, $\rho_{\mathrm{w}}v g$, must equal the weight of the boat $mg$, so that $v = m/\rho_{\mathrm{w}}$.
+
+\begin{exercisebox}[A boat with a weight]
+Suppose we have a toy boat carrying a weight and floating in a tank as shown in the top panel of Fig.~\ref{f.archimedes}. The depth of the water in the tank is $d$. The weight is then removed from the boat and allowed to sink to the bottom of the tank (bottom panel, Fig.~\ref{f.archimedes}). Does the depth of water in the tank increase, decrease, or stay the same? Explain your reasoning.
+\end{exercisebox}
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{archimedes}
+\caption[A boat with a weight]{\label{f.archimedes} A boat with a weight in a tank. When the weight is tossed overboard and sinks, what happens to the water level in the tank?}
+\end{marginfigure}
+
+We can use Archimedes' law---which is an application of hydrostatic equilibrium---to determine whether a fluid in planar geometry and hydrostatic equilibrium,
+\begin{equation}
+\frac{\dif P}{\dif r} = -\rho g.
+\end{equation}
+with a temperature gradient is unstable to convection. Imagine moving a blob of fluid upwards from $r$ to $r+h$.  We move the blob slowly enough that it is in hydrostatic equilibrium with its new surroundings, $P_{b}(r+h) = P(r+h)$, where the subscript $b$ refers to ``blob.'' We do move the blob quickly enough, however, that it does not exchange heat with its surroundings and doesn't therefore remain in \emph{thermal} equilibrium with its surroundings. 
+\marginnote{Recall that pressure equilibrium in the blob is established over the time a sound wave takes to cross the blob. Thus, moving the blob slowly enough to maintain pressure equilibrium means that the motion is quite subsonic. Moving the blob quickly enough to prevent heat transport means (cf.\ exercise~\ref{ex.random-walk-diffusion}) that the blob is much larger than a mean free path so the time for photons to random walk across the blob is longer than it takes to lift the blob a distance $h$.}
+
+As a result of this lack of heat exchange, the upward motion of the blob is \newterm{adiabatic}.  To understand what this means, recall the first law of thermodynamics\cite{Fermi1956Thermodynamics}, which relates the change in internal energy $\dif U$ and in volume $\dif V$ to the heat transferred $\dif Q = T\,\dif S$:
+\begin{equation}\label{e.first-law-thermo}
+	\dif Q = T\,\dif S = \dif U + P\,\dif V,
+\end{equation}
+where $P$ is the pressure and $S$ is the entropy. During an adiabatic process, $\dif Q = T\,\dif S = 0$. The entropy of the blob\sidenote{We'll use the subscript $b$ to denote properties of the blob; quantities without a subscript refer to the background fluid.} is therefore constant, 
+$S_{b}(r+h) = S_{b}(r) = S(r)$, and is therefore not equal, in general, to the entropy of the surrounding gas at $r+h$: $S_{b}(r+h)  \neq S(r+h)$. The pressure in the blob, however, is the same as in the surrounding gas: $P_{b}(r+h) = P(r+h)$.
+
+As in our discussion of the equation of state (cf.\ eq.~[\ref{e.ideal-gas-eos}]), it isn't really convenient to write things in terms of volume. To put eq.~(\ref{e.first-law-thermo}) into a more convenient form, divide both sides by the mass of the blob $m_{b}$:
+\begin{eqnarray}
+	\dif\left(\frac{Q}{m}\right) = T\,\dif\left(\frac{S}{m}\right) &=&
+		\dif\left(\frac{U}{m}\right) + P\,\dif\left(\frac{V}{m}\right)\nonumber\\
+	T\,\dif s &=& \dif u + P\,\dif\left(\frac{1}{\rho}\right)\nonumber\\
+	T\,\dif s &=& \dif u - \frac{P}{\rho^{2}}\dif\rho \label{e.specific-first-law-thermo}
+\end{eqnarray}
+Here we denote the \emph{entropy per mass} and the \emph{energy per mass} by $s$ and $\u$ respectively; and we identify the volume per mass with $1/\rho$, where $\rho$ is the mass density. Equation~(\ref{e.specific-first-law-thermo}) is the first law of thermodynamics as written for fluid dynamics.
+
+After the blob has moved from $r$ to $r+h$, it has expanded so that its density is
+\[
+	\rho_{b}(r+h) = \rho[P_{b}(r+h),s_{b}(r+h)] = \rho[P(r+h),s(r)].
+\]
+Here we've written the density as a function of pressure and entropy: $\rho(P,s)$. Now we can apply Archimedes' law: if the density of the blob is greater than that of the surrounding fluid, then the buoyant force will be less than the weight of the blob; as a consequence, the blob will sink back to its original location. The fluid is thus stable. In contrast, if the density of the blob is greater than that of the surrounding fluid, then the buoyant force is greater than the weight of the blob; a result, the fluid is unstable, as a small perturbation leads to the acceleration of the blob upwards. Figure~\ref{f.convective-schematic} has a schematic of this criterion.
+\begin{marginfigure}
+\includegraphics[width=\textwidth]{convective}
+\caption[Illustration of criteria for convective instability.]{\label{f.convective-schematic}Illustration of criteria for convective instability.  On the left, raising a blob a distance $h$ adiabatically and in pressure balance with its surrounding results in a higher density $V_{b} < V$, or $\rho_{b} > \rho$.  This is stable: the blob will sink back.  On the right, the blob is less dense and hence buoyant: it will continue to rise.}
+\end{marginfigure}
+
+Thus, for the fluid to be stable, we require that the density of the displaced blob be greater than that of the surrounding fluid:
+\begin{eqnarray}
+\rho_{b}(r+h) &>& \rho(r+h) \nonumber\\
+\rho[P(r+h),s(r)] &>& \rho[P(r+h),s(r+h)].
+\label{e.archimedes}
+\end{eqnarray}
+If condition (\ref{e.archimedes}) is satisfied, then the blob will be restored to its original location after a perturbation, and the system is stable. If condition (\ref{e.archimedes}) is not satisfied, then the blob will continue to rise following a perturbation; the system is thus unstable.
+
+Since $h$ is an infinitesimal displacement, we can expand the right-hand side of eq.~(\ref{e.archimedes}):
+\[
+	\rho[P(r+h),s(r+h)] \approx \rho[P(r+h),s(r)] + \tderiv{\rho}{s}{P}\DD{s}{r}\;h.
+\]
+Here the notation $(\partial \rho/\partial s)_{P}$ means taking the derivative of $\rho$ with respect to $s$ while holding $P$ fixed. The condition for stability is therefore, after canceling common factors,
+\begin{equation}\label{e.convective-stability}
+ \tderiv{\rho}{s}{P}\frac{\dif s}{\dif r}< 0 .
+\end{equation}
+We've dropped $h$ from the left-hand side since it is positive.
+We can put eq.~(\ref{e.convective-stability}) into a more useful form by changing variables from entropy $\rho$ to temperature $T$ via
+\[
+\tderiv{\rho}{T}{P} = \tderiv{\rho}{s}{P}\tderiv{s}{T}{P}.
+\]
+Inserting this into eq.~(\ref{e.convective-stability}) gives
+\[
+ \frac{T}{C_{P}}\tderiv{\rho}{T}{P}\frac{\dif s}{\dif r} < 0,
+\]
+since the specific heat at constant pressure is $C_{P}\equiv T(\dif s/\dif T)_{P}$. 
+
+Now, $(\partial \rho/\partial T)_{P}$ is negative (gas expands on being heated), while $C_{P}$ is positive; hence for eq.~(\ref{e.convective-stability}) will be satisfied wherever
+\begin{equation}\label{e.entropy-condition}
+\frac{\dif s}{\dif r} > 0.
+\end{equation}
+\begin{quote}\itshape
+In a convectively stable star, the entropy must increase with radius.
+\end{quote}
+If this condition is not satisfied, if $\dif s/\dif r < 0$, then convection occurs: high-entropy material is buoyant and moves outward, while lower-entropy material sinks and moves inward. Eventually the rising fluid will mix with the surrounding material; when it does, its entropy will be added to the surrounding material, thereby raising its entropy. As a result of this mixing, the entropy gradient will be driven toward the marginally stable configuration $\dif s/\dif r = 0$.
+
+\subsection{The adiabatic thermal gradient}\label{s.adiabatic-gradient}
+
+Let's return to the first law expressed in terms of mass-specific quantities (eq.~[\ref{e.specific-first-law-thermo}]):
+\[
+	\dif q = T\,\dif s = \dif u -\frac{P}{\rho^{2}}\,\dif \rho.
+\]
+We can express quantities as functions of temperature $T$ and density $\rho$: $s = s(\rho,T)$ and $u = u(\rho,T)$. Then
+\[ \dif u = \tderiv{u}{T}{\rho}\dif T + \tderiv{u}{\rho}{T}\dif \rho, \]
+and
+\[ T\dif s = \tderiv{u}{T}{\rho}\dif T + \left[\tderiv{u}{\rho}{T} - \frac{P}{\rho^{2}}\right]\dif \rho. \]
+Hence the heat needed to raise the temperature of one kilogram of fluid when holding density fixed is
+\begin{equation}\label{e.CV}
+C_{\rho} \equiv T\,\tderiv{s}{T}{\rho} = \tderiv{u}{T}{\rho}.
+\end{equation}
+For an ideal gas, $u = u(T)$ and $C_{\rho}$ is approximately constant; hence we may integrate equation~(\ref{e.CV}) to obtain $u = C_{\rho}T + \textrm{const}$.
+
+In Eq.~(\ref{e.specific-first-law-thermo}), the last term is $-(P/\rho)\, (\dif\rho/\rho) = -(P/\rho)\,\dif\ln\rho$. This demonstrates a useful trick: take the logarithm of the equation of state, $\ln (P) = \ln(\rho) + \ln (T) + \ln (\kB/\mu\mb)$, and then take the differential to obtain
+\[ \frac{\dif P}{P} = \frac{\dif\rho}{\rho} + \frac{\dif T}{T}. \]
+Now eliminate $\dif\rho/\rho$ in the equation
+\[ T\,\dif s = C_{\rho}\dif T - \frac{P}{\rho}\frac{\dif\rho}{\rho} \]
+to obtain an expression for the heat transferred as a function of temperature and pressure,
+\begin{equation}\label{e.first-law-pressure-temperature}
+T\,\dif s = \left[C_{\rho} + \frac{P}{\rho T}\right]\dif T - \frac{1}{\rho}\dif P
+	 = \left[C_{\rho} + \frac{\kB}{\mu\mb}\right]\dif T - \frac{1}{\rho}\dif P.
+\end{equation}
+From this we see that the heat needed to raise the temperature of a mass of fluid while holding pressure fixed is
+\begin{equation}\label{e.CP}
+C_{P}\equiv T\,\tderiv{s}{T}{P} = C_{\rho} + \frac{\kB}{\mu\mb}.
+\end{equation}
+For a plasma of ions and electrons, $C_\rho = (3/2)\kB/(\mu\mb)$ and hence $C_P = (5/2)\kB/(\mu\mb)$.  The ratio of specific heats is
+\begin{equation}\label{e.gamma}
+    \gamma = \frac{C_P}{C_\rho} = \frac{5/2}{3/2} = \frac{5}{3}.
+\end{equation}
+This value of $\gamma$ is for an ideal gas and does not hold universally.
+
+\newthought{During adiabatic motion, there is no heat exchange:} hence, the entropy is constant and we can write eq.~(\ref{e.first-law-pressure-temperature}) as
+\begin{equation}\label{e.differential-entropy}
+    T\dif s = \dif q = 0 = C_{P}\dif T - \frac{1}{\rho} \dif P.
+\end{equation}
+We replace $1/\rho$ using the ideal gas equation of state
+to obtain
+\begin{eqnarray}
+     C_{P}\dif T &=& \frac{\kB}{\mu\mb}\frac{T}{P}\dif P \nonumber\\
+     \frac{\dif T}{T} &=& \frac{C_{P}-C_{\rho}}{C_{P}} \frac{\dif P}{P}\nonumber\\
+	&=& \frac{\gamma-1}{\gamma}\frac{\dif P}{P}.
+\label{e.differential-adiabat}
+\end{eqnarray}
+Integrating both sides of the equation gives
+\begin{equation}\label{e.adiabat}
+ T = T_{0}\left(\frac{P}{P_{0}}\right)^{(\gamma-1)/\gamma},
+\end{equation}
+where $T_{0}$ and $P_{0}$ are the temperature and pressure at the beginning of the adiabatic process. Equation~(\ref{e.adiabat}) tells us how the temperature changes with pressure along an adiabat for an ideal gas. Using the ideal gas equation of state~(\ref{e.eos}) we can convert this into a relation between temperature and density or between density and pressure along an adiabat.
+
+\begin{exercisebox}[Adiabatic relations]
+Use equations~(\ref{e.adiabat}) and (\ref{e.eos}) to derive a relation between temperature and density, and a relation between density and pressure, along an adiabat.
+\end{exercisebox}
+
+\begin{exercisebox}[Onset of convection]
+The figure shows some hypothetical runs of temperature with respect to pressure in a gas in hydrostatic equilibrium.  Indicate which of these situations is convectively unstable, and explain why. Draw on that plot the pressure-temperature relation that would ensue once convection sets in.
+
+\includegraphics[width=\linewidth]{convection-worksheet-1}
+\end{exercisebox}
+
+\section{Convection in stars}
+\label{s.convection-in-stars}
+
+When convection is absent, the temperature gradient in the star is (eq.~[\ref{e.gradient-temperature}])
+\[
+    \DD{T}{r} = -\frac{3\rho\kappa}{4acT^3}\frac{L(r)}{4\pi r^2}.
+\]
+Here $\kappa$ is the opacity and $L(r)$ is the luminosity at radius $r$: $L/4\pi r^2$ is the flux. If this thermal gradient, $|\dif T/\dif r|$, becomes too large, however, the fluid becomes unstable: warm fluid begins to rise while cold fluid sinks to take its places. Over a wide range of stellar conditions this mixing is efficient and drives the region to $\dif s/\dif r = 0$.
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{convection_hinode}
+\caption[Solar convection cells]{\label{f.solar-convection]} Solar convection cells, imaged with the Hinode Solar Optical Telescope. Image credit: Hinode JAXA/NASA/PPARC.}
+\end{marginfigure}
+
+We can recast Equation~(\ref{e.differential-adiabat}) as
+\begin{equation}
+    \frac{P}{T}\left(\dd{T}{P}\right)_s = \left(\dd{\ln T}{\ln P}\right)_s = \frac{\gamma-1}{\gamma}.
+\label{e.nabla-adiabat}
+\end{equation}
+Hence, in a convective region,
+\begin{eqnarray}
+\DD{T}{r} &=& \frac{T}{P}\tderiv{\ln T}{\ln P}{s}\;\DD{P}{r} \nonumber\\
+ &=& \frac{\gamma-1}{\gamma} \frac{T}{P}\; \DD{P}{r}.
+\end{eqnarray}
+The last form is specific to the case of an ideal gas.
+
+\begin{exercisebox}[Temperature and density within a star]
+The figure below indicates the central density and temperature (\emph{triangle}) for 3 hypothetical stars: (\emph{left}) a star that is fully convective; (\emph{center}) a star with a radiative (i.e., stable against convection) core (densities greater than $\val{10}{\kilo\gram\usk\meter^{-3}}$) and a convective envelope; (\emph{right}) a star with a convective core and a radiative envelope. For each star, sketch a plausible run of temperature with density within the star. In the center and right panels, the boundary between radiative and convective regions is marked with a vertical solid line.
+
+\includegraphics[width=\linewidth]{convection-worksheet-2}
+\end{exercisebox}
+
+%This occurs for large $\kappa$ (outer layers of cool stars) or for a high $L(r)/m(r)$ (centers of luminous hot stars).  On the main-sequence, stars with $M \lesssim \Msun$ have convective outer layers; stars with $M \lesssim \val{0.3}{\Msun}$ are fully convective. Stars with $M\gtrsim\Msun$ have convective cores.
+%
+
+\newthought{We can now collect the equations describing the structure of a star in steady-state}. Previously, we established the relations for the enclosed mass,
+\begin{equation}\label{e.mass}
+\DD{m}{r} = 4\pi r^{2}\rho,
+\end{equation}
+the pressure,
+\begin{equation}\label{e.pressure}
+\DD{P}{r} = -\rho\frac{Gm}{r^{2}}.
+\end{equation}
+To this we add the equation for the temperature,
+\begin{equation}\label{e.temperature-radiative}
+\DD{T}{r} = - \frac{L}{4\pi r^{2}}\frac{3\rho\kappa}{4ac T^{3}}
+\end{equation}
+which holds in radiative regions. When $|\dif T/\dif P|$ becomes larger than the adiabatic value, however, convection sets in. In low-mass stars, the convection is able to limit the temperature gradient to its adiabatic value even for quite subsonic fluid velocities:
+\begin{equation}
+\label{e.temperature-convective}
+\DD{T}{r} = \frac{T}{P}\tderiv{\ln T}{\ln P}{S}\DD{P}{r}.
+\end{equation}
+To this we add the equation for luminosity (\ref{e.luminosity}),
+\[ \DD{L}{r} = 4\pi r^{2}\rho\varepsilon. \]
 
 \begin{sidebar}[The equations of stellar structure in Lagrangian form]
 \label{sb.lagrangian-equations}

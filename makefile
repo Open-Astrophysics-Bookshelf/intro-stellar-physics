@@ -11,7 +11,6 @@ CHAPTERS = frontmatter \
 	radiative-transport \
 	classifying-stars \
 	nuclear-burning \
-	convection \
 	main-sequence \
 	post-main-sequence
 
@@ -33,13 +32,16 @@ FIGURES = frontmatter/cover-art.png \
 	radiative-transport/figs/legendre.pdf \
 	nuclear-burning/figs/tunnel-schematic.pdf \
 	nuclear-burning/figs/coulomb_integrand.pdf \
-	convection/figs/convection-1.jpg \
-	convection/figs/convection-2.jpg \
-	convection/figs/convective.pdf \
+	main-sequence/figs/convection-1.jpg \
+	main-sequence/figs/convection-2.jpg \
+	main-sequence/figs/archimedes.png \
+	main-sequence/figs/convection_hinode.jpg \
+	main-sequence/figs/convective.pdf \
 	main-sequence/figs/luminosity-eqn.pdf \
 	main-sequence/figs/fermions.pdf \
 	main-sequence/figs/scattering-classical.pdf \
-	main-sequence/figs/scattering-quantum.pdf
+	main-sequence/figs/scattering-quantum.pdf \
+	main-sequence/figs/etacarinae_hubble_900.jpg
 
 
 BIBS = bibs/stellar-astro.bib
