@@ -9,10 +9,9 @@ Suppose we have a shell of mass $\Delta m$ lying between surfaces $r$ and $r+\De
 If the shell is neither gaining or losing heat, then these terms must balance:
 \[ 4\pi r^{2}\rho\varepsilon\,\Delta r + L(r) - L(r+\Delta r) = 0. \]
 This reduces to our fourth equation of stellar structure,
-\begin{equation}
-\label{e.luminosity}
+\[
 \DD{L}{r} = 4\pi r^{2}\rho\varepsilon.
-\end{equation}
+\]
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{luminosity-eqn}
 \caption[Heat balance in a mass shell]{Heat balance in a shell $\Delta m$.}
@@ -229,15 +228,18 @@ the pressure,
 \end{equation}
 To this we add the equation for the temperature,
 \begin{equation}\label{e.temperature-radiative}
-\DD{T}{r} = - \frac{L}{4\pi r^{2}}\frac{3\rho\kappa}{4ac T^{3}}
+\DD{T}{r} = - \frac{L}{4\pi r^{2}}\frac{3\rho\kappa}{4ac T^{3}},
 \end{equation}
 which holds in radiative regions. When $|\dif T/\dif P|$ becomes larger than the adiabatic value, however, convection sets in. In low-mass stars, the convection is able to limit the temperature gradient to its adiabatic value even for quite subsonic fluid velocities:
 \begin{equation}
 \label{e.temperature-convective}
-\DD{T}{r} = \frac{T}{P}\tderiv{\ln T}{\ln P}{S}\DD{P}{r}.
+\DD{T}{r} = \frac{T}{P}\tderiv{\ln T}{\ln P}{S}\DD{P}{r}\quad\textrm{where convective}.
 \end{equation}
-To this we add the equation for luminosity (\ref{e.luminosity}),
-\[ \DD{L}{r} = 4\pi r^{2}\rho\varepsilon. \]
+To this we add the equation for luminosity,
+\begin{equation}
+\label{e.luminosity}
+\DD{L}{r} = 4\pi r^{2}\rho\varepsilon.
+\end{equation}
 
 \begin{sidebar}[The equations of stellar structure in Lagrangian form]
 \label{sb.lagrangian-equations}
@@ -454,7 +456,7 @@ Given that contraction halts when the equation of state becomes degenerate, what
 \subsection{Radiation pressure}
 \label{s.radiation-pressure}
 
-Radiation in thermal equilibrium exerts a pressure (eq.~\ref{e.radiation-pressure}): $\Prad = aT^{4}/3$. Because the pressure goes as $T^{4}$, radiation pressure becomes an increasingly large fraction of the total pressure for massive stars. Stars that are radiation-pressure dominated tend to be unstable: they have strong winds and violent fits of mass ejection (see the image of Eta Carinae, Fig.~\ref{f.eta-carinae}). As a result, they lose copious amounts of mass while on the main sequence.
+Radiation in thermal equilibrium exerts a pressure (eq.~\ref{e.radiation-pressure}): $\Prad = aT^{4}/3$. Because of this strong dependence on temperature, radiation pressure becomes an increasingly large fraction of the total pressure for massive stars. Stars that are radiation-pressure dominated tend to be unstable: they have strong winds and violent fits of mass ejection (see the image of Eta Carinae, Fig.~\ref{f.eta-carinae}). As a result, they lose copious amounts of mass while on the main sequence. This effectively sets a rough upper limit on the mass of a star.
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{etacarinae_hubble_900}
 \caption[Image of the massive star Eta Carinae]{\label{f.eta-carinae} Image of the massive star Eta Carinae. Credit: J. Morse (Arizona State U.), K. Davidson (U. Minnesota) et al., WFPC2, HST, NASA.}
@@ -471,6 +473,19 @@ The equation of state becomes dominated by radiation roughly where $P(\textrm{id
 \end{exercisebox}
 
 \section{Life on the main-sequence}
+
+With the initiation of hydrogen fusion, the star settles into thermal and mechanical equilibrium, with its structure described by the solution of equations\sidenote{Or, in Lagrangian form, (\ref{e.lagrange-r})--(\ref{e.lagrange-L}).} (\ref{e.mass}), (\ref{e.pressure}), (\ref{e.temperature-radiative})-(\ref{e.temperature-convective}), and (\ref{e.luminosity}), along with the equation of state and prescriptions for the opacity $\kappa$ and heating rate $\varepsilon$. The star is not in complete equilibrium, as the composition is gradually changing as hydrogen in the core is converted to helium. This timescale is much longer, however, than the dynamical timescale (sets hydrostatic equilibrium), the diffusion timescale (sets thermal gradient), and the Kelvin-Helmholtz timescale (sets core temperature via growth of shrinkage of stellar radii).
+
+\begin{exercisebox}[Nuclear burning timescale]
+You computed in exercise \ref{ex.Q-hydrogen-helium} the energy released from the conversion of 4 hydrogen atoms into helium. Express this number in terms of the energy released per mass of hydrogen burned; this number should be in units of $\unitstyle{J}/\kilo\gram$. Now assume that the Sun's luminosity comes from the fusion of hydrogen into helium in the innermost 10\% of the Sun's mass. For a composition that is 70\% hydrogen by mass, how long would it take to deplete the hydrogen in the solar core? This sets the main-sequence lifetime of the sun.
+\end{exercisebox}
+
+The cool outer layers of low-mass stars have large opacities: for example many elements are not ionized, so there are many potential lines for absorption. As a result, stars with $M\lesssim\Msun$ have convective regions in their outer parts. The fraction of the star that is convective is larger for low-mass, cool stars; and stars with $M \lesssim\val{0.3}{\Msun}$ are fully convective, so that the whole interior lies along an adiabat. For more massive, hotter, stars, the opacities are lower, and as a result, the outer convective region vanishes for stars with $M\gtrsim\Msun$.
+
+\begin{exercisebox}[Mass-luminosity relation]
+\label{ex.mass-luminosity-relation}
+We can estimate how the luminosity depends on stellar mass for stars that have a mostly radiative structure. As in exercise~\ref{ex.radiative-transfer-diffusion}, assume that $aT^{4}=aT_{c}^{4}(1-r/R)$. Use this in eq.~(\ref{e.temperature-radiative}); also assume a constant opacity $\kappa$, replace $\rho$ and $T_{c}$ with the average density (in terms of stellar mass $M$ and and radius $R$) and virial estimate of the central temperature, and replace the factor of $r^{2}$ with $R^{2}$. After some algebra, you should find that the luminosity $L$ depends on $M$ to some power.
+\end{exercisebox}
 
 The strong temperature dependence of the CNO burning has two effects on the structure of the star. First, it makes the central temperature nearly constant over a wide range of stellar masses for $M > \val{1}{\Msun}$. A constant central temperature implies, via the virial theorem, that $R \propto M$ on the upper main sequence. A second consequence is that nearly all of the star's luminosity is generated in a small mass about the stellar center.
 
