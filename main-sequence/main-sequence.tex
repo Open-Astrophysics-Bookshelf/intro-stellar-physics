@@ -172,7 +172,7 @@ Integrating both sides of the equation gives
 \begin{equation}\label{e.adiabat}
  T = T_{0}\left(\frac{P}{P_{0}}\right)^{(\gamma-1)/\gamma},
 \end{equation}
-where $T_{0}$ and $P_{0}$ are the temperature and pressure at the beginning of the adiabatic process. Equation~(\ref{e.adiabat}) tells us how the temperature changes with pressure along an adiabat for an ideal gas. Using the ideal gas equation of state~(\ref{e.eos}) we can convert this into a relation between temperature and density or between density and pressure along an adiabat.
+where $T_{0}$ and $P_{0}$ are the temperature and pressure at the beginning of the adiabatic process. Equation~(\ref{e.adiabat}) tells us how the temperature changes with pressure along an adiabat for an ideal gas. We used a similar relation in determining the sounds speed (Box~\ref{b.sound-speed}). Using the ideal gas equation of state~(\ref{e.eos}) we can convert this into a relation between temperature and density or between density and pressure along an adiabat.
 
 \begin{exercisebox}[Adiabatic relations]
 Use equations~(\ref{e.adiabat}) and (\ref{e.eos}) to derive a relation between temperature and density, and a relation between density and pressure, along an adiabat.
@@ -474,9 +474,14 @@ The equation of state becomes dominated by radiation roughly where $P(\textrm{id
 
 \section{Life on the main-sequence}
 
-With the initiation of hydrogen fusion, the star settles into thermal and mechanical equilibrium, with its structure described by the solution of equations\sidenote{Or, in Lagrangian form, (\ref{e.lagrange-r})--(\ref{e.lagrange-L}).} (\ref{e.mass}), (\ref{e.pressure}), (\ref{e.temperature-radiative})-(\ref{e.temperature-convective}), and (\ref{e.luminosity}), along with the equation of state and prescriptions for the opacity $\kappa$ and heating rate $\varepsilon$. The star is not in complete equilibrium, as the composition is gradually changing as hydrogen in the core is converted to helium. This timescale is much longer, however, than the dynamical timescale (sets hydrostatic equilibrium), the diffusion timescale (sets thermal gradient), and the Kelvin-Helmholtz timescale (sets core temperature via growth of shrinkage of stellar radii).
+With the initiation of hydrogen fusion, the star settles into thermal and mechanical equilibrium, with its structure described by the solution of equations\sidenote{Or, in Lagrangian form, (\ref{e.lagrange-r})--(\ref{e.lagrange-L}).} (\ref{e.mass}), (\ref{e.pressure}), (\ref{e.temperature-radiative})-(\ref{e.temperature-convective}), and (\ref{e.luminosity}), along with the equation of state and prescriptions for the opacity $\kappa$ and heating rate $\varepsilon$. 
+
+The reason for star's stability on the main sequence is a consequence of the relation, derived in exercise \ref{ex.gravithermal-specific-heat}, between the star's total energy and temperature. If the reaction rate were to increase and deposit more energy into the star, then since the total energy is $\propto -GM^{2}/R$, the star would expand. This expansion would cause the central temperature to decrease, thereby reducing the reaction rate.
+
+The star is not in complete equilibrium, however, as the composition is gradually changing as hydrogen in the core is converted to helium. This timescale is much longer than the dynamical timescale (sets hydrostatic equilibrium), the diffusion timescale (sets thermal gradient), and the Kelvin-Helmholtz timescale (sets core temperature via growth of shrinkage of stellar radii). The gradual build-up of a helium-rich core does not, therefore, affect the stability of the star, but it does lead to a slow brightening of the star over its main sequence lifetime. For our sun, the gradual enrichment of the core in helium causes a slow increase in luminosity of $\approx10\%$ for each billion years.\marginnote{Although this slow increase in luminosity is not a drastic change, it has significant implications for life on Earth. The expected warming is sufficient to make Earth uninhabitable within about a billion years.} 
 
 \begin{exercisebox}[Nuclear burning timescale]
+\label{ex.nuclear-burning-timescale}
 You computed in exercise \ref{ex.Q-hydrogen-helium} the energy released from the conversion of 4 hydrogen atoms into helium. Express this number in terms of the energy released per mass of hydrogen burned; this number should be in units of $\unitstyle{J}/\kilo\gram$. Now assume that the Sun's luminosity comes from the fusion of hydrogen into helium in the innermost 10\% of the Sun's mass. For a composition that is 70\% hydrogen by mass, how long would it take to deplete the hydrogen in the solar core? This sets the main-sequence lifetime of the sun.
 \end{exercisebox}
 
@@ -492,11 +497,11 @@ We can estimate how the luminosity depends on stellar mass for stars that have a
 \caption{\label{t.MS-characteristics} Characteristics of main-sequence stars}
 \centering
 \begin{tabular}{lll}
-characteristic & $M\lesssim\Msun$ & $M\gtrsim\Msun$\\
+ & $M\lesssim\Msun$ & $M\gtrsim\Msun$\\
 \hline
-hydrogen burning & pp & CNO\\
-core & radiative  & convective\\
-envelope & convective & radiative\\
+$4\hydrogen\to\helium$ & pp & CNO\\
+core is & radiative  & convective\\
+envelope is & convective & radiative\\
 \end{tabular}
 \end{margintable}
 
