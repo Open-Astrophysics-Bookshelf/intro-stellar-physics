@@ -16,17 +16,16 @@ Having given a brief summary of post-main sequence evolution, we shall now explo
 
 With the depletion of hydrogen, the core contracts while there is \hydrogen\ fusion occurring in a shell surrounding the core. The shell hydrogen fusion produces helium, which adds to the core mass. As the core contracts its temperature rises. The rising temperature and pressure at the base of the hydrogen-burning shell causes the \hydrogen\ fusion reactions in the shell to go at an ever increasing rate. The resulting high luminosity drives the envelope, now fully convective, to large radii and hence to a low surface temperature. Observationally, the star becomes a red giant.  During this phase the high luminosity, combined with the low surface gravity of the distended envelope, drives a strong wind\sidenote{Calculations of the rate of mass loss are still crude, but there are observational constraints on the rate.}.
 
-\subsection{The helium flash}
+\subsection{Helium burning: the horizontal branch}
 There are no stable isotopes with mass $A=5$ or $A=8$, which makes the fusion of \helium\ somewhat tricky.  The isotope \beryllium[8] is, however, long-lived ($\val{10^{-16}}{\second}$) compared to a nuclear timescale\sidenote{Roughly the time for a pion to cross a nucleus, $\sim \val{10^{-22}}{\second}$.}.
 When the core temperature reaches $\approx\val{10^{8}}{\K}$, the reaction
 \[ \helium + \helium \longleftrightarrow\beryllium[8] \]
 builds up a small abundance of \beryllium[8]; the reaction
 \[ \beryllium[8] + \helium \longleftrightarrow \carbon^{*} \]
-then builds up a small abundance of \carbon\ in an excited state (denoted by the $^{*}$).  While most of $\carbon^{*}$ decays back into $\beryllium[8]+\helium$, a small fraction transitions to the ground state, $\carbon^{*}\to\carbon+\gamma$. As a result of these reactions, there is a net conversion $3\helium\to\carbon$---the \newterm{triple-alpha} reaction.  This reaction is \emph{very temperature-sensitive}: $\partial\ln\epsilon_{3\alpha}/\partial\ln T \approx 40$ at $T = \val{10^{8}}{\K}$; this sensitivity, combined with the mildly degenerate conditions of the core, makes the ignition of \helium\ somewhat unstable for solar-mass stars.
+then builds up a small abundance of \carbon\ in an excited state (denoted by the $^{*}$).  While most of $\carbon^{*}$ decays back into $\beryllium[8]+\helium$, a small fraction transitions to the ground state, $\carbon^{*}\to\carbon+\gamma$. As a result of these reactions, there is a net conversion $3\helium\to\carbon$---the \newterm{triple-alpha reaction}.
+%This reaction is \emph{very temperature-sensitive}: $\partial\ln\epsilon_{3\alpha}/\partial\ln T \approx 40$ at $T = \val{10^{8}}{\K}$; this sensitivity, combined with the mildly degenerate conditions of the core, makes the ignition of \helium\ somewhat unstable for solar-mass stars.
 
-\subsection{Helium burning: the horizontal branch}
-
-Once core \helium\ has ignited, the star settles onto a ``Helium Main Sequence;'' observationally this is the \newterm{horizontal branch}, so called because these stars form a noticeable clump on a Hertzsprung-Russell diagram. The luminosity on the horizontal branch is about \valrng[--]{30}{100}{\Lsun}. The higher luminosity, combined with the much lower energy release from the $3\helium\to\carbon$, makes the horizontal branch lifetime much shorter than that of the main-sequence (e.g., the horizontal branch lifetime is $\sim \val{10^{8}}{\yr}$ for a solar-mass star).
+Once core \helium\ has ignited, the star settles onto a ``helium main sequence;'' observationally this is the \newterm{horizontal branch}, so called because these stars form a noticeable clump on a Hertzsprung-Russell diagram. The luminosity on the horizontal branch is about \valrng[--]{30}{100}{\Lsun}. The higher luminosity, combined with the much lower energy release from the $3\helium\to\carbon$, makes the horizontal branch lifetime much shorter than that of the main-sequence (e.g., the horizontal branch lifetime is $\sim \val{10^{8}}{\yr}$ for a solar-mass star).
 
 \begin{exercisebox}[Horizontal branch lifetime]
 Following exercises \ref{ex.Q-hydrogen-helium} and \ref{ex.nuclear-burning-timescale}, find the heat released per kilogram from fusing 3 \helium\ nuclei ($B=\val{28.296}{\MeV}$) into \carbon\ ($B=\val{92.162}{\MeV}$). Take the core mass to be $\val{0.45}{\Msun}$ (the minimum core mass needed for the ignition of helium). For a luminosity of $\val{30}{\Lsun}$, find the lifetime for core helium burning.
@@ -36,63 +35,115 @@ As the mass of \carbon\ builds up in the core, the reaction $\carbon+\helium\to\
 
 \subsection{The asymptotic giant branch and emergence of a white dwarf}
 
-With the depletion of \helium\ in the core, the core---now composed of \carbon\ and \oxygen---again contracts, while the growing luminosity from the H- and He-burning shells again drive the envelope to large radii.  The H- and He-burning shells are often thermally unstable and \emph{pulse}.  The hydrogen-rich envelope is consumed at its base by the H- and He-burning shells and is expelled at the surface by an increasingly strong wind. After the envelope is gone, the hot core---observed as a white dwarf---slowly cools. For a solar-mass star, the expected final mass of the core, and hence of the white dwarf, is $\approx\val{0.6}{\Msun}$.
+With the depletion of \helium\ in the core, the core---now composed of \carbon\ and \oxygen---again contracts, while the growing luminosity from the H- and He-burning shells again drive the envelope to large radii. Observationally, this phase is the \newterm{asymptotic giant branch}: on an HR diagram, the stars move on a track that approaches the giant branch. The hydrogen-rich envelope is consumed at its base by the H- and He-burning shells and is expelled at the surface by an increasingly strong wind. After the envelope is gone, the hot core---observed as a white dwarf---slowly cools. For a solar-mass star, the expected final mass of the core, and hence of the white dwarf, is $\approx\val{0.6}{\Msun}$.
 
 \section{Massive stars}
 
-For stars with main-sequence masses $\gtrsim \valrng[--]{8}{10}{\Msun}$, the fusion of \carbon\ commences while the core is non-degenerate.  The temperature required is $\approx\val{\sci{8}{8}}{\K}$.  At this temperature, electron-positron pairs can form and annihilate; while this usually produces photons, there is a branch
+For stars with main-sequence masses $\gtrsim \valrng[--]{8}{10}{\Msun}$, the fusion of \carbon\ commences while the core is non-degenerate.  The temperature required is $\approx\val{\sci{8}{8}}{\K}$.  At this temperature, electron-positron pairs can form and annihilate ($e^{-}+e^{+}\longleftrightarrow\gamma\gamma$); occasionally instead of producing photons, the reaction
 \[ e^{-}+e^{+} \longleftrightarrow \nu_{e} + \bar{\nu}_{e}\]
-that generates a neutrino-antineutrino pair. The mean free path for the neutrinos is larger than the radius of the star; as a result, this process efficiently cools the core.
+occurs instead and generates a neutrino-antineutrino pair. The mean free path for the neutrinos is larger than the radius of the star; as a result, the neutrinos stream out and take energy from the core. These neutrinos carry away most of the heat from the core.
 
-After this point, the core evolves on a timescale that is too fast for the envelope to keep up.  The fusion of \carbon\ produces $\sodium+\pt$ and $\neon+\helium$; the \pt\ and \helium\ capture onto other nuclei that are present.  At slightly higher temperatures, the reaction $\neon+\gamma \to \oxygen+\helium$ occurs; the \helium\ capture onto other \oxygen, \neon, and \magnesium.
+Within the core, \carbon\ is consumed by
+\[ \carbon+\carbon\to\left\{\begin{array}{c}\sodium+\pt \\\neon+\pt\end{array}\right.. \]
+The \pt\ and \helium\ capture onto other nuclei that are present.  At slightly higher temperatures, the reaction $\neon+\gamma \to \oxygen+\helium$ occurs; the \helium\ capture onto other \oxygen, \neon, and \magnesium. The next significant burning stage is
+\[\oxygen+\oxygen\to\left\{\begin{array}{c}\phosphorus[31]+\pt \\ \silicon+\helium \end{array}\right. ;\]
+as with $\carbon+\carbon$, the \pt\ and \helium\ combine with other nuclei to produce a group of nuclei clustered about \silicon.
 
-The next significant burning stage is $\oxygen+\oxygen$, which produces $\phosphorus[31]+\pt$ and $\silicon+\helium$; as before, the \pt\ and \helium\ combine with other nuclei and produce a group of nuclei around \silicon.
-
-The strong Coulomb barrier inhibits the fusion of nuclei beyond \oxygen; instead, photodissociation reactions such as $\silicon+\gamma \to \magnesium+\helium$ liberate \nt, \pt, and \helium.  These light nuclei then fuse with other heavy nuclei, and the composition gradually becomes composed of nuclei around \iron.  This is \emph{nuclear statistical equilibrium}: the composition is in the lowest energy state (most bound) for the ambient density and temperature.
+The strong Coulomb barrier inhibits the fusion of nuclei beyond \oxygen; instead, photodissociation reactions such as $\silicon+\gamma \to \magnesium+\helium$ liberate \nt, \pt, and \helium.  These light nuclei then fuse with other heavy nuclei, and the composition gradually becomes composed of nuclei around \iron.  This is \newterm{nuclear statistical equilibrium}: the composition is in the lowest energy state (most bound) for the ambient density and temperature. As a result, there is no further release of nuclear energy possible. The \iron\ core contracts and becomes degenerate; its mass gradually increases from the burning of surrounding material.
 
 \begin{exercisebox}[Dynamical time of evolved stellar core]
-At the onset of \oxygen\ burning in a \val{20}{\Msun} star, the central density is $\approx \val{10^{6}}{\grampercc}$.  What is the dynamical time of the core?
+At the onset of \oxygen\ burning in a \val{25}{\Msun} star, the central density (Table~\ref{t.burning-timescales}) is $\val{\sci{3.6}{6}}{\grampercc}$ ($\val{\sci{3.6}{9}}{\kilo\gram\,\meter^{-3}}$).  What is the dynamical time of the core?
 \end{exercisebox}
 
-\subsection{A relativistic degenerate equation of state}
+The amount of energy available from the fusion of heavy nuclei is low; as a consequence, the time required for the core to deplete the available fuel grows shorter and shorter, with the final stages occurring in a day (column labeled $\tau$ in Table~\ref{t.burning-timescales}). After the ignition of carbon, the core evolves too quickly for the envelope to keep up. Thus the external appearance of the star provides no window into the final days of burning.
 
-For degenerate electrons, the momentum---and hence the kinetic energy---increases with density.  When the kinetic energy approaches the rest mass of the electrons, the relation between kinetic energy and momentum is no longer $E = p^{2}/2m$.  When the electrons are extremely relativistic, their energy becomes $E = p c$.
+\begin{table}[htp]
+\caption{\label{t.burning-timescales}Burning timescales for stars. Values taken from \citet{Woosley2002The-evolution-a}.}
+\begin{tabular}{rrrrr}
+\multicolumn{5}{c}{hydrogen}\\
+$M_{\mathrm{ZAMS}}$ (\Msun)& $T_{c}$ ($\val{10^{7}}{\K}$) & $\rho_{c}$ ($\grampercc$) & $L$ ($\val{10^{3}}{\Lsun}$) & $\tau$ (Myr)\\
+\hline
+15 & 3.53 & 5.81 & 28 & 11.1\\
+25 & 3.81 & 3.81 & 110 & 6.7\\
+\hline
+\multicolumn{5}{c}{helium}\\
+$M_{\mathrm{ZAMS}}$ (\Msun)& $T_{c}$ ($\val{10^{8}}{\K}$) & $\rho_{c}$ ($\val{10^{3}}{\grampercc}$) & $L$ ($\val{10^{3}}{\Lsun}$) & $\tau$ (Myr)\\
+\hline
+15 & 1.78 & 1.39 & 41 & 1.97\\
+25 & 1.96 & 0.76 & 182 & 0.84\\
+\hline
+\multicolumn{5}{c}{carbon}\\
+$M_{\mathrm{ZAMS}}$ (\Msun)& $T_{c}$ ($\val{10^{8}}{\K}$) & $\rho_{c}$ ($\val{10^{6}}{\grampercc}$) & $L$ ($\val{10^{3}}{\Lsun}$) & $\tau$ (kyr)\\
+\hline
+15 & 8.34 & 2.39 & 83 & 2.03\\
+25 & 8.41 & 1.29 & 245 & 0.52\\
+\hline
+\multicolumn{5}{c}{oxygen}\\
+$M_{\mathrm{ZAMS}}$ (\Msun)& $T_{c}$ ($\val{10^{9}}{\K}$) & $\rho_{c}$ ($\val{10^{6}}{\grampercc}$)& $L$ ($\val{10^{3}}{\Lsun}$) & $\tau$ (yr)\\
+\hline
+15 & 1.94 & 6.66 & 87 & 2.58\\
+25 & 2.09 & 3.60 & 246 & 0.40\\
+\hline
+\multicolumn{5}{c}{silicon}\\
+$M_{\mathrm{ZAMS}}$ (\Msun)& $T_{c}$ ($\val{10^{9}}{\K}$) & $\rho_{c}$ ($\val{10^{7}}{\grampercc}$) & $L$ ($\val{10^{3}}{\Lsun}$) & $\tau$ (d)\\
+\hline
+15 & 3.34 & 4.26 & 87 & 18.3\\
+25 & 3.65 & 3.01 & 246 & 0.7\\
+\end{tabular}
+\end{table}
 
-Recall that for an ideal gas (no interactions) the density of electrons is given by the integral over phase space,
+\subsection{Core collapse}
+When the core of a massive star reaches nuclear statistical equilibrium (NSE), there are no further sources of energy available. Fusion reactions in the shells surrounding the core add mass to it, causing it to contract. The increasing density raises the electron Fermi energy. When the Fermi energy approaches the rest mass of the electrons---$m_{e}c^{2} = \val{0.511}{\MeV}$---the electrons move relativistically. This alters the equation of state.
+
+The reason is that the energy no longer goes as $p^{2}/2m$ for relativistic particles. The correct relation is
 \[
-  n = \frac{2}{h^{3}} \int \dif^{3}p \frac{1}{\exp\left[\left(E-\mu\right)/kT\right]+1}.
+	E = \sqrt{p^{2}c^{2} + m^{2}c^{4}} = mc^{2}\sqrt{1 + \left(\frac{p}{mc}\right)^{2}};
 \]
-The $2$ in the numerator is because electrons are spin-$1/2$ particles and there are thus 2 states in the same infinitesimal $\dif^{3}p$.  If the electrons are degenerate, $kT \ll E,\mu$ and the integral becomes
+when $p/mc\ll 1$, we can expand this as $E\approx m c^{2} + p^{2}/2m$---that is, as the sum of the rest mass and the Newtonian form of the kinetic energy. We'll now explore the opposite limit, with $p \gg mc$, so that $E = pc$.
+
+Recall that for a degenerate gas, we began filling energy states, starting with the lowest open levels until we have added all $N$ electrons (eq.~[\ref{e.number-degenerate}]):
 \[
-  n = \frac{2}{h^{3}}\int_{0}^{E_{F}} \dif^{3}p = \frac{8\pi}{h^{3}} \int_{0}^{E_{F}} p^{2}\,\dif p = \frac{8\pi}{h^{3}c^{3}} \int_{0}^{E_{F}} E^{2}\,\dif E = \frac{8\pi}{3h^{3}c^{3}} E_{F}^{3}.
+	N = \frac{2}{h^{3}}\int_{V}\dif^{3}x\int_{0}^{\EF}\dif^{3}p.
 \]
-Hence the electrons are characterized by a Fermi energy
-\begin{equation}\label{e.fermi}
-	E_{F} = \left(\frac{3}{8\pi}\right)^{1/3}hc\; n^{1/3}
+We then change variables, $\dif^{3}p = 4\pi p^{2}\,\dif p = 4\pi c^{-3}\varepsilon^{2}\,\dif\varepsilon$, where $\varepsilon = pc$ is the energy of a single electron:
+\[
+	N = \frac{8\pi}{h^{3}c^{3}}V \int_{0}^{\EF} \varepsilon^{2}\,\dif\varepsilon
+	= \frac{8\pi}{3h^{3}c^{3}} V  \EF^{3}.
+\]
+Solving for the Fermi energy,
+\[
+	\EF = hc\left(\frac{3}{8\pi}\frac{N}{V}\right)^{1/3}.
+\]
+To get the total energy, we multiply each electron by its energy $\varepsilon$ and integrate over phase space:
+\[
+	E = \frac{8\pi}{h^{3}c^{3}}V\int_{0}^{\EF}\varepsilon^{3}\,\dif\varepsilon = 
+		\frac{1}{4}\frac{8\pi}{h^{3}c^{3}}V\EF^{4}.
+\]
+Upon substituting for $\EF$ in terms of $n = N/V$, we find the energy per unit volume,
+\[
+	\frac{E}{V} = \frac{3}{4} n \EF.
+\]
+For a relativistic gas, the pressure is $P = (1/3)(E/V)$, so that
+\begin{equation}
+\label{e.pressure-relativistic}
+	P = \frac{1}{4}n\EF = \frac{1}{4}\left(\frac{3}{8\pi}\right)^{1/3}hc n^{4/3},
 \end{equation}
-With this we can find the energy density
-\[
-  U = \frac{8\pi}{h^{3}c^{3}}\int_{0}^{E_{F}} E^{3}\,\dif E = \frac{3}{4} n E_{F};
-\]
-and for a relativistic gas the pressure is $U/3$, or
-\begin{equation}\label{e.pressure-relativistic}
-  P = \frac{1}{4}n E_{F} = \frac{1}{4}\left(\frac{3}{8\pi}\right)^{1/3}hc\; n^{4/3}.
-\end{equation}
-Here $n = \rho/(\mb\mu_{e})$ is the number of electrons per unit volume.
+with $n = \rho/\mu_{e}m_{u}$.
 
 \subsection{The Chandrasekhar mass}
-We constructed a mass-radius relation for white dwarfs by combining the virial relations,
+
+In exercise~\ref{ex.degenerate-mass-radius}, we constructed a mass-radius relation for white dwarfs by combining the virial relations,
 \begin{eqnarray*}
    P    &\propto& \frac{GM^{2}}{R^{4}}\\
    \rho &\propto& \frac{M}{R^{3}}
 \end{eqnarray*}
 and the equation of state for a non-relativistic, degenerate, ideal gas.  We found that $R\propto M^{-1/3}$.  If we try that with our relativistic equation of state, eq.~(\ref{e.pressure-relativistic}), we get
 \[
-	\frac{GM^{2}}{R^{4}} \propto P = \frac{1}{4}\left(\frac{3}{8\pi}\right)^{1/3}hc\; \left(\frac{\rho}{\mb\mu_{e}}\right)^{4/3} \propto \left(\frac{M}{R^{3}}\right)^{4/3}.
+	\frac{GM^{2}}{R^{4}} \propto P = \frac{1}{4}\left(\frac{3}{8\pi}\right)^{1/3}hc\; \left(\frac{\rho}{\mb\mu_{e}}\right)^{4/3} \propto \frac{M^{4/3}}{R^{4}}.
 \]
-The radius $R$ cancels, and what we have is a relation $M\propto (hc/G)^{3/2}/\mb^{2}$.  This is rather odd: hydrostatic balance and our equation of state produce a characteristic mass in terms of fundamental constants.
+The radius $R$ cancels, and what we have is a relation $M\propto (hc/G)^{3/2}/\mb^{2}$.  This is rather odd: a gas with a relativistic equation of state in hydrostatic balance has a characteristic mass defined in terms of fundamental constants.
 
-Let's investigate this a bit more.  Suppose we construct a box filled with $N$ electrons and a mass $\mu_{e}\mb N$.  The volume of the box $V \sim R^{3}$, and since the electrons are degenerate, the volume per electron is roughly $\lambda^{3}$, where $\lambda \sim h/p$ is the wavelength of the electrons.  As a result, $N = (R/\lambda)^{3}$; further, the momentum of an electron is
+Let's investigate this further. Suppose we have a box with adjustable sides, which we pack with $N$ degenerate electrons. We add some nuclei for mass, so that the total mass in the box is $\mu_{e}\mb N$. The volume of the box $V \sim R^{3}$, and since the electrons are degenerate, the volume per electron is roughly $\lambda^{3}$, where $\lambda \sim h/p$ is the wavelength of the electrons.  As a result, $N = (R/\lambda)^{3}$; further, the momentum of an electron is
 \[	p \sim \frac{h}{\lambda} \sim h\frac{N^{1/3}}{R}. \]
 If our electrons were non-relativistic, the total, kinetic plus gravitational, energy of our box would be
 \[
@@ -104,17 +155,20 @@ If, however, the electrons are relativistic then the total energy is
 \begin{eqnarray*}
 	E_{\mathrm{total}} = Npc - \frac{GM^{2}}{R} 
 		&=& \frac{1}{R}\left[hc N^{4/3} - G N^{2}(\mu_{e}\mb)^{2}\right]\\
-		&=& G(\mu_{e}\mb)^{2}\frac{N^{4/3}}{R}\left[ {\color{red}\frac{hc}{G(\mu_{e}\mb)^{2}} - N^{2/3}}\right].
+		&=& G(\mu_{e}\mb)^{2}\frac{N^{4/3}}{R}
+		{\color{red}\left[ \frac{hc}{G(\mu_{e}\mb)^{2}} - N^{2/3}\right]}.
 \end{eqnarray*}
-If $N < [hc/G/(\mu_{e}\mb)^{2}]^{3/2}$, then $E_{\mathrm{total}} > 0$; by making $R$ larger, however, we can lower the energy until the electrons are no longer relativistic.  If $N > [hc/G(\mu_{e}\mb)^{2}]^{3/2}$, then $E_{\mathrm{total}} < 0$; by making $R$ smaller, however, we can keep reducing $E_{\mathrm{total}}$.  There is no bound state with finite $R$.
+Look at the term in red.
+If $N < [hc/G/(\mu_{e}\mb)^{2}]^{3/2}$, then $E_{\mathrm{total}} > 0$; by making $R$ larger, however, we can lower the energy until the electrons are no longer relativistic.  If $N > [hc/G(\mu_{e}\mb)^{2}]^{3/2}$, then $E_{\mathrm{total}} < 0$; by making $R$ smaller, however, we can keep reducing $E_{\mathrm{total}}$. There is no bound state with finite $R$ for $M>(hc/G)^{3/2}(\mu_{e}\mb)^{-2}$.
 
 Thus, there is a limit to the number of degenerate electrons, and hence the total mass, that we can put in hydrostatic equilibrium.  An exact calculation yields
 \begin{equation}\label{e.Chandrasekhar}
 	M_{\mathrm{Ch}} = 1.456 \left(\frac{2}{\mu_{e}}\right)^{2}\Msun.
 \end{equation}
-When the mass reaches this limiting value, known as the \newterm{Chandrasekhar mass}, the star must collapse.  
+When the mass reaches this limiting value, known as the \newterm{Chandrasekhar mass}, the star must collapse.
 
-\newthought{There is another way of looking at the onset of instability}\cite{Cox1980Theory-of-Stell} that touches on a broader topic in physics.  Suppose we imagine all of the mass of the star $M$ is concentrated at the center, and the volume of the star is filled with a massless gas of mean density $n = N/V = 3N/(4\pi R^{3})$. Encasing the star is an impermeable membrane of mass $m$.  The net force on the membrane is
+\begin{sidebar}[Instability for a relativistic equation of state]
+There is another way of looking at the onset of instability that touches on a broader topic in physics. Suppose we imagine all of the mass of the star $M$ is concentrated at the center, and the volume of the star is filled with a massless gas of mean density $n = N/V = 3N/(4\pi R^{3})$. Encasing the star is an impermeable membrane of mass $m$.  The net force on the membrane is
 \begin{equation}\label{e.force}
 	4\pi R^{2} P - \frac{GMm}{R^{2}} = 0,
 \end{equation}
@@ -155,13 +209,12 @@ What is the period of oscillation for equation (\ref{e.SHO})?  Notice anything f
 \noindent If, however, $\gamma < 4/3$, the the equation of motion is
 \[ \delta\ddot{R} \propto \delta R, \]
 which has an exponential solution: push in the membrane, and it continues to collapse!
+\end{sidebar}
 
-\subsection{Core collapse}
-When the core of a massive star reaches nuclear statistical equilibrium (NSE), there are no further sources of energy available. Fusion reactions in the shells surrounding the core add mass to it, causing it to contract.  The increasing density raises the electron Fermi energy.  At some point, the electron Fermi is sufficiently large $\sim\MeV$ that electron captures on iron-group nuclei commence.  These captures do two things: first, by removing some of the electrons they force the remaining ones to have a higher momentum and energy to maintain pressure support; second, the captures increase $\mu_{e}$ and reduce $M_{\mathrm{Ch}}$.  As the core begins the final plunge, the rapidly rising temperature induces the photodisintegration of iron-group nuclei into neutrons, protons, and helium nuclei.  This process is endothermic, which further robs the core of pressure support and accelerates the collapse.
 
-As the core collapses, electrons combine with protons to form neutrons; in the process, a large number of neutrinos are released.  Eventually the neutrino mean free path becomes smaller than the core radius for two reasons: the weak interaction cross-section increases with energy, and the mean free path increases with density, $\ell = (n\sigma)^{-1}$.  At this point neutrinos must diffuse out of the collapsing core.
+At some point, the electron Fermi is sufficiently large $\sim\MeV$ that electron captures on iron-group nuclei commence. These captures do two things: first, by removing some of the electrons they force the remaining ones to have a higher momentum and energy to maintain pressure support; second, the captures increase $\mu_{e}$ and reduce $M_{\mathrm{Ch}}$. As the core begins the final plunge, the rapidly rising temperature induces the photodisintegration of iron-group nuclei into neutrons, protons, and helium nuclei. This process is endothermic, which further robs the core of pressure support and accelerates the collapse.
 
-The gravitational binding energy released during collapse is enormous,
+As the core collapses, electrons combine with protons to form neutrons; in the process, a large number of neutrinos are released. The gravitational binding energy released during collapse is enormous,
 \[ E_{\mathrm{grav}} \sim \frac{GM^{2}}{R} \sim \val{10^{53}}{\erg}. \]
-Most of this is carried off in neutrinos; if a small amount $\sim \val{10^{51}}{\erg}$ can be transferred to the envelope, then the envelope will be blown off producing a \newterm{supernovae}.
+Most of this is carried off by the neutrinos. During the collapse, the neutrino mean free path becomes smaller than the core radius for two reasons: the weak interaction cross-section increases with energy, and the mean free path decreases with density, $\ell = (n\sigma)^{-1}$. Eventually the neutrinos are trapped and must diffuse out of the collapsing core. If the neutrinos can transfer a small amount of their energy ($\sim \val{10^{51}}{\erg}$) to the envelope, then the envelope will be blown off in a supernova.
 
