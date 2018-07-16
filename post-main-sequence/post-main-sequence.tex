@@ -58,7 +58,7 @@ At the onset of \oxygen\ burning in a \val{25}{\Msun} star, the central density 
 The amount of energy available from the fusion of heavy nuclei is low; as a consequence, the time required for the core to deplete the available fuel grows shorter and shorter, with the final stages occurring in a day (column labeled $\tau$ in Table~\ref{t.burning-timescales}). After the ignition of carbon, the core evolves too quickly for the envelope to keep up. Thus the external appearance of the star provides no window into the final days of burning.
 
 \begin{table}[htp]
-\caption{\label{t.burning-timescales}Burning timescales for stars. Values taken from \citet{Woosley2002The-evolution-a}.}
+\caption[Nuclear burning timescales for massive stars]{\label{t.burning-timescales}Nuclear burning timescales for massive stars. Values taken from \citet{Woosley2002The-evolution-a}.}
 \begin{tabular}{rrrrr}
 \multicolumn{5}{c}{hydrogen}\\
 $M_{\mathrm{ZAMS}}$ (\Msun)& $T_{c}$ ($\val{10^{7}}{\K}$) & $\rho_{c}$ ($\grampercc$) & $L$ ($\val{10^{3}}{\Lsun}$) & $\tau$ (Myr)\\
@@ -117,11 +117,7 @@ Solving for the Fermi energy,
 To get the total energy, we multiply each electron by its energy $\varepsilon$ and integrate over phase space:
 \[
 	E = \frac{8\pi}{h^{3}c^{3}}V\int_{0}^{\EF}\varepsilon^{3}\,\dif\varepsilon = 
-		\frac{1}{4}\frac{8\pi}{h^{3}c^{3}}V\EF^{4}.
-\]
-Upon substituting for $\EF$ in terms of $n = N/V$, we find the energy per unit volume,
-\[
-	\frac{E}{V} = \frac{3}{4} n \EF.
+		\frac{1}{4}\frac{8\pi}{h^{3}c^{3}}V\EF^{4} = \frac{3}{4}N\EF.
 \]
 For a relativistic gas, the pressure is $P = (1/3)(E/V)$, so that
 \begin{equation}
@@ -215,6 +211,6 @@ which has an exponential solution: push in the membrane, and it continues to col
 At some point, the electron Fermi is sufficiently large $\sim\MeV$ that electron captures on iron-group nuclei commence. These captures do two things: first, by removing some of the electrons they force the remaining ones to have a higher momentum and energy to maintain pressure support; second, the captures increase $\mu_{e}$ and reduce $M_{\mathrm{Ch}}$. As the core begins the final plunge, the rapidly rising temperature induces the photodisintegration of iron-group nuclei into neutrons, protons, and helium nuclei. This process is endothermic, which further robs the core of pressure support and accelerates the collapse.
 
 As the core collapses, electrons combine with protons to form neutrons; in the process, a large number of neutrinos are released. The gravitational binding energy released during collapse is enormous,
-\[ E_{\mathrm{grav}} \sim \frac{GM^{2}}{R} \sim \val{10^{53}}{\erg}. \]
-Most of this is carried off by the neutrinos. During the collapse, the neutrino mean free path becomes smaller than the core radius for two reasons: the weak interaction cross-section increases with energy, and the mean free path decreases with density, $\ell = (n\sigma)^{-1}$. Eventually the neutrinos are trapped and must diffuse out of the collapsing core. If the neutrinos can transfer a small amount of their energy ($\sim \val{10^{51}}{\erg}$) to the envelope, then the envelope will be blown off in a supernova.
+\[ E_{\mathrm{grav}} \sim \frac{GM^{2}}{R} \sim \val{10^{53}}{\erg}\quad(\val{10^{46}}{\unitstyle{J}}). \]
+Most of this energy is carried off by the neutrinos. During the collapse, the neutrino mean free path becomes smaller than the core radius for two reasons: the weak interaction cross-section increases with energy, and the mean free path decreases with density, $\ell = (n\sigma)^{-1}$. Eventually the neutrinos are trapped and must diffuse out of the collapsing core. If the neutrinos can transfer a small amount  ($\sim 1\%$) of the gravitational binding energy to the envelope, then the envelope will be blown off in a supernova.
 
