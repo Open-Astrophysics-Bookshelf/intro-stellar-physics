@@ -141,7 +141,7 @@ Let's start with the term $\color{blue} Q_{i+1}/Q_{i}$. If both partition functi
 	\frac{Q_{i+1}}{Q_{i}} &=& \frac{g_{i+1,1}}{g_{i,1}} e^{-\beta (E_{i+1,1}-E_{i,1})}\\
 	&=& \frac{g_{i+1,1}}{g_{i,1}} e^{-\beta\,E_{\mathrm{ion}}}
 \end{eqnarray*}
-Here $E_{\mathrm{ion}} = E_{i+1,1} - E_{i,1}$ is the energy needed to remove an electron from an ion in state $i$. Thus $Q_{i+1}/Q_{i}$ resembles equation~(\ref{e.boltzmann}).
+Here $E_{\mathrm{ion}} = E_{i+1,1} - E_{i,1}$ is the energy needed to remove an electron from an ion in state $i$ and we use the common shorthand $\beta = (\kB T)^{-1}$. Thus $Q_{i+1}/Q_{i}$ resembles equation~(\ref{e.boltzmann}).
 
 The term in $\color{red}\left[\cdot\right]$ in eq.~(\ref{e.saha}) arises because we also need to allow for the number of possible electron states. When the atom is ionized, each electron quickly acquires an average kinetic energy $(3/2)\kB T$. There are many different states with this energy: the electron can be in different locations and moving in different directions.  You might think that there would be an infinitude of possible electron states.  Quantum mechanics, however, sets limitations on this number.
 
@@ -183,7 +183,7 @@ In more intuitive terms, this means that when an electron is ejected from an ato
 
 \begin{exercisebox}[Conditions for strong Balmer lines]
 \label{ex.strong-Balmer}
-Let $n_{\textsc{i}}$ be the density of \ion{H}{i} and $n_{\textsc{ii}}$ be the density of \ion{H}{ii}. Denote the fraction of neutral hydrogen as $x = n_{\textsc{i}}/(n_{\textsc{i}}+n_{\textsc{ii}})$, so that $1-x = n_{\textsc{ii}}/(n_{\textsc{i}}+n_{\textsc{ii}})$ is the fraction of ionized hydrogen. Take $n_{\textsc{i}}+n_{\textsc{ii}} = \val{10^{15}}{\cm^{-3}}$, and assume that all free electrons come from the ionization of hydrogen, so that $n_{e} = n_{\textsc{ii}}$. Plot $x$ as a function of temperature for $\val{7\,500}{\K}\le T\le \val{15\,000}{\K}$, and find the temperature at which $x = 1/2$. Then multiply $x$ by the fraction $n_{2}/n_{1}$ set by the Boltzmann equation to find the fraction of hydrogen in the $n=2$ level.
+Let $n_{\textsc{i}}$ be the density of \ion{H}{i} and $n_{\textsc{ii}}$ be the density of \ion{H}{ii}. Denote the fraction of neutral hydrogen as $x = n_{\textsc{i}}/(n_{\textsc{i}}+n_{\textsc{ii}})$, so that $1-x = n_{\textsc{ii}}/(n_{\textsc{i}}+n_{\textsc{ii}})$ is the fraction of ionized hydrogen. Take $n_{\textsc{i}}+n_{\textsc{ii}} = \val{10^{15}}{\cm^{-3}}$, and assume that all free electrons come from the ionization of hydrogen, so that $n_{e} = n_{\textsc{ii}}$. Plot $x$ as a function of temperature for $\val{7\,500}{\K}\le T\le \val{15\,000}{\K}$, and find the temperature at which $x = 1/2$. Then multiply $x$ by the fraction $n_{2}/n_{1}$, as set by the Boltzmann equation, to find the fraction of hydrogen in the $n=2$ level.
 \end{exercisebox}
 
 As shown in exercise~\ref{ex.strong-Balmer}, the Balmer lines, which correspond to transitions $2\to3$, $2\to 4$, \ldots, are most prominent in A stars. These stars have $\Teff = \valrng[--]{7\,500}{9\,500}{\K}$. At lower temperatures, the population of hydrogen atoms in the level $n=2$ decreases as $e^{-E_{2}/\kB T}$ and the lines become weak. At higher temperatures, the number of neutral hydrogen atoms decreases; most of the hydrogen is ionized, and the Balmer lines again become weaker.
