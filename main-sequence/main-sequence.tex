@@ -49,7 +49,7 @@ Suppose we have a toy boat carrying a weight and floating in a tank as shown in 
 \end{exercisebox}
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{archimedes}
-\caption[A boat with a weight]{\label{f.archimedes} A boat with a weight in a tank. When the weight is tossed overboard and sinks, what happens to the water level in the tank?}
+\caption[A boat with a weight]{\label{f.archimedes} A boat with a weight in a tank.}
 \end{marginfigure}
 
 We can use Archimedes' law---which is an application of hydrostatic equilibrium---to determine whether a fluid in planar geometry and hydrostatic equilibrium,
@@ -127,11 +127,11 @@ Let's return to the first law expressed in terms of mass-specific quantities (eq
 \[
 	\dif q = T\,\dif s = \dif u -\frac{P}{\rho^{2}}\,\dif \rho.
 \]
-We can express quantities as functions of temperature $T$ and density $\rho$: $s = s(\rho,T)$ and $u = u(\rho,T)$. Then
+We can express the energy $u = u(\rho,T)$ as a function of temperature $T$ and density $\rho$. Then taking the differential gives
 \[ \dif u = \tderiv{u}{T}{\rho}\dif T + \tderiv{u}{\rho}{T}\dif \rho, \]
-and
-\[ T\dif s = \tderiv{u}{T}{\rho}\dif T + \left[\tderiv{u}{\rho}{T} - \frac{P}{\rho^{2}}\right]\dif \rho. \]
-Hence the heat needed to raise the temperature of one kilogram of fluid when holding density fixed is
+and thus the first law can be written as
+\[ \dif q = T\dif s = \tderiv{u}{T}{\rho}\dif T + \left[\tderiv{u}{\rho}{T} - \frac{P}{\rho^{2}}\right]\dif \rho. \]
+Hence the heat needed to raise the temperature of one kilogram of fluid while holding density fixed is
 \begin{equation}\label{e.CV}
 C_{\rho} \equiv T\,\tderiv{s}{T}{\rho} = \tderiv{u}{T}{\rho}.
 \end{equation}
@@ -452,6 +452,22 @@ At some density, the equation of state will become degenerate. At this point, co
 \label{ex.minimum-stellar-mass}
 The equation of state becomes degenerate roughly where $\kB T=\EF$, with $\EF$ begin given by eq.~(\ref{e.fermi-energy}). From this and eq.~(\ref{e.electron-mean-weight}), assuming a H-He composition with $X_{\mathrm{H}} = 0.7$ and $X_{\mathrm{He}}=0.3$, derive a relation between $\log(T)$ and $\log(\rho)$. Plot this relation on the phase diagram in exercise~\ref{ex.contraction-to-main-sequence}, and on the plot indicate which side of the relation is degenerate.
 Given that contraction halts when the equation of state becomes degenerate, what does this plot imply for the minimum mass required to initiate hydrogen fusion?
+\end{exercisebox}
+
+\newthought{As shown in exercise \ref{ex.minimum-stellar-mass}, there is a minimum mass needed to initiate hydrogen fusion.} Contracting star-like objects of lower mass are known as \newterm{brown dwarfs}. Although dim, they are observable, and are classified as type ``L'' or ``T''\cite{Kirkpatrick1999Dwarfs-Cooler-t}.
+
+\begin{exercisebox}[Planetary masses and radii]
+\label{ex.planetary-M-and-R}
+You might notice that the degenerate mass-radius relation you found in exercise~\ref{ex.degenerate-mass-radius} can't hold for very light objects (or very heavy ones, for that matter). Earth, for example has a much larger mass than Mars, and also has a larger radius, contrary to what the degenerate relation predicts. What happens is that at low pressures, the Coulomb force comes into play---the atomic and molecular bonds that add variety to life. These bonds set the size and spacing of atoms, and therefore fix the density of matter. Let's model this. The typical size of an atom is the Bohr radius,
+\[
+	a_{\mathrm{B}} = \frac{4\pi\varepsilon_{0}\hbar^{2}}{m_{e}e^{2}} = \val{\sci{5.29}{-11}}{\meter}.
+\]
+	\begin{enumerate}
+	\item Let take our mass density as being one average nuclear mass per volume $a_{\mathrm{B}}^{3}$.  We'll again use our solar composition, $X_{\mathrm{H}}=0.7, X_{\mathrm{He}}=0.3$.
+What is the value of this density? Is it plausible?
+	\item If matter is at this density, what is $R(M)$?
+	\item Roughly for what mass object, if any, does this $R(M)$ relation intersect the relation for degenerate matter? This sets the mass at which degeneracy becomes important for a cold object. Compare this mass with objects in the solar system.
+	\end{enumerate}
 \end{exercisebox}
 
 \subsection{Radiation pressure}
