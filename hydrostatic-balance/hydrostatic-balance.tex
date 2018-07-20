@@ -411,3 +411,35 @@ Using the constant-density model (constant here means ``constant throughout the 
 Using the constant density model, derive an expression for the total energy (kinetic plus potential) as a function of central temperature. Plot this relation.  What happens to the central temperature if additional heat is injected into the star?
 \end{exercisebox}
 
+\begin{exercisebox}[The oscillation period of a star]
+\label{ex.stellar-oscillation-period}
+Let's revisit our constant density model from exercise \ref{ex.constant-density-star}. Let's consider a thin outer layer. The pressure on the upper surface vanishes, and the pressure on the bottom is $P(R)$.
+
+\begin{enumerate}
+\item\label{ex.math-prelim}
+As a mathematical preliminary, suppose we have a function $f(x) = Ax^{\alpha}$ and that we expand about a point $x_{0}$ with $f_{0} = Ax_{0}^{\alpha}$. Show that to lowest order in $\delta x$,
+\[
+	f(x_{0}+\delta x) \approx f_{0}\left( 1 + \alpha\frac{\delta x}{x} \right).
+\]
+
+\item
+Write $\dif P/\dif r$ as $\Delta P/\Delta r$, where $\Delta r$ is the thickness of the layer, and then integrate the equation of hydrostatic balance (\ref{e.hydrostatic-equilibrium}) over the surface to show that
+\begin{equation}\label{e.shell-pressure-balance}
+	4\pi R^{2} P(R) - \frac{GMm}{R^{2}} = 0,
+\end{equation}
+where $m = 4\pi R^{2}\Delta r \rho$ is the mass of the layer. For the rest of this exercise, we shall take $m$ as fixed.
+
+\item
+Now suppose of star expands by a small amount $\delta R$. Use the result of part \ref{ex.math-prelim} to find the new density $\rho'$ in terms of the original density $\rho$ and $\delta R$, to lowest order in $\delta R/R$.
+
+\item
+If the contraction is adiabatic, then the new pressure obeys a relation $P' V'^{\gamma} = PV^{\gamma}$ (cf.\ Box \ref{b.sound-speed}). For our shell of mass $m$, show that this implies that $P'\rho'^{-\gamma} = P\rho^{-\gamma}$, and thus find $P'$ in terms of $P$, $\delta R/R$, and $\gamma$, to lowest order in $\delta R/R$.
+
+\item
+Insert the expressions for $P'$ and $R'=R+\delta R$ into equation~(\ref{e.shell-pressure-balance}) and cancel any common factors; you should find that the pressure and gravitational forces no longer balance. Express the residual force in terms of $GMm/R^{2}$, $\gamma$ and $\Delta R/R$.
+
+\item
+Equate this residual force with the acceleration of the shell, $m\ddot{\delta R}$, and show that the shell oscillates. For $\gamma = 5/3$ (appropriate for an ideal gas), find the period of oscillation in terms of $\rho = 3M/4\pi R^{3}$.
+\end{enumerate}
+\end{exercisebox}
+
