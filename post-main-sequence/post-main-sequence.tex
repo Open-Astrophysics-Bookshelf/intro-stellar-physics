@@ -176,25 +176,31 @@ P &\propto& \frac{GM^{2}}{R^{4}} \\
 \end{eqnarray*}
 Now if we contract the star by a small amount, say $\delta R/R = -1\%$, then the density increases, $\delta\rho/\rho = -3\delta R/R = 3\%$. How does the pressure respond? If the star contracts on a slowly, on a Kelvin-Helmholtz timescale, then there is time for heat to radiate away, so that the internal pressure can increase by the amount needed to maintain equilibrium, $\delta P/P = -4\delta R/R = 4\%$. Under an \emph{adiabatic} contraction, however, there is not enough time for the star to radiate away excess heat; as a consequence, the pressure and density are linked, $\delta P/P = \gamma\delta \rho/\rho = -3\gamma\delta R/R$.
 
-If $\gamma = 4/3$, then under an adiabatic compression of $\delta R/R = 1\%$, the density increases by $-3\delta R/R = 3\%$ and the pressure increases by $-3\gamma\delta R/R = 4\%$, which is precisely the increase needed to maintain mechanical equilibrium. As a result, the star remains in hydrostatic balance at its new, smaller radius. This is why there was no mass-radius relation for $\gamma = 4/3$; it takes no energy to contract (or expand) the star.
+If $\gamma = 4/3$, then during an adiabatic compression of $\delta R/R = -1\%$, the density increases by $3|\delta R/R| = 3\%$ and the pressure increases by $3\gamma|\delta R/R| = 4\%$, which is precisely the increase needed to maintain mechanical equilibrium. As a result, the star remains in hydrostatic balance at its new, smaller radius. This is why there was no mass-radius relation for $\gamma = 4/3$; it takes no energy to contract (or expand) the star.
 
-For $\gamma > 4/3$, when the star contracts the central pressure increases by $-3\gamma\delta R/R > -4\delta R/R$. As a result, the pressure becomes greater than the amount needed for hydrostatic balance. This excess pressure pushes the star outward and acts as a restoring source. The opposite happens if the radius expands, and so the star oscillates on a dynamical timescale (exercise \ref{ex.stellar-oscillation-period}).
+For $\gamma > 4/3$, when the star contracts the central pressure increases by $3\gamma|\delta R/R| > 4|\delta R/R|$. As a result, the pressure becomes greater than the amount needed for hydrostatic balance. This excess pressure pushes the star outward and acts as a restoring source. During an expansion, the pressure falls below the amount needed for hydrostatic equilibrium, so gravity halts the expansion and forces the star to contract. Hence, for $\gamma > 4/3$, the star responds to a radial perturbation by oscillating with a period comparable to the dynamical timescale (cf.\ exercise \ref{ex.stellar-oscillation-period}).
 
-In contrast, for $\gamma < 4/3$, the change in pressure under contraction is $-3\gamma\delta R/R < -4\delta R/R$. The gas pressure does not increase enough to supply the pressure needed to maintain virial equilibrium, and so the star's contraction accelerates.
-
+In contrast, for $\gamma < 4/3$, the increase in pressure during contraction is $3\gamma|\delta R/R| < 4|\delta R/R|$. The gas pressure does not increase enough to supply the pressure needed to maintain hydrostatic equilibrium, and so the star's contraction accelerates. A small perturbation inwards leads to implosion.
 \end{sidebar}
 
-Thus, there is a limit to the number of degenerate electrons, and hence the total mass, that we can put in hydrostatic equilibrium.  An exact calculation for the maximum mass yields
+Thus, there is a limit to the total mass that can be supported in hydrostatic equilibrium by degenerate electrons. 
+An exact calculation for the maximum mass of a cold star yields
 \begin{equation}\label{e.Chandrasekhar}
 	M_{\mathrm{Ch}} = 1.456 \left(\frac{2}{\mu_{e}}\right)^{2}\Msun.
 \end{equation}
-When the mass reaches this limiting value, known as the \newterm{Chandrasekhar mass}, the star collapses.
+When the mass reaches this limiting value, known as the \newterm{Chandrasekhar mass}\sidenote{Derived by S. Chandrasekhar at age 20(!) while traveling from India to England in 1930}, the electrons become relativistic and $\partial P/\partial \rho \to 4/3$; the star becomes unstable and collapses.
 
-At some point, the electron Fermi is sufficiently large $\sim\MeV$ that electron captures on iron-group nuclei commence. These captures do two things: first, by removing some of the electrons they force the remaining ones to have a higher momentum and energy to maintain pressure support; second, the captures increase $\mu_{e}$ and reduce $M_{\mathrm{Ch}}$. As the core begins the final plunge, the rapidly rising temperature induces the photodisintegration of iron-group nuclei into neutrons, protons, and helium nuclei. This process is endothermic, which further robs the core of pressure support and accelerates the collapse.
+When the core of a massive star begins its collapse, the electron Fermi is $\sim\MeV$, which is sufficient to induce electron captures on iron-group nuclei. These captures increase $\mu_{e}$ and reduce $M_{\mathrm{Ch}}$. As the core begins the final plunge, the rapidly rising temperature induces the photodissociation of iron-group nuclei into neutrons, protons, and helium nuclei. This process is endothermic, which further robs the core of pressure support and accelerates the collapse. The effective $\gamma = \partial P/\partial\rho < 4/3$ on account of the photodissociation and electron captures, and the core implodes.
 
-As the core collapses, electrons combine with protons to form neutrons; in the process, a large number of neutrinos are released. The gravitational binding energy released during collapse is enormous,
-\[ E_{\mathrm{grav}} \sim \frac{GM^{2}}{R} \sim \val{10^{53}}{\erg}\quad(\val{10^{46}}{\unitstyle{J}}). \]
-Most of this energy is carried off by the neutrinos. During the collapse, the neutrino mean free path becomes smaller than the core radius for two reasons: the weak interaction cross-section increases with energy, and the mean free path decreases with density, $\ell = (n\sigma)^{-1}$. Eventually the neutrinos are trapped and must diffuse out of the collapsing core. If the neutrinos can transfer a small amount  ($\sim 1\%$) of the gravitational binding energy to the envelope, then the envelope will be blown off in a supernova.
+When the core density approaches $\val{0.16}{\fermi^{-3}}$, the nucleons begin to repel one another on account of the strong nuclear force. At this point the collapse halts, sending a shockwave outwards. The core now consists mostly of neutrons and is termed a \newterm{neutron star}.
+
+\begin{exercisebox}[Gravitational binding energy of a neutron star]
+What is the mass density if the number density of nucleons is $\val{0.16}{\fermi^{-3}}$? What is the gravitational binding energy for an object with a mass \val{1.4}{\Msun} at this density?
+\end{exercisebox}
+
+The outward going shockwave soon stalls as the outer layers of the star fall inward. The energy needed to blow the envelope off is about 1\% of the gravitational binding energy of the core, so there is plenty of energy available to disperse the envelope if this energy can be tapped. Most of the gravitational binding energy released by the imploding core is carried outwards by neutrinos. 
+During the collapse, the neutrino mean free path becomes smaller than the core radius for two reasons: the weak interaction cross-section increases as the nucleons reach temperatures $\gtrsim\val{10^{10}}{\K}$, and the mean free path $\ell = (n\sigma)^{-1}$ decreases with density. 
+As a result the neutrinos become trapped and must diffuse of the collapsing core. As the neutrinos diffuse out, they transfer a small fraction of their energy to the material heating it. This tends to push the shock outward. A competition arises between the ram pressure of infalling matter and the heating from the neutrinos. If the neutrinos can transfer enough energy to the envelope, then the envelope will be blown off in a supernova. If not, then matter will continue to accumulate onto the neutron star. The maximum mass of a neutron star is uncertain, but on physical grounds is likely $< \val{3}{\Msun}$. If the shock is not re-energized, then conceivably the entire star could implode into a black hole.
 
 \section{Stellar resurrection}
 \label{s.stellar-resurrection}
