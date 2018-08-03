@@ -1,6 +1,6 @@
 % !TEX root = ../intro-stellar-physics.tex
 
-We saw in chapter~\ref{ch.basic-stellar-properties} that the equilibrium central temperature of a self-gravitating object---such as a star---with an ideal gas EOS depends \emph{solely} on the mass, radius, and composition of that star. For the Sun, this temperature is $\approx \val{15}{\Mega\K}$ and much higher than the surface effective temperature $T_{\!\mathrm{eff,\odot}} = \val{5780}{\K}$. The photons emitted from the Sun are coming from the cooler surface layers.
+We saw in chapter~\ref{ch.basic-stellar-properties} that the equilibrium central temperature of a self-gravitating object---such as a star---with an ideal gas EOS depends \emph{solely} on the mass, radius, and composition of that star. For the Sun, this temperature is $\approx \val{15}{\Mega\K}$ and is much higher than the surface effective temperature $T_{\!\mathrm{eff,\odot}} = \val{5780}{\K}$. The photons emitted from the Sun are therefore coming just from the cooler surface layers.
 
 \newthought{Photons in a plasma, such as in the interior of the sun, transport energy.}  Were the sun transparent, these photons would immediately stream out, and the sun would release its stored energy in a fiery blast.  This doesn't happen: a photon can only travel a short distance before being scattered or absorbed. The net effect is that radiation generated in the core must travel a tortuous path, rather like a pinball, before reaching the surface and escaping.
 
@@ -11,22 +11,21 @@ How far does a photon---or any particle, for that matter---travel, on average, i
     \includegraphics[width=\linewidth]{mean-free-path}
     \caption[Schematic of mean free path]{\label{f.MFP} Schematic of a particle incident on a group of scattering or absorbing particles.}
 \end{marginfigure}
-
-\newthought{What is the probability of our particle making it through the cylinder unscathed?} The probability of the particle hitting an obstacle is the ratio
+What is the probability of our particle making it through the cylinder unscathed? The probability of the particle hitting an obstacle is the ratio
 \[
     \mathcal{P} = \frac{\textrm{total area covered by obstacles}}{\textrm{area of cylinder}}
 \]
 Denote the cross-sectional area of the other particles by $\sigma$. If the density of obstacles is $n$, then the number of obstacles in the cylinder is $n\times(\mathcal{A}\ell)$, and therefore the fraction of the area blocked by the obstacles is
+\marginnote{We are taking $\ell$ and $\mathcal{A}$ sufficiently small that we don't have to worry about particles overlapping.}
 \begin{equation}
     \mathcal{P} = \frac{n\times(\mathcal{A}\ell)\times\sigma}{\mathcal{A}} = n\sigma\ell.
 \label{e.prob-MFP}
 \end{equation}
-\marginnote{We are taking $\ell$ and $\mathcal{A}$ sufficiently small that we don't have to worry about particles overlapping.}
 The particle will suffer a collision when $\mathcal{P}\to 1$, or when
 \begin{equation}\label{e.MFP}
     \ell = \frac{1}{n\sigma}.
 \end{equation}
-We call $\ell$ the ``mean free path''.
+We call $\ell$ the ``mean free path'': it is the mean distance the particle travels freely before colliding.
 
 \begin{marginfigure}[3\baselineskip]
     \includegraphics[width=\linewidth]{air-hockey-mfp}
@@ -152,7 +151,7 @@ If we are far from the surface of the star, then we should expect the intensity 
 \]
 the left-hand side is smaller than the terms on the right by the ratio of the mean free path to the solar radius. This implies that conditions are nearly homogeneous. They are also isotropic, so that $I_{\nu} = J_{\nu}$. We expect that collisions are fast enough so that the matter is in thermal equilibrium and $j_{\nu} = \kapabs B_{\nu}$. We also know from exercise~\ref{ex.intensity-at-large-depth} that $I_{\nu} \to j_{\nu}/\kapabs = B_{\nu}$.
 
-We can't have $I_{\nu} = B_{\nu}$ exactly, however, since in that case there is no net flux! We'll treat the intensity as a perturbation to its thermal value:
+We can't have $I_{\nu} = B_{\nu}$ exactly, however, since in that case there is no net flux! We'll treat the intensity as being thermal plus a perturbation:
 \[ I_{\nu} = B_{\nu} + I_{\nu}^{(1)}, \]
 where the superscript ``(1)'' indicates that this is a small correction. Inserting this expansion into eq.~(\ref{e.transfer-equation}) and keeping only the lowest-order terms on each side gives
 \begin{equation}\label{e.perturbation-radiative-transfer}
@@ -298,7 +297,7 @@ We are now ready to investigate heat transport near the edge, where the optical 
 \]
 In general, this is difficult to solve: for some frequencies, the atmosphere will be nearly transparent, while for other frequencies it is quite opaque. Rather than develop the numerical machinery to solve the equation, we shall adopt a few simple approximations (indicated by highlighted bold text in the margins) that will allow us to obtain an approximate solution for the temperature of the stellar atmosphere.
 
-\marginnote[\baselineskip]{\colorbox{yellow}{\textbf{Opacities are gray}}}We assume that the opacity is gray. That is, the opacity is independent of frequency. This is unphysical, but the solutions for temperature and pressure will have the correct overall behavior. Because the opacity is gray, we shall drop the ``$\nu$'' subscript in $\kappa$ and $\tau$.
+\marginnote[\baselineskip]{\colorbox{yellow}{\textbf{Opacities are gray}}}First, we assume that the opacity is gray---that is, independent of frequency. This is unphysical, but the solutions for temperature and pressure will have the correct overall behavior. Because the opacity is gray, we shall drop the ``$\nu$'' subscript in $\kappa$ and $\tau$.
 
 \begin{exercisebox}[Gray emissivity?]
 Does matter with a gray opacity in thermal equilibrium also have a gray emissivity $j_{\nu}$?
@@ -333,7 +332,7 @@ Suppose you observe a star that has a 10\% larger mass and 10\% larger radius th
 \end{exercisebox}
 
 \marginnote[\baselineskip]{\colorbox{yellow}{\textbf{Atmosphere is in steady-state LTE}}}
-Next, we assume that the matter is in \newterm{local thermal equilibrium} (LTE). This means there is a well-defined temperature at each depth. Furthermore, the emissivity is related to the absorption opacity,
+For our second approximation, we assume that the matter is in \newterm{local thermal equilibrium} (LTE). This means there is a well-defined temperature at each depth. Furthermore, the emissivity is related to the absorption opacity,
 \[
 	j_{\nu} = \kappa^{\mathrm{abs}}B_{\nu}.
 \]
@@ -394,7 +393,7 @@ and the first eight Legendre polynomials are plotted below.
 
 \includegraphics{legendre}
 
-\noindent As $n$ increases, the angular scale of variations becomes finer.
+\noindent As $n$ increases, the angular variations become finer.
 
 The Legendre polynomials are \emph{orthogonal} in the following sense:
 \begin{equation}\label{e.orthogonal}

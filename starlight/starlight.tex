@@ -43,12 +43,12 @@ Recall that a parsec (pc) is defined by the relation
 \label{f.light-wave}
 \end{marginfigure}
 Charges feel an electric force.
-When we detect light, what happens at the atomic level is that the charges in our detector (antenna, CCD, eye) feel an electric (and magnetic) force that oscillates with frequency $\nu$. If we could set up a grid of detectors and measure the electric force per unit charge, we would notice a sinusoidal pattern traveling at speed\sidenote{This velocity is exact; the meter is defined in terms of the speed of light.} $c = \val{299\,792\,458}{\meter/\second}$ with a wavelength $\lambda = c/\nu$.  We call this force per charge the electric field $\bvec{E}(\bvec{x},t)$. The amplitude of the light at our detector is proportional to $|\bvec{E}|^{2} + |\bvec{B}|^{2}$.
+When we detect light, what happens at the atomic level is that the charges in our detector (antenna, CCD, eye) feel an electric (and magnetic) force that oscillates with frequency $\nu$. Imagine setting up a grid of detectors and measure the electric force per unit charge at each point in space and at each instant of time. We call this force per charge the electric field $\bvec{E}(\bvec{x},t)$. If a ray of light was beamed through this grid, we would notice a sinusoidal pattern traveling at speed\sidenote{This velocity is exact; the meter is defined in terms of the speed of light.} $c = \val{299\,792\,458}{\meter/\second}$ with a wavelength $\lambda = c/\nu$. The amplitude of the light at our detector is proportional to $|\bvec{E}|^{2} + |\bvec{B}|^{2}$.
 
-Suppose we put a filter in front of our detector that only accepted light in a narrow range of wavelengths $(\lambda,\lambda+\Delta\lambda)$. We would find that energy is deposited into our detector in discrete quanta of magnitude $hc/\lambda = h\nu$\marginnote{The symbol $h = \val{\sci{6.63}{-34}}{\unitstyle{J}\usk\second}$ denotes \newterm{Planck's constant}. It sets the scale for quantum mechanics.}. We call these quanta \newterm{photons}. The light emitted by our sun (or any other source) consists of a huge number of photons distributed over a wide range of wavelengths.
+Suppose we put a filter in front of our detector that only accepted light in a narrow range of wavelengths $(\lambda,\lambda+\Delta\lambda)$. We would find that energy is deposited into our detector in discrete quanta of magnitude $hc/\lambda = h\nu$\marginnote{The symbol $h = \val{\sci{6.63}{-34}}{\unitstyle{J}\usk\second}$ denotes \newterm{Planck's constant}. It sets the scale for quantum mechanics.}. We call these quanta \newterm{photons}. The light emitted by our sun (or any other source) consists of a huge number of photons distributed over a wide range of wavelengths, known as a \newterm{spectrum}.
 
 \begin{exercisebox}[Photon flux from the sun]
-The sun emits light over a broad range of frequencies, with the peak of this \newterm{spectrum} at a wavelength of approximately $\val{500}{\nano\meter}$. Estimate the number of photons from the sun striking $\val{1}{\meter^{2}}$ of Earth each second.
+The peak of the sun's spectrum is at a wavelength of approximately $\val{500}{\nano\meter}$. Estimate the number of photons from the sun striking $\val{1}{\meter^{2}}$ of Earth each second.
 \end{exercisebox}
 
 \section{Intensity and specific flux}
@@ -58,9 +58,9 @@ The sun emits light over a broad range of frequencies, with the peak of this \ne
 \includegraphics[width=\linewidth]{intensity}
 \caption{\label{f.intensity} Schematic of radiative intensity}
 \end{marginfigure}
-Take a detector (a CCD, your eye, an photographic emulsion) and place in front of the detector a filter that only lets through light with wavelengths in a range $\Delta\lambda$. Place a mask over the detector with a small pinhole of area $\Delta A$ that restricts the light falling on the detector to fall in a narrow cone of solid angle $\Delta\Omega$ about the normal to the detector (see Fig.~\ref{f.intensity}). Then measure the energy $\Delta E$ incident on the detector in a time $\Delta t$. The quantity
+Take a detector (a CCD, an eye, a photographic emulsion) and place in front of the detector a filter that only lets through light with wavelengths in a range $\Delta\lambda$. Place a mask over the detector with a small pinhole of area $\Delta A$ that restricts the light falling on the detector to fall in a narrow cone of solid angle $\Delta\Omega$ about the normal to the detector (see Fig.~\ref{f.intensity}). Then measure the energy $\Delta E$ incident on the detector in a time $\Delta t$. The quantity
 \begin{equation}\label{e.definition-intensity}
-I_{\lambda} \equiv \frac{\dif E}{\dif t\,\dif A\,\dif\lambda\,\dif\Omega}
+I_{\lambda} \equiv \frac{\Delta E}{\Delta t\,\Delta A\,\Delta\lambda\,\Delta\Omega}
 \end{equation}
 is known as the \newterm{intensity}. It is the basic quantity describing radiation.
 
@@ -112,12 +112,13 @@ The specific flux has dimensions
 \section{Thermal emission}
 \label{s.thermal-emission}
 
-Imagine we had a material that emits and absorbs equally well at all wavelengths. We then made from this material a hollow box, and we heated this box to a temperature $T$. The hot atoms in the walls of the box would emit (and absorb) photons bouncing around in the cavity in this box, until the photons were in thermal equilibrium\sidenote{Meaning that the radiation field is on average neither gaining or losing energy from the walls of the box} with the walls of the box. If we then drilled a small hole in the side of the box, some photons would escape (but not so many as to disturb the thermal equilibrium). The intensity from the box depends on both temperature and wavelength, and is known as the \newterm{Planck spectrum}:
+Imagine we had a material that emits and absorbs equally well at all wavelengths. We then made from this material a hollow box, and we heated this box to a temperature $T$. The hot atoms in the walls of the box would emit (and absorb) photons bouncing around in the cavity in this box, until the photons were in thermal equilibrium\sidenote{Meaning that the radiation field is on average neither gaining or losing energy from the walls of the box} with the walls of the box. If we then drilled a small hole in the side of the box, some photons would escape (but not so many as to disturb the thermal equilibrium). The intensity emerging from such a box is known as the \newterm{Planck spectrum}:
 \begin{equation}\label{e.planck-spectrum-wavelength}
 I_{\lambda}(\mathrm{Planck}) \equiv B_{\lambda}(T) = \frac{2hc^{2}}{\lambda^{5}} \left[\exp\left(\frac{hc}{\lambda\kB T}\right)-1\right]^{-1}.
 \end{equation}
-Fig.~\ref{f.Planck} displays the Planck spectra for a range of stellar temperatures. This spectrum is also known as a \newterm{blackbody} spectrum, because it would be emitted from a material that absorbs (and therefore emits) equally well at all wavelengths. The emission is peaked at a wavelength $\lambda_{\mathrm{pk}} \sim hc/\kB T$. Note that $B_{\lambda}$ increases at all wavelengths as the temperature increases.
-\begin{marginfigure}[-12\baselineskip]
+Here $\kB = \val{\sci{1.381}{-23}}{\unitstyle{J}\usk\K^{-1}}$ denotes \newterm{Boltzmann's constant}. This spectrum is also known as a \newterm{blackbody} spectrum, because it is emitted from a material that absorbs (and therefore emits) equally well at all wavelengths. The emission is peaked at a wavelength $\lambda_{\mathrm{pk}} \sim hc/\kB T$. 
+Fig.~\ref{f.Planck} displays Planck's spectra for various temperatures. Note that $B_{\lambda}$ increases at all wavelengths as the temperature increases.
+\begin{marginfigure}
 \includegraphics[width=\linewidth]{Planck}
 \caption[Thermal spectra]{\label{f.Planck}Thermal spectra for temperatures ranging from \val{3000}{\K} to \val{7000}{\K}.}
 \end{marginfigure}
@@ -182,7 +183,7 @@ as the radiant energy $\dif E$ crossing an area $\dif A$ in a time $\dif t$, dir
 \[
 I_{\lambda} = c\frac{\dif E}{\dif V\,\dif \lambda\,\dif\Omega}.
 \]
-Hence the radiant energy density per wavelength is
+Using this expressions, we define the radiant energy density per wavelength as
 \begin{equation}
 	U_{\lambda} \equiv \frac{\dif E}{\dif V\,\dif\lambda} = \frac{1}{c}\int I_{\lambda}\,\dif \Omega.
 \end{equation}
@@ -240,7 +241,7 @@ Note that the pressure is $1/3$ of the energy density for thermal radiation. Thi
 
 When observing a star, astronomers are collecting light over a range of frequencies. To compare observations, astronomers typically pass the light through standard filters and measure the transmitted flux. The flux in a given band is then
 \[
-	F_{V} = \int F_{\lambda} \, T(\lambda)\,\dif\lambda.
+	F_{\mathrm{band}} = \int F_{\lambda} \, T(\lambda)\,\dif\lambda.
 \]
 Here $T(\lambda)$ is the \newterm{transmission function} for that filter and specifies how much light is let through as a function of wavelength.  The transmission functions for some common UV/optical/IR filters are shown in Figure~\ref{f.UBVRI}. For example, the $V$-band filter is centered at $\lambda=\val{551}{\nano\meter}$ and has a width at half-max of $\val{88}{\nano\meter}$. 
 \begin{figure}

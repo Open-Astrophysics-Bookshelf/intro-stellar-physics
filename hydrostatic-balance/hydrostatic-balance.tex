@@ -54,15 +54,13 @@ if we take the top of our column to infinity and the pressure at the top to zero
 
 In general the density $\rho$ depends on the pressure $P$ and temperature $T$ via an \newterm{equation of state}. Let's relax our condition of constant density, but keep gravity and temperature constant and assume the fluid is an ideal gas\sidenote[][\baselineskip]{By \newterm{ideal} gas, we mean that the particles are non-interacting; as a result, the energy of the gas only depends on the kinetic energy of the particles and in particular is independent of the volume.}. For $N$ particles in a volume $V$ at pressure and temperature $P$ and $T$, the ideal gas equation of state is
 \begin{equation}\label{e.ideal-gas-eos}
-PV = N\kB T
+PV = N\kB T.
 \end{equation}
-where $\kB = \val{\sci{1.381}{-23}}{\unitstyle{J}\usk\K^{-1}}$ denotes \newterm{Boltzmann's constant}.
-
 In chemistry, it is convenient to count the number of particles by \newterm{moles}.  One mole of a gas has $\NA = \sci{6.022}{23}$ particles\sidenote{The constant $\NA$ is known as \newterm{Avogadro's number}.}, and the number of moles in a sample is $n = N/\NA$.  If we divide and multiply equation~(\ref{e.ideal-gas-eos}) by $\NA$, then our ideal gas equation becomes
 \[ PV = n\left[\NA \kB\right]T \equiv n R T, \]
 where $R = \NA\kB = \val{8.314}{\unitstyle{J}\usk\K^{-1}\usk\mol^{-1}}$ is the gas constant. This is perhaps the most familiar form of the ideal gas law---but it is not in a form useful to astronomers.
 
-We astronomers don't care about little beakers of fluid---we have whole stars to model! Put another way, volume isn't a useful quantity since we are working in the middle of a large mass of fluid. Define the \newterm{number density} as the number of particles per volume, $N/V$. The mass of each particle is $\mathcal{A}\times\mb$, where $\mb$ has a mass of one \newterm{atomic mass unit}.\sidenote{$\val{1}{\amu} = \val{\sci{1.661}{-27}}{\kilo\gram}$ is 1/12 of the mass of \val{1}{\mol} of \carbon\ atoms in their ground state} Hence the mass per volume of our fluid is
+We astronomers don't care about little beakers of fluid---we have whole stars to model! Put another way, volume isn't a useful quantity since we are working in the middle of a large mass of fluid. Instead, define the \newterm{number density} as the number of particles per volume, $N/V$. The mass of each particle is $\mathcal{A}\times\mb$, where $\mb$ has a mass of one \newterm{atomic mass unit}.\sidenote{$\val{1}{\amu} = \val{\sci{1.661}{-27}}{\kilo\gram}$ is 1/12 of the mass of \val{1}{\mol} of \carbon\ atoms in their ground state} Hence the mass per volume of our fluid is
 \[
 	\rho = \mathcal{A}\mb \times\frac{N}{V}.
 \]
@@ -260,8 +258,6 @@ T_{c} &=& \frac{1}{2}\left\{\frac{GM}{R}\frac{\mu\mb}{\kB}\right\}\\
 \label{e.Pc}
 P_{c} &=& \frac{3}{8\pi}\left\{\frac{GM^{2}}{R^{4}}\right\}.
 \end{eqnarray}
-Here $\mu\mb$ is the average mass of a particle in the plasma\sidenote{%
-The constant $\mb$ is defined as $1/12$ the mass of a \carbon\ atom.}.
 Our task now is to show that the scalings of $T_{c}$ and $P_{c}$ with $M$ and $R$---the quantities in $\{\,\}$---hold in general for an a star in mechanical equilibrium.
 
 To show this, we are going to employ a form of the \emph{virial theorem}.  Suppose we have a collection of $N$ particles, all moving about and exerting forces on one another.  If we let this system settle down into some kind of bound configuration, then we can add up the kinetic and potential energies of all the particles to get a total kinetic energy $K$ and a total potential energy $\Omega$. The virial theorem asserts that $K$ is proportional to, and comparable in magnitude to, $\Omega$; indeed if the potential between a pair of particles scales as $r^{-1}$, $r$ being the distance between the particles, then $K = -\Omega/2$, as we'll now show.
@@ -277,7 +273,7 @@ The quantity $G = \sum_{i}\bvec{p}_{i}\vdot\bvec{r}_{i}$ is called the ``virial'
 \begin{equation}\label{e.virial-deriv-1}
 	2K = \DDt{G} + \sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\Omega.
 \end{equation}
-So far, we just shuffled and relabeled terms.  The crucial step comes in taking the time-average of the kinetic energy, which we'll denote by $\langle\;\rangle$:
+So far, we've just shuffled and relabeled terms.  The crucial step comes in taking the time-average of the kinetic energy, which we'll denote by $\langle\;\rangle$:
 \[	\langle f\,\rangle \equiv \lim_{\tau\to\infty} \frac{1}{\tau}\int_{0}^{\tau}f(t)\,\dif t. \]
 Applying this to equation~(\ref{e.virial-deriv-1}) gives
 \begin{eqnarray*}
@@ -299,7 +295,7 @@ the last term is just $-\Omega$ and our equation is
 \begin{equation}\label{e.virial-theorem}
 2\langle K\,\rangle + \langle \Omega\rangle = 0.
 \end{equation}
-This is the virial theorem.
+This is the virial theorem, applied to a $r^{-1}$ potential.
 
 \begin{sidebar}[Working with vectors]
 \label{b.working-vectors}
@@ -389,7 +385,7 @@ Using the constant density model, compute $\rho/\rho_{\odot}$, $T_{c}/T_{c,\odot
 \section{Contraction to the main sequence}
 \label{s.stellar-contraction}
 
-Stars are born when a cold, dense\sidenote{Dense is a relative term; here we mean $\sim 100$ \emph{atoms} per cubic centimeter} cloud of gas and dust becomes unstable to gravitational collapse. The details of this process is a topic of current research; for our purposes, however, after a period of time a pre-main sequence star forms.  This object is in hydrostatic balance, but with a radius much larger than its main-sequence value.  As you know from the previous discussion, its central temperature will therefore be too low for fusion reactions to be important.  What happens to this object?
+Stars are born when a cold, dense\sidenote{Dense is a relative term; here we mean $\sim 100$ \emph{atoms} per cubic centimeter} cloud of gas and dust becomes unstable to gravitational collapse. The details of this process is a topic of current research; for our purposes, however, after a period of time a pre-main sequence star forms.  This object is in hydrostatic balance, but with a radius much larger than its main-sequence value and a cool central temperature. What happens to this object?
 
 The pre-main sequence star is in hydrostatic balance, so it doesn't collapse. But the interior, and hence the surface, is warm, so it radiates energy.  The only source of energy is gravitational, so the pre-main sequence star \emph{must} contract.  How long would this take?  For our sun, the total energy is
 \[
