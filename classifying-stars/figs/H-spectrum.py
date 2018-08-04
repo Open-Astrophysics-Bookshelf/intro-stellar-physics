@@ -27,26 +27,26 @@ xmin,xmax = plt.xlim(0,1)
 plt.ylim(20,1500)
 
 plt.hlines(Lyman,xmin,xmax,color='0.5',linestyle='-',linewidth=0.5)
-plt.annotate(s=r'Lyman ($m\to 1$)',fontsize='small',xytext=(3,-1),
+plt.annotate(s=r'Lyman ($1\to n$)',fontsize='small',xytext=(3,-1),
     textcoords='offset points',xy=(0,Lyman[-1]),
     va='top',ha='left')
 
 plt.hlines(Balmer,xmin,xmax,color='0.5',linestyle='-',linewidth=0.5)
-plt.annotate(s=r'Balmer ($m\to 2$)',fontsize='small',xytext=(3,-1),
+plt.annotate(s=r'Balmer ($2\to n$)',fontsize='small',xytext=(3,-1),
     textcoords='offset points',xy=(0,Balmer[-1]),
     va='top',ha='left')
-plt.annotate(s=r'$3\to2$',fontsize='small',xy=(0.5,Balmer[0]),
+plt.annotate(s=r'$2\to3$',fontsize='small',xy=(0.5,Balmer[0]),
     va='bottom',ha='center')
-plt.annotate(s=r'$4\to2$',fontsize='small',xy=(0.5,Balmer[1]),
+plt.annotate(s=r'$2\to4$',fontsize='small',xy=(0.5,Balmer[1]),
     va='bottom',ha='center')
 
 plt.hlines(Paschen,xmin,xmax,color='0.5',linestyle='-',linewidth=0.5)
-plt.annotate(s=r'Paschen ($m\to 3$)',fontsize='small',xytext=(3,-1),
+plt.annotate(s=r'Paschen ($3\to n$)',fontsize='small',xytext=(3,-1),
     textcoords='offset points',xy=(0,Paschen[-1]),
     va='top',ha='left')
-plt.annotate(s=r'$5\to3$',fontsize='small',xy=(0.5,Paschen[1]),
+plt.annotate(s=r'$3\to5$',fontsize='small',xy=(0.5,Paschen[1]),
     va='bottom',ha='center')
-plt.annotate(s=r'$6\to3$',fontsize='small',xy=(0.5,Paschen[2]),
+plt.annotate(s=r'$3\to6$',fontsize='small',xy=(0.5,Paschen[2]),
     va='bottom',ha='center')
 
 plt.ylabel(r'$\lambda$ (nm)')

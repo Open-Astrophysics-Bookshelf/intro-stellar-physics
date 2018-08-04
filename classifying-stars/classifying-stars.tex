@@ -22,13 +22,13 @@ If light from the Sun is passed through a grating (a piece of glass with finely 
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{sunsqa}
 \caption[Visible spectrum of the sun]{\label{f.solar-spectrum} Visible spectrum of the Sun. Wavelength increases along a row from left to right, and by rows from bottom to top. \emph{Credit:
-N.A.Sharp, NOAO/NSO/Kitt Peak FTS/AURA/NSF. Image copyright }}
+N.A.Sharp, NOAO/NSO/Kitt Peak FTS/AURA/NSF.}}
 \end{marginfigure}
-Superposed on the slow variation from red to violet are dark \newterm{absorption lines}. These are caused by absorption of photons at specific frequencies by ions, atoms, and molecules in the solar atmosphere.
+Superposed on the slow variation from red to violet are dark \newterm{absorption lines}. The ions, atoms, and molecules in the solar atmosphere absorb light at specific frequencies and create these lines.
 
-Beginning in the late 1800's, astronomers began classifying stars by the observed absorption lines in the spectra. At this time, Edward Pickering and Williamina Fleming of the Harvard College Observatory began amassing a vast catalog of stellar spectra. They classified these spectra according to the strength of observed hydrogen Balmer lines (the first four are H$\alpha$: \val{657}{\nano\meter}; H$\beta$: \val{486}{\nano\meter}; H$\gamma$: \val{434}{\nano\meter}; H$\delta$: \val{410}{\nano\meter}). Stars, such as Vega, with the strongest Balmer lines were classified as type ``A'', those with the next strongest were type ``B'', and so forth. In Annie Jump Cannon, who had joined the group in 1896 and would later succeed Fleming as curator of astronomical photography at the observatory, simplified and reorganized the scheme, and added decimal subdivisions ($0\ldots9$) for each type\sidenote{For example, the Sun's type is G2}. When stellar color is taken into account, the ordering of stars, from blue to red, is ``OBAFGKM''. In the 1990's the ``L'' and ``T'' classes were added\cite{Kirkpatrick1999Dwarfs-Cooler-t} for cool stars and brown dwarfs (stellar-like objects that do not reach central temperature sufficient for fusion of hydrogen into helium).
+Beginning in the late 1800's, astronomers began classifying stars by the observed absorption lines in the spectra. At this time, Edward Pickering and Williamina Fleming of the Harvard College Observatory began amassing a vast catalog of stellar spectra. They classified these spectra according to the strength of observed hydrogen Balmer lines (the first four are H$\alpha$: \val{657}{\nano\meter}; H$\beta$: \val{486}{\nano\meter}; H$\gamma$: \val{434}{\nano\meter}; H$\delta$: \val{410}{\nano\meter}). Stars, such as Vega, with the strongest Balmer lines were classified as type ``A'', those with the next strongest were type ``B'', and so forth. Annie Jump Cannon, who would later succeed Fleming as curator of astronomical photography at the observatory, simplified and reorganized the scheme, and added decimal subdivisions ($0\ldots9$) for each type\sidenote{For example, the Sun's type is G2}. When stellar color is taken into account, the ordering of stars, from blue to red, is ``OBAFGKM''. In the 1990's the ``L'' and ``T'' classes were added\cite{Kirkpatrick1999Dwarfs-Cooler-t} for cool stars and brown dwarfs (stellar-like objects that do not reach central temperature sufficient for fusion of hydrogen into helium).
 
-Hertzsprung and Russell independently noticed that most stars tended to lie along a band, termed the \newterm{main sequence} in a plot of absolute magnitude (or luminosity) against stellar type (now known as a \newterm{Hertzsprung-Russell diagram}). Figure~\ref{f.HR} shows some standard main-sequence stars, along with their stellar type and approximate color.
+Hertzsprung and Russell independently noticed that most stars tended to lie along a band, termed the \newterm{main sequence}, in a plot of absolute magnitude (or luminosity) against stellar type (now known as a \newterm{Hertzsprung-Russell diagram}). Figure~\ref{f.HR} shows some standard main-sequence stars, along with their stellar type and approximate color.
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{HR}
 \caption[Hertzsprung-Russell diagram of standard main-sequence stars]{\label{f.HR} Hertzsprung-Russell diagram showing standard main-sequence stars. Colors are approximate translations of the spectra.}
@@ -44,19 +44,19 @@ The electrons bound to an atom or molecule can only occupy states having a discr
 \begin{equation}\label{e.H-levels}
         E_{n} = -\val{13.6}{\eV}\times \frac{1}{n^{2}},
 \end{equation}
-where $n > 0$ is an integer known as the principal quantum number.  These energies are negative, relative to a free electron.  For example, the ground state ($n=1$) has energy $\ERy = -\val{13.6}{\eV}$, meaning that it takes \val{13.6}{\eV} to remove an electron in its ground state from the atom.
+where $n > 0$ is an integer known as the \newterm{principal quantum number}.  These energies are negative, relative to a free electron.  For example, the ground state ($n=1$) has energy $-\ERy = -\val{13.6}{\eV}$, meaning that \val{13.6}{\eV} is required to remove an electron in its ground state from the atom.
 
 Because the electrons in an atom can only have certain energies, the atom can only absorb or emit light at specific wavelengths, such that the energy of the photon matches the difference in energy between two levels. For example, a hydrogen atom in its ground state can absorb a photon of energy
 \[
         E_{1\to2} = -\ERy \left(\frac{1}{2^{2}} - \frac{1}{1^{2}}\right)
                  = \val{10.2}{\eV}
 \]
-corresponding to the energy required to move the electron from $n=1$ to $n=2$. The wavelengths that can be absorbed by a hydrogen atom at rest can be found by substituting $E = hc/\lambda$ into equation~(\ref{e.H-levels}):
+corresponding to the energy required to excite the electron from level $n=1$ to $n=2$. The wavelengths that can be absorbed by a hydrogen atom at rest can be found by substituting $E = hc/\lambda$ into equation~(\ref{e.H-levels}):
 \begin{equation}
-        \lambda_{m\to n} = \lambda_{0}\left(\frac{1}{n^{2}}-\frac{1}{m^{2}}\right)^{-1},
+        \lambda_{m\to n} = \lambda_{0}\left(\frac{1}{m^{2}}-\frac{1}{n^{2}}\right)^{-1},
 \end{equation}
 where $\lambda_{0} = \val{91.2}{\nano\meter}$ and $n > m$.
-The transitions to the lowest levels are named after their discoverers: Lyman for $m\to1$, Balmer for $m\to2$, Paschen for $m\to3$. A greek letter is used to denote the higher state: for example Lyman $\alpha$ (abbr.\ Ly$\alpha$) means $2\to1$, with $\lambda_{\mathrm{Ly}\alpha} = \val{121.6}{\nano\meter}$.  The first line transition in the Balmer series is $3\to2$, and is designated H$\alpha$: $\lambda_{\mathrm{H}\alpha} = \val{656.3}{\nano\meter}$. The first 20 lines for the Lyman ($m\to1$), Balmer ($m\to2$), and Paschen ($m\to3$) are shown in Fig.~\ref{f.H-spectrum}; note the $4\to3$ transition is outside the plot range. The Balmer lines lie in the visible range. Note that $\lambda_{m\to n} < \lambda_{0}$; photons with wavelengths $\lambda < \val{91.2}{\nano\meter}$ have sufficient energy to knock the electron out of the atom, thereby producing a hydrogen ion and a free electron.
+The transitions from the lowest levels are named after their discoverers: Lyman for $1\to n$, Balmer for $2\to n$, Paschen for $3\to n$. A greek letter is used to denote the higher state: for example Lyman $\alpha$ (abbr.\ Ly$\alpha$) means $1\to2$, with $\lambda_{\mathrm{Ly}\alpha} = \val{121.6}{\nano\meter}$. Note that $\lambda_{m\to n} > \lambda_{0}$; photons with wavelengths $\lambda < \val{91.2}{\nano\meter}$ have sufficient energy to knock the electron out of the atom, thereby producing a hydrogen ion and a free electron. The first line transition in the Balmer series is $2\to3$, and is designated H$\alpha$: $\lambda_{\mathrm{H}\alpha} = \val{656.3}{\nano\meter}$. The first 20 lines for each of the Lyman, Balmer, and Paschen series are shown in Fig.~\ref{f.H-spectrum}; note the $3\to4$ transition is outside the plot range. The Balmer lines lie in the visible range.
 
 \begin{marginfigure}[-8\baselineskip]
 \includegraphics[width=\linewidth]{H-spectrum}
@@ -67,14 +67,14 @@ The transitions to the lowest levels are named after their discoverers: Lyman fo
 \section{The Boltzmann Equation}
 \label{s.boltzmann-eqn}
 
-In order to produce a Balmer absorption line, we must have some hydrogen atoms in the photosphere with electrons in the energy level $n=2$. The more atoms with $n=2$, the more absorption and the stronger the line. To find the number of atoms with energy level $n=2$, we make use of a fundamental result, due to Boltzmann, from statistical (thermal) physics; namely, that if our sample of atoms is in thermal equilibrium, then the ratio of the number of atoms with energy $E_{i}$ to the number of atoms with energy $E_{j}$ is
+In order to produce a Balmer absorption line, we must have some hydrogen atoms in the photosphere with electrons in the energy level $n=2$. The more atoms in a state $n=2$, the more absorption and the stronger the line. To find the number of atoms with energy level $n=2$, we make use of a fundamental result, due to Boltzmann, from statistical (thermal) physics; namely, that if our sample of atoms is in thermal equilibrium, then the ratio of the number of atoms with energy $E_{i}$ to the number of atoms with energy $E_{j}$ is
 \begin{equation}\label{e.boltzmann}
 \frac{N_{i}}{N_{j}} = \frac{g_{i}}{g_{j}} 
 \exp\left(-\frac{E_{i}-E_{j}}{\kB T}\right).
 \end{equation}
 Here the number $g_{n}$ gives the number\sidenote{$g_{n}$ is known as the \emph{degeneracy} of a given level $n$} of quantum mechanical states having energy $E_{n} = -\ERy/n^{2}$. For an energy level $n$, there are $n^{2}$ possible states, each having a different angular momentum. For each of these $n^{2}$ states, both the electron and proton may each have 2 possible spins. The total number of states for energy $E_{n}$ is therefore $g_{n} = 2\times2\times n^{2}$.
 
-Suppose we wish to know the fraction of atoms in a given state $i$: that is, we want to know
+Suppose we wish to know the fraction of atoms in a given state $i$: that is, we wish to know
 \[	x_{i} = \frac{N_{i}}{N_{1}+N_{2}+\ldots+N_{i}+\ldots} ? \]
 Using equation~(\ref{e.boltzmann}), we can express $x_{i}$ as 
 \begin{eqnarray}
@@ -93,15 +93,15 @@ Assuming that the first term $g_{1}e^{-E_{1}/\kB T}$ dominates the sum in the pa
 
 \begin{sidebar}[The partition function for neutral hydrogen]
 \label{sb.partition-function}
-The partition function for neutral hydrogen, eq.~(\ref{e.partition-function}), has some interesting features. Substituting $g_{n}=4n^{2}$ and $E_{n} = -\ERy/n^{2}$ and factoring out common terms gives,
-\[	\pfcn = 4e^{\beta\ERy}\sum_{n} n^{2} e^{-\beta\ERy(1-1/n^{2})}. \]
-Here we have used the shorthand $\beta = (\kB T)^{-1}$. Written in this fashion, it is clear that for $n\gg 1$, the sum diverges, since the individual terms go as $n^{2}e^{-\beta\ERy}$ as $n\to\infty$. In practice, this isn't a problem, as there is an upper limit on $n$ set by ambient conditions. For example, the mean distance of the electron from the nucleus is $\approx \abohr n^{2}$, where $\abohr = \val{\sci{5.29}{-11}}{\cm}$ is the Bohr radius. As a result, each atom takes up a volume $\approx \abohr^{3}n^{6}$; if we want the atoms to not overlap, then the volume per atom, $V/N = 1/xi$, must be larger than this by some factor. Suppose we set that the volume of an atom must be less than half of that available in our gas; then
+The partition function for neutral hydrogen, eq.~(\ref{e.partition-function}), has some interesting features. Substituting $g_{n}=4n^{2}$ and $E_{n} = -\ERy/n^{2}$ and factoring out common terms gives
+\[	\pfcn = 4e^{\beta\ERy}\sum_{n} n^{2} e^{-\beta\ERy(1-1/n^{2})}, \]
+with $\beta = (\kB T)^{-1}$. The sum diverges, since for $n\gg 1$ the individual terms approach $n^{2}e^{-\beta\ERy}$. In practice, this isn't a problem, as there is an upper limit on $n$ set by ambient conditions. For example, the mean distance of the electron from the nucleus is $\approx \abohr n^{2}$, where $\abohr = \val{\sci{5.29}{-11}}{\cm}$ is the Bohr radius. As a result, each atom takes up a volume $\approx \abohr^{3}n^{6}$; if we want the atoms to not overlap, then the volume per atom, $V/N = 1/\xi$, must be larger than this by some factor. Suppose we set that the volume of an atom must be less than half of that available in our gas; then
 \[
 \xi = \frac{N}{V} < \frac{N}{N\cdot 2\abohr^{3}n^{6}}.
 \]
-Thus the maximum level is $n < (2\abohr^{3}\xi)^{-1/6}$. For a typical A-star photospheric density $\xi\sim \val{10^{15}}{\cm^{-3}}$, the density cutoff is $n \lesssim 35$. In practice the cutoff will be even lower.
+Thus the maximum level is $n < (2\abohr^{3}\xi)^{-1/6}$. For a typical A-star photospheric density $\xi\sim \val{10^{15}}{\cm^{-3}}$, the energy level cutoff is $n \approx 35$. In practice the cutoff will be even lower because of collisions.
 
-The precise maximum value of $n$ is not that important for most applications. The reason is that the in the partition function increase only slowly. For example, at $T=\val{10^{4}}{\K}$, the terms and cumulative sum in the partition function are as follows.
+The precise maximum value of $n$ is not that important for most applications. The reason is that the terms in the partition function increase only slowly. As an example, the terms and cumulative sum in the partition function at a temperature $T=\val{10^{4}}{\K}$ are as follows.
 \begin{center}
 \begin{tabular}{rrr}
 $n$ & $n^{2} e^{\beta\ERy(1-1/n^{2})}$ & $4\sum_{i=1}^{n} i^{2}e^{-\beta\ERy(1-1/i^{2})}$ \\
@@ -127,14 +127,14 @@ As the temperature in the gas rises, there are more photons with sufficient ener
 \[
 	\ion{H}{ii} + e \longleftrightarrow \ion{H}{i}
 \]
-is in equilibrium. We'd like to extend equation~(\ref{e.boltzmann}) to find the ratio of two ionization states $N_{i+1}/N_{i}$. Although deriving this equation, termed the \newterm{Saha equation}\sidenote{Derived by Meghnad Saha in 1920}, is beyond the scope of the course, what we shall do is take the equation apart and try to understand how it works.  The Saha equation for the ratio of two ionization states $N(i+1)$ and $N(i)$ is
+is in equilibrium. We'd like to extend equation~(\ref{e.boltzmann}) to find the ratio of two ionization states $N_{i+1}/N_{i}$. Although deriving this equation, termed the \newterm{Saha equation}\sidenote{Derived by Meghnad Saha in 1920}, is beyond the scope of the course, what we shall do is take the equation apart and try to understand how it works.  The Saha equation for the ratio of the populations of two ionization states $N_{i+1}$ and $N_{i}$ is
 \begin{equation}\label{e.saha}
 \frac{N_{i+1}}{N_{i}} 
 = {\color{red}\left[\frac{2}{n_{e}}
 \left(\frac{2\pi m_{e}\kB T}{h^{2}}\right)^{3/2}\right]}
 {\color{blue}\frac{\pfcn_{i+1}}{\pfcn_{i}}}.
 \end{equation}
-In this equation, $n_{e}$ denotes the electron density---the number of free electrons per unit volume---and $m_{e}$ is the electron mass. The terms $\pfcn_{i+1}$ and $\pfcn_{i}$ are the partition functions for the two states, \emph{both measured with the same zero-point for energy}.
+In this equation, $n_{e}$ denotes the electron density---the number of free electrons per unit volume---and $m_{e}$ is the electron mass. The terms $\pfcn_{i+1}$ and $\pfcn_{i}$ are the partition functions for the two states, \emph{both measured with respect to the same zero-point for energy}.
 
 Let's start with the term $\color{blue} Q_{i+1}/Q_{i}$. If both partition functions are dominated by the ground state term\sidenote{see Box~\ref{sb.partition-function}} then
 \begin{eqnarray*}
@@ -143,9 +143,9 @@ Let's start with the term $\color{blue} Q_{i+1}/Q_{i}$. If both partition functi
 \end{eqnarray*}
 Here $E_{\mathrm{ion}} = E_{i+1,1} - E_{i,1}$ is the energy needed to remove an electron from an ion in state $i$ and we use the common shorthand $\beta = (\kB T)^{-1}$. Thus $Q_{i+1}/Q_{i}$ resembles equation~(\ref{e.boltzmann}).
 
-The term in $\color{red}\left[\cdot\right]$ in eq.~(\ref{e.saha}) arises because we also need to allow for the number of possible electron states. When the atom is ionized, each electron quickly acquires an average kinetic energy $(3/2)\kB T$. There are many different states with this energy: the electron can be in different locations and moving in different directions.  You might think that there would be an infinitude of possible electron states.  Quantum mechanics, however, sets limitations on this number.
+The term in $\color{red}\left[\cdot\right]$ in eq.~(\ref{e.saha}) arises because we also need to allow for the number of free electron states. When the atom is ionized, each electron quickly acquires an average kinetic energy $(3/2)\kB T$. There are many different states having this energy: the electron can be in different locations and moving in different directions, for example.  
 
-First, we have the Pauli exclusion principle: no two electrons can be in the same location with the same momentum and same spin. What do we mean by same location and momentum?  Recall the Heisenberg uncertainty principle: the electrons $x$-position and $x$-momentum are spread about a range of values $\Delta x$ and $\Delta p_{x}$, and these uncertainties are related via
+You might think that there would be an infinitude of possible electron states.  Quantum mechanics, however, sets limitations on this number. First, we have the Pauli exclusion principle: no two electrons can be in the same location with the same momentum and same spin. What do we mean by same location and momentum?  Recall the Heisenberg uncertainty principle: the electrons $x$-position and $x$-momentum are spread about a range of values $\Delta x$ and $\Delta p_{x}$, and these uncertainties are related via
 \[ \Delta x\,\Delta p_{x} \gtrsim h. \]
 Thus, if we imagine dividing our volume into little boxes of volume
 \[ 
@@ -155,7 +155,7 @@ each box can hold two electrons.\sidenote{Because electrons have spin 1/2, we ca
 \[
 	\frac{V}{\Delta V} \approx \frac{V\;\Delta p_{x}\,\Delta p_{y}\,\Delta p_{z}}{h^{3}}.
 \]
-To estimate the size of $\Delta p_{x}\,\Delta p_{y}\,\Delta p_{z}$, let's estimate $\Delta p_{x}\sim p_{x}$; further, if everthing is isotropic then $p_{x}\approx p_{y}\approx p_{z}$ on average, so $\Delta p_{x}\,\Delta p_{y}\,\Delta p_{z} \sim p_{x}^{3}$.  Now the kinetic energy of the electron is $p^{2}/2m_{e}$, and $p^{2} = p_{x}^{2} + p_{y}^{2} + p_{z}^{2} \approx 3 p_{x}^{2}$. Hence the kinetic energy is $(3/2)p_{x}^{2}/m_{e}$; in thermal equilibrium, however, the kinetic energy has an average value of $(3/2)\kB T$.  The value of $p_{x}^{2}$ is therefore
+To estimate the size of $\Delta p_{x}\,\Delta p_{y}\,\Delta p_{z}$, let's take $\Delta p_{x}\sim p_{x}$ and similarly for $\Delta p_{y}$ and $\Delta p_{z}$; further, if everything is isotropic then $p_{x}\approx p_{y}\approx p_{z}$ on average, so $\Delta p_{x}\,\Delta p_{y}\,\Delta p_{z} \sim p_{x}^{3}$.  Now the kinetic energy of the electron is $p^{2}/2m_{e}$, and $p^{2} = p_{x}^{2} + p_{y}^{2} + p_{z}^{2} \approx 3 p_{x}^{2}$. Hence the kinetic energy is $(3/2)p_{x}^{2}/m_{e}$; in thermal equilibrium, however, the kinetic energy has an average value of $(3/2)\kB T$.  The value of $p_{x}^{2}$ is therefore
 \[
 	p_{x}^{2} \approx m_{e}\kB T,
 \]
@@ -163,7 +163,7 @@ and the number of boxes is
 \[
 	\frac{V}{\Delta V} \sim V\frac{p_{x}^{3}}{h^{3}} \sim V\frac{\left(m_{e}\kB T\right)^{3/2}}{h^{3}}.
 \]
-If our volume $V$ contains $N_{e}$ electrons, then the number of boxes---which is the number of states---per electron is
+If our volume $V$ contains $N_{e}$ electrons, then the number of states electron is
 \[
 	\frac{2V}{N_{e}\Delta V} \sim \frac{2V}{N_{e}}\frac{\left(m_{e}\kB T\right)^{3/2}}{h^{3}}.
 \]
@@ -179,7 +179,7 @@ We can then write eq.~(\ref{e.saha})---with the approximation that the partition
 \]
 Now the factor $g_{i+1,1}/g_{i,1}$ is of order unity. Hence, when the gas ionizes and $N_{i+1,1}\approx N_{i,1}$, we must have that $\zeta\approx \beta E_{\mathrm{ion}}$; put differently, the ionization temperature will not be $E_{\mathrm{ion}}/\kB$ but rather $E_{\mathrm{ion}}/\kB\zeta$. Under conditions in the photosphere of an A star ($T \approx \val{10^{4}}{\K}$, $n\sim \val{10^{15}}{\cm^{-3}}$), $\zeta \approx 15$.
 
-In more intuitive terms, this means that when an electron is ejected from an atom, it has an enormously large number $\sim e^{15}$ number of different states available. To rejoin with an ion requires being in the right place at the right time with the right energy. The large number of available states makes this unlikely, so the electron must wander through a vast and desolate phase space until at long last it recombines with an ion. In a sense, the large number of available states per electron means it is easier to ionize than recombine; as a result the temperature at which ionization occurs is considerably lower than $E_{\mathrm{ion}}/\kB$.
+In more intuitive terms, when an electron is ejected from an atom, it has an enormously large number $\sim e^{15}$ number of different states available. To rejoin with an ion requires being in the right place at the right time with the right energy. The large number of available states makes this unlikely, so the electron must wander lonely through a vast and desolate phase space until at long last it reunites with an ion. In a sense, the large number of available states per electron makes ionization easier than recombination; as a result the temperature at which ionization occurs is considerably lower than $E_{\mathrm{ion}}/\kB$.
 
 \begin{exercisebox}[Conditions for strong Balmer lines]
 \label{ex.strong-Balmer}
@@ -188,7 +188,7 @@ Let $n_{\textsc{i}}$ be the density of \ion{H}{i} and $n_{\textsc{ii}}$ be the d
 
 As shown in exercise~\ref{ex.strong-Balmer}, the Balmer lines, which correspond to transitions $2\to3$, $2\to 4$, \ldots, are most prominent in A stars. These stars have $\Teff = \valrng[--]{7\,500}{9\,500}{\K}$. At lower temperatures, the population of hydrogen atoms in the level $n=2$ decreases as $e^{-E_{2}/\kB T}$ and the lines become weak. At higher temperatures, the number of neutral hydrogen atoms decreases; most of the hydrogen is ionized, and the Balmer lines again become weaker.
 
-These arguments apply to other species present in the stellar photosphere.  In the hottest stars (type O: $\Teff > \val{30\,000}{\K}$), hydrogen is mostly ionized and the lines are from \ion{He}{ii} and multiply-ionized metals. As the temperature cools into the B and A series, the hydrogen lines increase in strength. Going from F into G ($\Teff = \valrng[--]{5\,000}{6\,000}{\K}$, the hydrogen lines decrease, while lines from singly-ionized and neutral metals such as \ion{Ca}{ii}, \ion{Ca}{i}, and \ion{Fe}{i} become strong.  At still lower temperatures in the K and M ($\Teff < \val{3\,500}{\K}$) types, absorption from molecules such as TiO becomes prominant.  An example is the broad trough seen in the K spectrum near $\lambda = \val{500}{\nano\meter}$ in Fig.~\ref{f.spectral-types}, which displays standard stellar spectra for selected types at optical wavelength.
+These arguments apply to other species present in the stellar photosphere. Figure \ref{f.spectral-types} displays spectra for selected stellar types at optical wavelengths. In the hottest stars (type O: $\Teff > \val{30\,000}{\K}$), hydrogen is mostly ionized and the lines are from \ion{He}{ii} and multiply-ionized metals. As the temperature cools into the B and A series, the hydrogen lines increase in strength. Going from F into G ($\Teff = \valrng[--]{5\,000}{6\,000}{\K}$, the hydrogen lines decrease, while lines from singly-ionized and neutral metals such as \ion{Ca}{ii}, \ion{Ca}{i}, and \ion{Fe}{i} become strong.  At still lower temperatures in the K and M ($\Teff < \val{3\,500}{\K}$) types, absorption from molecules such as TiO becomes prominant.  An example is the broad trough seen in the K spectrum near $\lambda = \val{500}{\nano\meter}$.
 
 \begin{figure}[hbp]
 \includegraphics[width=\linewidth]{spectral_types}
@@ -197,7 +197,7 @@ These arguments apply to other species present in the stellar photosphere.  In t
 
 \section{Pressure broadening of lines}
 
-We've now demonstrated how stars may be classified by the absorption lines in their spectra, and how this classification gives us the photosphere effective temperature. We can obtain information about the pressure at the photosphere, and hence the surface gravity of the star, by looking at the shape of the absorption lines. A zoomed-in view of the H$\gamma$ line ($5\to2$ transition in \ion{H}{i}) from a main-sequence A1 star is show in Fig.~\ref{f.single-line}. The line is spread over a few nanometers, compared against a central value of $\val{434}{\nano\meter}$.
+We've now demonstrated how stars may be classified by the absorption lines in their spectra, and how this classification gives us the photosphere effective temperature. We can also obtain information about the pressure at the photosphere, and hence the surface gravity of the star, by looking at the shape of the absorption lines. A zoomed-in view of the H$\gamma$ line ($2\to5$ transition in \ion{H}{i}) from a main-sequence A1 star is show in Fig.~\ref{f.single-line}. The line is spread over a few nanometers, compared against a central value of $\val{434}{\nano\meter}$.
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{single-line}
 \caption[H$\gamma$ absorption line]{\label{f.single-line} H$\gamma$ absorption line observed from the main-sequence A1 star HD16608. Spectrum from \protect\citet{Jacoby1984A-library-of-st}.}
@@ -228,7 +228,7 @@ The function
     \mathcal{L}(\nu;\Gamma) = \frac{1}{\pi} 
         \frac{\Gamma/4\pi}{(\nu_0-\nu)^2 + (\Gamma/4\pi)^2}
 \]
-is known as a Lorentzian.  In contrast to a Gaussian, a Lorentzian is characterized by broad ``wings'' (Fig.~\ref{f.comparison}) as it goes to zero away from the central frequency $\omega_{0}$.
+is known as a \newterm{Lorentzian}.  In contrast to a Gaussian, a Lorentzian is characterized by broad ``wings'' (Fig.~\ref{f.comparison}) away from the central frequency $\omega_{0}$.
 The actual value of the cross-section must be calculated using quantum mechanics. The overall shape of the cross-section is still in the form of equation~(\ref{e.semi-classical}), however, so the opacity is just
 \begin{equation}
     \rho\kappa_\nu = n_{\mathrm{ion}} \left(\frac{\pi e^2}{m_e c}\right) f_{mn}
@@ -278,7 +278,7 @@ using the cosine addition rules and combining terms, we can write the solution a
 \end{equation}
 This illustrates the phenomena of beats: the oscillation consists of a carrier signal at frequency $\omega_{m}$ with the amplitude modulated at the slower frequency $\Delta /2$.  Notice that the amplitude increases as $\Delta \to0$, i.e., $\omega\to\omega_{0}$.
 
-\newthought{Now let's make our model even more realistic by adding some damping.}
+\newthought{Now let's make our model even more realistic.}
 We add a frictional force that is proportional to velocity, $F_{\mathrm{friction}} = -m\Gamma \dif x/\dif t$. Our complete equation of motion is then
 \begin{equation}
 	\DDtt{x} + \Gamma \DDt{x} + \omega_{0}^{2}x = \frac{F}{m}\cos(\omega t).
@@ -310,24 +310,24 @@ we can combine them and obtain
     &=& \Re\left\{\frac{F}{m}\left[\frac{1}{\left(\omega_0^2-\omega^2\right) + i\Gamma\omega}\right]e^{i\wt}\right\}\label{e.oscillator-expression}
 \end{eqnarray}
 We use the symbol ``$\Re$'' to denote taking the real part of a complex quantity.
-The oscillation can be described as the real part of a complex quantity $Ae^{i\wt}$, with
+The oscillation is thus described as the real part of a complex quantity $Ae^{i\wt}$, with
 \[
     A = \frac{F}{m}\left[\frac{1}{\left(\omega_0^2-\omega^2\right) + i\Gamma\omega}\right]
 \]
 being the (complex) amplitude.
 
-For $\omega \approx \omega_0$, we write $(\omega_0^2-\omega^2)\approx 2\omega_0(\omega_0-\omega)$ and take the square of the amplitude to find,
+For $\omega \approx \omega_0$, we approximate $(\omega_0^2-\omega^2)\approx 2\omega_0(\omega_0-\omega)$ and take the square of the amplitude to find,
 \begin{eqnarray}
     \left|A\right|^2 &=& \left(\frac{F}{2m\omega_0}\right)^2
         \frac{1}{(\omega_0-\omega)^2 + (\Gamma/2)^2}\nonumber\\
     &=& \frac{\pi}{2\Gamma}\left(\frac{F}{m\omega_0}\right)^2
         \left\{\frac{1}{\pi}\frac{\Gamma/2}{(\omega_0-\omega)^2 + (\Gamma/2)^2}\right\}
 \end{eqnarray}
-We rewrote the amplitude in the second line so that the term in $\{\cdot\}$ is normalized. 
+We rewrote the amplitude in the second line so that the term in $\{\cdot\}$ is normalized. The amplitude is a Lorentzian function of the driving frequency $\omega$.
 \end{sidebar} 
 
 \newthought{In a stellar atmosphere, the width $\Gamma$ is set by collisions.} For example, when an electron passes close by our atom, the electric field shifts the energy levels of the atom\sidenote{This is an application of the \emph{Stark} effect that you learn about in quantum mechanics.}.  The greater the collision rate, the larger the width.
-If we have two stars of the same photospheric temperature (so that both stars have the same lines), then a way to increase the collision rate is to increase the pressure. Recall, however, that in the stellar atmosphere $P = (g/\kappa)\tau$; as a result, stars with a higher surface gravity will have broader lines. The inset in Figure~\ref{f.compare_grav} illustrates the broadening of the Balmer H$\gamma$ line ($5\to 2$) in the spectrum of a main-sequence A1 star compared with that of a supergiant A1 star.
+If we have two stars of the same photospheric temperature (so that both stars have the same lines), then a way to increase the collision rate is to increase the pressure. Recall, however, that in the stellar atmosphere $P = (g/\kappa)\tau$; as a result, stars with a higher surface gravity will have broader lines. The inset in Figure~\ref{f.compare_grav} illustrates the broadening of the Balmer H$\gamma$ line ($2\to5$) in the spectrum of a main-sequence A1 star compared with that of a supergiant A1 star.
 
 \begin{figure}[hp]
     \includegraphics[width=\linewidth]{compare_grav}
