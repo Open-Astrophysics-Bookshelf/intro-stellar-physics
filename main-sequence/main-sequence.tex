@@ -1,12 +1,11 @@
 % !TEX root = ../intro-stellar-physics.tex
 
 We now have almost all of the physics necessary to describe the life of a star. 
-The nuclear physics enters in an equation for the luminosity, which we shall derive next. We shall also consider whether the fluid is at rest or whether there are circulatory flows present. Finally, we need to discuss departures from the classical ideal gas equation of state; this becomes important for low-mass stars and sets the minimum stellar mass.
+The nuclear physics enters in an equation for the luminosity, which we shall derive next. We shall also consider whether the fluid is at rest or whether there is circulation. Finally, we need to discuss departures from the classical ideal gas equation of state; this becomes important for low-mass stars and sets the minimum stellar mass.
 
 \section{The luminosity equation}
 
-Suppose we have a shell of mass $\Delta m$ lying between surfaces $r$ and $r+\Delta r$ (Fig.~\ref{f.luminosity}). The shell gains heat from nuclear reactions at a rate $\Delta m \times \varepsilon$, where $\varepsilon$ is the heating rate per unit mass.  In addition, there is heat entering the shell from below at a rate $L(r)$ and heat leaving the top of the shell at a rate $-L(r+\Delta r)$.
-If the shell is neither gaining or losing heat, then these terms must balance:
+Suppose we have a shell of mass $\Delta m = 4\pi r^{2}\rho\Delta r$ lying between surfaces $r$ and $r+\Delta r$ (Fig.~\ref{f.luminosity}). Nuclear reactions in the shell heat it at a rate $\Delta m \times \varepsilon$, where $\varepsilon$ is the heating rate per unit mass.  In addition, heat enters the shell from the bottom at a rate $L(r)$ and leaves from the top at a rate $-L(r+\Delta r)$. If the shell is neither gaining or losing heat, then all these terms must balance:
 \[ 4\pi r^{2}\rho\varepsilon\,\Delta r + L(r) - L(r+\Delta r) = 0. \]
 This reduces to our fourth equation of stellar structure,
 \[
@@ -25,16 +24,16 @@ We've established that in the interior of the star a temperature gradient,
 	\DD{T}{r} = -\frac{3\rho\kappa_{R}}{4acT^3}\frac{L(r)}{4\pi r^2},
 \]
 arises to transport heat outward (cf.\ eq.~[\ref{e.gradient-temperature}]).
-This gradient becomes steeper as we increases either the flux $L/4\pi r^{2}$ or the mean opacity $\kappa_{\mathrm{R}}$. There is a limit, however, to the magnitude of $|\dif T/\dif r|$; if the gradient is too steep, the warm fluid becomes buoyant relative to the cooler fluid above it and begins to rise. You are familiar with this phenomenon: picture a hot summer day. As the ground absorbs sunlight, it warms the air just above the ground. The warm air rises and forms updrafts. You have perhaps seen hawks riding these updrafts on such a day. Glider pilots also take advantage of these rising thermals to stay aloft. This circulation of fluid induced by a temperature gradient is known as \newterm{convection}. 
+This gradient becomes steeper as we increases either the flux $L/4\pi r^{2}$ or the mean opacity $\kappa_{\mathrm{R}}$. There is a limit, however, to the magnitude of $|\dif T/\dif r|$; if the gradient is too steep, the warm fluid becomes buoyant relative to the cooler fluid above it and begins to rise. You are familiar with this phenomenon: picture a hot summer day. As the ground absorbs sunlight, it warms the air just above the ground. The warm air rises and forms updrafts. You have perhaps seen hawks circling as they are carried aloft by these updrafts. This circulation of fluid induced by a temperature gradient is known as \newterm{convection}. 
 
-You can do a home demonstration of convection.  Brew tea, and pour the hot tea into a saucepan that is on an unlit burner. Use a straw with your thumb over the top to insert a layer of cold milk under the warm tea in the saucepan. The temperature difference between the tea and milk will inhibit their mixing. Light the burner, and watch for the development of convection---you will know it when you see it (Fig.~\ref{f.tea}).
+You can do a home demonstration of convection.  Brew tea, and pour the hot tea into a saucepan that is on an unlit burner. Use a straw to inject a layer of cold milk under the warm tea in the saucepan. The temperature difference between the tea and milk will inhibit their mixing. Light the burner, and watch for the development of convection---you will know it when you see it (Fig.~\ref{f.tea}).
 
 \begin{figure}[htbp]
 \includegraphics[width=0.5\linewidth]{convection-1}\includegraphics[width=0.5\linewidth]{convection-2}
 \caption[Onset of convection]{Onset of convection in a tea-milk mixture.\label{f.tea}}
 \end{figure}
 
-Convection can also occur in stars, in regions of high flux and/or high opacity. During convection, the fluid velocities in question are typically quite subsonic, so we have hydrostatic equilibrium to excellent approximation. But the fluid motions make an enormous difference for heat transport! Warm fluid is carried upward and cool fluid sinks. The net result is that heat is transported upward much faster than it would have been if only diffusion had been operating. This upward transport of heat modifies the temperature gradient. In this chapter, we shall derive the condition for the onset of convection, and the value of the temperature gradient in the presence of subsonic, efficient convective heat transport.
+Convection can also occur in stars, in regions of high flux and/or high opacity. During convection, the fluid velocities in question are typically quite subsonic, so we have hydrostatic equilibrium to excellent approximation. But the fluid motions make an enormous difference for heat transport! Warm fluid is carried upward and cool fluid sinks. The net result is that heat is transported upward much faster than it would have been if only diffusion had been operating. This upward transport of heat modifies the temperature gradient. In this chapter, we shall derive the condition for the onset of convection, and the value of the temperature gradient in the presence of subsonic, efficient convection.
 
 \subsection{The onset of convection}\label{s.convection-onset}
 
@@ -56,7 +55,7 @@ We can use Archimedes' law---which is an application of hydrostatic equilibrium-
 \begin{equation}
 \frac{\dif P}{\dif r} = -\rho g.
 \end{equation}
-with a temperature gradient is unstable to convection. Imagine moving a blob of fluid upwards from $r$ to $r+h$.  We move the blob slowly enough that it is in hydrostatic equilibrium with its new surroundings, $P_{b}(r+h) = P(r+h)$, where the subscript $b$ refers to ``blob.'' We do move the blob quickly enough, however, that it does not exchange heat with its surroundings and doesn't therefore remain in \emph{thermal} equilibrium with its surroundings. 
+with a temperature gradient is unstable to convection. Imagine moving a blob of fluid upwards from $r$ to $r+h$.  We move the blob slowly enough that it is in hydrostatic equilibrium with its new surroundings, $P_{b}(r+h) = P(r+h)$, where the subscript $b$ refers to ``blob.'' We do move the blob quickly enough, however, that it doesn't exchange heat with its surroundings and therefore doesn't remain in \emph{thermal} equilibrium with its surroundings. 
 \marginnote{Recall that pressure equilibrium in the blob is established over the time a sound wave takes to cross the blob. Thus, moving the blob slowly enough to maintain pressure equilibrium means that the motion is quite subsonic. Moving the blob quickly enough to prevent heat transport means (cf.\ exercise~\ref{ex.random-walk-diffusion}) that the blob is much larger than a mean free path so the time for photons to random walk across the blob is longer than it takes to lift the blob a distance $h$.}
 
 As a result of this lack of heat exchange, the upward motion of the blob is \newterm{adiabatic}.  To understand what this means, recall the first law of thermodynamics, which relates the change in internal energy $\dif U$ and in volume $\dif V$ to the heat transferred $\dif Q = T\,\dif S$:
@@ -79,7 +78,7 @@ After the blob has moved from $r$ to $r+h$, it has expanded so that its density 
 \[
 	\rho_{b}(r+h) = \rho[P_{b}(r+h),s_{b}(r+h)] = \rho[P(r+h),s(r)].
 \]
-Here we've written the density as a function of pressure and entropy: $\rho(P,s)$. Now we can apply Archimedes' law: if the density of the blob is greater than that of the surrounding fluid, then the buoyant force will be less than the weight of the blob; as a consequence, the blob will sink back to its original location. The fluid is thus stable. In contrast, if the density of the blob is greater than that of the surrounding fluid, then the buoyant force is greater than the weight of the blob; a result, the fluid is unstable, as a small perturbation leads to the acceleration of the blob upwards. Figure~\ref{f.convective-schematic} has a schematic of this criterion.
+Here we've written the density as a function of pressure and entropy: $\rho(P,s)$. Now we can apply Archimedes' law: if the density of the blob is greater than that of the surrounding fluid, then the buoyant force will be less than the weight of the blob; as a consequence, the blob will sink back to its original location. The fluid is thus stable. In contrast, if the density of the blob is less than that of the surrounding fluid, then the buoyant force is greater than the weight of the blob; a result, the fluid is unstable, as a small perturbation leads to the acceleration of the blob upwards. Figure~\ref{f.convective-schematic} has a schematic of this criterion.
 \begin{marginfigure}
 \includegraphics[width=\textwidth]{convective}
 \caption[Illustration of criteria for convective instability]{\label{f.convective-schematic}Illustration of criteria for convective instability.  On the left, raising a blob a distance $h$ adiabatically and in pressure balance with its surrounding results in a higher density $V_{b} < V$, or $\rho_{b} > \rho$.  This is stable: the blob will sink back.  On the right, the blob is less dense and hence buoyant: it will continue to rise.}
@@ -112,7 +111,7 @@ Inserting this into eq.~(\ref{e.convective-stability}) gives
 \]
 since the specific heat at constant pressure is $C_{P}\equiv T(\dif s/\dif T)_{P}$. 
 
-Now, $(\partial \rho/\partial T)_{P}$ is negative (gas expands on being heated), while $C_{P}$ is positive; hence for eq.~(\ref{e.convective-stability}) will be satisfied wherever
+Now, $(\partial \rho/\partial T)_{P}$ is negative (gas expands on being heated), while $C_{P}$ is positive; hence eq.~(\ref{e.convective-stability}) will be satisfied wherever
 \begin{equation}\label{e.entropy-condition}
 \frac{\dif s}{\dif r} > 0.
 \end{equation}
@@ -137,7 +136,7 @@ C_{\rho} \equiv T\,\tderiv{s}{T}{\rho} = \tderiv{u}{T}{\rho}.
 \end{equation}
 For an ideal gas, $u = u(T)$ and $C_{\rho}$ is approximately constant; hence we may integrate equation~(\ref{e.CV}) to obtain $u = C_{\rho}T + \textrm{const}$.
 
-In Eq.~(\ref{e.specific-first-law-thermo}), the last term is $-(P/\rho)\, (\dif\rho/\rho) = -(P/\rho)\,\dif\ln\rho$. This demonstrates a useful trick: take the logarithm of the equation of state, $\ln (P) = \ln(\rho) + \ln (T) + \ln (\kB/\mu\mb)$, and then take the differential to obtain
+In Eq.~(\ref{e.specific-first-law-thermo}), the last term is $-(P/\rho)\, (\dif\rho/\rho) = -(P/\rho)\,\dif\ln\rho$. This motivates the following trick: take the logarithm of the equation of state, $\ln (P) = \ln(\rho) + \ln (T) + \ln (\kB/\mu\mb)$, and then take the differential to obtain
 \[ \frac{\dif P}{P} = \frac{\dif\rho}{\rho} + \frac{\dif T}{T}. \]
 Now eliminate $\dif\rho/\rho$ in the equation
 \[ T\,\dif s = C_{\rho}\dif T - \frac{P}{\rho}\frac{\dif\rho}{\rho} \]
@@ -146,7 +145,7 @@ to obtain an expression for the heat transferred as a function of temperature an
 T\,\dif s = \left[C_{\rho} + \frac{P}{\rho T}\right]\dif T - \frac{1}{\rho}\dif P
 	 = \left[C_{\rho} + \frac{\kB}{\mu\mb}\right]\dif T - \frac{1}{\rho}\dif P.
 \end{equation}
-From this we see that the heat needed to raise the temperature of a mass of fluid while holding pressure fixed is
+The heat needed to raise the temperature of a mass of fluid while holding pressure fixed is therefore
 \begin{equation}\label{e.CP}
 C_{P}\equiv T\,\tderiv{s}{T}{P} = C_{\rho} + \frac{\kB}{\mu\mb}.
 \end{equation}
@@ -257,7 +256,7 @@ makes a useful coordinate. This is called a \newterm{Lagrangian} description of 
 \end{eqnarray}
 \end{sidebar}
 
-Equations (\ref{e.mass})--(\ref{e.luminosity}), or equivalently (\ref{e.lagrange-r})--(\ref{e.lagrange-L}), are supplemented by an equation of state $P = P(\rho,T)$ and opacity $\kappa = \kappa(\rho,T)$, as well as equations for the change in composition ($\dif X/\dif t$) due to nuclear burning. Note that we've also omitted terms allowing for expansion or contraction ($\dif r/\dif t$) from these equations.
+Equations (\ref{e.mass})--(\ref{e.luminosity}), or equivalently (\ref{e.lagrange-r})--(\ref{e.lagrange-L}), are supplemented by an equation of state $P = P(\rho,T)$ and opacity $\kappa = \kappa(\rho,T)$, as well as equations for the change in composition ($\dif X/\dif t$) due to nuclear burning. Note that we've also omitted terms containing $\dif r/\dif t$, which describe expansion or contraction, from these equations.
 
 \section{Contraction to the main sequence}
 \label{s.contraction-to-main-sequence}
@@ -307,11 +306,11 @@ Another way to put this is that quantum effects become important when there is r
 
 Suppose we have two identical particles in a quantum state. Since the particles are identical, if we exchange them the wavefunction can only change by a phase factor\sidenote{See Box~\ref{sb.identical-particles}} $e^{i\delta}$. If we exchange the particles again, we are back to our original state; as a result, $e^{2i\delta} = 1$, and therefore $\delta = 0$ or $\pi$. Hence upon the exchange of particles, the wavefunction either is unchanged ($\delta=0$) or it changes sign ($e^{i\pi}=-1$).
 \begin{quote}\itshape
-    There are two types of particles in this world: those that change sign under exchange; and those that don't.
+    There are two types of wavefunctions in this world: those that change sign under exchange; and those that don't.
 \end{quote}
 Particles that don't change sign under exchange are called \newterm{bosons} and have integer spin. Photons ($\textrm{spin} = 1$) are bosons. Particles that change sign under exchange are called \newterm{fermions} and have half-integer spin. Electrons, neutrinos, protons, and neutrons ($\textrm{spin} = 1/2$) are all fermions. 
 
-A consequence of the fermion wavefunction changing sign when any two particles are exchanged is that the wavefunction vanishes if any two particles are in the same state---that is, they have the same position, momentum, and spin. For spin-half particles like electrons, then means we can put at most two such electrons in the same position and momentum state; we do this by having their spins antiparallel.
+A consequence of the fermion wavefunction changing sign when any two particles are exchanged is that the wavefunction vanishes if any two particles are in the same state---that is, they have the same position, momentum, and spin. For spin-half particles like electrons, this means we can put at most two such electrons in the same position and momentum state; we do this by having their spins antiparallel.
 
 \begin{sidebar}[Identical particles]
 \label{sb.identical-particles}
@@ -394,13 +393,13 @@ and into each cell we place 2 electrons with opposing spins. We always add the e
 \label{e.number-degenerate}
 	N = \frac{2}{h^{3}}\int_{V}\dif^{3}x\int_{0}^{\EF}\dif^{3}p
 \end{equation}
-In this equation $\EF$, the \emph{Fermi energy}, is the energy of the last electrons added and is the largest filled energy level.
+In this equation $\EF$, the \emph{Fermi energy}, is the energy of the last electron added and is the largest filled energy level.
 
 If our volume is isotropic, then we can change variables: first, to spherical momentum coordinates, $\dif^{3}p = 4\pi p^{2}\,\dif p$; second, from $\dif p$ to $\dif\varepsilon$.  Since $p = \sqrt{2m\varepsilon}$, where $\varepsilon$ is the energy of a single electron,
 \[
 	\dif p = \sqrt{\frac{m}{2\varepsilon}}\,\dif \varepsilon;
 \]
-we can therefore change variables and integrate over $\varepsilon$ from $0$ to $\EF$ to obtain
+upon changing variables and integrating over $\varepsilon$ from $0$ to $\EF$ we obtain
 \[
 	N = \frac{8\pi}{h^{3}}V \int_{0}^{\EF} \sqrt{2}m^{3/2}\varepsilon^{1/2}\,\dif \varepsilon
 	= \frac{8\pi}{3h^{3}} V (2m)^{3/2} \EF^{3/2}.
@@ -419,7 +418,7 @@ Using eq.~(\ref{e.fermi-energy}) to substitute for $\EF$ in eq.~(\ref{e.total-en
 \]
 where $n=N/V$ is the density of electrons.
 
-Recall that for a non-relativistic gas the pressure is $P = (2/3)(E/V)$.  Hence the pressure of our electron gas is
+For a non-relativistic gas the pressure is $P = (2/3)(E/V)$.  Hence the pressure of our electron gas is
 \begin{equation}\label{e.pressure-electrons}
 	P = \frac{2}{3}\frac{E}{V} = \frac{2}{5} n\EF
 		= \frac{2}{5}\left(\frac{3}{8\pi}\right)^{2/3}\frac{h^{2}}{2m}n^{5/3}.
@@ -495,7 +494,7 @@ With the initiation of hydrogen fusion, the star settles into thermal and mechan
 
 The reason for star's stability on the main sequence is a consequence of the relation, derived in exercise \ref{ex.gravithermal-specific-heat}, between the star's total energy and temperature. If the reaction rate were to increase and deposit more energy into the star, then since the total energy is $\propto -GM^{2}/R$, the star would expand. This expansion would cause the central temperature to decrease, thereby reducing the reaction rate.
 
-The star is not in complete equilibrium, however, as the composition is gradually changing as hydrogen in the core is converted to helium. This timescale is much longer than the dynamical timescale (sets hydrostatic equilibrium), the diffusion timescale (sets thermal gradient), and the Kelvin-Helmholtz timescale (sets core temperature via growth of shrinkage of stellar radii). The gradual build-up of a helium-rich core does not, therefore, affect the stability of the star, but it does lead to a slow brightening of the star over its main sequence lifetime. For our sun, the gradual enrichment of the core in helium causes a slow increase in luminosity of $\approx10\%$ for each billion years.\marginnote{Although this slow increase in luminosity is not a drastic change, it has significant implications for life on Earth. The expected warming is sufficient to make Earth uninhabitable within about a billion years.} 
+The star is not in complete equilibrium, however, as the composition is gradually changing as hydrogen in the core is converted to helium. This timescale is much longer than the dynamical timescale (sets hydrostatic equilibrium), the diffusion timescale (sets thermal gradient), and the Kelvin-Helmholtz timescale (sets core temperature via growth or contraction of stellar radii). The gradual build-up of a helium-rich core does not, therefore, affect the stability of the star, but it does lead to a slow brightening of the star over its main sequence lifetime. For our sun, the gradual enrichment of the core in helium causes a slow increase in luminosity of $\approx10\%$ for each billion years.\marginnote{Although this slow increase in luminosity is not a drastic change, it has significant implications for life on Earth. The expected warming is sufficient to make Earth uninhabitable within about a billion years.} 
 
 \begin{exercisebox}[Nuclear burning timescale]
 \label{ex.nuclear-burning-timescale}
