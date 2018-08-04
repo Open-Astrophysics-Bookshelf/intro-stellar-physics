@@ -2,7 +2,7 @@
 
 \section{The nucleus}
 
-Experimentally, nuclei are on the order of femtometers\sidenote{Sometimes called a \emph{Fermi}} ($\val{1}{\fermi} = \val{10^{-15}}{\meter}$) in size. Like an atom, the nucleus also has excited states; typical energies for these are on the order of MeV ($\val{1}{\MeV} = \val{10^{6}}{\eV}$). \marginnote{An \newterm{electron volt} (eV) is the energy acquired by an electron being accelerated through a potential difference of 1 volt.} It therefore makes sense to use fm and MeV as our units of length and energy. In these units, the combination
+Experimentally, nuclei are on the order of femtometers\sidenote{$\val{1}{\fermi} = \val{10^{-15}}{\meter}$. This unit is sometimes called a \newterm{Fermi}.} in size. Like an atom, the nucleus also has excited states; typical energies for these are on the order of MeV\sidenote{$\val{1}{\MeV} = \val{10^{6}}{\eV}$; an \newterm{electron volt} (eV) is the energy acquired by an electron being accelerated through a potential difference of 1 volt.}. It therefore makes sense to use fm and MeV as our units of length and energy. In these units, the combination
 \[	\hbar c = \val{197}{\MeV\,\fermi} \]
 to three significant figures. In quantum field theory, the strength of the electromagnetic interaction is characterized by the dimensionless \newterm{fine structure constant}
 \[	\alphaF = \frac{e^{2}}{4\pi\epsilon_{0}\hbar c} = \frac{1}{137}, \]
@@ -10,7 +10,7 @@ again to three significant figures. From these two quantities, we find the elect
 \[
 	\frac{e^{2}}{4\pi\epsilon_{0}} = \alphaF\hbar c = \val{1.44}{\MeV\,\fermi}.
 \]
-Put another way, the potential energy between two protons of charge $e$ separated by $\val{1}{\fermi}$ is $\val{1.44}{\MeV}$.
+Put another way, the Coulomb potential energy between two protons separated by $\val{1}{\fermi}$ is $\val{1.44}{\MeV}$.
 
 The strong nuclear force differs from electromagnetism and gravity in several ways. First, the strong nuclear force is short-range: the interaction vanishes for distances $\gtrsim\val{2}{\fermi}$. It is weakly attractive for distances $\val{1}{\fermi}\lesssim r\lesssim\val{2}{\fermi}$ and becomes strongly repulsive at distances $\ll\val{1}{\fermi}$. The potential between the neutron and proton in a deuterium (\hydrogen[2]) nucleus (called a deuteron) therefore looks something like that sketched in Fig.~\ref{f.nuclear-potential}. The deuteron's ground state (black dotted line) is at $E_{\mathrm{d}} = -\val{2.2}{\MeV}$, so the nucleus is weakly bound ($|E_{\mathrm{d}}| \ll |V|$, where $V$ is the depth of the potential well).
 
@@ -20,10 +20,10 @@ The strong nuclear force differs from electromagnetism and gravity in several wa
 \end{marginfigure}
 
 \begin{exercisebox}[Depth of nuclear well]
-We can estimate the depth of the well in Fig.~\ref{f.nuclear-potential}. Since this is a two-body problem, transfer to center-of-mass coordinates and treat this as a single particle with a reduced mass $m_{p}m_{n}/(m_{p}+m_{n}) \approx m_{n}/2$. Use the uncertainty principle, with $\Delta x$ being the width of the well, to get an estimate of $p\sim\Delta p$ and from this estimate the kinetic energy of the particle. Finally, use the small value of the binding energy (sum of potential and kinetic energies) to estimate the depth of the potential well.
+We can estimate the depth of the well in Fig.~\ref{f.nuclear-potential}. Since this is a two-body problem, transfer to center-of-mass coordinates and solve for a single particle with a reduced mass $m_{p}m_{n}/(m_{p}+m_{n}) \approx m_{n}/2$. Use the uncertainty principle, with $\Delta x$ being the width of the well, to get an estimate of $p\sim\Delta p$ and from this estimate the kinetic energy of the particle. Finally, use the small value of the binding energy (sum of potential and kinetic energies) to estimate the depth of the potential well.
 \end{exercisebox}
 
-Also unlike electromagnetism and gravity, the strong nuclear force does not obey superposition: we cannot write the energy of the nucleus as a sum over the potential between all pairs of nucleons. Moreover, the strong nuclear force is not a central force, meaning that it depends on more than just the distance between any two nucleons. The behavior of an atomic nucleus is thus much more complicated to describe than the electronic structure of the atom.
+Also unlike electromagnetism and gravity, the strong nuclear force does not obey superposition: we cannot write the energy of the nucleus as a sum over the potential between all pairs of nucleons. Further, the strong nuclear force is not a central force, meaning that it depends on more than just the distance between any two nucleons. The atomic nucleus is thus much more complicated to describe than the electronic structure of the atom.
 
 \newthought{Despite these complications, we can construct a phenomenological formula for the nuclear mass that is reasonably accurate.} Let us write the mass of a nucleus with $A$ nucleons---$Z$ protons and $N=A-Z$ neutrons---as
 \[
@@ -34,10 +34,10 @@ Because the nuclear force is weakly attractive for separations $\val{1}{\fermi}\
 \[
 	r_{A} = \valrng{1.1}{1.8}{\fermi}\times A^{1/3}.
 \]
-Notice that because the nucleon-nucleon potential is short-ranged, nucleons in a large nucleus only interact with their nearest neighbors. Indeed the nucleon-nucleon interaction in similar in form to the potential between molecules in a fluid, such as a water drop. This motivates developing a simple formula that gives a decent approximation for the binding energy. For the first term, we estimate the binding energy of a large nucleus as the binding energy of a single nucleon with its neighbors, multiplied by the number of nucleons. Experimentally, it is found that for large nuclei this is the case: the binding energy per nucleon is roughly constant: we say that the nuclear interaction \newterm{saturates}, so that $B(Z,N) \propto A = (Z+N)$.
+Notice that because the nucleon-nucleon potential is short-ranged, nucleons in a large nucleus only interact with their nearest neighbors. Indeed the nucleon-nucleon interaction is similar in form to the potential between molecules in a fluid, such as a water drop. This motivates developing a simple formula that gives a decent approximation for the binding energy. For the first term, we estimate the binding energy of a large nucleus as just the (constant) binding energy of a single nucleon multiplied by the number of nucleons. Experimentally, it is found that for large nuclei this is the case: the binding energy per nucleon is roughly constant. We say that the nuclear interaction \newterm{saturates}, so that $B(Z,N) \propto A = (Z+N)$.
 
 \begin{exercisebox}[If the strong force were long-range]
-To see how the nuclear force differs from the long-range Coulomb and gravitational force, suppose instead that the nuclear force acted like a super-gravity. Use the results from our constant-density model of a star (eq.~[\ref{e.energy-constant-density-sphere}]) to derive how the binding energy would scale with $A$ in this case.
+To see how the nuclear force differs from the long-range Coulomb and gravitational force, suppose instead that the nuclear force acted like a super-gravity: that is, the potential is $\propto 1/r$. Use the results from our constant-density model of a star (eq.~[\ref{e.energy-constant-density-sphere}]) to derive how the binding energy would scale with $A$ in this case.
 \end{exercisebox}
 
 It is energetically favorable to have equal numbers of neutrons and protons. We therefore define an asymmetry parameter $\eta \equiv (N-Z)/(N+Z) = 1-2Z/A$, so that $-1\le\eta\le1$. The nuclear contribution to the binding energy is maximized for $\eta = 0$ (equal numbers of protons and neutrons). Because the nuclear force does not distinguish between neutrons and protons, the binding energy is quadratic in $\eta$, so that $B$ doesn't depend on the sign of $\eta$. Thus our first approximation for the binding energy is $B \approx (a_{V} - a_{A}\eta^{2}) A$. Here $a_{V}$ and $a_{A}$ are as-yet-undetermined coefficients.
@@ -49,8 +49,7 @@ Finally, the protons in the nucleus are charged and therefore repel one another.
 B = \left(a_{V} -a_{A}\eta^{2}\right) A -  a_{S}A^{2/3} - a_{C} \frac{Z^{2}}{A^{1/3}}. 
 \end{equation}
 This is a version of the \newterm{semi-empirical mass formula}, also known as the \newterm{Bethe-Weizs\"acker mass formula}.
-The coefficients $a_{V},a_{A},a_{S},a_{C}$ are found by fitting the formula to known nuclear masses\sidenote{This fit should have another term to account for the pairing of neutrons and protons, so that the binding energy is  increased for even $Z$ and $N$. We omit that term here for simplicity.}
-for measured nuclear masses (Table~\ref{t.liquid-drop}).
+The coefficients $a_{V},a_{A},a_{S},a_{C}$ are found by fitting the formula to measured nuclear masses (Table~\ref{t.liquid-drop})\sidenote{This fit should have another term to account for the pairing of neutrons and protons, so that the binding energy is  increased for even $Z$ and $N$. We omit that term here for simplicity.}.
 \begin{margintable}
 \caption[Liquid-drop coefficients]{\label{t.liquid-drop} Coefficients for hte fit to nuclear masses, (\protect\ref{e.liquid-drop}), in units of MeV.}
 \begin{tabular}{rrrr}
