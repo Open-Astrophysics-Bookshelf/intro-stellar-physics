@@ -75,11 +75,11 @@ From mass-energy conservation, the heat evolved during a nuclear reaction equals
 \[
 	\helium[3] + \helium[3] \to \helium + \pt + \pt,
 \]
-the change in mass is
+the binding energy of \helium[3] is \val{7.718}{\MeV} and that of \helium\ is \val{28.296}{\MeV}; the heat evolved by this reaction is therefore
 \begin{eqnarray*}
 	\lefteqn{2\left[2m_{p}+m_{n}-B(\helium[3])\right] - \left[2m_{p}+2m_{n}-B(\helium)\right] - 2m_{p}} \\
-	&=& B(\helium)-B(\helium[3])\\
-	&=& \val{28.296}{\MeV} - \val{7.718}{\MeV}\\ &=& \val{20.578}{\MeV}.
+	&=& B(\helium)-2B(\helium[3])\\
+	&=& \val{28.296}{\MeV} - \val{15.437}{\MeV}\\ &=& \val{12.859}{\MeV}.
 \end{eqnarray*}
 
 \begin{exercisebox}[Heat from hydrogen fusing to helium]
@@ -87,7 +87,7 @@ the change in mass is
 Fusion of hydrogen into helium entails converting 4 hydrogen atoms (including the 4 electrons) into 1 helium atom (2 protons, 2 neutrons, 2 electrons) with $B = \val{28.296}{\MeV}$. What is the heat evolved \emph{per hydrogen atom}? Assume that the sun has been shining with its current luminosity over its life. What mass of hydrogen atoms would need to undergo fusion to supply this energy? How large is this mass relative to the total mass of the sun? 
 \end{exercisebox}
 
-\newthought{You might at first think that because the nuclear interaction is short-range, the cross-section is something like $\pi r_{n}^{2}$, where $r_{n}\approx\valrng{1}{2}{\fermi}$.} Things are a bit more subtle, however, and in this section we are going to take the reaction-rate apart to understand how it works. First, the ``size'' of a particle is in general proportional to the ``size'' of the wavefunction, which is set by the uncertainty principle, 
+\newthought{You might think that because the nuclear interaction is short-range, the cross-section is something like $\pi r_{n}^{2}$, where $r_{n}\approx\valrng{1}{2}{\fermi}$.} Things are a bit more subtle, however, and in this section we shall explore how the reaction rate works. First, the ``size'' of a particle is in general proportional to the ``size'' of the wavefunction. From the uncertainty principle, 
 \[\pi\,\Delta x^{2} \approx \pi \left(\frac{\hbar}{\Delta p}\right)^{2} = \pi\frac{\hbar^{2}}{2mE}.\]
 where we've taken $\Delta p\sim p$.
 Notice that if we multiply and divide by $c^{2}$, then we can estimate the area of the wavepacket as
@@ -103,9 +103,9 @@ The key point is that the size of the wave packet is $\propto 1/E$, which is in 
 The function $S(E)$ contains the details of the nuclear interaction; in general $S(E)$ must be measured experimentally.
 
 The final part of the cross-section concerns the Coulomb potential.
-Because protons repel one another, at large separations the nuclei interact via the Coulomb potential. Consider the case of two nuclei with masses\sidenote{When doing kinematics, we shall make the approximation $m\approx A\mb$.} $A_{1}\mb$ and $A_{2}\mb$. Transform to the center-of-mass frame; the problem then reduces to that of one particle, mass $A\mb = A_{1}A_{2}/(A_{1}+A_{2})\times\mb$, moving in a potential, which at large separations is purely Coulomb,
-\[ \frac{Z_{1}Z_{2}e^{2}}{4\pi\epsilon_{0}r} = \val{1.44}{\MeV}\times Z_{1}Z_{2}\left(\frac{\val{1}{\fermi}}{r}\right). \]
-Fig.~\ref{f.tunneling} has a schematic of the potential. While at short distances the nuclear interaction forms a deep potential well (blue curve), outside the nucleus the Coulomb potential dominates (red curve).
+Because protons repel one another, at large separations the nuclei interact only via the Coulomb potential. Consider the case of two nuclei with masses\sidenote{When doing kinematics, we shall make the approximation $m\approx A\mb$.} $A_{1}\mb$ and $A_{2}\mb$. Transform to the center-of-mass frame; the problem then reduces to that of one particle, mass $A\mb = A_{1}A_{2}/(A_{1}+A_{2})\times\mb$, moving in a potential, which at large separations is purely Coulomb,
+\[ \frac{Z_{1}Z_{2}e^{2}}{4\pi\epsilon_{0}r} = \frac{Z_{1}Z_{2}\alphaF\hbar c}{r} = \val{1.44}{\MeV}\times Z_{1}Z_{2}\left(\frac{\val{1}{\fermi}}{r}\right). \]
+Fig.~\ref{f.tunneling} has a schematic of the potential. While at short distances the nuclear interaction forms a deep potential well, outside the nucleus the Coulomb potential dominates.
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{tunnel-schematic}
 \caption[Tunneling through the Coulomb potential barrier]{Tunneling through the Coulomb potential barrier. Not to scale.}
@@ -119,10 +119,10 @@ For the sun, typical center-of-mass energies are $E \sim \val{1}{\keV}$ (horizon
 
 As shown in Exercise~\ref{ex.turning-radius}, the turning radius $r_{E}$ at typical stellar energies is much larger than the nuclear radius.  Classically the particle can't penetrate the region $r_{n} < r < r_{E}$ where $E < V$ (dotted black line, Fig.~\ref{f.tunneling}); under classical physics, there would be no nuclear reactions at typical stellar temperatures because two particles would never find themselves close enough to be bound by the nuclear force.
 
-The world is quantum, however, and the uncertainty in a particle's position means there is a small probability for the nucleons to be close enough for the nuclear force to come into play. In the classically forbidden region $r_{n} < r < r_{E}$, the particle wavefunction (thin gray line, Fig.~\ref{f.tunneling}) decreases exponentially, so that the probability to reach $r\sim\val{1}{\fermi}$ is
+The world is quantum, however, and the uncertainty in a particle's position means there is a small probability for the nucleons to be close enough for the nuclear force to come into play. In the classically forbidden region $r_{n} < r < r_{E}$, the particle wavefunction (thin gray line, Fig.~\ref{f.tunneling}) decreases exponentially, and the probability to reach $r\sim\val{1}{\fermi}$ is
 \[ \mathcal{P}\approx \exp\left[-2\pi^{2}\frac{r_{E}}{\lambda}\right] \]
 where $\lambda = h/p$, $p$ being the momentum of the particle.
-It is convenient to rewrite the argument of the exponential in terms of the particle energy,
+It is convenient to rewrite the argument of the exponential in terms of the particle's energy,
 \[ \frac{2\pi^{2}r_{E}}{\lambda} = 2\pi^{2}\left(\frac{Z_{1}Z_{2}e^{2}}{E}\right)
 	\left(\frac{p}{h}\right) = \left[\pi \frac{Z_{1}Z_{2}e^{2}\sqrt{2m}}{\hbar}\right]\left(\frac{1}{E}\right)^{1/2}, \]
 so that the probability of ``tunneling'' through the Coulomb barrier is
@@ -145,9 +145,8 @@ For many reactions $S(E)$ is nearly constant over the range of typical energies 
 Here $\langle \sigma v\rangle$ is the mean value of $\sigma v$ for all pairs of particles in the plasma.
 For reactions between particles of the same type, we replace $n_{1}n_{2}$ with $n^{2}/2$; the factor of $1/2$ is to avoid double-counting.
 
-A detailed calculation of the thermally averaged cross-section $\langle\sigma v\rangle$ is presented in Box~\ref{sb.thermally-averaged-cross-section}; here we'll just give a brief physical explanation for its value. There are two competing terms. First, the cross-section has an exponential term $\exp[-(\EG/E)^{1/2}]$ that increases rapidly with energy: more energetic particles have a much higher probability of tunneling through the Coulomb barrier. On the other hand, however, in a plasma the number of particles with energy $E$ decreases as $\exp(-E/\kB T)$.
-
-As a result, reactions predominately occur in a narrow window of energies \Epk\ about a sort of geometric mean between \EG\ and $\kB T$:
+A detailed calculation of the thermally averaged cross-section $\langle\sigma v\rangle$ is presented in Box~\ref{sb.thermally-averaged-cross-section}; here we'll just give a brief physical explanation for its value. There are two competing terms. First, the cross-section has an exponential term $\exp[-(\EG/E)^{1/2}]$ that increases rapidly with energy: more energetic particles have a much higher probability of tunneling through the Coulomb barrier. On the other hand, in thermal equilibrium the number of particles with energy $E$ decreases as $\exp(-E/\kB T)$.
+As a result, reactions predominately occur in a narrow window of energies about a sort of geometric mean between \EG\ and $\kB T$:
 \[	\Epk = \frac{\EG^{1/3}(\kB T)^{2/3}}{4^{1/3}}. \]
 The reaction rate is suppressed for $E\ll\Epk$ because the probability of penetrating the Coulomb barrier is so small; the reaction rate is suppressed for $E\gg\Epk$ because there simply aren't enough particles with the relevant center-of-mass energy.
 
@@ -200,7 +199,7 @@ where
 \[
 	\frac{1}{\varsigma^{2}} = -\left.\frac{\dif^{2} f}{\dif E^{2}}\right|_{E=\Epk}.
 \]
-This trick of approximately a steeply peaked function as a Gaussian, is known as the \newterm{method of steepest descent}.
+This trick of approximating a steeply peaked function as a Gaussian is known as the \newterm{method of steepest descent}.
 
 Solving for \Epk, we get
 \[
@@ -272,11 +271,11 @@ Apply this to the reaction rate, eq.~(\ref{e.rate2}), and thus derive eq.~(\ref{
 
 \subsection{Hydrogen burning via pp reactions: the weak nuclear interaction}
 
-In the previous section, we established that lighter nuclei, because of their lower Coulomb repulsion, will tend to fuse at lower temperatures. Thus we expect that the first reaction that can occur is $\pt+\pt$ and therein lies a problem; for there is no bound state of \helium[2]. The only possible way for two protons to fuse is for one of the protons to transmute into a neutron, giving the reaction
+In the previous section, we established that lighter nuclei, because of their lower Coulomb repulsion, will tend to fuse at lower temperatures. Thus we expect that the first reaction that can occur is $\pt+\pt$ and therein lies a problem: there is no bound state of \helium[2]. The only possible way for two protons to fuse is for one of the protons to transmute into a neutron, giving the reaction
 \begin{equation}\label{e.pp}
 	\pt + \pt \to \hydrogen[2] + e^{+} + \nu_{e}.
 \end{equation}
-This reaction is possible because there are two nuclear forces: the strong and the weak. The strong is what binds nuclei together\marginnote{More precisely, what the strong force mainly does is bind quarks into neutrons or protons.}; the weak interaction mediates the conversion of a neutron into a proton (and vice versa). Two leptons are also involved (either emitted or absorbed) in this type of weak reaction: an electron (or its anti-particle, the positron) and an electron neutrino (or anti-neutrino). The rules for determining which particles are based on three conservation laws:
+This reaction is possible because there are two nuclear forces: the strong and the weak. The strong is what binds nuclei together\marginnote{More precisely, what the strong force mainly does is bind quarks into neutrons or protons.}; the weak mediates the conversion of a neutron into a proton (and vice versa). Two leptons are also involved (either emitted or absorbed) in this type of weak reaction: an electron (or its anti-particle, the positron) and an electron neutrino (or anti-neutrino). Three conservation laws determine which particles are involved:
 \begin{enumerate}
 \item\label{i.baryon-conservation} the number of nucleons is conserved;
 \item\label{i.charge-conservation} the charge is conserved; and
@@ -284,13 +283,13 @@ This reaction is possible because there are two nuclear forces: the strong and t
 \end{enumerate}
 With regard to item \ref{i.lepton-conservation}, electrons ($e^{-}$) and electron neutrinos ($\nu_{e}$) have lepton number $+1$ while positrons ($e^{+}$) and anti-electron neutrinos ($\bar{\nu}_{e}$) have lepton number $-1$. Neutrinos, as the name implied, do not carry charge.
 
-Applying these rules to the reaction (\ref{e.pp}), the number of nucleons on both sides of this reaction is the same, so rule \ref{i.baryon-conservation} is satisfied. On the right hand side the positron balances charge to satisfy rule \ref{i.charge-conservation}. Finally, the electron neutrino on output ensures that the lepton number on the right-hand side is zero to satisfy rule \ref{i.lepton-conservation}.
+Applying these rules to the reaction (\ref{e.pp}), the number of nucleons on both sides of this reaction is the same, so rule \ref{i.baryon-conservation} is satisfied. The positron on the right hand side balances charge to satisfy rule \ref{i.charge-conservation}. Finally, the emission of an electron neutrino ensures that the lepton number on the right-hand side is zero to satisfy rule \ref{i.lepton-conservation}.
 
 The weak cross section goes roughly as $\sigma_{\mathrm{weak}} \sim \val{10^{-20}}{\barn}\left(E/\keV\right)$, so that
 \[ \frac{\sigma_{\mathrm{weak}}}{\sigma_{\mathrm{nuc}}} \sim 10^{-23}\left(\frac{E}{\keV}\right). \]
-As a result the characteristic temperature for this reaction to occur is $\approx \val{\sci{1.5}{7}}{\K}$, much higher than the temperature at which $\pt+\hydrogen[2]$ occurs; at this temperature, the lifetime of a proton to forming deuterium via capture of another proton is about $\val{6}{\Giga\yr}$.
-\marginnote{Because the weak cross section is so small, the first reaction that occurs in a contracting pre-main sequence star is $\hydrogen[2]+p\to\helium[3]$; in fact, this reaction can occur in objects as small as $\approx \val{12}{M_{\mathrm{Jupiter}}}$. The small primordial abundance of deuterium, however, prevents this reaction from doing anything more than slowing contraction slightly.}
-Once a deuterium nucleus is formed, it is immediately destroyed via $\hydrogen[2]+p\to+\helium[3]$. The nucleus \lithium[4] is unbound with a lifetime of $\val{10^{-22}}{\second}$; the nucleus \beryllium[6] is likewise unbound ($\tau \sim \val{\sci{5}{-21}}{\second}$). As a result, the next reaction that can occur is $\helium[3]+\helium[3]\to 2\pt+\helium$. Despite having a much greater Gamow energy than $\pt + \pt$, this reaction still is much faster than $\pt+\pt$ owing to the small weak cross-section.
+As a result the characteristic temperature for reaction (\ref{e.pp}) to occur is $\approx \val{\sci{1.5}{7}}{\K}$, much higher than the temperature at which $\pt+\hydrogen[2]$ occurs; at this temperature, the lifetime of a proton to forming deuterium via capture of another proton is about $\val{6}{\Giga\yr}$.
+\marginnote{Because the weak cross section is so small, the first reaction that occurs in a contracting pre-main sequence star is $\hydrogen[2]+\pt\to\helium[3]$; in fact, this reaction can occur in objects as small as $\approx \val{12}{M_{\mathrm{Jupiter}}}$. The small primordial abundance of deuterium, however, prevents this reaction from doing anything more than slowing contraction slightly.}
+Once a deuterium nucleus is formed, it is immediately destroyed via $\hydrogen[2]+p\to\helium[3]$. The nucleus \lithium[4] is unbound with a lifetime of $\val{10^{-22}}{\second}$; the nucleus \beryllium[6] is likewise unbound ($\tau \sim \val{\sci{5}{-21}}{\second}$). As a result, the next reaction that can occur is $\helium[3]+\helium[3]\to 2\pt+\helium$. Despite having a much greater Gamow energy than $\pt + \pt$, this reaction still is much faster than $\pt+\pt$ owing to the small weak cross-section.
 
 In addition to capturing another \helium[3], it is also possible for \helium[3] to react with \helium\ and trigger the reactions
 \marginnote{In eq.~(\ref{e.pp-2}) and (\ref{e.pp-3}), $\tau$ refers to the half-life for the nucleus on the left.}
