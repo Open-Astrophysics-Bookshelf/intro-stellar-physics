@@ -24,14 +24,17 @@ frontmatter=r'''% !TEX TS-program = xelatex
 
 \usepackage{starType}
 \input{symbols}
+\newcommand{\newterm}[1]{\textsc{#1}}
+
 % for aligning table columns
 \usepackage{dcolumn}
 \newcolumntype{d}[1]{D{.}{.}{#1}}
 \newcommand{\tabhead}[1]{\multicolumn{1}{c}{#1}}
 % for coloring rows
 \usepackage{colortbl}
+\usepackage{aasjournals}
 
-\newcommand*{\maintitle}{Stars}
+\newcommand*{\maintitle}{To Build a Star}
 
 \author{Edward Brown}
 %\publisher{Open Astrophysics Bookshelf}
@@ -45,16 +48,13 @@ backmatter=r'''
 '''
 
 titles = {
-	"classifying-stars":"Stellar classification",
-    "hydrostatic-balance":"Hydrostatic balance and basic stellar properties",
-	"mean-free-path":"Transport: The mean free path",
-    "stellar-atmospheres":"A closer look at the Eddington approximation",
-    "atomic-lines":"Atomic Lines",
-    "degeneracy":"The Equation of State",
-    "convection":"Convection",
-    "nuclear-burning":"Non-resonant fusion reactions",
-    "main-sequence":"The main sequence",
-    "post-main-sequence":"After the main sequence"
+	"starlight":"Starlight",
+    "hydrostatic-balance":"Under Pressure",
+	"radiative-transport":"Edge of Darkness",
+    "classifying-stars":"Rainbow in the Dark",
+    "nuclear-burning":"Burn",
+    "main-sequence":"Star",
+    "post-main-sequence":"End of the Line"
 }
 
 # execution starts here
