@@ -19,7 +19,7 @@ frontmatter=r'''% !TEX TS-program = xelatex
 \usepackage{aasjournals}
 
 \graphicspath{%
-{classifying-stars/figs/}{hydrostatic-balance/figs/}{mean-free-path/figs/}{stellar-atmospheres/figs/}{atomic-lines/figs/}{degeneracy/figs/}{convection/figs/}{nuclear-burning/figs/}{main-sequence/figs/}
+{frontmatter/}{starlight/figs/}{hydrostatic-balance/figs/}{radiative-transport/figs/}{classifying-stars/figs/}{nuclear-burning/figs/}{main-sequence/figs/}{post-main-sequence/figs/}
 }
 
 \usepackage{starType}
