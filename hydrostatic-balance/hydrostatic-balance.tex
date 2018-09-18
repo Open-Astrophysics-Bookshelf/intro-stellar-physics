@@ -167,7 +167,7 @@ The limit of these increasingly eccentric orbits is a fall into the center.  The
 \[
 \tau_{\mathrm{ff}} = \frac{T}{2} = \frac{\pi}{\sqrt{GM}} \left(\frac{R}{2}\right)^{3/2}.
 \]
-Notice that we again have the combination $\sqrt{R^{3}/M}$.  Let's convert this into an expression involving the mean density $\bar{\rho}$:
+Notice that we have the combination $\sqrt{R^{3}/M}$.  Let's convert this into an expression involving the mean density $\bar{\rho}$:
 \begin{equation}\label{e.tff}
 \tau_{\mathrm{ff}} = \left(\frac{3}{32\pi}\right)^{1/2}\left(\frac{1}{G}\frac{4\pi R^{3}}{3M}\right)^{1/2} = \left(\frac{3}{32\pi}\right)^{1/2} \frac{1}{\sqrt{G\bar{\rho}}}.
 \end{equation}
@@ -183,7 +183,7 @@ Let's avoid a collapse by turning the pressure back on.  If part of the star is 
 c_{s} = \left(\gamma\frac{P}{\rho}\right)^{1/2}
 	= \left(\gamma\frac{\kB T}{\mu\mb}\right)^{1/2}.
 \end{equation}
-Here $\gamma$ is the adiabatic index: for an ideal monatomic gas, $\gamma = 5/3$.  How long would it take for a sound wave to go a distance $R$?  Using the expression for the average temperature of a constant density sphere from eq.~(\ref{e.mean-T-rho}), we find
+Here $\gamma$ is the adiabatic index: for an ideal monatomic gas, $\gamma = 5/3$.  How long would it take for a sound wave to go a distance $R$?  Using the expression for the average temperature of a constant density sphere (cf.~eq.~[\ref{e.mean-T-rho}]), we find
 \[
 	\tau_{\mathrm{sc}} = \frac{R}{c_{s}} = R\left(\frac{3R}{GM}\right)^{1/2}
 		= \left(\frac{3}{2\sqrt{\pi}}\right)\frac{1}{\sqrt{G\bar{\rho}}}.
@@ -280,7 +280,7 @@ Applying this to equation~(\ref{e.virial-deriv-1}) gives
 	2\langle K\,\rangle &=&
 		 \left\langle\DDt{G}\right\rangle 
 		+ \left\langle\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\Omega\right\rangle\\
-	&=& \lim_{\tau\to\infty}\left[\int_{0}^{\tau}\,\DDt{G}\,\dif t\right] 
+	&=& \lim_{\tau\to\infty}\left[\frac{1}{\tau}\int_{0}^{\tau}\,\DDt{G}\,\dif t\right] 
 		+ \left\langle\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\Omega\right\rangle\\
 	&=& \underbrace{\lim_{\tau\to\infty}\left[\frac{G(\tau)-G(0)}{\tau}\right]}_{\mathrm{I}}
 		+ \underbrace{\left\langle\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\Omega\right\rangle}_{\mathrm{II}}
