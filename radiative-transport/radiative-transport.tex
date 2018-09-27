@@ -40,7 +40,7 @@ Although we have motivated this derivation with a classical picture, the cross-s
 \begin{exercisebox}[Mean free path for electron scattering]\label{ex.MFP}
     In the sun, free electrons scatter photons; the cross-section for this is
     \[
-    \sigma_{\mathrm{Th}} = \left(\frac{8\pi}{3}\right)\left(\frac{e^2}{m_e c^2}\right)^2 = \val{\sci{6.65}{-27}}{\meter^2}.
+    \sigma_{\mathrm{Th}} = \left(\frac{8\pi}{3}\right)\left(\frac{e^2}{m_e c^2}\right)^2 = \val{\sci{6.65}{-29}}{\meter^2}.
     \]
     What is the mean free path against this process for a photon at the average density of the solar interior?
 \end{exercisebox}
@@ -102,7 +102,7 @@ which allows us to change variables, $\dif I_{\nu}/\dif s = (\dif I_{\nu}/\dif\t
 \]
 This prettifying doesn't advance us any closer to the solution, but notice! The optical depth has a simple meaning:
 \[
-	\tau_{\nu} = \int_{0}^{s} \rho\kappa_{\nu}\,\dif s = \int_{0}^{s} n\sigma_{\nu}\,\dif s = \int_{0}^{s} \frac{\dif s}{\lambda}.
+	\tau_{\nu} = \int_{0}^{s} \rho\kappa_{\nu}\,\dif s = \int_{0}^{s} n\sigma_{\nu}\,\dif s = \int_{0}^{s} \frac{\dif s}{\ell}.
 \]
 That is, the optical depth measures distance along the ray in units of mean free path. Said differently, if you have traveled one optical depth, then you have gone one mean free path. We also see from this equation that $I_{\nu}\to S_{\nu}$ as $\tau_{\nu}\to\infty$ (cf.\ exercise~\ref{ex.intensity-at-large-depth}).
 
@@ -143,11 +143,11 @@ Since $\dif r = \mu\,\dif s$, where $\mu=\cos\theta$ is the cosine between $\dif
 
 \newthought{Let's examine the typical scales of terms in the radiative transfer equation, for conditions in the deep solar interior.} We'll start with eq.~(\ref{e.transfer-equation}), and indicate some expected scales:
 \[
-\underbrace{\mu\DD{I_{\nu}}{r}}_{\sim I_{\nu}/\Rsun} = -\underbrace{\rho\kappa_{\nu} I_{\nu}}_{\sim I_{\nu}/\lambda}  +\rho\kappa_{\nu} S_{\nu}.
+\underbrace{\mu\DD{I_{\nu}}{r}}_{\sim I_{\nu}/\Rsun} = -\underbrace{\rho\kappa_{\nu} I_{\nu}}_{\sim I_{\nu}/\ell}  +\rho\kappa_{\nu} S_{\nu}.
 \]
 If we are far from the surface of the star, then we should expect the intensity to change over lengthscales comparable to $\Rsun$. Of course, it won't be exactly this, but---as we'll show---the exact value doesn't matter so long as $|\dif I_{\nu}/\dif s|$ is in the ballpark of $I_{\nu}/\Rsun$. Notice the enormous disparity in scales:
 \[
-	\frac{|\dif I_{\nu}/\dif r|}{\rho\kappa_{\nu}I_{\nu}} \sim \frac{\lambda}{\Rsun};
+	\frac{|\dif I_{\nu}/\dif r|}{\rho\kappa_{\nu}I_{\nu}} \sim \frac{\ell}{\Rsun};
 \]
 the left-hand side is smaller than the terms on the right by the ratio of the mean free path to the solar radius. This implies that conditions are nearly homogeneous. They are also isotropic, so that $I_{\nu} = J_{\nu}$. We expect that collisions are fast enough so that the matter is in thermal equilibrium and $j_{\nu} = \kapabs B_{\nu}$. We also know from exercise~\ref{ex.intensity-at-large-depth} that $I_{\nu} \to j_{\nu}/\kapabs = B_{\nu}$.
 
@@ -208,7 +208,7 @@ To keep the algebra simple, assume that $F$ is constant throughout the star and 
 Write the luminosity as $L = E_{\gamma}/\tau$, where $E_{\gamma}$ is the total radiative energy of the star, and $\tau$ some as-yet-undetermined \emph{diffusion timescale}.  Give an estimate of $E_{\gamma}$ in terms of the mean temperature $T$ and the radius $R$ of the star.
 
 \item\label{p.tau}
-Finally, assume that the photon mean free path $\lambda = (\rho\kappa_{\mathrm{R}})^{-1}$ is constant.  Substitute the results from parts \ref{p.F-L} and \ref{p.L-tau} into equation~(\ref{e.radiative-transfer}).  After simplifying, you should end up with a simple expression for $\tau$ in terms of $c$, $R$, and $\lambda$.  For Thomson scattering, what is $\tau$ (express in years)?
+Finally, assume that the photon mean free path $\ell = (\rho\kappa_{\mathrm{R}})^{-1}$ is constant.  Substitute the results from parts \ref{p.F-L} and \ref{p.L-tau} into equation~(\ref{e.radiative-transfer}).  After simplifying, you should end up with a simple expression for $\tau$ in terms of $c$, $R$, and $\ell$.  For Thomson scattering, what is $\tau$ (express in years)?
 \end{enumerate}
 \end{exercisebox}
 
@@ -240,9 +240,9 @@ For radiation, the ``something'' is ``radiative energy'' and the carriers are ph
 \begin{exercisebox}[Rosseland weighting]
 Compare this crude diffusion model,
 \[
-	F = -\frac{1}{3}c\lambda\DD{U}{r},
+	F = -\frac{1}{3}c\ell\DD{U}{r},
 \]
-with eq.~(\ref{e.radiative-transfer}). Using the results of exercise~\ref{ex.radiative-transfer}, give a succinct description for why the effective mean free path $\lambda = 1/(\rho\kappa_{\mathrm{R}})$ is computed using a weighting function $\partial B_{\nu}/\partial T$.
+with eq.~(\ref{e.radiative-transfer}). Using the results of exercise~\ref{ex.radiative-transfer}, give a succinct description for why the effective mean free path $\ell = 1/(\rho\kappa_{\mathrm{R}})$ is computed using a weighting function $\partial B_{\nu}/\partial T$.
 \end{exercisebox}
 
 \begin{marginfigure}
@@ -250,7 +250,7 @@ with eq.~(\ref{e.radiative-transfer}). Using the results of exercise~\ref{ex.rad
 \caption[Schematic of a random walk]{\label{f.random-walk-schematic}Schematic of a random walk of 50 steps.}
 \end{marginfigure}
 \newthought{As an alternate take on our estimation, let's model the transport as a photon that is randomly walking throughout the interior.}
-The photon moves at speed $c$, but it can only go one mean free path $\lambda$ before being absorbed or scattered, at which point it is sent off in a random direction.\marginnote{To keep things simple, we'll imagine that after absorption the atom immediately emits an identical photon in a random direction.} The path of the photon will therefore look something like that in Fig.~\ref{f.random-walk-schematic}.
+The photon moves at speed $c$, but it can only go one mean free path $\ell$ before being absorbed or scattered, at which point it is sent off in a random direction.\marginnote{To keep things simple, we'll imagine that after absorption the atom immediately emits an identical photon in a random direction.} The path of the photon will therefore look something like that in Fig.~\ref{f.random-walk-schematic}.
 
 We will just do our calculation for motion along a diameter, with the photon starting at the center. At each hop, the photon either goes left or right with equal probability. On average, the photon doesn't go anywhere; but after enough hops, there is some probability for the photon to reach the edge of the star and escape. Figure~\ref{f.random-walk} shows the distribution of positions for walks of length $n = 10, 30, 100, 300$ steps, with each step having length 1.0. Suppose the edge of the star is at $x=\pm 10$ (red dotted lines).  Although the average position is at $x=0$, for $n \gtrsim 100$ steps, there is a reasonable probability of the photon escaping.
 \begin{figure}[htbp]
@@ -275,13 +275,13 @@ We can use these to estimate the diffusion timescale $\tau$.
 \label{ex.random-walk-diffusion}
 \begin{enumerate}
 \item
-Show from equation~(\ref{e.mean-binomial}) that the mean distance traveled by the photon after $n$ steps is $\langle d\rangle = \lambda(2np-n)$, so for $p=1/2$, $\langle d\rangle = 0$.
+Show from equation~(\ref{e.mean-binomial}) that the mean distance traveled by the photon after $n$ steps is $\langle d\rangle = \ell(2np-n)$, so for $p=1/2$, $\langle d\rangle = 0$.
 
 \item
-If all the steps were in the same direction, how many steps are needed to reach the edge, at a a distance $R$ from the center? Assume all steps have the same length $\lambda$.
+If all the steps were in the same direction, how many steps are needed to reach the edge, at a a distance $R$ from the center? Assume all steps have the same length $\ell$.
 
 \item\label{p.straight-line-steps}
-We want the distribution of steps (cf.\ Fig.~\ref{f.random-walk}) to be wide enough to reach the edge. Set the root variance---a measure of the width of the probability distribution---equal to this number of steps in part~\ref{p.straight-line-steps}, and use equation~(\ref{e.var-binomial}) to find $n_{\mathrm{edge}}$ in terms of $R$ and $\lambda$.
+We want the distribution of steps (cf.\ Fig.~\ref{f.random-walk}) to be wide enough to reach the edge. Set the root variance---a measure of the width of the probability distribution---equal to this number of steps in part~\ref{p.straight-line-steps}, and use equation~(\ref{e.var-binomial}) to find $n_{\mathrm{edge}}$ in terms of $R$ and $\ell$.
 
 \item
 What is the \emph{total} distance traveled by the photon after $n_{\mathrm{edge}}$ steps? If the photon traveled at speed $c$, how long did it take? Compare your answer with that for part~\ref{p.tau} of exercise~\ref{ex.radiative-transfer-diffusion}.
