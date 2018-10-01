@@ -277,11 +277,16 @@ We can use these to estimate the diffusion timescale $\tau$.
 \item
 Show from equation~(\ref{e.mean-binomial}) that the mean distance traveled by the photon after $n$ steps is $\langle d\rangle = \ell(2np-n)$, so for $p=1/2$, $\langle d\rangle = 0$.
 
-\item
-If all the steps were in the same direction, how many steps are needed to reach the edge, at a a distance $R$ from the center? Assume all steps have the same length $\ell$.
-
 \item\label{p.straight-line-steps}
-We want the distribution of steps (cf.\ Fig.~\ref{f.random-walk}) to be wide enough to reach the edge. Set the root variance---a measure of the width of the probability distribution---equal to this number of steps in part~\ref{p.straight-line-steps}, and use equation~(\ref{e.var-binomial}) to find $n_{\mathrm{edge}}$ in terms of $R$ and $\ell$.
+If all the steps were in the same direction, how many steps would be needed to reach the edge, at a a distance $R$ from the center? Assume all steps have the same length $\ell$.
+
+\item
+We want the distribution of steps (cf.\ Fig.~\ref{f.random-walk}) to be wide enough to reach the edge. Set the root variance---a measure of the width of the probability distribution---equal to the number of steps found in part \ref{p.straight-line-steps} and use equation~(\ref{e.var-binomial}),
+	\[
+		\left[\mean{\left(m-\mean{m}\right)^{2}}\right]^{1/2} = 
+			\left[n_{\mathrm{edge}}p(1-p)\right]^{1/2},
+	\]
+	to find $n_{\mathrm{edge}}$ in terms of $R$ and $\ell$.
 
 \item
 What is the \emph{total} distance traveled by the photon after $n_{\mathrm{edge}}$ steps? If the photon traveled at speed $c$, how long did it take? Compare your answer with that for part~\ref{p.tau} of exercise~\ref{ex.radiative-transfer-diffusion}.
