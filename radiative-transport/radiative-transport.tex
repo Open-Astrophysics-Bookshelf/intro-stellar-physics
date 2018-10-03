@@ -320,7 +320,7 @@ Note the ``$-$'': in these coordinates, as $z$ gets larger, $\tau$ gets smaller.
 
 We may rewrite the equation (\ref{e.hydrostatic-equilibrium-g}) of hydrostatic balance as
 \begin{eqnarray}
-	-\rho g = \DD{P}{z} &=& \DD{P}{\tau}\DD{\tau}{z} = -\rho\kappa,\nonumber\\
+	-\rho g = \DD{P}{z} &=& \DD{P}{\tau}\DD{\tau}{z} = -\rho\kappa\DD{P}{\tau},\nonumber\\
 	\DD{P}{\tau} &=& \frac{g}{\kappa}.
 \label{e.P-tau}
 \end{eqnarray}
@@ -439,11 +439,11 @@ The radiative energy is just passing through. Since the flux at $\tau=0$, outsid
 \label{e.Inu-expansion}
 	I(\mu,\tau) = \frac{c}{4\pi} U(\tau) + \frac{3\mu}{4\pi}\sigmaSB\Teff^{4}.
 \end{equation}
-To solve for $U_{\nu}(\tau)$, multiply eq.~(\ref{e.transfer-gray}) by $\mu$ and integrate over all angles and frequencies:
+To solve for $U(\tau)$, multiply eq.~(\ref{e.transfer-gray}) by $\mu$ and integrate over all angles and frequencies:
 \begin{eqnarray}
-	\DD{}{\tau}\int\mu^{2}I\,\dif\Omega\,\dif\nu &=& \int\mu I\,\dif\Omega\,\dif\nu
-		- \int \mu S\,\dif\Omega\,\dif\nu\nonumber\\
-	\frac{c}{4\pi}\DD{}{\tau} \mu^{2}U\,\dif\Omega 
+	\DD{}{\tau}\int\mu^{2}I_{\nu}\,\dif\Omega\,\dif\nu &=& \int\mu I_{\nu}\,\dif\Omega\,\dif\nu
+		- \int \mu S_{\nu}\,\dif\Omega\,\dif\nu\nonumber\\
+	\frac{c}{4\pi}\DD{}{\tau} \int \mu^{2}U\,\dif\Omega 
 		+ \frac{3}{4\pi}\sigmaSB\Teff^{4}\int\mu^{3}\,\dif\Omega &=& F - \int \mu S\,\dif\Omega\nonumber\\
 	\frac{c}{3}\DD{U}{\tau} &=& \sigmaSB\Teff^{4}
 \label{e.ODE-U}
