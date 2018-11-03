@@ -352,3 +352,19 @@ Thus at temperatures slightly greater than that in the solar center, the followi
 The net result of this cycle is the ingestion of 4 protons and release of 1 \helium\ nucleus.
 The reaction $\nitrogen+\pt\to\oxygen[15]$ is by far the slowest step in the cycle; as a result, all of the CNO elements are quickly converted into \nitrogen\ in the stellar core, and this reaction controls the rate of heating. At $T = \val{\sci{2}{7}}{\K}$, $\partial \ln \varepsilon_{\mathrm{CNO}}/\partial\ln T = 18$; in contrast the $\pt+\pt$ reaction has a temperature exponent of only 4.5.
 
+
+\section{The luminosity equation}
+
+Suppose we have a shell of mass $\Delta m = 4\pi r^{2}\rho\Delta r$ lying between surfaces $r$ and $r+\Delta r$ (Fig.~\ref{f.luminosity}). Nuclear reactions in the shell heat it at a rate $\Delta m \times \varepsilon$, where $\varepsilon$ is the heating rate per unit mass.  In addition, heat enters the shell from the bottom at a rate $L(r)$ and leaves from the top at a rate $-L(r+\Delta r)$. If the shell is neither gaining or losing heat, then all these terms must balance:
+\[ 4\pi r^{2}\rho\varepsilon\,\Delta r + L(r) - L(r+\Delta r) = 0. \]
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{luminosity-eqn}
+\caption[Heat balance in a mass shell]{Heat balance in a shell $\Delta m$.}
+\label{f.luminosity}
+\end{marginfigure}
+This equation, taking the limit $\Delta r \to 0$, reduces to our fourth equation of stellar structure,
+\[
+\DD{L}{r} = 4\pi r^{2}\rho\varepsilon.
+\]
+At the center, $L(r)_{r\to0}\to0$, while at the surface $L(r)_{r\to R}\to 4\pi R^{2}\sigmaSB\Teff^{4}$.
+

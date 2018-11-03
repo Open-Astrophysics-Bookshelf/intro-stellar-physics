@@ -1,21 +1,6 @@
 % !TEX root = ../intro-stellar-physics.tex
 
-We now have almost all of the physics necessary to describe the life of a star. 
-The nuclear physics enters in an equation for the luminosity, which we shall derive next. We shall also consider whether the fluid is at rest or whether there is circulation. Finally, we need to discuss departures from the classical ideal gas equation of state; this becomes important for low-mass stars and sets the minimum stellar mass.
-
-\section{The luminosity equation}
-
-Suppose we have a shell of mass $\Delta m = 4\pi r^{2}\rho\Delta r$ lying between surfaces $r$ and $r+\Delta r$ (Fig.~\ref{f.luminosity}). Nuclear reactions in the shell heat it at a rate $\Delta m \times \varepsilon$, where $\varepsilon$ is the heating rate per unit mass.  In addition, heat enters the shell from the bottom at a rate $L(r)$ and leaves from the top at a rate $-L(r+\Delta r)$. If the shell is neither gaining or losing heat, then all these terms must balance:
-\[ 4\pi r^{2}\rho\varepsilon\,\Delta r + L(r) - L(r+\Delta r) = 0. \]
-This reduces to our fourth equation of stellar structure,
-\[
-\DD{L}{r} = 4\pi r^{2}\rho\varepsilon.
-\]
-\begin{marginfigure}
-\includegraphics[width=\linewidth]{luminosity-eqn}
-\caption[Heat balance in a mass shell]{Heat balance in a shell $\Delta m$.}
-\label{f.luminosity}
-\end{marginfigure}
+We now have almost all of the physics necessary to describe the life of a star. We need two additional items: we must consider whether the fluid is at rest or whether there is circulation, and we must discuss departures from the classical ideal gas equation of state. Changes in the equation of state are important for low-mass stars and set the minimum stellar mass.
 
 \section{Convection}\label{s.convection}
 
@@ -29,6 +14,7 @@ This gradient becomes steeper as we increases either the flux $L/4\pi r^{2}$ or 
 You can do a home demonstration of convection.  Brew tea, and pour the hot tea into a saucepan that is on an unlit burner. Use a straw to inject a layer of cold milk under the warm tea in the saucepan. The temperature difference between the tea and milk will inhibit their mixing. Light the burner, and watch for the development of convection---you will know it when you see it (Fig.~\ref{f.tea}).
 
 \begin{figure}[htbp]
+\forceversofloat
 \includegraphics[width=0.5\linewidth]{convection-1}\includegraphics[width=0.5\linewidth]{convection-2}
 \caption[Onset of convection]{Onset of convection in a tea-milk mixture.\label{f.tea}}
 \end{figure}
@@ -56,7 +42,7 @@ We can use Archimedes' law---which is an application of hydrostatic equilibrium-
 \frac{\dif P}{\dif r} = -\rho g.
 \end{equation}
 with a temperature gradient is unstable to convection. Imagine moving a blob of fluid upwards from $r$ to $r+h$.  We move the blob slowly enough that it is in hydrostatic equilibrium with its new surroundings, $P_{b}(r+h) = P(r+h)$, where the subscript $b$ refers to ``blob.'' We do move the blob quickly enough, however, that it doesn't exchange heat with its surroundings and therefore doesn't remain in \emph{thermal} equilibrium with its surroundings. 
-\marginnote{Recall that pressure equilibrium in the blob is established over the time a sound wave takes to cross the blob. Thus, moving the blob slowly enough to maintain pressure equilibrium means that the motion is quite subsonic. Moving the blob quickly enough to prevent heat transport means (cf.\ exercise~\ref{ex.random-walk-diffusion}) that the blob is much larger than a mean free path so the time for photons to random walk across the blob is longer than it takes to lift the blob a distance $h$.}
+\marginnote[-1\baselineskip]{Recall that pressure equilibrium in the blob is established over the time a sound wave takes to cross the blob. Thus, moving the blob slowly enough to maintain pressure equilibrium means that the motion is quite subsonic. Moving the blob quickly enough to prevent heat transport means (cf.\ exercise~\ref{ex.random-walk-diffusion}) that the blob is much larger than a mean free path so the time for photons to random walk across the blob is longer than it takes to lift the blob a distance $h$.}
 
 As a result of this lack of heat exchange, the upward motion of the blob is \newterm{adiabatic}.  To understand what this means, recall the first law of thermodynamics, which relates the change in internal energy $\dif U$ and in volume $\dif V$ to the heat transferred $\dif Q = T\,\dif S$:
 \begin{equation}\label{e.first-law-thermo}
