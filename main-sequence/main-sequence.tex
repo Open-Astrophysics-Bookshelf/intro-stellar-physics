@@ -1,6 +1,6 @@
 % !TEX root = ../intro-stellar-physics.tex
 
-We now have almost all of the physics necessary to describe the life of a star. We need two additional items: we must consider whether the fluid is at rest or whether there is circulation, and we must discuss departures from the classical ideal gas equation of state. Changes in the equation of state are important for low-mass stars and set the minimum stellar mass.
+We now have almost all of the physics necessary to describe the structure of a star. We only need two additional items: we must consider whether the fluid is at rest or whether there is circulation, and we must discuss how the equation of state deviates from that of a classical ideal gas at high densities. These changes in the equation of state are important for low-mass stars and set the minimum stellar mass.
 
 \section{Convection}\label{s.convection}
 
@@ -9,7 +9,7 @@ We've established that in the interior of the star a temperature gradient,
 	\DD{T}{r} = -\frac{3\rho\kappa_{R}}{4acT^3}\frac{L(r)}{4\pi r^2},
 \]
 arises to transport heat outward (cf.\ eq.~[\ref{e.gradient-temperature}]).
-This gradient becomes steeper as we increases either the flux $L/4\pi r^{2}$ or the mean opacity $\kappa_{\mathrm{R}}$. There is a limit, however, to the magnitude of $|\dif T/\dif r|$; if the gradient is too steep, the warm fluid becomes buoyant relative to the cooler fluid above it and begins to rise. You are familiar with this phenomenon: picture a hot summer day. As the ground absorbs sunlight, it warms the air just above the ground. The warm air rises and forms updrafts. You have perhaps seen hawks circling as they are carried aloft by these updrafts. This circulation of fluid induced by a temperature gradient is known as \newterm{convection}. 
+This gradient becomes steeper as we increases either the flux $L/4\pi r^{2}$ or the mean opacity $\kappa_{\mathrm{R}}$. There is a limit, however, to the magnitude of $|\dif T/\dif r|$: if the gradient is too steep, the warm fluid becomes buoyant relative to the cooler fluid above it and begins to rise. You are familiar with this phenomenon: picture a hot summer day. As the ground absorbs sunlight, it warms the air just above the ground. The warm air rises and forms updrafts. You have perhaps seen hawks circling as they are carried aloft by these updrafts. This circulation of fluid induced by a temperature gradient is known as \newterm{convection}. 
 
 You can do a home demonstration of convection.  Brew tea, and pour the hot tea into a saucepan that is on an unlit burner. Use a straw to inject a layer of cold milk under the warm tea in the saucepan. The temperature difference between the tea and milk will inhibit their mixing. Light the burner, and watch for the development of convection---you will know it when you see it (Fig.~\ref{f.tea}).
 
@@ -19,7 +19,7 @@ You can do a home demonstration of convection.  Brew tea, and pour the hot tea i
 \caption[Onset of convection]{Onset of convection in a tea-milk mixture.\label{f.tea}}
 \end{figure}
 
-Convection can also occur in stars, in regions of high flux and/or high opacity. During convection, the fluid velocities in question are typically quite subsonic, so we have hydrostatic equilibrium to excellent approximation. But the fluid motions make an enormous difference for heat transport! Warm fluid is carried upward and cool fluid sinks. The net result is that heat is transported upward much faster than it would have been if only diffusion had been operating. This upward transport of heat modifies the temperature gradient. In this chapter, we shall derive the condition for the onset of convection, and the value of the temperature gradient in the presence of subsonic, efficient convection.
+Convection can also occur in stars, in regions of high flux and/or high opacity. During convection, the fluid velocities in question are typically quite subsonic, so hydrostatic equilibrium abides. But the fluid motions do make an enormous difference to heat transport! Warm fluid is carried upward and cool fluid sinks. The net result is that heat is transported upward much faster than it would have been if only diffusion had been operating. This upward transport of heat modifies the temperature gradient. In this chapter, we shall derive the condition for the onset of convection, and the value of the temperature gradient in the presence of subsonic, efficient convection.
 
 \subsection{The onset of convection}\label{s.convection-onset}
 
@@ -27,28 +27,28 @@ To understand when convection starts, it helps to recall why a parcel of warm ai
 \begin{quote}\itshape
 The buoyant force on an object, either wholly or partially immersed in a fluid under a constant gravitational acceleration, equals the weight of the fluid it displaces.
 \end{quote}
-What does this mean? A boat of mass $m$ displaces (pushes aside) a volume of water $v$ when floating. The weight of this displaced water, $\rho_{\mathrm{w}}v g$, must equal the weight of the boat $mg$, so that $v = m/\rho_{\mathrm{w}}$.
+What does this mean? A boat of mass $m$ displaces (pushes aside) a volume $v$ of water (density $\rho_{\mathrm{w}}$ when floating. The weight of this displaced water, $\rho_{\mathrm{w}}v g$, must equal the weight of the boat $mg$, so that $v = m/\rho_{\mathrm{w}}$.
 
 \begin{exercisebox}[A boat with a weight]
 Suppose we have a toy boat carrying a weight and floating in a tank as shown in the top panel of Fig.~\ref{f.archimedes}. The depth of the water in the tank is $d$. The weight is then removed from the boat and allowed to sink to the bottom of the tank (bottom panel, Fig.~\ref{f.archimedes}). Does the depth of water in the tank increase, decrease, or stay the same? Explain your reasoning.
 \end{exercisebox}
-\begin{marginfigure}
+\begin{marginfigure}[-6\baselineskip]
 \includegraphics[width=\linewidth]{archimedes}
 \caption[A boat with a weight]{\label{f.archimedes} A boat with a weight in a tank.}
 \end{marginfigure}
 
-We can use Archimedes' law---which is an application of hydrostatic equilibrium---to determine whether a fluid in planar geometry and hydrostatic equilibrium,
+We can use Archimedes' law---which is just an application of hydrostatic equilibrium---to determine whether a fluid in planar geometry and hydrostatic equilibrium,
 \begin{equation}
-\frac{\dif P}{\dif r} = -\rho g.
+\frac{\dif P}{\dif r} = -\rho g,
 \end{equation}
-with a temperature gradient is unstable to convection. Imagine moving a blob of fluid upwards from $r$ to $r+h$.  We move the blob slowly enough that it is in hydrostatic equilibrium with its new surroundings, $P_{b}(r+h) = P(r+h)$, where the subscript $b$ refers to ``blob.'' We do move the blob quickly enough, however, that it doesn't exchange heat with its surroundings and therefore doesn't remain in \emph{thermal} equilibrium with its surroundings. 
-\marginnote[-1\baselineskip]{Recall that pressure equilibrium in the blob is established over the time a sound wave takes to cross the blob. Thus, moving the blob slowly enough to maintain pressure equilibrium means that the motion is quite subsonic. Moving the blob quickly enough to prevent heat transport means (cf.\ exercise~\ref{ex.random-walk-diffusion}) that the blob is much larger than a mean free path so the time for photons to random walk across the blob is longer than it takes to lift the blob a distance $h$.}
+and with a temperature gradient is unstable to convection. Imagine moving a blob of fluid upwards from $r$ to $r+h$.  We raise the blob slowly enough that it is in hydrostatic equilibrium with its new surroundings,\sidenote{We'll use the subscript $b$ to denote properties of the blob; quantities without a subscript refer to the background fluid.} $P_{b}(r+h) = P(r+h)$. We do move the blob quickly enough, however, that it doesn't exchange heat with its surroundings and therefore doesn't remain in \emph{thermal} equilibrium with its new environment. 
+\marginnote{Recall that pressure equilibrium in the blob is established over the time a sound wave takes to cross the blob. Thus, moving the blob slowly enough to maintain pressure equilibrium means that the motion is quite subsonic. Moving the blob quickly enough to prevent heat transport means (cf.\ exercise~\ref{ex.random-walk-diffusion}) that the blob is much larger than a mean free path so the time for photons to random walk across the blob is longer than time taken to raise the blob.}
 
 As a result of this lack of heat exchange, the upward motion of the blob is \newterm{adiabatic}.  To understand what this means, recall the first law of thermodynamics, which relates the change in internal energy $\dif U$ and in volume $\dif V$ to the heat transferred $\dif Q = T\,\dif S$:
 \begin{equation}\label{e.first-law-thermo}
 	\dif Q = T\,\dif S = \dif U + P\,\dif V,
 \end{equation}
-where $P$ is the pressure and $S$ is the entropy. During an adiabatic process, $\dif Q = T\,\dif S = 0$. The entropy of the blob\sidenote{We'll use the subscript $b$ to denote properties of the blob; quantities without a subscript refer to the background fluid.} is therefore constant, 
+where $P$ is the pressure, $T$ the temperature, and $S$ the entropy. During an adiabatic process, $\dif Q = T\,\dif S = 0$. The entropy of the blob is therefore constant, 
 $S_{b}(r+h) = S_{b}(r) = S(r)$, and is therefore not equal, in general, to the entropy of the surrounding gas at $r+h$: $S_{b}(r+h)  \neq S(r+h)$. The pressure in the blob, however, is the same as in the surrounding gas: $P_{b}(r+h) = P(r+h)$.
 
 As in our discussion of the equation of state (cf.\ eq.~[\ref{e.ideal-gas-eos}]), it isn't really convenient to write things in terms of volume. To put eq.~(\ref{e.first-law-thermo}) into a more convenient form, divide both sides by the mass of the blob $m_{b}$:
@@ -65,7 +65,7 @@ After the blob has moved from $r$ to $r+h$, it has expanded so that its density 
 	\rho_{b}(r+h) = \rho[P_{b}(r+h),s_{b}(r+h)] = \rho[P(r+h),s(r)].
 \]
 Here we've written the density as a function of pressure and entropy: $\rho(P,s)$. Now we can apply Archimedes' law: if the density of the blob is greater than that of the surrounding fluid, then the buoyant force will be less than the weight of the blob; as a consequence, the blob will sink back to its original location. The fluid is thus stable. In contrast, if the density of the blob is less than that of the surrounding fluid, then the buoyant force is greater than the weight of the blob; a result, the fluid is unstable, as a small perturbation leads to the acceleration of the blob upwards. Figure~\ref{f.convective-schematic} has a schematic of this criterion.
-\begin{marginfigure}
+\begin{marginfigure}[-6\baselineskip]
 \includegraphics[width=\textwidth]{convective}
 \caption[Illustration of criteria for convective instability]{\label{f.convective-schematic}Illustration of criteria for convective instability.  On the left, raising a blob a distance $h$ adiabatically and in pressure balance with its surrounding results in a higher density $V_{b} < V$, or $\rho_{b} > \rho$.  This is stable: the blob will sink back.  On the right, the blob is less dense and hence buoyant: it will continue to rise.}
 \end{marginfigure}
@@ -157,7 +157,7 @@ Integrating both sides of the equation gives
 \begin{equation}\label{e.adiabat}
  T = T_{0}\left(\frac{P}{P_{0}}\right)^{(\gamma-1)/\gamma},
 \end{equation}
-where $T_{0}$ and $P_{0}$ are the temperature and pressure at the beginning of the adiabatic process. Equation~(\ref{e.adiabat}) tells us how the temperature changes with pressure along an adiabat for an ideal gas. We used a similar relation in determining the sounds speed (Box~\ref{b.sound-speed}). Using the ideal gas equation of state~(\ref{e.eos}) we can convert this into a relation between temperature and density or between density and pressure along an adiabat.
+where $T_{0}$ and $P_{0}$ are the temperature and pressure at the beginning of the adiabatic process. Equation~(\ref{e.adiabat}) tells us how the temperature changes with pressure along an adiabat for an ideal gas\sidenote{We used a similar relation in determining the sound speed (Box~\ref{b.sound-speed}).}. Using the ideal gas equation of state we can convert eq.~(\ref{e.adiabat}) into a relation between temperature and density or between density and pressure along an adiabat.
 
 \begin{exercisebox}[Adiabatic relations]
 Use equations~(\ref{e.adiabat}) and (\ref{e.eos}) to derive a relation between temperature and density, and a relation between density and pressure, along an adiabat.
@@ -176,10 +176,10 @@ When convection is absent, the temperature gradient in the star is (eq.~[\ref{e.
 \[
     \DD{T}{r} = -\frac{3\rho\kappa}{4acT^3}\frac{L(r)}{4\pi r^2}.
 \]
-Here $\kappa$ is the opacity and $L(r)$ is the luminosity at radius $r$: $L/4\pi r^2$ is the flux. If this thermal gradient, $|\dif T/\dif r|$, becomes too large, however, the fluid becomes unstable: warm fluid begins to rise while cold fluid sinks to take its places. Over a wide range of stellar conditions this mixing is efficient and drives the region to $\dif s/\dif r = 0$.
+Here $\kappa$ is the opacity and $L(r)$ is the luminosity at radius $r$: $L/4\pi r^2$ is the flux. If this thermal gradient, $|\dif T/\dif r|$, becomes too large, however, the fluid becomes unstable: warm fluid begins to rise while cold fluid sinks. Over a wide range of stellar conditions this mixing drives the entropy gradient in the convectively unstable region to $\dif s/\dif r = 0$. The sun has a convective region just below its photosphere, Fig.~\ref{f.solar-convection}.
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{convection_hinode}
-\caption[Solar convection cells]{\label{f.solar-convection]} Solar convection cells, imaged with the Hinode Solar Optical Telescope. Image credit: Hinode JAXA/NASA/PPARC.}
+\caption[Solar convection cells]{\label{f.solar-convection} Solar convection cells, imaged with the Hinode Solar Optical Telescope. Image credit: Hinode JAXA/NASA/PPARC.}
 \end{marginfigure}
 
 We can recast Equation~(\ref{e.differential-adiabat}) as
@@ -211,20 +211,18 @@ and the pressure,
 \begin{equation}\label{e.pressure}
 \DD{P}{r} = -\rho\frac{Gm}{r^{2}}.
 \end{equation}
-To these we add the equation for the temperature,
-\begin{equation}\label{e.temperature-radiative}
-\DD{T}{r} = - \frac{L}{4\pi r^{2}}\frac{3\rho\kappa}{4ac T^{3}},
-\end{equation}
-which holds in radiative regions. When $|\dif T/\dif P|$ becomes larger than the adiabatic value, however, convection sets in. In low-mass stars, the convection is able to limit the temperature gradient to its adiabatic value even for quite subsonic fluid velocities:
-\begin{equation}
+To these we add the equations for the temperature,
+\begin{eqnarray}\label{e.temperature-radiative}
+\DD{T}{r} &=& - \frac{L}{4\pi r^{2}}\frac{3\rho\kappa}{4ac T^{3}}\quad\textrm{where radiative; and}\\
 \label{e.temperature-convective}
-\DD{T}{r} = \frac{T}{P}\tderiv{\ln T}{\ln P}{S}\DD{P}{r}\quad\textrm{where convective}.
-\end{equation}
+\DD{T}{r} &=& \frac{T}{P}\tderiv{\ln T}{\ln P}{S}\DD{P}{r}\quad\textrm{where convective}.
+\end{eqnarray}
 We finally add the equation for the luminosity,
 \begin{equation}
 \label{e.luminosity}
 \DD{L}{r} = 4\pi r^{2}\rho\varepsilon.
 \end{equation}
+Equations (\ref{e.mass})--(\ref{e.luminosity}), or equivalently (\ref{e.lagrange-r})--(\ref{e.lagrange-L}), are supplemented by an equation of state $P = P(\rho,T,\{X\})$, opacity $\kappa = \kappa(\rho,T,\{X\})$, and heating rate $\varepsilon=\varepsilon(\rho,T,\{X\})$. Here $\{X\}$ refers to the abundances of the various isotopes. Note that we've omitted equations for the change in composition ($\dif X/\dif t$) due to nuclear burning. We've also omitted terms containing $\dif r/\dif t$, which describe expansion or contraction, from these equations.
 
 \begin{sidebar}[The equations of stellar structure in Lagrangian form]
 \label{sb.lagrangian-equations}
@@ -242,8 +240,6 @@ makes a useful coordinate. Using the enclosed mass as a coordinate is called a \
 \end{eqnarray}
 \end{sidebar}
 
-Equations (\ref{e.mass})--(\ref{e.luminosity}), or equivalently (\ref{e.lagrange-r})--(\ref{e.lagrange-L}), are supplemented by an equation of state $P = P(\rho,T)$ and opacity $\kappa = \kappa(\rho,T)$. Note that we've omitted equations for the change in composition ($\dif X/\dif t$) due to nuclear burning. We've also omitted terms containing $\dif r/\dif t$, which describe expansion or contraction, from these equations.
-
 \section{Contraction to the main sequence}
 \label{s.contraction-to-main-sequence}
 
@@ -255,7 +251,16 @@ Stars are formed when clouds of gas and dust fall out of pressure balance and be
 
 As the nebula thins out, the star continues to contract slowly on a Kelvin-Helmholtz timescale, eq.~(\ref{e.kelvin-helmholtz}), as the core is still too cool for nuclear reactions to power the luminosity from the surface (remember, the luminosity is set by the mass of the star and its opacity). As the central temperature rises, the nuclear reaction rate increases rapidly until the heat released by reactions balances that emitted from the surface. At that point the star is on the \newterm{zero-age main sequence} (ZAMS). Of course, not all collapsing stellar-like objects reach the ZAMS---objects that are too low in mass will not ignite hydrogen fusion, while objects that are too high in mass tend to be unstable and eject mass. We'll explore these limits in the next few sections.
 
-\begin{margintable}
+\begin{exercisebox}[Central temperature and density during contraction]
+\label{ex.contraction-to-main-sequence}
+This exercise revisits problem~\ref{ex.contraction-constant-density-protostar}. In that exercise you modeled how the density and temperature changed as a pre-main-sequence star contracted. Table~\ref{t.stellar-rhoT} gives central densities and temperatures of stars at the onset of hydrogen fusion (known as the \newterm{zero-age main sequence}). These temperatures and densities are plotted below and labeled by stellar mass. Assume an ideal-gas equation of state and use the virial relations for the temperature and central density to plot the tracks in this plane each star followed during its contraction.
+\begin{center}
+\includegraphics[width=0.8\linewidth]{rho-T-grid}
+\end{center}
+You will use this plot for exercises \ref{ex.minimum-stellar-mass} and \ref{ex.maximum-stellar-mass} as well.
+\end{exercisebox}
+
+\begin{margintable}[-16\baselineskip]
 \caption[Central densities and temperatures of zero-age main-sequence stars]{\label{t.stellar-rhoT}Selected central densities and temperatures of zero-age main-sequence stars, computed with the \mesa\ stellar evolution code \citep{Paxton2010Modules-for-Exp}.}
 \begin{tabular}{rrr}
 $M/\Msun$ & $\log(\rho_{c}/\kilo\gram\,\meter^{-3})$ & $\log(T_{c}/K)$\\
@@ -270,19 +275,10 @@ $M/\Msun$ & $\log(\rho_{c}/\kilo\gram\,\meter^{-3})$ & $\log(T_{c}/K)$\\
 \end{tabular}
 \end{margintable}
 
-\begin{exercisebox}[Central temperature and density during contraction]
-\label{ex.contraction-to-main-sequence}
-This exercise revisits problem~\ref{ex.contraction-constant-density-protostar}. In that exercise you modeled how the density and temperature changed as a pre-main-sequence star contracted. Table~\ref{t.stellar-rhoT} gives central densities and temperatures of stars at the onset of hydrogen fusion (known as the \newterm{zero-age main sequence}). These temperatures and densities are plotted below and labeled by stellar mass. Assume an ideal-gas equation of state and use the virial relations for the temperature and central density to plot the tracks in this plane each star followed during its contraction.
-\begin{center}
-\includegraphics[width=0.8\linewidth]{rho-T-grid}
-\end{center}
-You will use this plot for exercises \ref{ex.minimum-stellar-mass} and \ref{ex.maximum-stellar-mass} as well.
-\end{exercisebox}
-
 \subsection{Degeneracy}
 \label{s.degeneracy}
 
-As a star contracts, the particles within it are packed ever closer together.  As we saw from our discussion of ionization, the behavior of particles must change when the separation between particles is of the order of the uncertainty in their positions.  Equivalently, our classical description breaks down when the particle density exceeds roughly
+As a star contracts, the particles within it are packed ever closer together.  As we saw from our discussion of ionization, quantum mechanics enters the description of particle behavior when the separation between particles is of the order of the uncertainty in their positions.  Said differently, our classical description breaks down when the particle density exceeds roughly
 \begin{equation}\label{e.heuristic-quantum-density}
     \frac{1\;\textrm{particle}}{(\Delta x)^3} 
     = \left(\frac{\Delta p}{h}\right)^3 
@@ -370,7 +366,7 @@ We cannot have 2 identical particles with the same momentum, position, and spin 
 Particles with integer spin (i.e., their angular momentum is an integer multiple of $\hbar$) have wavefunctions that do not change sign under exchange; these particles are said to obey \newterm{Bose-Einstein statistics} and are called \newterm{bosons}.  Particles with half-integer spin have wavefunctions that do change sign under exchange; these particles are said to obey \newterm{Fermi-Dirac statistics} and are called \newterm{fermions}.  Photons are bosons; electrons, protons, neutrons, and neutrinos are fermions.
 \end{sidebar}
 
-\newthought{To account for Fermi-Dirac statistics within the equation of state,} we begin by imagining a small volume containing $N$ electrons. Motivated by eq.~(\ref{e.heuristic-quantum-density}), we divide the phase space into cells,
+\newthought{To account for Fermi-Dirac statistics within the equation of state,} we imagine a small volume containing $N$ electrons. Motivated by eq.~(\ref{e.heuristic-quantum-density}), we divide the phase space into cells,
 \[
 	\frac{\dif^{3}x\,\dif^{3}p}{h^{3}},
 \]
@@ -411,7 +407,7 @@ For a non-relativistic gas the pressure is $P = (2/3)(E/V)$.  Hence the pressure
 \end{equation}
 Notice that the pressure is independent of the temperature.
 
-The electrons, being more than 1000 times lighter than the nuclei, become degenerate first. Suppose our composition consists of species with charge $Z_{i}$ and mass number $A_{i}$. Then the number of electrons per unit volume\marginnote{assuming complete ionizaton} is
+Electrons, being more than 1000 times lighter than nuclei, become degenerate first. Suppose our composition consists of species with charge $Z_{i}$ and mass number $A_{i}$. Then the number of electrons per unit volume\sidenote{assuming complete ionization} is
 \[
 	n_{e} = \sum_{i} n_{i} Z_{i} = \frac{\rho}{\mb}\sum_{i} X_{i}\frac{Z_{i}}{A_{i}}.
 \]
@@ -428,7 +424,7 @@ Use equation~(\ref{e.electron-mean-weight}) in eq.~(\ref{e.pressure-electrons}) 
 
 As you found in exercise~\ref{ex.degenerate-mass-radius}, when the star becomes degenerate, there is a unique radius for a given mass and composition. This is in contrast to the non-degenerate case, for which a star of a given mass can have a wide range of possible radii depending on the internal temperature.
 
-Let's apply this to a contracting pre-main-sequence star. Initially, the star is at low density and the equation of state is that of an ideal non-degenerate gas. According to the virial theorem, as the radius decreases, both the central temperature and density increase. 
+Consider a contracting pre-main-sequence star. Initially, the star has a low density and the equation of state is that of an ideal non-degenerate gas. According to the virial theorem, as the radius decreases, both the central temperature and density increase. 
 The radius decreases because the star is radiating away energy, and a star with an ideal, non-degenerate equation of state has a total energy that depends on its radius.
 
 At some density, the equation of state will become degenerate. At this point, contraction comes to a halt. The star continues to radiate energy, but instead of contracting, the star simply cools while remaining at constant radius. If the contracting pre-main-sequence star is to become a main-sequence star, then, it must reach temperatures sufficient for hydrogen fusion to occur \emph{before} becoming degenerate.
@@ -439,7 +435,7 @@ The equation of state becomes degenerate roughly where $\kB T=\EF$, with $\EF$ b
 Given that contraction halts when the equation of state becomes degenerate, what does this plot imply for the minimum mass required to initiate hydrogen fusion?
 \end{exercisebox}
 
-\newthought{As shown in exercise \ref{ex.minimum-stellar-mass}, there is a minimum mass needed to initiate hydrogen fusion.} Contracting star-like objects of lower mass are known as \newterm{brown dwarfs}. Although dim, they are observable, and are classified as types ``L'', ``T'' or ``Y''\cite{Kirkpatrick1999Dwarfs-Cooler-t,Cushing2011The-Discovery-o}.
+\newthought{As shown in exercise \ref{ex.minimum-stellar-mass}, there is a minimum mass needed to initiate hydrogen fusion.} Contracting star-like objects of lower mass are known as \newterm{brown dwarfs}. Although dim, they are observable with spectral types ``L'', ``T'' or ``Y''\cite{Kirkpatrick1999Dwarfs-Cooler-t,Cushing2011The-Discovery-o}.
 
 \begin{exercisebox}[Planetary masses and radii]
 \label{ex.planetary-M-and-R}
@@ -459,7 +455,7 @@ What is the value of this density? Is it plausible?
 \label{s.radiation-pressure}
 
 Radiation in thermal equilibrium exerts a pressure (eq.~\ref{e.radiation-pressure}): $\Prad = aT^{4}/3$. Because of this strong dependence on temperature, radiation pressure becomes an increasingly large fraction of the total pressure for massive stars. Stars that are radiation-pressure dominated tend to be unstable: they have strong winds and violent fits of mass ejection (see the image of Eta Carinae, Fig.~\ref{f.eta-carinae}). As a result, they lose copious amounts of mass while on the main sequence. This effectively sets a rough upper limit on the mass of a star.
-\begin{marginfigure}
+\begin{marginfigure}[-8\baselineskip]
 \includegraphics[width=\linewidth]{etacarinae_hubble_900}
 \caption[Image of the massive star Eta Carinae]{\label{f.eta-carinae} Image of the massive star Eta Carinae. Credit: J. Morse (Arizona State U.), K. Davidson (U. Minnesota) et al., WFPC2, HST, NASA.}
 \end{marginfigure}
