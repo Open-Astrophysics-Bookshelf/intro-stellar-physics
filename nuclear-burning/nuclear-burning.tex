@@ -246,7 +246,6 @@ Defining a variable $\Delta = 4(\Epk \kB T/3)^{1/2}$, our integral becomes
 &&\times 
   \exp\left[-3\left(\frac{\EG}{4\kB T}\right)^{1/3}\right]\int_{0}^{\infty}\!\exp\left[-\frac{(E-\Epk)^{2}}{(\Delta/2)^{2}}\right]\,\dif E.
 \end{eqnarray}
-%How well does this approximation do?  Figure~\ref{f.integrand} shows the integrand (\emph{solid line}) and the approximation by a Gaussian (\emph{dashed line}).  Although the integrand is skewed to the right, the area is approximately the same.
 Another simplification can be made because both the Gaussian and the original integrand go to zero as $E\to 0$.  As a result, we can extend the lower bound of our integral (eq.~[\ref{e.integral2}]) to $-\infty$, which allows us to evaluate the integral analytically and obtain
 \begin{eqnarray}\label{e.rate2}
 \langle\sigma v\rangle &\approx& \left(\frac{8}{m}\right)^{1/2}\left(\frac{1}{\kB T}\right)^{3/2} S(\Epk) \exp\left[-3\left(\frac{\EG}{4\kB T}\right)^{1/3}\right] \frac{\Delta}{2}\nonumber\\
@@ -254,22 +253,16 @@ Another simplification can be made because both the Gaussian and the original in
 \end{eqnarray}
 \end{sidebar}
 
-%\begin{marginfigure}
-%\includegraphics[width=\linewidth]{coulomb_integrand}
-%\caption[Terms in integrand for calculating Coulomb barrier]{Integrand of eq.~(\protect\ref{e.integral}) (\emph{solid line}) and the Gaussian (\emph{dot-dashed line}) constructed by expanding to second order the argument of the exponential. The parameters for $\EG$ were taken from the $p+p$ reactions ($Z_{1}Z_{2}=1$, $A = 1/2$), and the temperature is $\val{10^{7}}{\K}$.  Note that the grey curves, showing the two terms of the exponential, have been rescaled to fit on the same plot.}
-%\label{f.integrand}
-%\end{marginfigure}
-
 Using this approximation the rate can be evaluated, with $\langle\sigma v\rangle$ being given by eq.~(\ref{e.rate2}). The rate has the temperature dependence
 \[
 	r \propto T^{-2/3} \exp\left[-3\left(\frac{\EG}{4\kB T}\right)^{1/3}\right];
 \]
-since $\EG \propto Z_{1}^{2}Z_{2}^{2}A$, at any given temperature lighter nuclei have much faster reaction rates. Also note that at stellar energies, reaction rates are incredibly sensitive to temperature. To quantify this, approximate the rate at a given temperature as a power-law, $r(T)\propto T^{n}$. Then the exponent is
+since $\EG \propto Z_{1}^{2}Z_{2}^{2}A$, at any given temperature lighter nuclei typically have much faster reaction rates. Also note that at stellar energies, reaction rates are incredibly sensitive to temperature. To quantify this, approximate the rate at a given temperature as a power-law, $r(T)\propto T^{n}$. Then the exponent is
 \begin{equation}\label{e.exponent}
  n(T) = \dd{\ln r}{\ln T} = -\frac{2}{3} + \left(\frac{\EG}{4\kB T}\right)^{1/3},
 \end{equation}
-as you can verify for yourself (Exercise~\ref{ex.power-law}). On to some numbers. Table~\ref{t.reaction} lists quantities for some common reactions. 
-In the table, the exponent $n(T)$ is evaluated at $T = \val{10^{7}}{\K}$ ($\kB T = \val{0.86}{\keV}$). Note the large value of $n(T)$ at stellar temperatures---this is a consequence of the largeness of $\EG/\kB T$.
+as you can verify for yourself (Exercise~\ref{ex.power-law}). Table~\ref{t.reaction} lists $\EG$, $\Epk$, and $n$ for some common reactions. 
+In the table, the peak reaction energy $\Epk$ and exponent $n(T)$ are evaluated at $T = \val{10^{7}}{\K}$ ($\kB T = \val{0.86}{\keV}$). Note the large value of $n(T)$ at stellar temperatures---this is a consequence of the largeness of $\EG/\kB T$.
  
 \begin{table}[hb]
 \caption{\label{t.reaction} Parameters for non-resonant reactions}
