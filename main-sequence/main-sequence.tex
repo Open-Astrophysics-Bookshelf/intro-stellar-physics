@@ -89,14 +89,13 @@ Here the notation $(\partial \rho/\partial s)_{P}$ means taking the derivative o
 We've dropped $h$ from the left-hand side since it is positive.
 We can put eq.~(\ref{e.convective-stability}) into a more useful form by changing variables from entropy $\rho$ to temperature $T$ via
 \[
-\tderiv{\rho}{T}{P} = \tderiv{\rho}{s}{P}\tderiv{s}{T}{P}.
+\tderiv{\rho}{T}{P} = \tderiv{\rho}{s}{P}\tderiv{s}{T}{P} = \tderiv{\rho}{s}{P}\frac{C_{P}}{T},
 \]
-Inserting this into eq.~(\ref{e.convective-stability}) gives
+where we used the specific heat at constant pressure, $C_{P}\equiv T(\dif s/\dif T)_{P}$.
+Inserting this expression into eq.~(\ref{e.convective-stability}) gives
 \[
  \frac{T}{C_{P}}\tderiv{\rho}{T}{P}\frac{\dif s}{\dif r} < 0,
 \]
-since the specific heat at constant pressure is $C_{P}\equiv T(\dif s/\dif T)_{P}$. 
-
 Now, $(\partial \rho/\partial T)_{P}$ is negative (gas expands on being heated), while $C_{P}$ is positive; hence eq.~(\ref{e.convective-stability}) will be satisfied wherever
 \begin{equation}\label{e.entropy-condition}
 \frac{\dif s}{\dif r} > 0.
@@ -108,7 +107,8 @@ If this condition is not satisfied, if $\dif s/\dif r < 0$, then convection occu
 
 \subsection{The adiabatic thermal gradient}\label{s.adiabatic-gradient}
 
-Let's return to the first law expressed in terms of mass-specific quantities (eq.~[\ref{e.specific-first-law-thermo}]):
+Condition (\ref{e.entropy-condition}) for convective stability is not directly useful, since our equations of stellar structure do not directly involve the entropy. We'd instead like to have the criterion for the onset of convection be expressed in terms of pressure and temperature, since those quantities appear in our stellar structure equations. To obtain such an equation, 
+let's return to the first law expressed in terms of mass-specific quantities (eq.~[\ref{e.specific-first-law-thermo}]):
 \[
 	\dif q = T\,\dif s = \dif u -\frac{P}{\rho^{2}}\,\dif \rho.
 \]
@@ -455,7 +455,7 @@ What is the value of this density? Is it plausible?
 \label{s.radiation-pressure}
 
 Radiation in thermal equilibrium exerts a pressure (eq.~\ref{e.radiation-pressure}): $\Prad = aT^{4}/3$. Because of this strong dependence on temperature, radiation pressure becomes an increasingly large fraction of the total pressure for massive stars. Stars that are radiation-pressure dominated tend to be unstable: they have strong winds and violent fits of mass ejection (see the image of Eta Carinae, Fig.~\ref{f.eta-carinae}). As a result, they lose copious amounts of mass while on the main sequence. This effectively sets a rough upper limit on the mass of a star.
-\begin{marginfigure}[-8\baselineskip]
+\begin{marginfigure}[-12\baselineskip]
 \includegraphics[width=\linewidth]{etacarinae_hubble_900}
 \caption[Image of the massive star Eta Carinae]{\label{f.eta-carinae} Image of the massive star Eta Carinae. Credit: J. Morse (Arizona State U.), K. Davidson (U. Minnesota) et al., WFPC2, HST, NASA.}
 \end{marginfigure}
