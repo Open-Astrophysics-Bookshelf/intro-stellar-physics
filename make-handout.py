@@ -1,10 +1,6 @@
 """
 Generates a file <chapter>-handout.tex that can then be processed to make a 
-handout. Adjust the string `frontmatter` to make the fonts to your liking.  In 
-particular, if you don't want to use the stix, raleway, etc. fonts, change
-    \documentclass[profonts,stix,handout]{astro-bookshelf}
-to
-    \documentclass[handout]{astro-bookshelf}
+handout. Adjust the string `frontmatter` to make the fonts to your liking.
 """
 
 import argparse
@@ -13,7 +9,7 @@ parser = argparse.ArgumentParser(description="writes out handout for a specified
 parser.add_argument('chapter_name',type=str,default=None,help="file name for chapter.") 
 
 frontmatter=r'''% !TEX TS-program = xelatex
-\documentclass[profonts,stix,handout]{astro-bookshelf}
+\documentclass[handout]{astro-bookshelf}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=black,urlcolor=blue}
 
 \usepackage{aasjournals}
