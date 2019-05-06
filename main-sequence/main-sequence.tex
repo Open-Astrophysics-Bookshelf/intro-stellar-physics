@@ -27,7 +27,7 @@ To understand when convection starts, it helps to recall why a parcel of warm ai
 \begin{quote}\itshape
 The buoyant force on an object, either wholly or partially immersed in a fluid under a constant gravitational acceleration, equals the weight of the fluid it displaces.
 \end{quote}
-What does this mean? A boat of mass $m$ displaces (pushes aside) a volume $v$ of water (density $\rho_{\mathrm{w}}$ when floating. The weight of this displaced water, $\rho_{\mathrm{w}}v g$, must equal the weight of the boat $mg$, so that $v = m/\rho_{\mathrm{w}}$.
+What does this mean? When floating (buoyant force equals weight), a boat of mass $m$ displaces (pushes aside) a volume $v$ of water of density $\rho_{\mathrm{w}}$. The weight of this displaced water, $\rho_{\mathrm{w}}v g$, must equal the weight of the boat $mg$, so that $v = m/\rho_{\mathrm{w}}$.
 
 \begin{exercisebox}[A boat with a weight]
 Suppose we have a toy boat carrying a weight and floating in a tank as shown in the top panel of Fig.~\ref{f.archimedes}. The depth of the water in the tank is $d$. The weight is then removed from the boat and allowed to sink to the bottom of the tank (bottom panel, Fig.~\ref{f.archimedes}). Does the depth of water in the tank increase, decrease, or stay the same? Explain your reasoning.
@@ -64,7 +64,7 @@ After the blob has moved from $r$ to $r+h$, it has expanded so that its density 
 \[
 	\rho_{b}(r+h) = \rho[P_{b}(r+h),s_{b}(r+h)] = \rho[P(r+h),s(r)].
 \]
-Here we've written the density as a function of pressure and entropy: $\rho(P,s)$. Now we can apply Archimedes' law: if the density of the blob is greater than that of the surrounding fluid, then the buoyant force will be less than the weight of the blob; as a consequence, the blob will sink back to its original location. The fluid is thus stable. In contrast, if the density of the blob is less than that of the surrounding fluid, then the buoyant force is greater than the weight of the blob; a result, the fluid is unstable, as a small perturbation leads to the acceleration of the blob upwards. Figure~\ref{f.convective-schematic} has a schematic of this criterion.
+Here we've written the density as a function of pressure and entropy: $\rho(P,s)$. Now we can apply Archimedes' law: if the density of the blob is greater than that of the surrounding fluid, then the buoyant force will be less than the weight of the blob; as a consequence, the blob will sink back to its original location. The fluid is thus stable. In contrast, if the density of the blob is less than that of the surrounding fluid, then the buoyant force is greater than the weight of the blob; as a result, the blob will continue to rise. In this case, the fluid is unstable, as a small perturbation leads to the acceleration of the blob upwards. Figure~\ref{f.convective-schematic} has a schematic of this criterion.
 \begin{marginfigure}[-6\baselineskip]
 \includegraphics[width=\textwidth]{convective}
 \caption[Illustration of criteria for convective instability]{\label{f.convective-schematic}Illustration of criteria for convective instability.  On the left, raising a blob a distance $h$ adiabatically and in pressure balance with its surrounding results in a higher density $V_{b} < V$, or $\rho_{b} > \rho$.  This is stable: the blob will sink back.  On the right, the blob is less dense and hence buoyant: it will continue to rise.}
@@ -76,23 +76,22 @@ Thus, for the fluid to be stable, we require that the density of the displaced b
 \rho[P(r+h),s(r)] &>& \rho[P(r+h),s(r+h)].
 \label{e.archimedes}
 \end{eqnarray}
-If condition (\ref{e.archimedes}) is satisfied, then the blob will be restored to its original location after a perturbation, and the system is stable. If condition (\ref{e.archimedes}) is not satisfied, then the blob will continue to rise following a perturbation; the system is thus unstable.
+If condition (\ref{e.archimedes}) is satisfied, then the blob will be restored to its original location after a perturbation, and the system is stable. If condition (\ref{e.archimedes}) is not satisfied, then the blob will continue to rise following a perturbation, and the system is unstable.
 
-Since $h$ is an infinitesimal displacement, we can expand the right-hand side of eq.~(\ref{e.archimedes}):
+\newthought{Since $h$ is an infinitesimal displacement,} we can expand the right-hand side of eq.~(\ref{e.archimedes}):
 \[
 	\rho[P(r+h),s(r+h)] \approx \rho[P(r+h),s(r)] + \tderiv{\rho}{s}{P}\DD{s}{r}\;h.
 \]
 Here the notation $(\partial \rho/\partial s)_{P}$ means taking the derivative of $\rho$ with respect to $s$ while holding $P$ fixed. The condition for stability is therefore, after canceling common factors,
 \begin{equation}\label{e.convective-stability}
- \tderiv{\rho}{s}{P}\frac{\dif s}{\dif r}< 0 .
+ \tderiv{\rho}{s}{P}\frac{\dif s}{\dif r} \;h < 0 .
 \end{equation}
-We've dropped $h$ from the left-hand side since it is positive.
 We can put eq.~(\ref{e.convective-stability}) into a more useful form by changing variables from entropy $\rho$ to temperature $T$ via
 \[
 \tderiv{\rho}{T}{P} = \tderiv{\rho}{s}{P}\tderiv{s}{T}{P} = \tderiv{\rho}{s}{P}\frac{C_{P}}{T},
 \]
 where we used the specific heat at constant pressure, $C_{P}\equiv T(\dif s/\dif T)_{P}$.
-Inserting this expression into eq.~(\ref{e.convective-stability}) gives
+Inserting this expression into eq.~(\ref{e.convective-stability}) and dropping $h$ (since it is positive by construction) gives
 \[
  \frac{T}{C_{P}}\tderiv{\rho}{T}{P}\frac{\dif s}{\dif r} < 0,
 \]
