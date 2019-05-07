@@ -40,7 +40,7 @@ Although we have motivated this derivation with a classical picture, the cross-s
 \begin{exercisebox}[Mean free path for electron scattering]\label{ex.MFP}
     In the sun, free electrons scatter photons; the cross-section for this is
     \[
-    \sigma_{\mathrm{Th}} = \left(\frac{8\pi}{3}\right)\left(\frac{e^2}{m_e c^2}\right)^2 = \val{\sci{6.65}{-29}}{\meter^2}.
+    \sigma_{\mathrm{Th}} = \left(\frac{8\pi}{3}\right)\left(\frac{e^2}{4\pi\epsilon_{0}\,m_e c^2}\right)^2 = \val{\sci{6.65}{-29}}{\meter^2}.
     \]
     What is the mean free path against this process for a photon at the average density of the solar interior?
 \end{exercisebox}
@@ -214,7 +214,7 @@ Finally, assume that the photon mean free path $\ell = (\rho\kappa_{\mathrm{R}})
 
 \section{Diffusion}\label{s.diffusion}
 
-In the presence of scattering or absorption, the photons crossing the face can travel one mean free path $\ell$. Imagine a small cube with sides of length $\ell$ and filled with photons. The total radiant energy in the cube is $\Delta E$. In a time $\Delta t = \ell/c$, all of the energy will leave this cube. The total luminosity is $\Delta E/\Delta t = c\Delta E/\ell$. If everything is isotropic, then the flux out of any one face is $1/6$ of the luminosity, divided by the area of that face:
+In the presence of scattering or absorption, the photons crossing the face can travel one mean free path $\ell$. Imagine a small cube with sides of length $\ell$ and filled with photons. The total radiant energy in the cube is $\Delta E$. In a time $\Delta t = \ell/c$, all of the photons will leave this cube. The total luminosity is $\Delta E/\Delta t = c\Delta E/\ell$. If everything is isotropic, then the flux out of any one face is $1/6$ of the luminosity, divided by the area of that face:
 \[
 	F = \frac{1}{6\ell^{2}}\frac{c\Delta E}{\ell} = \frac{1}{6}c U,
 \]
