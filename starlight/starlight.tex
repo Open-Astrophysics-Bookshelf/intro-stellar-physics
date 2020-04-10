@@ -35,30 +35,27 @@ Recall that a parsec (pc) is defined by the relation
 \]
 \end{exercisebox}
 
-\section{The nature of light}\label{s.nature-light}
+\section{Intensity and specific flux}
+\label{s.intensity-specific-flux}
 
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{E-B-free-space}
 \caption[The electric force in a light wave]{Schematic of the electric field (blue arrows) and magnetic field (red arrows) for a wave traveling along direction $\bvec{k}$ with wavelength $\lambda$.}
 \label{f.light-wave}
 \end{marginfigure}
-Charges feel an electric force.
-When we detect light, what happens at the atomic level is that the charges in our detector (antenna, CCD, eye) feel an electric (and magnetic) force that oscillates with frequency $\nu$. Imagine setting up a grid of detectors that measure the electric force per unit charge at each point in space and at each instant of time. We call this force per charge the electric field $\bvec{E}(\bvec{x},t)$. The amplitude of the light at our detector is proportional to $|\bvec{E}|^{2} + |\bvec{B}|^{2}$. As light passes through this grid, we would notice a sinusoidal pattern traveling at speed\sidenote{This velocity is exact; the meter is defined in terms of the speed of light.} $c = \val{299\,792\,458}{\meter/\second}$ with a wavelength $\lambda = c/\nu$.
+When we detect light, what happens at the atomic level is that the charges in our detector (antenna, CCD, eye) feel an electric (and magnetic) force that oscillates with frequency $\nu$. Imagine setting up a grid of detectors that measure the electric and magnetic forces per charge at each point in space and at each instant of time. We call these forces per charge the electric and magnetic fields, $\bvec{E}(\bvec{x},t)$ and $\bvec{B}(\bvec{x},t)$. As light passes through this grid, we would notice a sinusoidal pattern traveling at speed\sidenote{This velocity is exact; the meter is defined in terms of the speed of light.} $c = \val{299\,792\,458}{\meter/\second}$ with a wavelength $\lambda = c/\nu$.  The amplitude of the light at our detector is proportional to $|\bvec{E}|^{2} + |\bvec{B}|^{2}$. 
 
-Suppose we put a filter in front of our detector that only accepted light in a narrow range of wavelengths $(\lambda,\lambda+\Delta\lambda)$. We would find that energy is deposited into our detector in discrete quanta of magnitude $hc/\lambda = h\nu$\marginnote{The symbol $h = \val{\sci{6.63}{-34}}{\unitstyle{J}\usk\second}$ denotes \newterm{Planck's constant}. It sets the scale for quantum mechanics.}. We call these quanta \newterm{photons}. The light emitted by our sun (or any other source) consists of a huge number of photons distributed over a wide range of wavelengths, known as a \newterm{spectrum}.
+Suppose we put a filter in front of our detector that only accepted light in a narrow range of wavelengths $(\lambda,\lambda+\Delta\lambda)$. We would find that energy is deposited into our detector in discrete quanta, known as \newterm{photons}, with each photon having an energy $hc/\lambda = h\nu$\marginnote{The symbol $h = \val{\sci{6.63}{-34}}{\unitstyle{J}\usk\second}$ denotes \newterm{Planck's constant}.}. The light emitted by the Sun (or any other source) consists of a huge number of photons distributed over a broad range of wavelengths, known as a \newterm{spectrum}.
 
 \begin{exercisebox}[Photon flux from the sun]
 The peak of the sun's spectrum is at a wavelength of approximately $\val{500}{\nano\meter}$. Estimate the number of photons from the sun striking $\val{1}{\meter^{2}}$ of Earth each second.
 \end{exercisebox}
 
-\section{Intensity and specific flux}
-\label{s.intensity-specific-flux}
-
 \begin{marginfigure}[6\baselineskip]
 \includegraphics[width=\linewidth]{intensity}
 \caption{\label{f.intensity} Schematic of radiative intensity}
 \end{marginfigure}
-Take a detector (a CCD, an eye, a photographic emulsion) and place in front of the detector a filter that only lets through light with wavelengths in a range $\Delta\lambda$. Place a mask over the detector with a small pinhole of area $\Delta A$ that restricts the light falling on the detector to fall in a narrow cone of solid angle $\Delta\Omega$ about the normal to the detector (see Fig.~\ref{f.intensity}). Then measure the energy $\Delta E$ incident on the detector in a time $\Delta t$. The quantity
+Take a detector (a CCD, an eye, a photographic emulsion) and place (see Fig.~\ref{f.intensity}) in front of the detector a filter that only lets through light with wavelengths in a range $\Delta\lambda$. Place a mask over the detector with a small pinhole of area $\Delta A$ that restricts the light falling on the detector to fall in a narrow cone of solid angle $\Delta\Omega$ about the normal to the detector. Then measure the energy $\Delta E$ incident on the detector in a time $\Delta t$. The quantity
 \begin{equation}\label{e.definition-intensity}
 I_{\lambda} \equiv \frac{\Delta E}{\Delta t\,\Delta A\,\Delta\lambda\,\Delta\Omega}
 \end{equation}
