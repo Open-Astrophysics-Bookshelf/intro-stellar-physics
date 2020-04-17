@@ -7,18 +7,20 @@
 % !TEX tabbedFile{nuclear-burning/nuclear-burning.tex}
 % !TEX tabbedFile{main-sequence/main-sequence.tex}
 % !TEX tabbedFile{post-main-sequence/post-main-sequence.tex}
+% !TEX tabbedFile{numerical-methods/numerical-methods.tex}
 
 \documentclass[symmetric]{astro-bookshelf}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=black,urlcolor=blue}
-
+\usepackage{fontawesome5}
 \setcounter{secnumdepth}{1}
 
 \graphicspath{%
-{frontmatter/}{starlight/figs/}{hydrostatic-balance/figs/}{radiative-transport/figs/}{classifying-stars/figs/}{nuclear-burning/figs/}{main-sequence/figs/}{post-main-sequence/figs/}
+{frontmatter/}{starlight/figs/}{hydrostatic-balance/figs/}{radiative-transport/figs/}{classifying-stars/figs/}{nuclear-burning/figs/}{main-sequence/figs/}{post-main-sequence/figs/}{numerical-methods/figs/}
 }
 
 \usepackage{starType}
 \input{symbols}
+\newcommand{\notebook}{\faLaptopCode}
 \newcommand{\newterm}[1]{\textsc{#1}}
 
 % for aligning table columns
@@ -66,6 +68,9 @@
 \chapter{End of the Line}\label{ch.post-main-sequence}
 \input{post-main-sequence/post-main-sequence}
 
+\appendix
+\chapter{Algorithm}\label{ch.numerical-methods}
+\input{numerical-methods/numerical-methods}
 
 \backmatter
 \bibliographystyle{plainnat}
