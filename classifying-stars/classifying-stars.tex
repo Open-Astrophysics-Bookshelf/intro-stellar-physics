@@ -2,19 +2,19 @@
 
 \nocite{Mihalas1978Stellar-Atmosph,LeBlanc2010An-Introduction,Carroll2006An-Introduction}
 
-Now that we've discussed radiative transport in the star, we'll explore how the emergent spectrum of a star serves as a diagnostic of ambient conditions in the photosphere; we'll then discuss how nuclear reactions generate the luminosity in chapter~\ref{ch.nuclear-burning}.
+Now that we've discussed radiative transport in the star, we'll explore how the emergent spectrum of a star serves as a diagnostic of ambient conditions in the photosphere.
 
 \section{Overview}
 
-If light from the Sun is passed through a grating (a piece of glass with finely etched lines), the light is dispersed in wavelength and creates a spectrum, such as the highly detailed one show in Fig.~\ref{f.solar-spectrum}. 
+If light from the sun is passed through a grating (a piece of glass with finely etched lines), the light is dispersed in wavelength and creates a spectrum, such as the highly detailed one show in Fig.~\ref{f.solar-spectrum}. 
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{sunsqa}
-\caption[Visible spectrum of the sun]{\label{f.solar-spectrum} Visible spectrum of the Sun. Frequency increases along a row from left to right, and by rows from top to bottom. \emph{Credit:
+\caption[Visible spectrum of the sun]{\label{f.solar-spectrum} Visible spectrum of the sun. Frequency increases along a row from left to right, and by rows from top to bottom. \emph{Credit:
 N.A.Sharp, NOAO/NSO/Kitt Peak FTS/AURA/NSF.}}
 \end{marginfigure}
 Superposed on the slow variation from red to violet are dark \newterm{absorption lines}. The ions, atoms, and molecules in the solar atmosphere absorb light at specific frequencies and create these lines.
 
-Beginning in the late 1800's, astronomers began classifying stars by the observed absorption lines in the spectra. At this time, Edward Pickering and Williamina Fleming of the Harvard College Observatory began amassing a vast catalog of stellar spectra. They classified these spectra according to the strength of observed hydrogen Balmer lines (the first four are H$\alpha$: \val{657}{\nano\meter}; H$\beta$: \val{486}{\nano\meter}; H$\gamma$: \val{434}{\nano\meter}; H$\delta$: \val{410}{\nano\meter}). Stars, such as Vega, with the strongest Balmer lines were classified as type ``A'', those with the next strongest were type ``B'', and so forth. Annie Jump Cannon, who would later succeed Fleming as curator of astronomical photography at the observatory, simplified and reorganized the scheme, and added decimal subdivisions ($0\ldots9$) for each type\sidenote{For example, the Sun's type is G2}. When stellar color is taken into account, the ordering of stars, from blue to red, is ``OBAFGKM''. In the 1990's the ``L'' and ``T'' classes were added\cite{Kirkpatrick1999Dwarfs-Cooler-t} for cool stars and brown dwarfs (stellar-like objects that do not reach central temperature sufficient for fusion of hydrogen into helium). With the introduction of the ``Y'' stellar type\cite{Cushing2011The-Discovery-o}, this classification was further extended to even cooler objects having $\Teff\lesssim\val{500}{\K}$.
+Beginning in the late 1800's, astronomers began classifying stars by the observed absorption lines in the spectra. At this time, Edward Pickering and Williamina Fleming of the Harvard College Observatory began amassing a vast catalog of stellar spectra. They classified these spectra according to the strength of observed hydrogen Balmer lines (the first four are H$\alpha$: \val{657}{\nano\meter}; H$\beta$: \val{486}{\nano\meter}; H$\gamma$: \val{434}{\nano\meter}; H$\delta$: \val{410}{\nano\meter}). Stars, such as Vega, with the strongest Balmer lines were classified as type ``A'', those with the next strongest were type ``B'', and so forth. Annie Jump Cannon, who would later succeed Fleming as curator of astronomical photography at the observatory, simplified and reorganized the scheme, and added decimal subdivisions ($0\ldots9$) for each type\sidenote{For example, the sun's type is G2}. When stellar color is taken into account, the ordering of stars, from blue to red, is ``OBAFGKM''. In the 1990's the ``L'' and ``T'' classes were added\cite{Kirkpatrick1999Dwarfs-Cooler-t} for cool stars and brown dwarfs (stellar-like objects that do not reach central temperature sufficient for fusion of hydrogen into helium). With the introduction of the ``Y'' stellar type\cite{Cushing2011The-Discovery-o}, this classification was further extended to even cooler objects having $\Teff\lesssim\val{500}{\K}$.
 
 Hertzsprung and Russell independently noticed that most stars tended to lie along a band, termed the \newterm{main sequence}, in a plot of absolute magnitude (or luminosity) against stellar type (now known as a \newterm{Hertzsprung-Russell diagram}). Figure~\ref{f.HR} shows some standard main-sequence stars, along with their stellar type and approximate color.
 \begin{marginfigure}
@@ -63,17 +63,17 @@ In order to produce a Balmer absorption line, we must have some hydrogen atoms i
 Here the number $g_{n}$ gives the number\sidenote{$g_{n}$ is known as the \emph{degeneracy} of a given level $n$} of quantum mechanical states having energy $E_{n} = -\ERy/n^{2}$. For an energy level $n$, there are $n^{2}$ possible states, each having a different angular momentum. For each of these $n^{2}$ states, both the electron and proton may each have 2 possible spins. The total number of states for energy $E_{n}$ is therefore $g_{n} = 2\times2\times n^{2}$.
 
 Suppose we wish to know the fraction of atoms in a given state $i$: that is, we wish to know
-\[	x_{i} = \frac{N_{i}}{N_{1}+N_{2}+\ldots+N_{i}+\ldots} ? \]
+\[	x_{i} = \frac{N_{i}}{N_{1}+N_{2}+\ldots+N_{i}+\ldots} . \]
 Using equation~(\ref{e.boltzmann}), we can express $x_{i}$ as 
 \begin{eqnarray}
   x_{i} &=& \frac{g_{i}e^{-E_{i}/\kB T}}{g_{1}e^{-E_{1}/\kB T}+g_{2}e^{-E_{2}/\kB T}+\ldots+g_{i}e^{-E_{i}/\kB T}+\ldots} \nonumber\\
-        &\equiv& \frac{g_{i}e^{-E_{i}/\kB T}}{\pfcn}.
+        &\equiv& \frac{g_{i}e^{-E_{i}/\kB T}}{\pfcn},
 \end{eqnarray}
-The quantity 
+where the quantity 
 \begin{equation}\label{e.partition-function}
 	\pfcn = \sum_{n} g_{n}\exp\left(-\frac{E_{n}}{\kB T}\right)
 \end{equation}
-is called the \emph{partition function}: loosely speaking, it indicates the number of ways the sample of atoms can be partitioned among the different energy levels.
+is the \emph{partition function}. Loosely speaking, the partition function indicates the number of ways the sample of atoms can be partitioned among the different energy levels.
 
 \begin{exercisebox}[Partition function for neutral hydrogen]
 Assuming that the first term $g_{1}e^{-E_{1}/\kB T}$ dominates the sum in the partition function (see Box~\ref{sb.partition-function}), plot the fraction of neutral hydrogen in its $n=2$ state as a function of temperature, for $\val{5\,000}{\K} < T < \val{20\,000}{\K}$.
@@ -264,9 +264,9 @@ Let's recast this by defining $\Delta = \omega_{0} - \omega$ and $\omega_{m} = (
 \end{eqnarray*}
 using the cosine addition rules and combining terms, we can write the solution as
 \begin{equation}\label{e.beats}
-	x(t) = \left[\frac{F/m}{\Delta\omega_{m}}\sin(\Delta t/2)\right]\sin(\wmt).
+	x(t) = {\color{red}\left[\frac{F/m}{\Delta\omega_{m}}\sin(\Delta t/2)\right]}{\color{blue}\sin(\wmt)}.
 \end{equation}
-This illustrates the phenomena of beats: the oscillation consists of a carrier signal at frequency $\omega_{m}$ with the amplitude modulated at the slower frequency $\Delta /2$.  Notice that the amplitude increases as $\Delta \to0$, i.e., $\omega\to\omega_{0}$.
+This illustrates the phenomena of \newterm{beats}: the oscillation consists of a \textcolor{blue}{carrier signal} at frequency $\omega_{m}$ with the \textcolor{red}{amplitude} modulated at the slower frequency $\Delta /2$.  Notice that the amplitude increases as $\Delta \to0$, i.e., $\omega\to\omega_{0}$.
 
 \newthought{Now let's make our model even more realistic.}
 We add a frictional force that is proportional to velocity, $F_{\mathrm{friction}} = -m\Gamma \dif x/\dif t$. Our complete equation of motion is then
@@ -288,7 +288,7 @@ with
     \omega_{\Gamma} = 
         \omega_{0}\left(1-\frac{\Gamma^{2}}{4\omega_{0}^{2}}\right)^{1/2}.
 \]
-Let's simplify this a bit.  First, the last two terms decay as $e^{-\Gamma t/2}$: these are transients set by the initial conditions. After a time $t \gg 2/\Gamma$ only the first two terms, which oscillate at the driving frequency $\omega$, will remain. 
+Let's simplify this a bit.  First, the last two terms decay as $e^{-\Gamma t/2}$: these are transients set by the initial conditions. After a time $t \gg 2/\Gamma$, therefore, only the first two terms, which oscillate at the driving frequency $\omega$, will remain. 
 
 We can simplify these first two terms even further: if we write
 \[ \cos(\wt) = \frac{e^{i\wt}+e^{-i\wt}}{2},\quad \sin(\wt) 
