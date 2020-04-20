@@ -1,5 +1,7 @@
 % !TEX root = ../intro-stellar-physics.tex
 
+Computing is now ubiquitous in science and technology, and is a ``third leg'' along with theory and experiment. Stellar modeling has a long and storied history in this area. Of course, libraries of numerical routines are now widely available, and for research it is far better to use a well-written and well-tested routine than trying to build your own. One still needs to have a basic understanding, however, of how a computational technique works! In this appendix, we wish to give a flavor of a few common numerical techniques. 
+
 \section{Numerical precision}\label{s.numerical-precision}
 Before diving into the sea of computational techniques, we need to wade a bit in the shallows of floating-point arithmetic. Numbers are stored in base-2 (binary) format: a sequence of 1's and 0's known as \newterm{bits}. Because the number of bits is finite\sidenote{On most systems the default is 64 bits.}, not all numbers are representable and the processor and compiler define a particular model to represent numbers.
 
@@ -308,4 +310,97 @@ The solution $z(t+h)$ is then constructed from a weighted sum of the $k_{i}$ (Fi
 
 Notice that the $k_{i}$ are not independent of one another: each one depends on the intermediate value of $z$ computed in the previous step. The fourth-order Runge-Kutta scheme ``sniffs'' the behavior of $f(t,z)$ over the interval $(t,t+h)$ and constructs a weighted approximation for $\dif z/\dif t$.  One can show that this method produces solutions with a global truncation error $\sim\mathcal{O}(h^{4})$. That is, reducing the stepsize by a factor of 2 should reduce the error by a factor $2^{4} = 16$.
 
+\section{Cubic splines}
+As discussed in Box~\ref{sb.interpolation}, a common numerical task is to interpolate values in a data file. In stellar physics, this is often done for opacities or equation of state: one computes, or measures, the opacity under a limited set of composition, temperature, and density. From this table, we then interpolate to obtain values of the opacity at arbitrary conditions. There are many tradeoffs in how this interpolation is done. In this section we'll illustrate one such method, namely cubic splines.
 
+\begin{marginfigure}
+\includegraphics{spline-1}
+\caption{\label{f.spline-1}Cubic polynomials between points $(x_{0},y_{0})$ and $(x_{1},y_{1})$; the slope at $x_{0}$ is $k_{0}=0$, and the slope $k_{1}$ is varied (red dotted lines).}
+\end{marginfigure}
+Through any 4 points $(x_{i},y_{i})_{i=0,\ldots,3}$ we can fit a unique cubic polynomial $y=p_{3}(x)$ (eq.~[\ref{e.four-points}]).  Alternatively, we can fit a cubic polynomial between two points $(x_{i},y_{i})$ and $(x_{i+1},y_{i+1})$ if we also specify the first derivatives $k_{i}$ and $k_{i+1}$ at $x_{i},x_{i+1}$: define $m_{i} = (y_{i+1}-y_{i})/(x_{i+1}-x_{i})$ as the mean slope across the interval; then the cubic polynomial is
+\begin{eqnarray}
+\lefteqn{q_{i}(x) =   y_{i}\frac{x_{i+1}-x}{x_{i+1}-x_{i}} 
+		   + y_{i+1}\frac{x-x_{i}}{x_{i+1}-x_{i}}
+		   + \frac{(x-x_{i})(x_{i+1}-x)}{x_{i+1}-x_{i}}} && \nonumber\\
+		   && \times\left[\frac{x_{i+1}-x}{x_{i+1}-x_{i}}(k_{i}-m_{i})
+		       -\frac{x-x_{i}}{x_{i+1}-x_{i}}(k_{i+1}-m_{i})\right].
+\label{e.spline}
+\end{eqnarray}
+An example of a cubic between $(x_{0},y_{0})$ and $(x_{1},y_{1})$ with $k_{0}=0$ and various $k_{1}$ is shown in Fig.~\ref{f.spline-1}.
+
+\begin{exercisebox}
+Verify that $q_{i}(x_{i}) = y_{i}$ and $q_{i}(x_{i+1}) = y_{i+1}$; also verify that $q^{\prime}_{i}(x_{i}) = k_{i}$ and $q^{\prime}_{i}(x_{i+1}) = k_{i+1}$.
+\end{exercisebox}
+
+Now suppose we have a sequence of $N+1$ points $x_{0},x_{1},\ldots,x_{N}$ with data values $y_{0},y_{1},\ldots,y_{N}$. On each interval $[x_{i},x_{i+1}]$ we can construct a spline $q_{i}$. As an example, we take one of the curves from Fig.~\ref{f.spline-1} and cut it in two. We then clamp the derivatives at the endpoints and allow the first derivative at the interior point to vary, with the requirement that the first derivative is continuous at that point. 
+\begin{marginfigure}
+\includegraphics{spline-2}
+\caption{\label{f.spline-2} Two splines spanning $[x_{0},x_{1}]$ and $[x_{1},x_{2}]$. The slope at the inner point, $k_{2}$, is allowed to vary. The dark curve shows the case where the first derivative is fixed to the value from original spline shown in Fig.~\ref{f.spline-1}.}
+\end{marginfigure}
+
+As the slope at $x_{1}$ is varied, the splines to left and right become more tortuous. This tight bending is characterized by the second derivative of the spline. In Fig.~\ref{f.spline-3} we plot the second derivative for three cases: where $k_{1}$ is fixed to the value from the original spline (solid line), and cases from Fig.~\ref{f.spline-2} with $k_{1}$ less than (dashed line) and greater than (dotted line) this value. Note that in general the second derivative is not continuous at $x_{1}$. 
+
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{spline-3}
+\caption{\label{f.spline-3} Second derivatives of our spline functions.}
+\end{marginfigure}
+
+Thus, we can generate a smooth curve by requiring that both the first and second derivatives be continuous at the junction points $x_{1},\ldots,x_{N-1}$. Let's check if this gives us enough conditions. For $N+1$ points $x_{0},x_{1},\ldots,x_{N}$ with data values $y_{0},y_{1},\ldots,y_{N}$, there are $N$ splines: $q_{0}(x)$ on $x_{0}\le x\le x_{1}$, $q_{1}(x)$ on $x_{1}\le x \le x_{n}$, and on to $q_{N-1}(x)$ on $x_{N-1}\le x\le x_{N}$. Each spline has 4 free parameters, so we have a total of $4N$ parameters. We have the following conditions:
+\begin{eqnarray*}
+q_{i}(x_{i}) &=& y_{i},\;i=0,\ldots,N-1\qquad\textrm{($N$ conditions)}\\
+q_{i}(x_{i+1}) &=& y_{i+1},\;i=0,\ldots,N-1\qquad\textrm{($N$ conditions)}\\
+q^{\prime}_{i}(x_{i}) &=& q^{\prime}_{i-1}(x_{i}),\;i=1,\ldots,N-1\qquad\textrm{($N-1$ conditions)}\\
+q^{\prime\prime}_{i}(x_{i}) &=& q^{\prime\prime}_{i-1}(x_{i}),\;i=1,\ldots,N-1\qquad\textrm{($N-1$ conditions)}.
+\end{eqnarray*}
+Our format of the spine, eq.~(\ref{e.spline}), automatically satisfies the first two of these. Adding in the continuity of the first and second derivatives brings us to a total of $4N-2$ equations, and leaves us with two free parameters, namely $k_{0}$ and $k_{N}$, the derivatives at then ends. We could specify them (known as a \newterm{clamped spline}), but we usually don't have any way of knowing them \emph{a priori}. A popular choice is to set the second derivative at $x_{0}$ and $x_{N}$ to zero (known as a \newterm{natural} spline).\marginnote{A third choice is the \newterm{not-a-knot} condition, in which we also require the \emph{third} derivative at $x_{1}$ and $x_{N-1}$ to be continuous.}
+
+Let's consider the case of a natural spline. Taking the second derivative of eq.~(\ref{e.spline}) and substituting $x=x_{i}$ and $x=x_{i+1}$ gives
+\begin{eqnarray}
+\label{e.d2spline-left}
+q^{\prime\prime}_{i}(x_{i}) &=& -\frac{2}{x_{i+1}-x_{i}}\left[ 2k_{i} + k_{i+1} - 3m_{i} \right];\\
+\label{e.d2spline-right}
+q^{\prime\prime}_{i}(x_{i+1}) &=& \frac{2}{x_{i+1}-x_{i}}\left[ k_{i} + 2k_{i+1} - 3m_{i} \right].
+\end{eqnarray}
+Defining $\Delta_{i} = (x_{i+1}-x_{i})^{-1}$ and equating second derivatives at the interior points $x_{i},\,i=1,\ldots,N-1$ then yields the following $N-1$ equations for the $k_{i}$, $i=1,\ldots,N-1$:
+\begin{equation}
+\Delta_{i-1}k_{i-1} + 2\left(\Delta_{i-1} + \Delta_{i}\right) k_{i} + \Delta_{i}k_{i+1} = 3\left(m_{i-1}\Delta_{i-1} + m_{i}\Delta_{i}\right)
+\end{equation}
+Setting the second derivatives to zero at $x_{0}$, $x_{N}$ gives the additional equations
+\begin{eqnarray}
+2k_{0} + k_{1} &=& 3m_{0}\\
+k_{N-1} + 2k_{N} &=& 3m_{N-1}.
+\end{eqnarray}
+These $N+1$ equations for the $N+1$ $k_{i}$ can be written as the matrix equation
+\[
+\left[\begin{array}{ccccccccccc}
+	b_{0} & c_{0} \\
+	a_{1} & b_{1} & c_{1} \\
+	& a{2} & b_{2} & c_{2}\\
+	& & \ddots & \ddots & \ddots \\
+	& & & a_{i} & b_{i} & c_{i} \\
+	& & & & \ddots & \ddots & \ddots \\
+	& & & & & a_{N-1} & b_{N-1} & c_{N-1} \\
+	& & & & & & a_{N} & b_{N} 
+\end{array}\right]
+\left[\begin{array}{c}
+	k_{0}\\
+	k_{1}\\
+	k_{2}\\
+	\vdots\\
+	k_{i}\\
+	\vdots\\
+	k_{N-1}\\
+	k_{N}
+\end{array}\right] = 
+\left[\begin{array}{c}
+	d_{0}\\
+	d_{1}\\
+	d_{2}\\
+	\vdots\\
+	d_{i}\\
+	\vdots\\
+	d_{N-1}\\
+	d_{N}
+\end{array}\right].
+\]
+This is a \newterm{tridiagonal} matrix equation, and is easily solved.
