@@ -11,5 +11,5 @@ intro-stellar-physics.pdf
 git-info.tex
 *.aux
 *.lob
-classifying-stars/figs/.ipynb_checkpoints
+.ipynb_checkpoints
 __pycache__
