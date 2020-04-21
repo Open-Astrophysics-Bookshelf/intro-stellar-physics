@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.interpolate import CubicSpline
 
 # colors
 from matplotlib.colors import hsv_to_rgb
@@ -183,3 +184,18 @@ if __name__ == '__main__':
     ax.yaxis.set_ticklabels('')
     ax.set_ylabel(r'$q^{\prime\prime}(x)$')
     fig.savefig('spline-3.pdf',format='pdf',bbox_inches='tight')
+    
+    fig = plt.figure(figsize=(2,2))
+    ax = fig.add_subplot(111)
+    ax = layout_plot(ax)
+    ax.set_aspect('auto')
+    xp = np.linspace(0.0,1.0,5)
+    x = np.linspace(0.0,1.0,100)
+    yp = f(xp)
+    cs = CubicSpline(xp,yp,bc_type='natural')
+    ax.plot(x,cs(x),linestyle='-',color=DarkGreyBlue)
+    ax.plot(x,f(x),linestyle=':',color=LightGreyGreen)
+    ax.plot(xp,yp,marker='o',color=Red,linestyle='none',markersize=4)
+    ax.set_xlabel(r'$x$')
+    ax.set_ylabel(r'$\cos(2\pi x),\,q(x)$')
+    fig.savefig('spline-4.pdf',format='pdf',bbox_inches='tight')

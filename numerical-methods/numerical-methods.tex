@@ -403,4 +403,98 @@ These $N+1$ equations for the $N+1$ $k_{i}$ can be written as the matrix equatio
 	d_{N}
 \end{array}\right].
 \]
-This is a \newterm{tridiagonal} matrix equation, and is easily solved.
+This is a \newterm{tridiagonal} matrix equation\sidenote{Blank entries are zero}, and can be efficiently solved as follows.
+
+\begin{enumerate}
+\item Divide row 0 by $b_{0}$ so that it becomes\sidenote{Here we shall denote the row number with a superscript to the left of the row.}
+\[
+{}^{0}\,\left[\begin{array}{ccccc|c}
+  1 & c'_{0} & 0& \ldots & 0 & d'_{0} \end{array}\right]
+\]
+with $c'_{0} = c_{0}/b_{0}$ and $d'_{0} = d_{0}/b_{0}$.
+\item Now we zero out the $a_{i}$ as follows. Assume that we've done this for row $i-1$ and that we already divided row $i-1$ by $b_{i-1}$, so that its diagonal element is 1. Thus rows $i-1$ and $i$ look like
+\[
+\begin{array}{r} {}^{i-1}\\ {}^{i}\end{array}\,
+\left[\begin{array}{ccccccc|c}
+	 \ldots & 0 & 1     & c'_{i-1} & 0     & \ldots & \ldots & d'_{i-1}\\
+	 \ldots & 0 & a_{i} & b_{i}    & c_{i} & 0      & \ldots & d_{i}
+\end{array}\right]
+\]
+We then multiply row $i-1$ by $a_{i}$ and subtract it from row $i$. This eliminates $a_{i}$:
+\[
+\begin{array}{r} {}^{i-1}\\ {}^{i}\end{array}\,
+\left[\begin{array}{ccccccc|c}
+	 \ldots & 0 & 1 & c'_{i-1}            & 0     & \ldots & \ldots & d'_{i-1}\\
+	 \ldots & 0 & 0 & b_{i}-a_{i}c'_{i-1} & c_{i} & 0      & \ldots & d_{i}-a_{i}d'_{i-1}
+\end{array}\right]
+\]
+We then divide row $i$ by $b_{i}-a_{i}c'_{i-1}$, giving us
+\[
+\begin{array}{r} {}^{i-1}\\ {}^{i}\end{array}\,
+\left[\begin{array}{ccccccc|c}
+	 \ldots & 0 & 1 & c'_{i-1} & 0      & \ldots & \ldots & d'_{i-1}\\
+	 \ldots & 0 & 0 & 1        & c'_{i} & 0      & \ldots & d'_{i}
+\end{array}\right]
+\]
+with
+\[ c'_{i} = \frac{c_{i}}{b_{i}-a_{i}c'_{i-1}},\qquad d'_{i} = \frac{d_{i}-a_{i}d'_{i-1}}{b_{i}-a_{i}c'_{i-1}}.
+\]
+We then repeat this with row $i+1$ and march down the rows. The end result is our matrix equation is now
+\[
+\left[\begin{array}{ccccccccccc}
+	1 & c'_{0} \\
+	 & 1 & c'_{1} \\
+	&  & 1 & c'_{2}\\
+	& &  & \ddots & \ddots \\
+	& & &  & 1 & c'_{i} \\
+	& & & &  & \ddots & \ddots \\
+	& & & & &  & 1 & c'_{N-1} \\
+	& & & & & &  & 1 
+\end{array}\right]
+\left[\begin{array}{c}
+	k_{0}\\
+	k_{1}\\
+	k_{2}\\
+	\vdots\\
+	k_{i}\\
+	\vdots\\
+	k_{N-1}\\
+	k_{N}
+\end{array}\right] = 
+\left[\begin{array}{c}
+	d'_{0}\\
+	d'_{1}\\
+	d'_{2}\\
+	\vdots\\
+	d'_{i}\\
+	\vdots\\
+	d'_{N-1}\\
+	d'_{N}
+\end{array}\right].
+\]
+
+\item At this point we have the solution for $k_{N}$: $k_{N}=d'_{N}$. Starting with row $N-1$, we then work backwards zeroing out the $c'_{i}$: if row $i$ and $i+1$ are\marginnote{When we set $c'_{i+1}$ set to zero, we can then equate $k_{i+1}$ with its corresponding entry on the RHS of the matrix equation}
+\[
+\begin{array}{r} {}^{i}\\ {}^{i+1}\end{array}\,
+\left[\begin{array}{ccccccc|c}
+	 \ldots & 0 & 1 & c'_{i} & 0 & \ldots & \ldots & d'_{i}\\
+	 \ldots & 0 & 0 & 1      & 0 & 0      & \ldots & k_{i+1}
+\end{array}\right]
+\]
+then we multiply row $i+1$ by $c'_{i}$ and subtract it from row $i$ to obtain
+\[
+\begin{array}{r} {}^{i}\\ {}^{i+1}\end{array}\,
+\left[\begin{array}{ccccccc|c}
+	 \ldots & 0 & 1 & 0 & 0 & \ldots & \ldots & d'_{i}-c'_{i}k_{i+1}\\
+	 \ldots & 0 & 0 & 1 & 0 & 0      & \ldots & k_{i+1}
+\end{array}\right];
+\]
+we then read off $k_{i} = d'_{i}-c'_{i}k'_{i+1}$.
+\end{enumerate}
+Thus, after iterating over the rows twice---forwards to eliminate the $a_{i}$, backwards to eliminate the $c_{i}$---we have the derivatives $k_{i}$. If we then wish to interpolate a value $y(x)$, we simply need to find $i$ such that $x_{i}< x < x_{i+1}$ and then use $x_{i,i+1}$, $y_{i,i+1}$, and $k_{i,i+1}$ in equation (\ref{e.spline}).
+
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{spline-4}
+\caption{\label{f.spline-4} Spline fit (dotted curve) to the function (solid curve) $\cos(2\pi x)/2$ using 5 evenly spaced points.}
+\end{marginfigure}
+Fig.~\ref{f.spline-4} illustrates a spline for the function $\cos(2\pi x)/2$ using just 5 points. The largest deviation is at the ends where our imposing a vanishing second derivative bows the spine upwards from the true function.
