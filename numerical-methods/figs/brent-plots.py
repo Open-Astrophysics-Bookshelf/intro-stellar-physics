@@ -11,6 +11,9 @@ DarkGreyBlue = hsv_to_rgb((193/360,0.87,0.21))
 def f(x):
     return np.sin(x)
 
+def testf(x):
+    return (x+3)*(x-1)**2
+
 def bisect(f,a,b):
     fa = f(a) # left side of bracket
     fb = f(b) # right side of bracket
@@ -96,16 +99,21 @@ def brent_step(f,a,b,c,d,prev='bisection'):
         s = secant(f,a,b)
     # acceptance conditions
     if (s > (3*a+b)/4 and s < b) or (s < (3*a+b)/4 and s > b):
+        # print('s lies in interval')
+        # print('previous step was {0}'.format(prev))
         if prev == 'bisection':
-            if np.abs(s-b) >= 0.5*np.abs(b-c) and np.abs(b-c) < delta:
+            if np.abs(s-b) >= 0.5*np.abs(b-c) or np.abs(b-c) < delta:
                 s = 0.5*(a+b)
                 method = 'bisection'
+                # print('step not converging')
         else:
-            if np.abs(s-b) >= 0.5*np.abs(c-d) and np.abs(c-d) < delta:
+            if np.abs(s-b) >= 0.5*np.abs(c-d) or np.abs(c-d) < delta:
                 s = 0.5*(a+b)
                 method = 'bisection'
+                # print('step not converging')
     else:
         s = 0.5*(a+b)
+        # print('step rejected: (3a+b)/4, b = {0:7.4f}, {1:7.4f}'.format((3*a+b)/4,b))
         method = 'bisection'
     fs = f(s)
     # set b[k-2] = b[k-1], b[k-1] = b[k]
@@ -147,7 +155,7 @@ def base_plot(ax,x,y,color=LightGreyGreen,linewidth=0.5):
     ax.hlines(0,x.min(),x.max(),linestyle='-',linewidth=0.5,color=LightGreyGreen)
     return ax
 
-def sequence_plots(xleft,xright,Nsteps,basename='brent'):
+def sequence_plots(f,xleft,xright,Nsteps,basename='brent'):
     rt = np.pi
     x = np.linspace(xleft,xright,100)
     y = f(x)
@@ -156,6 +164,7 @@ def sequence_plots(xleft,xright,Nsteps,basename='brent'):
     assert(fa*fb < 0.0)
     if np.abs(fa) < np.abs(fb):
         a, b = b, a
+    method = 'secant'
     for step in range(Nsteps):
         print('step {0}'.format(step))
         plotname = '{0}-{1:0d}.pdf'.format(basename,step)
@@ -175,9 +184,9 @@ def sequence_plots(xleft,xright,Nsteps,basename='brent'):
             ylabs += [r'$f(c)$']
         aa = a; bb = b; cc = c
         fa = f(a); fb = f(b); fc = f(c)
-        a,b,c,d,s,method = brent_step(f,a,b,c,d)
-        print('method = {0}, s = {1:5.2f}'.format(method,s))
-        print('a, b, c, d = '+' '.join(['{0:5.2f}'.format(i) for i in (a,b,c,d)]))
+        a,b,c,d,s,method = brent_step(f,a,b,c,d,method)
+        print('method = {0}, s = {1:7.4f}'.format(method,s))
+        print('a, b, c, d = '+' '.join(['{0:7.4f}'.format(i) for i in (a,b,c,d)]))
         ax.plot(s,f(s),color=Red,marker='o',markersize=4)
         xtks += [s]
         ytks += [f(s)]
@@ -214,8 +223,12 @@ if __name__=='__main__':
 
     xl = 1.6
     xr = 5.1
-    sequence_plots(xl,xr,3)
+    sequence_plots(f,xl,xr,3)
 
-    xl = 1.4
-    xr = 5.9
-    sequence_plots(xl,xr,3,basename='trial')
+    # xl = 1.3
+    # xr = 4.5
+    # sequence_plots(f,xl,xr,3,basename='trial')
+    
+    # xl = -4
+    # xr = 4/3
+    # sequence_plots(testf,xl,xr,10,basename='test')
