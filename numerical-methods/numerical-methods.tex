@@ -352,7 +352,7 @@ q_{i}(x_{i+1}) &=& y_{i+1},\;i=0,\ldots,N-1\qquad\textrm{($N$ conditions)}\\
 q^{\prime}_{i}(x_{i}) &=& q^{\prime}_{i-1}(x_{i}),\;i=1,\ldots,N-1\qquad\textrm{($N-1$ conditions)}\\
 q^{\prime\prime}_{i}(x_{i}) &=& q^{\prime\prime}_{i-1}(x_{i}),\;i=1,\ldots,N-1\qquad\textrm{($N-1$ conditions)}.
 \end{eqnarray*}
-Our format of the spine, eq.~(\ref{e.spline}), automatically satisfies the first two of these. Adding in the continuity of the first and second derivatives brings us to a total of $4N-2$ equations, and leaves us with two free parameters, namely $k_{0}$ and $k_{N}$, the derivatives at then ends. We could specify them (known as a \newterm{clamped spline}), but we usually don't have any way of knowing them \emph{a priori}. A popular choice is to set the second derivative at $x_{0}$ and $x_{N}$ to zero (known as a \newterm{natural} spline).\marginnote{A third choice is the \newterm{not-a-knot} condition, in which we also require the \emph{third} derivative at $x_{1}$ and $x_{N-1}$ to be continuous.}
+Our format of the spline, eq.~(\ref{e.spline}), automatically satisfies the first two of these. Adding in the continuity of the first and second derivatives brings us to a total of $4N-2$ equations, and leaves us with two free parameters, namely $k_{0}$ and $k_{N}$, the derivatives at then ends. We could specify them (known as a \newterm{clamped spline}), but we usually don't have any way of knowing them \emph{a priori}. A popular choice is to set the second derivative at $x_{0}$ and $x_{N}$ to zero (known as a \newterm{natural} spline).\marginnote{A third choice is the \newterm{not-a-knot} condition, in which we also require the \emph{third} derivative at $x_{1}$ and $x_{N-1}$ to be continuous.}
 
 Let's consider the case of a natural spline. Taking the second derivative of eq.~(\ref{e.spline}) and substituting $x=x_{i}$ and $x=x_{i+1}$ gives
 \begin{eqnarray}
@@ -403,7 +403,7 @@ These $N+1$ equations for the $N+1$ $k_{i}$ can be written as the matrix equatio
 	d_{N}
 \end{array}\right].
 \]
-This is a \newterm{tridiagonal} matrix equation\sidenote{Blank entries are zero}, and can be efficiently solved as follows.
+This is a \newterm{tridiagonal} matrix equation\sidenote{Blank entries are zero}, and can be efficiently solved as follows\cite{Press2007Numerical-Recip}.
 
 \begin{enumerate}
 \item Divide row 0 by $b_{0}$ so that it becomes\sidenote{Here we shall denote the row number with a superscript to the left of the row.}
@@ -439,7 +439,7 @@ We then divide row $i$ by $b_{i}-a_{i}c'_{i-1}$, giving us
 with
 \[ c'_{i} = \frac{c_{i}}{b_{i}-a_{i}c'_{i-1}},\qquad d'_{i} = \frac{d_{i}-a_{i}d'_{i-1}}{b_{i}-a_{i}c'_{i-1}}.
 \]
-We then repeat this with row $i+1$ and march down the rows. The end result is our matrix equation is now
+We then repeat this with row $i+1$ and march down the rows; this transforms the matrix equation into
 \[
 \left[\begin{array}{ccccccccccc}
 	1 & c'_{0} \\
@@ -473,7 +473,7 @@ We then repeat this with row $i+1$ and march down the rows. The end result is ou
 \end{array}\right].
 \]
 
-\item At this point we have the solution for $k_{N}$: $k_{N}=d'_{N}$. Starting with row $N-1$, we then work backwards zeroing out the $c'_{i}$: if row $i$ and $i+1$ are\marginnote{When we set $c'_{i+1}$ set to zero, we can then equate $k_{i+1}$ with its corresponding entry on the RHS of the matrix equation}
+\item We now set $k_{N}=d'_{N}$ and then, starting with row $N-1$, we work backwards zeroing out the $c'_{i}$: if row $i$ and $i+1$ are\marginnote{When we set $c'_{i+1}$ set to zero, we can then equate $k_{i+1}$ with its corresponding entry on the RHS of the matrix equation}
 \[
 \begin{array}{r} {}^{i}\\ {}^{i+1}\end{array}\,
 \left[\begin{array}{ccccccc|c}
@@ -491,10 +491,10 @@ then we multiply row $i+1$ by $c'_{i}$ and subtract it from row $i$ to obtain
 \]
 we then read off $k_{i} = d'_{i}-c'_{i}k'_{i+1}$.
 \end{enumerate}
-Thus, after iterating over the rows twice---forwards to eliminate the $a_{i}$, backwards to eliminate the $c_{i}$---we have the derivatives $k_{i}$. If we then wish to interpolate a value $y(x)$, we simply need to find $i$ such that $x_{i}< x < x_{i+1}$ and then use $x_{i,i+1}$, $y_{i,i+1}$, and $k_{i,i+1}$ in equation (\ref{e.spline}).
+Thus, after iterating over the rows twice---forwards to eliminate the $a_{i}$, backwards to eliminate the $c_{i}$---we have the derivatives $k_{i}$. If we then wish to interpolate a value $y(x)$, we simply need to find $i$ such that $x_{i}< x < x_{i+1}$ and then insert $x_{i,i+1}$, $y_{i,i+1}$, and $k_{i,i+1}$ into equation (\ref{e.spline}) to interpolate $y(x)$.
 
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{spline-4}
 \caption{\label{f.spline-4} Spline fit (dotted curve) to the function (solid curve) $\cos(2\pi x)/2$ using 5 evenly spaced points.}
 \end{marginfigure}
-Fig.~\ref{f.spline-4} illustrates a spline for the function $\cos(2\pi x)/2$ using just 5 points. The largest deviation is at the ends where our imposing a vanishing second derivative bows the spine upwards from the true function.
+Fig.~\ref{f.spline-4} illustrates a spline for the function $\cos(2\pi x)/2$ using just 5 points. The largest deviation is at the ends where our imposition of a vanishing second derivative bows the spline (dotted curve) upwards from the true function (solid curve).
