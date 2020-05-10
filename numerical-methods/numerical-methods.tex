@@ -148,14 +148,14 @@ The new guess for the root $s$ (Fig.~\ref{f.brent-2}) is on the same side of the
 Although the use of linear and quadratic interpolation can converge rapidly, for some cases the interpolation can fail. By keeping track of the previous best guesses for the root, Brent's method can test whether the best guesses for the root are converging as rapidly as bisection. If the guesses aren't improving quickly enough, or if the guess is out of bounds, the method falls back to taking a bisection step. This combination of rapid convergence and robustness makes Brent's method a workhorse routine for finding roots.
 
 \section[Solving a system of ordinary differential equations]{Numerically solving a system of ordinary differential equations}
-A common numerical task is to integrate a system of first-order ordinary differential equations (ODEs). That is, given a system of equations
+Another common numerical task is to integrate a system of first-order ordinary differential equations (ODEs). That is, given a system of equations
 \begin{equation}\label{e.equation}
 \DDt{z} = f(t,z)
 \end{equation}
-with specified initial conditions $z(t=t_{0})$, find $z(t)$
+with specified initial conditions $z(t=t_{0})$, find $z(t)$.
 Here $z$ is shorthand for an \emph{array} of variables: $z(t) = \{ z_{0}(t), z_{1}(t), z_{2}(t), \ldots\}$. Likewise, $f(t,z)$ is an array of known, specified functions: $f(t,z) = \{f_{0}(t,z), f_{1}(t,z), f_{2}(t,z), \ldots\}$.
 
-An example is Newton's equation of motion,
+A prominent example is Newton's equation of motion,
 \begin{equation}\label{e.Newton-2nd}
 \frac{\dif^{2}\bvec{r}}{\dif t^{2}} = \frac{\bvec{F}}{m}.
 \end{equation}
@@ -168,32 +168,25 @@ then we can recast this single second-order differential equation into a system 
 	\DDt{\bvec{r}} &=& \bvec{v}\\
 	\DDt{\bvec{v}} &=& \frac{\bvec{F}}{m}.
 \end{eqnarray}
-An additional example is the system of first-order ordinary differential equations
+
+As a worked example, we'll now show how to obtain an approximate numerical solution for the following system of ODEs,
 \begin{eqnarray}
 \DDt{z_{0}} &=&  2\pi z_{1}\label{e.z0}\\
-\DDt{z_{1}} &=& -2\pi z_{0}\label{e.z1}
+\DDt{z_{1}} &=& -2\pi z_{0}\label{e.z1},
 \end{eqnarray}
 with boundary conditions
 \begin{equation}\label{e.z-boundary}
 	z_{0}(t=0) = 0,\qquad z_{1}(t=0) = 1.
 \end{equation}
-By taking the derivative of eq.~(\ref{e.z0}) with respect to $t$,
-\[
-	\DDt{}\DDt{z_{0}} = 2\pi\DDt{z_{1}} = -4\pi^{2} z_{0},
-\]
-and applying the boundary conditions (\ref{e.z-boundary}),
-we find the solution to equations (\ref{e.z0})--(\ref{e.z1}):
+The solution to equations (\ref{e.z0})--(\ref{e.z1}) is
 \begin{eqnarray}
 z_{0} &=& \sin(2\pi t),\label{e.z0-sol}\\
-z_{1} &=& \cos(2\pi t).\label{e.z1-sol}
+z_{1} &=& \cos(2\pi t).\label{e.z1-sol}.
 \end{eqnarray}
-We'll now show how to obtain an approximate numerical solution for this system of ODEs.
+as you can easily verify.
 
-\newthought{Suppose we know $z(t)$ at some point $t$} and we wish to make a numerical estimate of $z$ at a nearby point $t+h$. We have the values of $z$ and we can compute
-\[
-	\left.\DDt{z}\right|_{t} = f(t,z).
-\]
-We can implement $f(t,z)$ for equations~(\ref{e.z0})--(\ref{e.z1}) in a single function.
+\newthought{Suppose we know $z(t)$ at some point $t$} and we wish to make a numerical estimate of $z$ at a nearby point $t+h$. We have the values of $z$ and we therefore wish to implement eq.~(\ref{e.equation}) 
+for equations~(\ref{e.z0})--(\ref{e.z1}) into a single function.
 
 \begin{sidebar}[Functions]
 What is a function in the context of a program? Basically, a function is a self-contained group of statements that you name. For example, to implement $\dif z/\dif t = f(t,z)$ for equations~(\ref{e.z0})--(\ref{e.z1}), we might write (in Python)
@@ -251,7 +244,7 @@ Figure \ref{f.forward-Euler} displays a schematic of a forward Euler step. We fi
 
 \begin{figure}[htb]
 \includegraphics[width=\linewidth]{forward-Euler}
-\caption{\label{f.forward-Euler}Schematic of a single forward Euler step.}
+\caption[Schematic of a single forward Euler step]{\label{f.forward-Euler}Schematic of a single forward Euler step, in which we compute the slope $f(t,z)$ (left) and extrapolate the solution from $t$ to $t+h$ (right).}
 \end{figure}
 
 How accurate is this \newterm{forward Euler} algorithm? From its definition, the error on each step comes from truncating the Taylor series and is $\mathcal{O}(h^{2})$. What do we mean by this? For sufficiently small $h$, reducing the step by a factor of 2 should reduce the error in a single step by a factor of 4. Another way to put this is that the forward Euler reproduces $z(t)$ exactly if $z$ is a linear function of $t$.
@@ -269,17 +262,19 @@ z_{\mathrm{P}}\left(t+\frac{h}{2}\right) = z(t) + \frac{h}{2}f[t,z(t)].
 Here $z_{\mathrm{P}}$ is our estimate of the solution at $t+h/2$.
 \begin{figure}
 \includegraphics[width=\linewidth]{rk2-1}
-\caption{First stage of a second-order Runge-Kutta step.}
+\caption[First stage of a second-order Runge-Kutta step]{\label{f.rk2-1}
+First stage of a second-order Runge-Kutta step, in which we compute the slope $f(t,z)$ (left) and extrapolate the solution to the midpoint $t+h$ (right).}
 \end{figure}
 
 We then use $z_{\mathrm{P}}$ to get a better estimate of $f$ and use this corrected value of $f$ for a step across the entire interval:
 \begin{equation}\label{e.corrector}
 z(t+h) = z(t) + h f\left(t+\frac{h}{2},z_{\mathrm{P}}\right).
 \end{equation}
-\begin{figure}
+\begin{marginfigure}
 \includegraphics[width=\linewidth]{rk2-2}
-\caption{Second stage of a second-order Runge-Kutta step.}
-\end{figure}
+\caption[Second stage of a second-order Runge-Kutta step]{\label{f.rk2-2}
+Second stage of a second-order Runge-Kutta step, ini which we compute the slope of our approximate midpoint solution $f(t+h/2,z_{\mathrm{p}})$ (left) and use this slope to extend the solution across the interval $[t,t+h]$ (right).}
+\end{marginfigure}
 
 One can show that $z(t+h)$ agrees with the actual solution to $\mathcal{O}(h^{3})$. When integrating over an interval $T$ and taking $T/h$ steps, the solution then has a global error $\sim\mathcal{O}(h^{2})$.  Equations~(\ref{e.predictor}) and (\ref{e.corrector}) are known as the \newterm{second-order Runge-Kutta} method. Note that if we reduce the stepsize by a factor of two, we expect the global truncation error to decrease by a factor of 4.
 
@@ -290,21 +285,24 @@ An even better method is the classic \newterm{fourth-order Runge-Kutta} algorith
 First, a trial forward Euler step is taken to the midpoint $t+h/2$ and the solution estimated there (Fig.~\ref{f.rk4-1}), just as in the second-order method.
 \begin{figure}
 \includegraphics[width=\linewidth]{rk4-1}
-\caption{First stage of a fourth-order Runge-Kutta step.\label{f.rk4-1}}
+\caption[First stage of a fourth-order Runge-Kutta step]{\label{f.rk4-1}
+First stage of a fourth-order Runge-Kutta step, in which we compute the slope $k_{1} = f(t,z)$ (left) and extrapolate the solution to the midpoint $t+h$ (right).}
 \end{figure}
 
 
 This solution at the midpoint is used to make a better estimate of $f$, and a new step is taken, not to $t+h$, but rather from $t$ just to the midpoint $t+h/2$ again (Fig.~\ref{f.rk4-2}).
-\begin{figure}
+\begin{marginfigure}
 \includegraphics[width=\linewidth]{rk4-2}
-\caption{Second stage of a fourth-order Runge-Kutta step.\label{f.rk4-2}}
-\end{figure}
+\caption[Second stage of a fourth-order Runge-Kutta step]{\label{f.rk4-2}
+Second stage of a fourth-order Runge-Kutta step, in which we compute the slope $k_{2}=f(t+h/2,z+k_{1}h/2$ (solid red line) and use this to construct an updated solution at $t+h/2$ (dashed red line).}
+\end{marginfigure}
 
 A new value of the slope $f$ at the midpoint is then computed, and this value of $f$ is then used to step across the full interval (Fig.~\ref{f.rk4-3}).
-\begin{figure}
+\begin{marginfigure}
 \includegraphics[width=\linewidth]{rk4-3}
-\caption{Third stage of a fourth-order Runge-Kutta step.\label{f.rk4-3}}
-\end{figure}
+\caption[Third stage of a fourth-order Runge-Kutta step]{\label{f.rk4-3}
+Third stage of a fourth-order Runge-Kutta step, in which we compute a new slope $k_{3}=f(t+h/2,z+k_{2}h/2$ (solid red line) and use this to construct a solution at $t+h$ (dashed red line).}
+\end{marginfigure}
 
 The slope at the endpoint $t+h$ is then computed. At this point, we have computed the following four estimates for the value of $\dif z/\dif t$:
 \begin{eqnarray}
@@ -318,20 +316,24 @@ The solution $z(t+h)$ is then constructed from a weighted sum of the $k_{i}$ (Fi
 	z(t+h) \approx z(t) + \frac{h}{6}\left(k_{1} + 2k_{2} + 2k_{3} + k_{4}\right).
 \end{equation}
 \begin{figure}
+\forcerectofloat
 \includegraphics[width=\linewidth]{rk4-4}
-\caption{Fourth and final stage of a fourth-order Runge-Kutta step.\label{f.rk4-4}}
+\caption[Fourth and final stage of a fourth-order Runge-Kutta step]{\label{f.rk4-4}
+Fourth and final stage of a fourth-order Runge-Kutta step, in which we compute the slope $k_{4}=f(t+h,z+h\,k_{3}$ (left); we then use a weighted sum of the $k_{i}$ slopes to extend the solution from $t$ to $t+h$ (right).}
 \end{figure}
 
 Notice that the $k_{i}$ are not independent of one another: each one depends on the intermediate value of $z$ computed in the previous step. The fourth-order Runge-Kutta scheme ``sniffs'' the behavior of $f(t,z)$ over the interval $(t,t+h)$ and constructs a weighted approximation for $\dif z/\dif t$.  One can show that this method produces solutions with a global truncation error $\sim\mathcal{O}(h^{4})$. That is, reducing the stepsize by a factor of 2 should reduce the error by a factor $2^{4} = 16$.
 
+The fourth-order Runge-Kutta scheme is a good general-purpose basic algorithm for integrating systems of ordinary differential equations. It does have limitations: highly non-linear systems, especially those with disparate length- or time-scales, or systems with conserved quantities, typically require more specialized integration algorithms.
+
 \section{Cubic splines}
-As discussed in Box~\ref{sb.interpolation}, a common numerical task is to interpolate values in a data file. In stellar physics, this is often done for opacities or equation of state: one computes, or measures, the opacity under a limited set of composition, temperature, and density. From this table, we then interpolate to obtain values of the opacity at arbitrary conditions. There are many tradeoffs in how this interpolation is done. In this section we'll illustrate one such method, namely cubic splines.
+The final commonplace numerical task we'll discuss is interpolation of values in a table of data. In stellar physics, this is often done for opacities or equation of state: one computes, or measures, the opacity under a limited set of composition, temperature, and density and tabulates these values. From this table, we then interpolate to obtain values of the opacity at conditions that lie between table entries. Interpolation using polynomials is discussed in Box \ref{sb.interpolation}; in this section we'll illustrate a commonly used interpolation method, cubic splines.
 
 \begin{marginfigure}
 \includegraphics{spline-1}
-\caption{\label{f.spline-1}Cubic polynomials between points $(x_{0},y_{0})$ and $(x_{1},y_{1})$; the slope at $x_{0}$ is $k_{0}=0$, and the slope $k_{1}$ is varied (red dotted lines).}
+\caption[Cubic polynomial with varying right-hand slopes]{\label{f.spline-1}Cubic polynomials between points $(x_{0},y_{0})$ and $(x_{1},y_{1})$; the slope at $x_{0}$ is $k_{0}=0$, and the slope $k_{1}$ is varied (red dotted lines).}
 \end{marginfigure}
-Through any 4 points $(x_{i},y_{i})_{i=0,\ldots,3}$ we can fit a unique cubic polynomial $y=p_{3}(x)$ (eq.~[\ref{e.four-points}]).  Alternatively, we can fit a cubic polynomial between two points $(x_{i},y_{i})$ and $(x_{i+1},y_{i+1})$ if we also specify the first derivatives $k_{i}$ and $k_{i+1}$ at $x_{i},x_{i+1}$: define $m_{i} = (y_{i+1}-y_{i})/(x_{i+1}-x_{i})$ as the mean slope across the interval; then the cubic polynomial is
+Through any 4 points $(x_{i},y_{i})_{i=0,\ldots,3}$ we can fit a unique cubic polynomial $y=p_{3}(x)$ (eq.~[\ref{e.lagrange-four}]).  Alternatively, we can fit a cubic polynomial between two points $(x_{i},y_{i})$ and $(x_{i+1},y_{i+1})$ if we also specify the first derivatives $k_{i}$ and $k_{i+1}$ at $x_{i},x_{i+1}$: with $m_{i} = (y_{i+1}-y_{i})/(x_{i+1}-x_{i})$ defined as the mean slope across the interval, the cubic polynomial is
 \begin{eqnarray}
 \lefteqn{q_{i}(x) =   y_{i}\frac{x_{i+1}-x}{x_{i+1}-x_{i}} 
 		   + y_{i+1}\frac{x-x_{i}}{x_{i+1}-x_{i}}

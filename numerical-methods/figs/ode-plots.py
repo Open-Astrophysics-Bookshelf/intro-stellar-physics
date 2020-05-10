@@ -103,6 +103,7 @@ def plot_slope(ax,t,z,k,loc='mid',length=0.02,include_point=True,color=Red):
 
     if include_point:
         ax.plot(t,z,linestyle='none',marker='o',markersize=8,color=color)
+    return ax
 
 def plot_step(ax,t,z,line_color=Red,left_marker_color=DarkerGreen,right_marker_color=Red):
     '''
@@ -118,7 +119,7 @@ def plot_step(ax,t,z,line_color=Red,left_marker_color=DarkerGreen,right_marker_c
     ax.plot(t[0],z[0],linestyle='none',marker='o',markersize=8,color=left_marker_color)
     # right point marker
     ax.plot(t[-1],z[-1],linestyle='none',marker='o',markersize=8,color=right_marker_color)
-
+    return ax
 
 if __name__ == '__main__':
     import matplotlib.pyplot as plt
@@ -141,7 +142,7 @@ if __name__ == '__main__':
     print('\nsolution to ODE')
     fig = plt.figure(figsize=(2,2))
     ax = fig.add_subplot(111)
-    plot_solution(ax,tsol,zsol[0,:],color=DarkGreyBlue,linewidth=1)
+    ax = plot_solution(ax,tsol,zsol[0,:],color=DarkGreyBlue,linewidth=1)
     fig.savefig('solution.pdf',format='pdf',bbox_inches='tight')
 
     print('\nschematic of forward Euler')
@@ -149,15 +150,14 @@ if __name__ == '__main__':
     zh = z + h*k
     fig = plt.figure(figsize=(5,2.5))
     ax1 = fig.add_subplot(121)
-    plot_solution(ax1,tsol,zsol[0,:])
-    plot_slope(ax1,t,z[0],k[0],loc='left')
-    ax1.set_title(r'compute slope at $t$')
+    ax1 = plot_solution(ax1,tsol,zsol[0,:])
+    ax1 = plot_slope(ax1,t,z[0],k[0],loc='left')
 
     ax2 = fig.add_subplot(122)
-    plot_solution(ax2,tsol,zsol[0,:])
-
-    plot_step(ax2,[t,t+h],[z[0],zh[0]])
-    ax2.set_title(r'construct solution at $t+h$')
+    ax2 = plot_solution(ax2,tsol,zsol[0,:])
+    ax2 = plot_step(ax2,[t,t+h],[z[0],zh[0]])
+    ax2.annotate(s=r'$f(t,z)$',xy=(t+0.5*h,0.5*(z[0]+zh[0])),ha='right',va='center',\
+        color=Red,xytext=(-4,0),textcoords='offset points')
     fig.tight_layout()
     fig.savefig('forward-Euler.pdf',format='pdf',bbox_inches='tight')
     
@@ -171,29 +171,26 @@ if __name__ == '__main__':
     print('    step 1')
     fig = plt.figure(figsize = (5,2.5))
     ax1 = fig.add_subplot(121)
-    plot_solution(ax1,tsol,zsol[0,:])
-    plot_slope(ax1,t,z[0],k[0],loc='left')
-    ax1.set_title(r'compute slope at $t$')
+    ax1 = plot_solution(ax1,tsol,zsol[0,:])
+    ax1 = plot_slope(ax1,t,z[0],k[0],loc='left')
 
     ax2 = fig.add_subplot(122)
-    plot_solution(ax2,tsol,zsol[0,:])
-    plot_step(ax2,[t,t_12],[z[0],z_12[0]])
-    ax2.set_title(r'construct solution at $t+h/2$')
+    ax2 = plot_solution(ax2,tsol,zsol[0,:])
+    ax2 = plot_step(ax2,[t,t_12],[z[0],z_12[0]])
+    ax2.annotate(s=r'$f(t,z)$',xy=(0.5*(t+t_12),0.5*(z[0]+z_12[0])),ha='right',va='center',\
+        color=Red,xytext=(-4,0),textcoords='offset points')
 
     fig.tight_layout()
     fig.savefig('rk2-1.pdf',format='pdf',bbox_inches='tight')
     
     print('    step 2')
-    fig = plt.figure(figsize = (5,2.5))
-    ax1 = fig.add_subplot(121)
-    plot_solution(ax1,tsol,zsol[0,:])
-    plot_slope(ax1,t_12,z_12[0],f_12[0],loc='mid')
-    ax1.set_title(r'estimate slope at $t+h/2$')
-
-    ax2 = fig.add_subplot(122)
-    plot_solution(ax2,tsol,zsol[0,:])
-    plot_step(ax2,[t,t+h],[z[0],zh[0]])
-    ax2.set_title(r'construct solution at $t+h$')
+    fig = plt.figure(figsize = (2.5,2.5))
+    ax = fig.add_subplot(111)
+    ax = plot_solution(ax,tsol,zsol[0,:])
+    ax = plot_slope(ax,t_12,z_12[0],f_12[0],loc='mid')
+    ax = plot_step(ax,[t,t+h],[z[0],zh[0]])
+    ax.annotate(s=r'$f(t+h/2,z_{\mathrm{p}})$',xy=(t+0.5*h,0.5*(z[0]+zh[0])),ha='left',va='center',\
+        color=Red,xytext=(4,-4),textcoords='offset points')
 
     fig.tight_layout()
     fig.savefig('rk2-2.pdf',format='pdf',bbox_inches='tight')
@@ -213,44 +210,39 @@ if __name__ == '__main__':
     print('    step 1')
     fig = plt.figure(figsize=(5,2.5))
     ax1 = fig.add_subplot(121)
-    plot_solution(ax1,tsol,zsol[0,:])
-    plot_slope(ax1,t,z[0],k1[0],loc='left')
-    ax1.set_title(r'compute slope at $t$')
+    ax1 = plot_solution(ax1,tsol,zsol[0,:])
+    ax1 = plot_slope(ax1,t,z[0],k1[0],loc='left')
 
     ax2 = fig.add_subplot(122)
-    plot_solution(ax2,tsol,zsol[0,:])
-    plot_step(ax2,[t,t12],[z[0],z12[0]])
-    ax2.set_title(r'construct solution at $t+h/2$')
+    ax2 = plot_solution(ax2,tsol,zsol[0,:])
+    ax2 = plot_step(ax2,[t,t12],[z[0],z12[0]])
+    ax2.annotate(s=r'$k_1$',xy=(0.5*(t+t12),0.5*(z[0]+z12[0])),ha='right',va='center',\
+        color=Red,xytext=(-4,0),textcoords='offset points')
 
     fig.tight_layout()
     fig.savefig('rk4-1.pdf',format='pdf',bbox_inches='tight')
     
     print('    step 2')
-    fig = plt.figure(figsize=(5,2.5))
-    ax1 = fig.add_subplot(121)
-    plot_solution(ax1,tsol,zsol[0,:])
-    plot_slope(ax1,t12,z12[0],k2[0],loc='mid')
-    ax1.set_title(r'compute slope at $t+h/2$')
-
-    ax2 = fig.add_subplot(122)
-    plot_solution(ax2,tsol,zsol[0,:])
-    plot_step(ax2,[t,t12],[z[0],z12p[0]])
-    ax2.set_title(r"update solution at $t+h/2$")
+    fig = plt.figure(figsize=(2.5,2.5))
+    ax = fig.add_subplot(111)
+    ax = plot_solution(ax,tsol,zsol[0,:])
+    ax = plot_slope(ax,t12,z12[0],k2[0],loc='mid')
+    ax = plot_step(ax,[t,t12],[z[0],z12p[0]])
+    ax.annotate(s=r'$k_2$',xy=(0.5*(t+t12),0.5*(z[0]+z12p[0])),ha='left',va='center',\
+        color=Red,xytext=(4,-4),textcoords='offset points')
 
     fig.tight_layout()
     fig.savefig('rk4-2.pdf',format='pdf',bbox_inches='tight')
     
     print('    step 3')
-    fig = plt.figure(figsize=(5,2.5))
-    ax1 = fig.add_subplot(121)
-    plot_solution(ax1,tsol,zsol[0,:])
-    plot_slope(ax1,t12,z12p[0],k3[0],loc='mid')
-    ax1.set_title(r'compute new slope at $t+h/2$')
-
-    ax2 = fig.add_subplot(122)
-    plot_solution(ax2,tsol,zsol[0,:])
-    plot_step(ax2,[t,th],[z[0],zhp[0]])
-    ax2.set_title(r"construct solution at $t+h$")
+    fig = plt.figure(figsize=(2.5,2.5))
+    ax = fig.add_subplot(111)
+    ax = plot_solution(ax,tsol,zsol[0,:])
+    ax = plot_slope(ax,t12,z12p[0],k3[0],loc='mid')
+    ax = plot_solution(ax,tsol,zsol[0,:])
+    ax = plot_step(ax,[t,th],[z[0],zhp[0]])
+    ax.annotate(s=r'$k_3$',xy=(0.5*(t+th),0.5*(z[0]+zhp[0])),ha='left',va='center',\
+        color=Red,xytext=(4,-4),textcoords='offset points')
 
     fig.tight_layout()
     fig.savefig('rk4-3.pdf',format='pdf',bbox_inches='tight')
@@ -258,18 +250,18 @@ if __name__ == '__main__':
     print('    step 4')
     fig = plt.figure(figsize=(5,2.5))
     ax1 = fig.add_subplot(121)
-    plot_solution(ax1,tsol,zsol[0,:])
-    plot_slope(ax1,th,zhp[0],k4[0],loc='right')
-    ax1.set_title(r'compute slope at $t+h$')
+    ax1 = plot_solution(ax1,tsol,zsol[0,:])
+    ax1 = plot_slope(ax1,th,zhp[0],k4[0],loc='right')
 
     ax2 = fig.add_subplot(122)
-    plot_solution(ax2,tsol,zsol[0,:])
-    plot_slope(ax2,t,z[0],k1[0],loc='left',length=0.02,include_point=False)
-    plot_slope(ax2,t,z[0],k2[0],loc='left',length=0.04,include_point=False)
-    plot_slope(ax2,t,z[0],k3[0],loc='left',length=0.04,include_point=False)
-    plot_slope(ax2,t,z[0],k4[0],loc='left',length=0.02,include_point=False)
-    plot_step(ax2,[t,th],[z[0],zh[0]])
-    ax2.set_title(r"average slopes")
+    ax2 = plot_solution(ax2,tsol,zsol[0,:])
+    ax2 = plot_slope(ax2,t,z[0],k1[0],loc='left',length=0.02,include_point=False)
+    ax2 = plot_slope(ax2,t,z[0],k2[0],loc='left',length=0.04,include_point=False)
+    ax2 = plot_slope(ax2,t,z[0],k3[0],loc='left',length=0.04,include_point=False)
+    ax2 = plot_slope(ax2,t,z[0],k4[0],loc='left',length=0.02,include_point=False)
+    ax2 = plot_step(ax2,[t,th],[z[0],zh[0]])
+    ax2.annotate(s=r'$(k_1+2k_2+2k_3+k_4)/6$',xy=(0.5*(t+th),0.5*(z[0]+zh[0])),ha='left',va='center',\
+        color=Red,xytext=(4,-4),textcoords='offset points')
 
     fig.tight_layout()
     fig.savefig('rk4-4.pdf',format='pdf',bbox_inches='tight')
