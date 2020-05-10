@@ -345,32 +345,32 @@ Through any 4 points $(x_{i},y_{i})_{i=0,\ldots,3}$ we can fit a unique cubic po
 An example of a cubic between $(x_{0},y_{0})$ and $(x_{1},y_{1})$ with $k_{0}=0$ and various $k_{1}$ is shown in Fig.~\ref{f.spline-1}.
 
 \begin{exercisebox}[Cubic polynomial]
-Verify that $q_{i}(x_{i}) = y_{i}$ and $q_{i}(x_{i+1}) = y_{i+1}$; also verify that $q^{\prime}_{i}(x_{i}) = k_{i}$ and $q^{\prime}_{i}(x_{i+1}) = k_{i+1}$.
+Verify that $q_{i}(x_{i}) = y_{i}$ and $q_{i}(x_{i+1}) = y_{i+1}$ in eq.~(\ref{e.spline}); also verify that $q^{\prime}_{i}(x_{i}) = k_{i}$ and $q^{\prime}_{i}(x_{i+1}) = k_{i+1}$.
 \end{exercisebox}
 
-Now suppose we have a sequence of $N+1$ points $x_{0},x_{1},\ldots,x_{N}$ with data values $y_{0},y_{1},\ldots,y_{N}$. On each interval $[x_{i},x_{i+1}]$ we can construct a spline $q_{i}$. As an example, we take one of the curves from Fig.~\ref{f.spline-1} and cut it in two. We then clamp the derivatives at the endpoints and allow the first derivative at the interior point to vary, with the requirement that the first derivative is continuous at that point. 
+Now suppose we have a sequence of $N+1$ points $x_{0},x_{1},\ldots,x_{N}$ with data values $y_{0},y_{1},\ldots,y_{N}$. On each interval $[x_{i},x_{i+1}]$ we can construct a spline $q_{i}$, subject to the requirement that the splines and their first derivatives are continuous at the interior points. As an example, we take one of the curves from Fig.~\ref{f.spline-1} and cut it into two intervals. We then clamp the derivatives at the endpoints---$k_{0}$ and $k_{2}$---and allow the first derivative at the interior point, $k_{1}$, to vary, with the requirement that the first derivative is continuous at that point.
 \begin{marginfigure}
 \includegraphics{spline-2}
 \caption[Two splines connected at an interior point]{\label{f.spline-2} Two splines spanning $[x_{0},x_{1}]$ and $[x_{1},x_{2}]$. The slope at the inner point, $k_{2}$, is allowed to vary. The dark curve shows the case where the first derivative is fixed to the value from original spline shown in Fig.~\ref{f.spline-1}.}
 \end{marginfigure}
 
-As the slope at $x_{1}$ is varied, the splines to left and right become more tortuous. This tight bending is characterized by the second derivative of the spline. In Fig.~\ref{f.spline-3} we plot the second derivative for three cases: where $k_{1}$ is fixed to the value from the original spline (solid line), and cases from Fig.~\ref{f.spline-2} with $k_{1}$ less than (dashed line) and greater than (dotted line) this value. Note that in general the second derivative is not continuous at $x_{1}$. 
+As the slope $k_{1}$ is varied, the splines to left and right become more tortuous. This tight bending is characterized by the second derivative of the spline. In Fig.~\ref{f.spline-3} we plot the second derivative for three cases: one where $k_{1}$ is fixed to the value from the original spline (solid line), and two with $k_{1}$ less than (dashed line) and greater than (dotted line) this value. Note that in general the second derivative is not continuous at $x_{1}$, but the least contorted curve in Fig.~\ref{f.spline-2} does have a continuous second derivative.
 
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{spline-3}
 \caption{\label{f.spline-3} Second derivatives of our spline functions.}
 \end{marginfigure}
 
-Thus, we can generate a smooth curve by requiring that both the first and second derivatives be continuous at the junction points $x_{1},\ldots,x_{N-1}$. Let's check if this gives us enough conditions. For $N+1$ points $x_{0},x_{1},\ldots,x_{N}$ with data values $y_{0},y_{1},\ldots,y_{N}$, there are $N$ splines: $q_{0}(x)$ on $x_{0}\le x\le x_{1}$, $q_{1}(x)$ on $x_{1}\le x \le x_{n}$, and on to $q_{N-1}(x)$ on $x_{N-1}\le x\le x_{N}$. Each spline has 4 free parameters, so we have a total of $4N$ parameters. We have the following conditions:
+This motivates constructing a smooth curve by requiring that both the first and second derivatives be continuous at the junction points $x_{1},\ldots,x_{N-1}$. Let's check if this gives us enough conditions. For $N+1$ points $x_{0},x_{1},\ldots,x_{N}$ with data values $y_{0},y_{1},\ldots,y_{N}$, there are $N$ splines: $q_{0}(x)$ on $x_{0}\le x\le x_{1}$, $q_{1}(x)$ on $x_{1}\le x \le x_{n}$, and so on to $q_{N-1}(x)$ on $x_{N-1}\le x\le x_{N}$. Each spline has 4 free parameters, so we have a total of $4N$ parameters. To solve for these parameters, we have the following conditions:
 \begin{eqnarray*}
 q_{i}(x_{i}) &=& y_{i},\;i=0,\ldots,N-1\qquad\textrm{($N$ conditions)}\\
 q_{i}(x_{i+1}) &=& y_{i+1},\;i=0,\ldots,N-1\qquad\textrm{($N$ conditions)}\\
 q^{\prime}_{i}(x_{i}) &=& q^{\prime}_{i-1}(x_{i}),\;i=1,\ldots,N-1\qquad\textrm{($N-1$ conditions)}\\
 q^{\prime\prime}_{i}(x_{i}) &=& q^{\prime\prime}_{i-1}(x_{i}),\;i=1,\ldots,N-1\qquad\textrm{($N-1$ conditions)}.
 \end{eqnarray*}
-Our format of the spline, eq.~(\ref{e.spline}), automatically satisfies the first two of these. Adding in the continuity of the first and second derivatives brings us to a total of $4N-2$ equations, and leaves us with two free parameters, namely $k_{0}$ and $k_{N}$, the derivatives at then ends. We could specify them (known as a \newterm{clamped spline}), but we usually don't have any way of knowing them \emph{a priori}. A popular choice is to set the second derivative at $x_{0}$ and $x_{N}$ to zero (known as a \newterm{natural} spline).\marginnote{A third choice is the \newterm{not-a-knot} condition, in which we also require the \emph{third} derivative at $x_{1}$ and $x_{N-1}$ to be continuous.}
+Our format of the spline, eq.~(\ref{e.spline}), automatically satisfies the first two of these. Adding in the continuity of the first and second derivatives brings us to a total of $4N-2$ equations and leaves us with two free parameters, namely $k_{0}$ and $k_{N}$, the derivatives at the endpoints. We could specify the slopes at the ends (known as a \newterm{clamped spline}), but we usually don't have any way of knowing them \emph{a priori}. A popular choice is to set the second derivative at $x_{0}$ and $x_{N}$ to zero (known as a \newterm{natural} spline).\marginnote{A third choice is the \newterm{not-a-knot} condition, in which we also require the \emph{third} derivative at $x_{1}$ and $x_{N-1}$ to be continuous.}
 
-Let's consider the case of a natural spline. Taking the second derivative of eq.~(\ref{e.spline}) and substituting $x=x_{i}$ and $x=x_{i+1}$ gives
+Let's consider the case of a natural spline. Taking the second derivative of eq.~(\ref{e.spline}) and evaluating at $x=x_{i}$ and $x=x_{i+1}$ gives
 \begin{eqnarray}
 \label{e.d2spline-left}
 q^{\prime\prime}_{i}(x_{i}) &=& -\frac{2}{x_{i+1}-x_{i}}\left[ 2k_{i} + k_{i+1} - 3m_{i} \right];\\
@@ -391,7 +391,7 @@ These $N+1$ equations for the $N+1$ $k_{i}$ can be written as the matrix equatio
 \left[\begin{array}{ccccccccccc}
 	b_{0} & c_{0} \\
 	a_{1} & b_{1} & c_{1} \\
-	& a{2} & b_{2} & c_{2}\\
+	& a_{2} & b_{2} & c_{2}\\
 	& & \ddots & \ddots & \ddots \\
 	& & & a_{i} & b_{i} & c_{i} \\
 	& & & & \ddots & \ddots & \ddots \\
@@ -417,8 +417,9 @@ These $N+1$ equations for the $N+1$ $k_{i}$ can be written as the matrix equatio
 	\vdots\\
 	d_{N-1}\\
 	d_{N}
-\end{array}\right].
+\end{array}\right],
 \]
+with $a_{i} = \Delta_{i-1}$, $b_{i} = 2(\Delta_{i-1}+\Delta_{i})$, $c_{i} = \Delta_{i}$, and $d_{i} = 3(m_{i-1}\Delta_{i-1}+m_{i}\Delta_{i})$, for $i=1,\ldots,N-1$. At the ends, $b_{0}=b_{N}=2$, $c_{0}=a_{N}=1$, $d_{0}=3m_{0}$, and $d_{N}=3m_{N-1}$.
 This is a \newterm{tridiagonal} matrix equation\sidenote{Blank entries are zero}, and can be efficiently solved as follows\cite{Press2007Numerical-Recip}.
 
 \begin{enumerate}
