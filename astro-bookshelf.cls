@@ -99,6 +99,26 @@
 % for code listings
 \fvset{numbers=left}
 
+% we increase \@tempdima from 2em to 2.4em to accomodate the width of the figure numbers
+\renewcommand{\@tufte@lof@line}[2]{%
+  % #1 is the figure/table number and its caption text
+  % #2 is the page number on which the figure/table appears
+  \leftskip 0.0em
+  \rightskip 0em
+  \parfillskip 0em plus 1fil
+  \parindent 0.0em
+  \@afterindenttrue
+  \interlinepenalty\@M
+  \leavevmode
+  \@tempdima 2.4em
+  \advance\leftskip\@tempdima
+  \null\nobreak\hskip -\leftskip
+  {#1}\nobreak\qquad\nobreak#2%
+  \par%
+}
+
+\renewcommand*\l@figure{\@tufte@lof@line}
+
 \renewcommand*{\listfigurename}{Figures}
 \renewcommand*{\listtablename}{Tables}
 
