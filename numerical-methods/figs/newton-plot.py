@@ -62,3 +62,10 @@ if __name__ == '__main__':
     
     fig.savefig('newton.pdf',format='pdf',bbox_inches='tight')
     
+    x = x0
+    
+    for n in range(7):
+        y,yp = f(x)
+        p = np.abs(x-r)
+        print('{0:2d} {1:8.6f} {2:12.6e} {3:9.6f}'.format(n,x,y,np.log2(p+np.finfo(1.0).eps)))
+        x = newton(f,x)

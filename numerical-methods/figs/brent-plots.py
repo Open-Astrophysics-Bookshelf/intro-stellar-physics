@@ -14,6 +14,9 @@ def f(x):
 def testf(x):
     return (x+3)*(x-1)**2
 
+def trickyf(x):
+    return x*x*(x-3)
+
 def bisect(f,a,b):
     fa = f(a) # left side of bracket
     fb = f(b) # right side of bracket
@@ -99,21 +102,23 @@ def brent_step(f,a,b,c,d,prev='bisection'):
         s = secant(f,a,b)
     # acceptance conditions
     if (s > (3*a+b)/4 and s < b) or (s < (3*a+b)/4 and s > b):
-        # print('s lies in interval')
-        # print('previous step was {0}'.format(prev))
+        print('s lies in interval')
+        print('previous step was {0}'.format(prev))
         if prev == 'bisection':
             if np.abs(s-b) >= 0.5*np.abs(b-c) or np.abs(b-c) < delta:
+                print('step not converging')
+                print('s, b, c, d = ',s,b,c,d)
                 s = 0.5*(a+b)
                 method = 'bisection'
-                # print('step not converging')
         else:
             if np.abs(s-b) >= 0.5*np.abs(c-d) or np.abs(c-d) < delta:
+                print('step not converging')
+                print('s, b, c, d = ',s,b,c,d)
                 s = 0.5*(a+b)
                 method = 'bisection'
-                # print('step not converging')
     else:
         s = 0.5*(a+b)
-        # print('step rejected: (3a+b)/4, b = {0:7.4f}, {1:7.4f}'.format((3*a+b)/4,b))
+        print('step rejected: (3a+b)/4, b = {0:7.4f}, {1:7.4f}'.format((3*a+b)/4,b))
         method = 'bisection'
     fs = f(s)
     # set b[k-2] = b[k-1], b[k-1] = b[k]
@@ -159,7 +164,7 @@ def sequence_plots(f,xleft,xright,Nsteps,basename='brent'):
     rt = np.pi
     x = np.linspace(xleft,xright,100)
     y = f(x)
-    a = xleft; b = xright; c = a; d = 0.0
+    a = xleft; b = xright; c = b; d = 0.0
     fa = f(a); fb = f(b)
     assert(fa*fb < 0.0)
     if np.abs(fa) < np.abs(fb):
@@ -187,6 +192,7 @@ def sequence_plots(f,xleft,xright,Nsteps,basename='brent'):
         a,b,c,d,s,method = brent_step(f,a,b,c,d,method)
         print('method = {0}, s = {1:7.4f}'.format(method,s))
         print('a, b, c, d = '+' '.join(['{0:7.4f}'.format(i) for i in (a,b,c,d)]))
+        print('error = {0:13.6e}'.format(np.abs(b-rt)))
         ax.plot(s,f(s),color=Red,marker='o',markersize=4)
         xtks += [s]
         ytks += [f(s)]
@@ -221,14 +227,14 @@ if __name__=='__main__':
     plt.style.use('text-sans')
     rc('axes',titlesize='medium')
 
-    xl = 1.6
-    xr = 5.1
-    sequence_plots(f,xl,xr,3)
+    xl = 1.3
+    xr = 4.5
+    sequence_plots(f,xl,xr,3,basename='brent')
 
-    # xl = 1.3
-    # xr = 4.5
-    # sequence_plots(f,xl,xr,3,basename='trial')
-    
-    # xl = -4
-    # xr = 4/3
-    # sequence_plots(testf,xl,xr,10,basename='test')
+    # xl = 1.6
+    # xr = 5.1
+    # sequence_plots(f,xl,xr,3,basename='brent-alt')
+   
+    # xl = -1
+    # xr = 5
+    # sequence_plots(trickyf,xl,xr,10,basename='tricky')

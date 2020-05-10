@@ -3,7 +3,7 @@
 Computing is now ubiquitous in science and technology, and is a ``third leg'' along with theory and experiment. Stellar modeling has a long and storied history in this area. Of course, libraries of numerical routines are now widely available, and for research it is far better to use a well-written and well-tested routine than trying to build your own. One still needs to have a basic understanding, however, of how a computational technique works! In this appendix, we wish to give a flavor of a few common numerical techniques. 
 
 \section{Numerical precision}\label{s.numerical-precision}
-Before diving into the sea of computational techniques, we need to wade a bit in the shallows of floating-point arithmetic. Numbers are stored in base-2 (binary) format: a sequence of 1's and 0's known as \newterm{bits}. Because the number of bits is finite\sidenote{On most systems the default is 64 bits.}, not all numbers are representable and the processor and compiler define a particular model to represent numbers.
+Before diving into the sea of computational techniques, we need to wade a bit in the shallows of floating-point arithmetic. Numbers are stored in base-2 (binary) format: a sequence of 1's and 0's known as \newterm{bits}. The number of bits in this sequence is fixed\sidenote{On most systems the default is 64 bits.}, and the processor and compiler define a particular model\sidenote{Notation used here follows \citet{Metcalf2018Modern-Fortran-}.} to represent numbers.
 
 In symbols, an integer $d$ can be written, using $N$ bits, as
 \[
@@ -16,122 +16,136 @@ Here $s=\pm1$ is the \newterm{sign bit} and $d_{k} = 0,1$. The largest integer i
 000 & 001 & 010 & 011 & 100 & 101 & 110 & 111
 \end{tabular}.
 
-Real numbers can be modeled in base-2 as follows\cite{Metcalf2018Modern-Fortran-}: for $x \neq 0$, 
+Real numbers can be modeled\marginnote{The IEEE 754 64-bit model uses 11 bits for representing the exponent $\varepsilon$ and the remaining 53, including the sign bit $s$, for the fractional part, known as the \newterm{mantissa}. Other common models include 32 bits (8 for exponent, 24 for mantissa) and 128 bits (15 for exponent, 113 for mantissa).}
+as follows: for $x \neq 0$, 
 \begin{equation}\label{e.modal-reals}
 x = s\times 2^{\varepsilon}\times \sum_{k=1}^{p} f_{k}\times 2^{-k}.
 \end{equation}
-Here the exponent $\varepsilon_{\min}\le\varepsilon\le\varepsilon_{\max}$ and $f_{k}=0,1$ with $f_{1} = 1$.\marginnote{The IEEE 754 64-bit model uses 11 bits for representing the exponent $\varepsilon$ and the remaining 53, including the sign bit $s$, for the fractional part, known as the \newterm{mantissa}. Other common models include 32 bits (8 for exponent, 24 for mantissa) and 128 bits (15 for exponent, 113 for mantissa).} For example, if $\varepsilon=-6$ and $f_{k} = 11010000\ldots$ (i.e., $f_{k}=1$ for $k=\{1,2,4\}$), then
+Here the exponent $\varepsilon_{\min}\le\varepsilon\le\varepsilon_{\max}$ and $f_{k}=0,1$ with $f_{1} = 1$. For example, if $\varepsilon=-6$ and $f_{k} = 11010000\ldots$ (i.e., $f_{k}=1$ for $k=\{1,2,4\}$ and is 0 otherwise), then
 $x = 2^{-6}\times (2^{-1}+2^{-2}+2^{-4}) = 0.0126953125$.
 
 Using the numerical inquiry functions in Fortran 2018, I wrote a small program to report on the arithmetic on my MacBook Pro (Intel Core i5 processor) for 64-bit floating-point arithmetic. The results are as follows.
 \begin{Verbatim}[numbers=none]
      exponent = [-1021, 1024]
+       digits = 53
  [tiny, huge] = [ 2.2251E-308, 1.7977E+308]
     precision = 15
       epsilon = 2.2204E-16
 \end{Verbatim}
 Let's understand what these numbers mean.
-First, the exponent ranges over $-1021\le\varepsilon\le1024$;%
+First, the exponent, $\varepsilon$ in eq.~(\ref{e.modal-reals}), ranges over $-1021\le\varepsilon\le1024$;%
 \marginnote{If you are counting, it may seem that $\varepsilon_{\min}$ should be -1023; however, a couple special values of $\varepsilon$ are reserved to indicate exceptions: \texttt{NaN} (not a number), e.g., $\sqrt{-1}$; $\pm$\texttt{Infinity}, e.g., $1/0$; or underflow---the number is too small to be represented in this model with $f_{1}=1$.}
-given this, the smallest positive number (with $f_{1}=1$) that can be represented by the model (eq.~[\ref{e.modal-reals}]) has $\varepsilon = \varepsilon_{\min}$ and $f_{k\neq 1} = 0$:
+given this, what is the smallest positive number, \texttt{tiny}, that can be represented by the model (eq.~[\ref{e.modal-reals}])? Since in the model $f_{1}=1$, the smallest representable number has $\varepsilon = \varepsilon_{\min}$ and $f_{k\neq 1} = 0$:
 \[\mathtt{tiny} = 2^{\varepsilon_{\min}}\times 2^{-1} = 2^{-1022} = \sci{2.2251}{-308}.\]
-The largest positive number that can be represented with eq.~(\ref{e.modal-reals}) is found by setting $\varepsilon=\varepsilon_{\max}$ and all $f_{k}=1$:
+What is the largest positive number, \texttt{huge} that can be represented by eq.~(\ref{e.modal-reals})? This number has $\varepsilon=\varepsilon_{\max}$ and $f_{k}=1,\,\forall k=1,\ldots,p$, and $p = 52$ (\texttt{digits} with 1 bit reserved for the sign):
 \marginnote{In this expression use the formula for the sum of the geometric series,
 \[
 \sum_{k=1}^{p}r^{-k} = \frac{1-r^{-p}}{r-1}
 \]
 with $r=2$.}
 \[
-\mathtt{huge} = 2^{\varepsilon_{\max}}\times \sum_{k=1}^{p} 2^{-k} = 2^{\varepsilon_{\max}}\times(1-2^{-p}) = \sci{1.7977}{308}.
+\mathtt{huge} = 2^{\varepsilon_{\max}}\times \sum_{k=1}^{52} 2^{-k} = 2^{\varepsilon_{\max}}\times(1-2^{-52}) = \sci{1.7977}{308}.
 \]
-Finally, we can ask: what is the smallest number that, when added to one, gives a number different than one? The number one is represented with $\varepsilon = 1$ and $f_{k} = 10000\ldots$, i.e., $f_{1}=1$ and $f_{k\neq1}=0$. The next number larger than one that can be represented in the model (eq.~[\ref{e.modal-reals}]) has $f_{k} = 10000\ldots00001$; that is, $f_{1}=f_{p}=1$ and all other $f_{k}=0$. Hence, the smallest difference between two real numbers that we can model with eq.~(\ref{e.modal-reals}) is $\mathtt{epsilon} = 2^{-p} = 2^{-52} = \sci{2.2204}{-16}$; our \verb+precision+ is therefore about 15 digits in decimal format.
+Finally, we can ask: what is the smallest number that, when added to one, gives a number different than one? The number one is represented with $\varepsilon = 1$ and $f_{k} = 10000\ldots$, i.e., $f_{1}=1$ and $f_{k\neq1}=0$. The next number larger than one that can be represented in the model (eq.~[\ref{e.modal-reals}]) has $f_{k} = 10000\ldots00001$; that is, $f_{1}=f_{p}=1$ and all other $f_{k}=0$. Hence, the smallest difference between two real numbers that we can model with eq.~(\ref{e.modal-reals}) is $\mathtt{epsilon} = 2^{-p} = 2^{-52} = \sci{2.2204}{-16}$; our \verb+precision+ in decimal format is therefore about 15 digits.
 
 \section{Finding the root of a function}
-A common task in computation is to find the root of a function: that is, given a function $f(x)$ defined on an interval $a\le x\le b$ with $f(a)$ and $f(b)$ having opposite signs, find $x_{r}\in[a,b]$ such that $f(x_{r}) = 0$.
-For example, suppose we want to find the root for the function $f(x) = x^2-2$ with $x > 0$. That is, we want to find $r > 0$ such that $f(x=r) = 0$. Of course, the answer has an algebraic solution, namely $\sqrt{2}$ so we don't need to find an approximate numerical answer. We can, however, easily find problems for which the only recourse is to obtain a numerical answer.
+A common task in computation is to find the root of a function: that is, given a function $f(x)$ defined on an interval $a\le x\le b$ with $f(a)$ and $f(b)$ having opposite signs ($f(a)\times f(b) < 0$), find $r\in[a,b]$ such that $f(r) = 0$.
 
 \subsection{Bisection}
 \begin{marginfigure}[-18\baselineskip]
 \includegraphics[width=\linewidth]{bisection-1}
 \caption[First bisection step]{During the first iteration, we bisect the interval and determine whether the root of the function lies in $[a,m]$ or $[m,b]$.\label{f.bisection-1}}
 \end{marginfigure}
-A robust method for finding $x_{r}$ is \newterm{bisection}. We find the midpoint $m = (a+b)/2$ and compute $f(m)$ (red dot, Fig.~\ref{f.bisection-1}). We then determine the interval---$[a,m]$ or $[m,b]$ in which the root lies. For example, in Fig.~\ref{f.bisection-1}, the root lies in $[m,b]$ since $f(m)$ and $f(b)$ have opposite signs. We then reset the bounds of our interval---in this case, set $a=m$---and repeat the process (Fig.~\ref{f.bisection-2}).
+A robust method for finding $r$ is \newterm{bisection}. We find the midpoint $m = (a+b)/2$ and compute $f(m)$ (red dot, Fig.~\ref{f.bisection-1}). We then determine the interval---$[a,m]$ or $[m,b]$ in which the root lies. For example, in Fig.~\ref{f.bisection-1}, the root lies in $[m,b]$ since $f(m)$ and $f(b)$ have opposite signs. We thus reset the bounds of our interval---in this case, setting $a=m$---and repeat the process, as shown in Fig.~\ref{f.bisection-2}.
+
+On the second iteration, the root is found to lie in $[a, m]$, so for the third iteration, we set $b=m$. The midpoints for the first five bisections of this example are shown in Fig.~\ref{f.bisection-3}. The midpoints gradually converge toward the root. Although on each iteration the midpoint represents the current best guess for the root, there is an uncertainty in the value of the root given by the width of the interval.
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{bisection-2}
 \caption[Second bisection step]{For the second iteration, we move the left-boundary $a$ to $m$ and compute the next midpoint.\label{f.bisection-2}}
 \end{marginfigure}
 
-As shown in Fig.~\ref{f.bisection-2}, for the third iteration, we should set $b=m$. On each iteration the uncertainty in our root is halved: at the start the uncertainty is $\Delta=|b-a|$; after one iteration it is $\Delta/2$; after two iterations, $\Delta/2^{2}$; after $n$ iterations, $\Delta/2^{n}$. If our desired \newterm{tolerance} is $\epsilon$---that is, the root is known to lie in an interval of width $\epsilon$---then we should stop when
+On each iteration this uncertainty in our root is halved: at the start the uncertainty is $\Delta=|b-a|$; after one iteration it is $\Delta/2$; after two iterations, $\Delta/2^{2}$; after $n$ iterations, $\Delta/2^{n}$. If our desired \newterm{tolerance} is $\epsilon$---that is, the root is known to lie in an interval of width $\epsilon$---then we should stop when
 \begin{eqnarray*}
-	\frac{\Delta}{2^{n}} &<& \epsilon\\
+	\frac{\Delta}{2^{n}} &<& \epsilon,\\
 	n &>& \log_{2}\left(\frac{\Delta}{\epsilon}\right).
 \end{eqnarray*}
-Note the $\log_{2}$: on each iteration, we gain another bit of precision on the root. Since our precision is limited to roughly 52 bits (\S~\ref{s.numerical-precision}), in our code we could set the maximum number of iterations to, say, 60 and then exit the loop when $|b-a| < \epsilon$. The first five bisections for our example are shown in Fig.~\ref{f.bisection-3}.
+Note the $\log_{2}$: on each iteration, we gain another bit of precision on the root. Since our precision is limited to roughly 52 bits (\S~\ref{s.numerical-precision}), this sets the upper limit on how many iterations we need, depending on the initial width $|b-a|$.
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{bisection-3}
 \caption[First five bisections]{The first five bisections illustrating the convergence to the root.\label{f.bisection-3}}
 \end{marginfigure}
 
 \subsection{Newton's method}
-Bisection is robust: it is guaranteed to converge to a root that is bracketed on some interval $a \le x \le b$. It converges to the root at a rather plodding pace, however, and you might wonder: can we do better? If we know the derivative of our function, $f^{\,\prime}(x)$, then we can use \newterm{Newton's method}. On each iteration $n$, with a trial root $x_{n}$, compute $f(x_{n})$ and $f^{\,\prime}(x_{n})$. Then compute the next guess for the root as
-\[	x_{n+1} = x_{n} - \frac{f(x_{n})}{f^{\,\prime}(x_{n})}. \]
-Fig.~\ref{f.newton} illustrates this: we equate the slope of the red dotted line, $(f(x_{0})-0)/(x_{0}-x_{1})$, with $f^{\,\prime}(x_{0})$ and solve for $x_{1}$. We then repeat this process to get $x_{2}$, $x_{3}$, and so on, with each one hopefully ever closer to the root.
-\begin{marginfigure}
+Bisection is robust: it is guaranteed to converge to a root that is bracketed on some interval $a \le x \le b$. It converges to the root at a rather plodding pace, however, and you might wonder: can we speed up convergence a bit? If we can evaluate the derivative of our function, $f^{\,\prime}(x)$, then a classic method for rapidly converging to a root from a good initial guess is \newterm{Newton's method}.  In this method, on each iteration $n$ with a trial root $x_{n}$, evaluate $f(x_{n})$ and $f^{\,\prime}(x_{n})$. To get the next guess, $x_{n+1}$, for the root, construct a line through $(x_{n},f(x_{n})$ and having a slope $f^{\,\prime}(x_{n})$; and solve for where this line crosses the x-axis:
+\begin{eqnarray*}
+\frac{f(x_{n})-0}{x_{n}-x_{n+1}} &=& f^{\,\prime}(x_{n}),\\
+x_{n+1} &=& x_{n} - \frac{f(x_{n})}{f^{\,\prime}(x_{n})}.
+\end{eqnarray*}
+Fig.~\ref{f.newton} illustrates the first iteration to determine $x_{1}$ from an initial guess $x_{0}$. We then repeat this process to get $x_{2}$, $x_{3}$, and so on, with each one hopefully ever closer to the root.
+\begin{marginfigure}[-8\baselineskip]
 \includegraphics[width=\linewidth]{newton}
 \caption[Schematic of Newton's method]{Starting from an initial guess $x_{0}$, we extend a line (red dotted line) of slope $f^{\,\prime}(x_{0})$ to where it crosses $y=0$, thus giving our next guess $x_{1}$.\label{f.newton}}
 \end{marginfigure}
 
-Compared with bisection, Newton's method converges quite rapidly: the precision roughly doubles on each iteration. Thus, for the example in Fig.~\ref{f.newton}, where $f(x) = x^{4}-4$ and $x_{0}=2$, only 6 iterations are needed to obtain the root to a tolerance $< 10^{-15}$. Nothing comes for free, however; if the initial guess is too far from the root, then Newton's method will converge very slowly or perhaps not at all (what happens if $x_{0}$ is near the left end of the curve in Fig.~\ref{f.newton}?).\marginnote{Newton's method is useful for quickly estimating roots of numbers: for example, to find the square root of a number $r$, start with a guess $x_{0}$ and compute $x_{1} = (x_{0}^{2} + r)/(2x_{0})$, then repeat to get $x_{2}$. Often one can do one or two iterations mentally and get within a percent or so. For example, to estimate $\sqrt{2}$: $x_{0} = 1$; $x_{1} = 3/2$; and $x_{2} = 17/12$, which is accurate to 0.2\%.}
-For this reason, along with the need to compute the derivative, Newton's method is generally not preferred.
+Compared with bisection, Newton's method converges quite rapidly: $|x_{n+1}-r| \sim |x_{n}-r|^{2}$---that is, the number of decimal places of precision of the guess roughly \emph{doubles} on each iteration.  Thus, for  $f(x) = x^{4}-4$ with $x_{0}=2$, only 6 iterations\sidenote{that is, $\approx\log_{2}p$ iterations, where $p=52$ is the number of bits of precision, see eq.~(\ref{e.modal-reals})} are needed to find the root to a tolerance $< 10^{-15}$. Nothing comes for free, however; if the initial guess is too far from the root, then Newton's method may converge much slower than bisection, or perhaps not even converge at all (what happens if $x_{0}$ is near the left end of the curve in Fig.~\ref{f.newton}?).
+For this reason, Newton's method is generally not preferred.\marginnote[-4\baselineskip]{Newton's method is useful for quickly estimating roots of numbers: for example, to find the square root of a number $r$, start with a guess $x_{0}$ and compute $x_{1} = (x_{0}^{2} + r)/(2x_{0})$, then repeat to get $x_{2}$. Often one can do one or two iterations mentally and get within a percent or so. For example, to estimate $\sqrt{2}$: $x_{0} = 1$; $x_{1} = 3/2$; and $x_{2} = 17/12$, which is accurate to 0.2\%.}
 
 \subsection{Brent's method}
-\newterm{Brent's method}\cite{Brent1973Algorithms-for-} is a rapidly converging, robust routine for finding roots. Like bisection, it requires that the root be bracketed on an interval $a\le x
-\le b$; and like bisection, the initial guess for the root is the midpoint $m = (a+b)/2$. To construct the next guess for the root, Brent's method uses inverse quadratic interpolation: it fits a parabola $x = ay^{2}+ by + c$ through the three points $(a,f(a))$, $(m,f(m))$, and $(b,f(b))$.  This parabola crosses the line $y=0$ at $x=c$, and this is the next guess for the root. Solving for $c$ (see Box~\ref{sb.interpolation}) gives
-\[
-x = \frac{f(b)f(m)a}{[f(b)-f(a)][f(m)-f(a)]} - \frac{f(a)f(m)b}{[f(b)-f(a)][f(m)-f(b)]} 
-        + \frac{f(a)f(b)m}{[f(m)-f(a)][f(m)-f(b)]}.
-\]
-Fig.~\ref{f.brent-1} illustrates this, using the same parameters as in Fig.~\ref{f.bisection-1}. The thin line shows the parabolic fit, and the red dot indicates the next guess $g$ for the root.
-\begin{marginfigure}
-\includegraphics[width=\linewidth]{brent-1}
-\caption[Brent's method]{A parabola $x=ay^{2}+by+c$ is fit through the ends and midpoint of an interval containing the root, and where this parabola intersects $y=0$---i.e., at $x=c$---is used as the next guess, labeled $g$, for the root.\label{f.brent-1}}
-\end{marginfigure}
-
-Because the root lies in $[m,b]$, for the next iteration (Fig.~\ref{f.brent-2}), we restrict the interval to $m\le x\le b$ and construct a parabola through the new left boundary $m$, the guess for the root $g$, and the right hand boundary $b$. After this second iteration, our new guess $g$ is quite close to the root; comparing with Fig.~\ref{f.bisection-3} illustrates how Brent's method is more efficient than bisection.
-\begin{marginfigure}
-\includegraphics[width=\linewidth]{brent-2}
-\caption[Second iteration, Brent's method]{Brent's method is repeated on the restricted interval $[m,b]$ using the points $m,g,b$ to fit a new parabola and determining the next guess (red dot) for the root.\label{f.brent-2}}
-\end{marginfigure}
+\newterm{Brent's method}\cite{Brent1973Algorithms-for-} is a rapidly converging, robust routine for finding roots. Like bisection, it requires that the root be bracketed on an interval $x\in[a,b]$. Rather than use the midpoint as a guess for the root, however, Brent's method instead uses, when possible, either linear or quadratic interpolation (see Box~\ref{sb.interpolation}) to construct the next guess for the root.
 
 \begin{sidebar}[Interpolation]
 \label{sb.interpolation}
-Through any two points $(x_{0},y_{0})$, $(x_{1},y_{1})$ with $x_{1}\neq x_{0}$, we can fit a unique line, $y=ax+b$. The equation for a line has two undetermined coefficients, $a$ and $b$, and we find these coefficients by evaluating the equation for a line at each point:
-\[
-	y =  \frac{y_{2}-y_{1}}{x_{2}-x_{1}} x + \frac{y_{1}x_{2} - y_{2}x_{1}}{x_{2}-x_{1}}.
-\]
-Through any three points $(x_{0},y_{0})$, $(x_{1},y_{1})$, $(x_{2},y_{2})$ with $x_{0}\neq x_{1}\neq x_{2}$, we can fit a unique quadratic $q = ax^{2}+bx+c$, with $a,b,c$ determined by the equations
+\noindent Through any two points $(x_{0},y_{0})$, $(x_{1},y_{1})$ with $x_{1}\neq x_{0}$, we can fit a unique line, $y=ax+b$, with
 \begin{eqnarray*}
-\left[\begin{array}{rrr}
-1 & x_{0} & x_{0}^{2} \\
-1 & x_{1} & x_{1}^{2} \\
-1 & x_{2} & x_{2}^{2}
-\end{array}\right] \left[\begin{array}{c} c\\b\\a\end{array}\right] = 
-\left[\begin{array}{c} y_{0}\\y_{1}\\y_{2}\end{array}\right].
+	a &=&  \frac{y_{1}-y_{0}}{x_{1}-x_{0}}\\
+	b &=&  \frac{y_{0}x_{1} - y_{1}x_{0}}{x_{1}-x_{0}}.
 \end{eqnarray*}
-Continuing, through 4 points we can fit a polynomial of degree 3: $p_{3}(x) = ax^{3} + bx^{2} + cx +d$; and so on. There is a formula for the polynomial of degree $N$, known as the \newterm{Lagrange polynomial}, that passes through $N+1$ points
+Through any three points $(x_{0},y_{0})$, $(x_{1},y_{1})$, $(x_{2},y_{2})$ with $x_{0}$, $x_{1}$, and $x_{2}$ distinct, we can fit a unique quadratic $q = ax^{2}+bx+c$, with $a,b,c$ determined by the equations
+\begin{eqnarray*}
+a x_{0}^{2} + b x_{0} + c &=& y_{0}\\
+a x_{1}^{2} + b x_{1} + c &=& y_{1}\\
+a x_{2}^{2} + b x_{2} + c &=& y_{2}.
+\end{eqnarray*}
+Continuing, through any 4 distinct points we can fit a polynomial of degree 3: $p_{3}(x) = ax^{3} + bx^{2} + cx +d$; and so on. The formula for a polynomial of degree $N$ passing through $N+1$ distinct points is known as the \newterm{Lagrange polynomial}, 
 \begin{eqnarray}
-p_{N} &=& \sum_{i=0}^{N} y_{i}\ell_{i}(x),\\
+p_{N}(x) &=& \sum_{i=0}^{N} y_{i}\ell_{i}(x),\\
 \ell_{i}(x) &=& \prod_{k=0,k\neq i}^{N} \frac{x-x_{k}}{x_{i}-x_{k}}.
 \end{eqnarray}
 For example,
 \begin{eqnarray}
+\label{e.lagrange-one}
+p_{1}(x) &=& y_{0}\frac{x-x_{1}}{x_{0}-x_{1}} + y_{1}\frac{x-x_{0}}{x_{1}-x_{0}};\\
+\label{e.lagrange-three}
+p_{2}(x) =&& y_{0}\frac{x-x_{1}}{x_{0}-x_{1}}\cdot\frac{x-x_{2}}{x_{0}-x_{2}} 
+	+ y_{1}\frac{x-x_{0}}{x_{1}-x_{0}}\cdot\frac{x-x_{2}}{x_{1}-x_{2}}\nonumber\\
+	&&+ y_{2}\frac{x-x_{0}}{x_{2}-x_{0}}\cdot\frac{x-x_{1}}{x_{2}-x_{1}};\\
+\label{e.lagrange-four}
 p_{3}(x) =&&  y_{0}\frac{x-x_{1}}{x_{0}-x_{1}}\cdot\frac{x-x_{2}}{x_{0}-x_{2}}\cdot\frac{x-x_{3}}{x_{0}-x_{3}} \nonumber\\
       &+& y_{1}\frac{x-x_{0}}{x_{1}-x_{0}}\cdot\frac{x-x_{2}}{x_{1}-x_{2}}\cdot\frac{x-x_{3}}{x_{1}-x_{3}} \nonumber \\
       &+& y_{2}\frac{x-x_{0}}{x_{2}-x_{0}}\cdot\frac{x-x_{1}}{x_{2}-x_{1}}\cdot\frac{x-x_{3}}{x_{2}-x_{3}} \nonumber\\
       &+& y_{3}\frac{x-x_{0}}{x_{3}-x_{0}}\cdot\frac{x-x_{1}}{x_{3}-x_{1}}\cdot\frac{x-x_{2}}{x_{3}-x_{2}}.
-\label{e.four-points}
 \end{eqnarray}
 \end{sidebar}
+
+\begin{marginfigure}[-12\baselineskip]
+\includegraphics[width=\linewidth]{brent-0}
+\caption[Brent's method]{A secant (thin red line) is constructed through the endpoints of an interval containing the root; where this secant crosses the x-axis is used as the next guess (red dot) for the root.\label{f.brent-0}}
+\end{marginfigure}
+Fig.~\ref{f.brent-0} shows the first iteration of Brent's method. Our test problem is to find the root of $\sin(x)$ on the interval $[1.3,4.5]$. We orient the interval so that $|f(b)|<|f(a)|$, so that $b$ is the ``best guess'' for the root. We then use eq.~(\ref{e.lagrange-one}) to construct a line, known as a \newterm{secant}, connecting $a$ and $b$ and determine the point $s$ where that line crosses the x-axis. In this example, $s$ becomes the new best guess for the root, so we set $b=s$ and store the previous best guess as $c$.
+
+For the next iteration, we have three points: $a$, $b$ (the current best guess), and $c$ (the previous best guess). We can therefore fit a parabola (Fig.~\ref{f.brent-1}) through the three points $(a,f(a))$, $(b,f(b))$, and $(c,f(c))$, using eq.~(\ref{e.lagrange-three}). Instead of fitting a parabola $y = p_{2}(x)$, however, we fit $x = p_{2}(y)$; the reason is that we can simply set $y=0$ in eq.~(\ref{e.lagrange-three})---with $x,y$ exchanged---to find the next guess.
+\begin{marginfigure}[-8\baselineskip]
+\includegraphics[width=\linewidth]{brent-1}
+\caption[Second iteration, Brent's method]{A parabola $x=p_{2}(y)$ (thin red curve) is fit through the previous guesses that bracket a root, and where this parabola intersects $y=0$ is used as the next guess $s$ (red dot) for the root.\label{f.brent-1}}
+\end{marginfigure}
+
+The new guess for the root $s$ (Fig.~\ref{f.brent-2}) is on the same side of the root as $a$; hence the previous best guess becomes $a$, and we set $b = s$. We are then ready to perform a linear interpolation to determine the next guess, Fig.~\ref{f.brent-2}. After this third iteration, our new guess $s$ is quite close to the root, $|s-r| = \sci{5}{-4}$. To reach machine precision for this problem took only 6 iterations.
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{brent-2}
+\caption[Third iteration, Brent's method]{Brent's method is repeated on the restricted interval $[m,b]$ using the points $m,g,b$ to fit a new parabola and determining the next guess (red dot) for the root.\label{f.brent-2}}
+\end{marginfigure}
+
+Although the use of linear and quadratic interpolation can converge rapidly, for some cases the interpolation can fail. By keeping track of the previous best guesses for the root, Brent's method can test whether the best guesses for the root are converging as rapidly as bisection. If the guesses aren't improving quickly enough, or if the guess is out of bounds, the method falls back to taking a bisection step. This combination of rapid convergence and robustness makes Brent's method a workhorse routine for finding roots.
 
 \section[Solving a system of ordinary differential equations]{Numerically solving a system of ordinary differential equations}
 A common numerical task is to integrate a system of first-order ordinary differential equations (ODEs). That is, given a system of equations
@@ -328,14 +342,14 @@ Through any 4 points $(x_{i},y_{i})_{i=0,\ldots,3}$ we can fit a unique cubic po
 \end{eqnarray}
 An example of a cubic between $(x_{0},y_{0})$ and $(x_{1},y_{1})$ with $k_{0}=0$ and various $k_{1}$ is shown in Fig.~\ref{f.spline-1}.
 
-\begin{exercisebox}
+\begin{exercisebox}[Cubic polynomial]
 Verify that $q_{i}(x_{i}) = y_{i}$ and $q_{i}(x_{i+1}) = y_{i+1}$; also verify that $q^{\prime}_{i}(x_{i}) = k_{i}$ and $q^{\prime}_{i}(x_{i+1}) = k_{i+1}$.
 \end{exercisebox}
 
 Now suppose we have a sequence of $N+1$ points $x_{0},x_{1},\ldots,x_{N}$ with data values $y_{0},y_{1},\ldots,y_{N}$. On each interval $[x_{i},x_{i+1}]$ we can construct a spline $q_{i}$. As an example, we take one of the curves from Fig.~\ref{f.spline-1} and cut it in two. We then clamp the derivatives at the endpoints and allow the first derivative at the interior point to vary, with the requirement that the first derivative is continuous at that point. 
 \begin{marginfigure}
 \includegraphics{spline-2}
-\caption{\label{f.spline-2} Two splines spanning $[x_{0},x_{1}]$ and $[x_{1},x_{2}]$. The slope at the inner point, $k_{2}$, is allowed to vary. The dark curve shows the case where the first derivative is fixed to the value from original spline shown in Fig.~\ref{f.spline-1}.}
+\caption[Two splines connected at an interior point]{\label{f.spline-2} Two splines spanning $[x_{0},x_{1}]$ and $[x_{1},x_{2}]$. The slope at the inner point, $k_{2}$, is allowed to vary. The dark curve shows the case where the first derivative is fixed to the value from original spline shown in Fig.~\ref{f.spline-1}.}
 \end{marginfigure}
 
 As the slope at $x_{1}$ is varied, the splines to left and right become more tortuous. This tight bending is characterized by the second derivative of the spline. In Fig.~\ref{f.spline-3} we plot the second derivative for three cases: where $k_{1}$ is fixed to the value from the original spline (solid line), and cases from Fig.~\ref{f.spline-2} with $k_{1}$ less than (dashed line) and greater than (dotted line) this value. Note that in general the second derivative is not continuous at $x_{1}$. 
@@ -495,6 +509,6 @@ Thus, after iterating over the rows twice---forwards to eliminate the $a_{i}$, b
 
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{spline-4}
-\caption{\label{f.spline-4} Spline fit (dotted curve) to the function (solid curve) $\cos(2\pi x)/2$ using 5 evenly spaced points.}
+\caption[Example of a spline fit]{\label{f.spline-4} Spline fit (dotted curve) to the function (solid curve) $\cos(2\pi x)/2$ using 5 evenly spaced points.}
 \end{marginfigure}
 Fig.~\ref{f.spline-4} illustrates a spline for the function $\cos(2\pi x)/2$ using just 5 points. The largest deviation is at the ends where our imposition of a vanishing second derivative bows the spline (dotted curve) upwards from the true function (solid curve).

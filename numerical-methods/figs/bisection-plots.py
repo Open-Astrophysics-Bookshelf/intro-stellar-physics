@@ -97,6 +97,10 @@ if __name__ == '__main__':
     xl = 1.5
     xr = 4.0
     ax = base_plot(ax,x,y,xl,xr,color=DarkGreyBlue,linewidth=1.0)
+    ax.xaxis.set_ticks([xl,np.pi,xr])
+    ax.xaxis.set_ticklabels([r'$a$',r'$r$',r'$b$'])
+    ax.yaxis.set_ticks([f(xl),f(np.pi),f(xr)])
+    ax.yaxis.set_ticklabels([r'$f(a)$','0',r'$f(b)$'])
     for i in range(5):
         r = 0.5*(xl+xr)
         ax.plot(r,f(r),linestyle='none',marker='o',color=Red,markersize=4)
