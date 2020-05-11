@@ -382,22 +382,32 @@ Setting the second derivatives to zero at $x_{0}$, $x_{N}$ gives the additional 
 2k_{0} + k_{1} &=& 3m_{0}\\
 k_{N-1} + 2k_{N} &=& 3m_{N-1}.
 \end{eqnarray}
+This system of equations is termed a \newterm{tridiagonal} system because $i$ contains only $k_{i-1}$, $k_{i}$, and $k_{i+1}$. It can be efficiently solved with two iterations over the equations (see Box~\ref{sb.solving-tridiagonal-system}). After solving for $k_{i}$, if we then wish to interpolate a value $y(x)$, we simply need to find $i$ such that $x_{i}< x < x_{i+1}$ and then insert $x_{i,i+1}$, $y_{i,i+1}$, and $k_{i,i+1}$ into equation (\ref{e.spline}) to interpolate $y(x)$.
+
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{spline-4}
+\caption[Example of a spline fit]{\label{f.spline-4} Spline fit (dotted curve) to the function (solid curve) $\cos(2\pi x)/2$ using 5 evenly spaced points.}
+\end{marginfigure}
+Fig.~\ref{f.spline-4} illustrates a spline for the function $\cos(2\pi x)/2$ using just 5 points. The largest deviation is at the ends where our imposition of a vanishing second derivative bows the spline (dotted curve) upwards from the true function (solid curve).
+
+\begin{sidebar}[Solving a tridiagonal system]
+\label{sb.solving-tridiagonal-system}
 These $N+1$ equations for the $N+1$ $k_{i}$ can be written as the matrix equation
 \[
-\left[\begin{array}{ccccccccccc}
+\left[\begin{array}{cccccccccc}
 	b_{0} & c_{0} \\
 	a_{1} & b_{1} & c_{1} \\
-	& a_{2} & b_{2} & c_{2}\\
-	& & \ddots & \ddots & \ddots \\
-	& & & a_{i} & b_{i} & c_{i} \\
-	& & & & \ddots & \ddots & \ddots \\
-	& & & & & a_{N-1} & b_{N-1} & c_{N-1} \\
-	& & & & & & a_{N} & b_{N} 
+%	& a_{2} & b_{2} & c_{2}\\
+	& \ddots & \ddots & \ddots \\
+	& & a_{i} & b_{i} & c_{i} \\
+	& & & \ddots & \ddots & \ddots \\
+	& & & & a_{N-1} & b_{N-1} & c_{N-1} \\
+	& & & & & a_{N} & b_{N} 
 \end{array}\right]
 \left[\begin{array}{c}
 	k_{0}\\
 	k_{1}\\
-	k_{2}\\
+%	k_{2}\\
 	\vdots\\
 	k_{i}\\
 	\vdots\\
@@ -407,7 +417,7 @@ These $N+1$ equations for the $N+1$ $k_{i}$ can be written as the matrix equatio
 \left[\begin{array}{c}
 	d_{0}\\
 	d_{1}\\
-	d_{2}\\
+%	d_{2}\\
 	\vdots\\
 	d_{i}\\
 	\vdots\\
@@ -416,10 +426,10 @@ These $N+1$ equations for the $N+1$ $k_{i}$ can be written as the matrix equatio
 \end{array}\right],
 \]
 with $a_{i} = \Delta_{i-1}$, $b_{i} = 2(\Delta_{i-1}+\Delta_{i})$, $c_{i} = \Delta_{i}$, and $d_{i} = 3(m_{i-1}\Delta_{i-1}+m_{i}\Delta_{i})$, for $i=1,\ldots,N-1$. At the ends, $b_{0}=b_{N}=2$, $c_{0}=a_{N}=1$, $d_{0}=3m_{0}$, and $d_{N}=3m_{N-1}$.
-This is a \newterm{tridiagonal} matrix equation\sidenote{Blank entries are zero}, and can be efficiently solved as follows\cite{Press2007Numerical-Recip}.
+This \newterm{tridiagonal} matrix equation can be efficiently solved as follows.
 
 \begin{enumerate}
-\item Divide row 0 by $b_{0}$ so that it becomes\sidenote{Here we shall denote the row number with a superscript to the left of the row.}
+\item Divide row 0 by $b_{0}$ so that it becomes%\sidenote{Here we shall denote the row number with a superscript to the left of the row.}
 \[
 {}^{0}\,\left[\begin{array}{ccccc|c}
   1 & c'_{0} & 0& \ldots & 0 & d'_{0} \end{array}\right]
@@ -486,7 +496,7 @@ We then repeat this with row $i+1$ and march down the rows; this transforms the 
 \end{array}\right].
 \]
 
-\item We now set $k_{N}=d'_{N}$ and then, starting with row $N-1$, we work backwards zeroing out the $c'_{i}$: if row $i$ and $i+1$ are\marginnote{When we set $c'_{i+1}$ set to zero, we can then equate $k_{i+1}$ with its corresponding entry on the RHS of the matrix equation}
+\item We now set $k_{N}=d'_{N}$ and then, starting with row $N-1$, we work backwards zeroing out the $c'_{i}$: if row $i$ and $i+1$ are%\marginnote{When we set $c'_{i+1}$ set to zero, we can then equate $k_{i+1}$ with its corresponding entry on the RHS of the matrix equation}
 \[
 \begin{array}{r} {}^{i}\\ {}^{i+1}\end{array}\,
 \left[\begin{array}{ccccccc|c}
@@ -504,10 +514,4 @@ then we multiply row $i+1$ by $c'_{i}$ and subtract it from row $i$ to obtain
 \]
 we then read off $k_{i} = d'_{i}-c'_{i}k'_{i+1}$.
 \end{enumerate}
-Thus, after iterating over the rows twice---forwards to eliminate the $a_{i}$, backwards to eliminate the $c_{i}$---we have the derivatives $k_{i}$. If we then wish to interpolate a value $y(x)$, we simply need to find $i$ such that $x_{i}< x < x_{i+1}$ and then insert $x_{i,i+1}$, $y_{i,i+1}$, and $k_{i,i+1}$ into equation (\ref{e.spline}) to interpolate $y(x)$.
-
-Fig.~\ref{f.spline-4} illustrates a spline for the function $\cos(2\pi x)/2$ using just 5 points. The largest deviation is at the ends where our imposition of a vanishing second derivative bows the spline (dotted curve) upwards from the true function (solid curve).
-\begin{marginfigure}
-\includegraphics[width=\linewidth]{spline-4}
-\caption[Example of a spline fit]{\label{f.spline-4} Spline fit (dotted curve) to the function (solid curve) $\cos(2\pi x)/2$ using 5 evenly spaced points.}
-\end{marginfigure}
+\end{sidebar}
