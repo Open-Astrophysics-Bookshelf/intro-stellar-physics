@@ -53,8 +53,8 @@
 \RequirePackage{graphicx}
 \RequirePackage{wallpaper}
 \RequirePackage{ccicons}
-\RequirePackage{fancyvrb}
 \RequirePackage{tcolorbox}
+\RequirePackage{fancyvrb}
 
 \ifxetex
     \defaultfontfeatures{Scale=MatchLowercase}
@@ -71,6 +71,7 @@
         \setsansfont[Mapping=tex-text]{Raleway Medium}
         \setmathsfont(Digits,Latin)[Numbers={Lining,Proportional}, Scale=MatchLowercase, Mapping=tex-text]{Chaparral Pro}
         \setmathrm{Chaparral Pro}    
+        \setmathtt{Source Code Pro}
     }{
         \typeout{loading Palatino, Courier, and Helvetica}
         \setmainfont[Mapping=tex-text]{TeX Gyre Pagella}
@@ -78,6 +79,7 @@
         \setsansfont[Mapping=tex-text]{TeX Gyre Heros}
         \setmathsfont(Digits,Latin)[Numbers={Lining,Proportional}, Scale=MatchLowercase, Mapping=tex-text]{TeX Gyre Pagella}
         \setmathrm{TeX Gyre Pagella}
+        \setmathtt{TeX Gyre Cursor}
     }
     \ifthenelse{\boolean{@stix}}
     {
