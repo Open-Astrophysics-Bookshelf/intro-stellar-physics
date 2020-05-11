@@ -148,17 +148,12 @@ if __name__ == '__main__':
     print('\nschematic of forward Euler')
     k = f(t,z)
     zh = z + h*k
-    fig = plt.figure(figsize=(5,2.5))
-    ax1 = fig.add_subplot(121)
-    ax1 = plot_solution(ax1,tsol,zsol[0,:])
-    ax1 = plot_slope(ax1,t,z[0],k[0],loc='left')
-
-    ax2 = fig.add_subplot(122)
+    fig = plt.figure(figsize=(2.5,2.5))
+    ax2 = fig.add_subplot(111)
     ax2 = plot_solution(ax2,tsol,zsol[0,:])
     ax2 = plot_step(ax2,[t,t+h],[z[0],zh[0]])
     ax2.annotate(s=r'$f(t,z)$',xy=(t+0.5*h,0.5*(z[0]+zh[0])),ha='right',va='center',\
         color=Red,xytext=(-4,0),textcoords='offset points')
-    fig.tight_layout()
     fig.savefig('forward-Euler.pdf',format='pdf',bbox_inches='tight')
     
     print('\nschematic of 2nd order Runge-Kutta')
@@ -168,32 +163,21 @@ if __name__ == '__main__':
     f_12 = f(t_12,z_12)
     zh = z + h*f(t_12,z_12)
 
-    print('    step 1')
     fig = plt.figure(figsize = (5,2.5))
     ax1 = fig.add_subplot(121)
     ax1 = plot_solution(ax1,tsol,zsol[0,:])
-    ax1 = plot_slope(ax1,t,z[0],k[0],loc='left')
-
+    ax1 = plot_step(ax1,[t,t_12],[z[0],z_12[0]])
+    ax1.annotate(s=r'$f(t,z)$',xy=(0.5*(t+t_12),0.5*(z[0]+z_12[0])),ha='right',va='center',\
+        color=Red,xytext=(-4,0),textcoords='offset points')
     ax2 = fig.add_subplot(122)
     ax2 = plot_solution(ax2,tsol,zsol[0,:])
-    ax2 = plot_step(ax2,[t,t_12],[z[0],z_12[0]])
-    ax2.annotate(s=r'$f(t,z)$',xy=(0.5*(t+t_12),0.5*(z[0]+z_12[0])),ha='right',va='center',\
-        color=Red,xytext=(-4,0),textcoords='offset points')
-
-    fig.tight_layout()
-    fig.savefig('rk2-1.pdf',format='pdf',bbox_inches='tight')
-    
-    print('    step 2')
-    fig = plt.figure(figsize = (2.5,2.5))
-    ax = fig.add_subplot(111)
-    ax = plot_solution(ax,tsol,zsol[0,:])
-    ax = plot_slope(ax,t_12,z_12[0],f_12[0],loc='mid')
-    ax = plot_step(ax,[t,t+h],[z[0],zh[0]])
-    ax.annotate(s=r'$f(t+h/2,z_{\mathrm{p}})$',xy=(t+0.5*h,0.5*(z[0]+zh[0])),ha='left',va='center',\
+    ax2 = plot_slope(ax2,t_12,z_12[0],f_12[0],loc='mid')
+    ax2 = plot_step(ax2,[t,t+h],[z[0],zh[0]])
+    ax2.annotate(s=r'$f(t+h/2,z_{\mathrm{p}})$',xy=(t+0.5*h,0.5*(z[0]+zh[0])),ha='left',va='center',\
         color=Red,xytext=(4,-4),textcoords='offset points')
 
     fig.tight_layout()
-    fig.savefig('rk2-2.pdf',format='pdf',bbox_inches='tight')
+    fig.savefig('rk2.pdf',format='pdf',bbox_inches='tight')
     
     print('\nschematic of 4th order Runge-Kutta')
     k1 = f(t,z)
@@ -207,61 +191,37 @@ if __name__ == '__main__':
     k4 = f(th,zhp)
     zh = z + (h/6)*(k1+2*k2+2*k3+k4)
 
-    print('    step 1')
-    fig = plt.figure(figsize=(5,2.5))
-    ax1 = fig.add_subplot(121)
+    fig = plt.figure(figsize=(5,5))
+    ax1 = fig.add_subplot(221)
     ax1 = plot_solution(ax1,tsol,zsol[0,:])
-    ax1 = plot_slope(ax1,t,z[0],k1[0],loc='left')
-
-    ax2 = fig.add_subplot(122)
-    ax2 = plot_solution(ax2,tsol,zsol[0,:])
-    ax2 = plot_step(ax2,[t,t12],[z[0],z12[0]])
-    ax2.annotate(s=r'$k_1$',xy=(0.5*(t+t12),0.5*(z[0]+z12[0])),ha='right',va='center',\
+    ax1 = plot_step(ax1,[t,t12],[z[0],z12[0]])
+    ax1.annotate(s=r'$k_1$',xy=(0.5*(t+t12),0.5*(z[0]+z12[0])),ha='right',va='center',\
         color=Red,xytext=(-4,0),textcoords='offset points')
-
-    fig.tight_layout()
-    fig.savefig('rk4-1.pdf',format='pdf',bbox_inches='tight')
     
-    print('    step 2')
-    fig = plt.figure(figsize=(2.5,2.5))
-    ax = fig.add_subplot(111)
-    ax = plot_solution(ax,tsol,zsol[0,:])
-    ax = plot_slope(ax,t12,z12[0],k2[0],loc='mid')
-    ax = plot_step(ax,[t,t12],[z[0],z12p[0]])
-    ax.annotate(s=r'$k_2$',xy=(0.5*(t+t12),0.5*(z[0]+z12p[0])),ha='left',va='center',\
-        color=Red,xytext=(4,-4),textcoords='offset points')
-
-    fig.tight_layout()
-    fig.savefig('rk4-2.pdf',format='pdf',bbox_inches='tight')
-    
-    print('    step 3')
-    fig = plt.figure(figsize=(2.5,2.5))
-    ax = fig.add_subplot(111)
-    ax = plot_solution(ax,tsol,zsol[0,:])
-    ax = plot_slope(ax,t12,z12p[0],k3[0],loc='mid')
-    ax = plot_solution(ax,tsol,zsol[0,:])
-    ax = plot_step(ax,[t,th],[z[0],zhp[0]])
-    ax.annotate(s=r'$k_3$',xy=(0.5*(t+th),0.5*(z[0]+zhp[0])),ha='left',va='center',\
-        color=Red,xytext=(4,-4),textcoords='offset points')
-
-    fig.tight_layout()
-    fig.savefig('rk4-3.pdf',format='pdf',bbox_inches='tight')
-    
-    print('    step 4')
-    fig = plt.figure(figsize=(5,2.5))
-    ax1 = fig.add_subplot(121)
-    ax1 = plot_solution(ax1,tsol,zsol[0,:])
-    ax1 = plot_slope(ax1,th,zhp[0],k4[0],loc='right')
-
-    ax2 = fig.add_subplot(122)
+    ax2 = fig.add_subplot(222)
     ax2 = plot_solution(ax2,tsol,zsol[0,:])
-    ax2 = plot_slope(ax2,t,z[0],k1[0],loc='left',length=0.02,include_point=False)
-    ax2 = plot_slope(ax2,t,z[0],k2[0],loc='left',length=0.04,include_point=False)
-    ax2 = plot_slope(ax2,t,z[0],k3[0],loc='left',length=0.04,include_point=False)
-    ax2 = plot_slope(ax2,t,z[0],k4[0],loc='left',length=0.02,include_point=False)
-    ax2 = plot_step(ax2,[t,th],[z[0],zh[0]])
-    ax2.annotate(s=r'$(k_1+2k_2+2k_3+k_4)/6$',xy=(0.5*(t+th),0.5*(z[0]+zh[0])),ha='left',va='center',\
+    ax2 = plot_slope(ax2,t12,z12[0],k2[0],loc='mid')
+    ax2 = plot_step(ax2,[t,t12],[z[0],z12p[0]])
+    ax2.annotate(s=r'$k_2$',xy=(0.5*(t+t12),0.5*(z[0]+z12p[0])),ha='left',va='center',\
+        color=Red,xytext=(4,-4),textcoords='offset points')
+
+    ax3 = fig.add_subplot(223)
+    ax3 = plot_solution(ax3,tsol,zsol[0,:])
+    ax3 = plot_slope(ax3,t12,z12p[0],k3[0],loc='mid')
+    ax3 = plot_step(ax3,[t,th],[z[0],zhp[0]])
+    ax3.annotate(s=r'$k_3$',xy=(0.5*(t+th),0.5*(z[0]+zhp[0])),ha='left',va='center',\
+        color=Red,xytext=(4,-4),textcoords='offset points')
+
+    ax4 = fig.add_subplot(224)
+    ax4 = plot_solution(ax4,tsol,zsol[0,:])
+    ax4 = plot_slope(ax4,th,zhp[0],k4[0],loc='right')
+    ax4 = plot_slope(ax4,t,z[0],k1[0],loc='left',length=0.02,include_point=False)
+    ax4 = plot_slope(ax4,t,z[0],k2[0],loc='left',length=0.04,include_point=False)
+    ax4 = plot_slope(ax4,t,z[0],k3[0],loc='left',length=0.04,include_point=False)
+    ax4 = plot_slope(ax4,t,z[0],k4[0],loc='left',length=0.02,include_point=False)
+    ax4 = plot_step(ax4,[t,th],[z[0],zh[0]])
+    ax4.annotate(s=r'$(k_1+2k_2+2k_3+k_4)/6$',xy=(0.5*(t+th),0.5*(z[0]+zh[0])),ha='left',va='center',\
         color=Red,xytext=(4,-4),textcoords='offset points')
 
     fig.tight_layout()
-    fig.savefig('rk4-4.pdf',format='pdf',bbox_inches='tight')
+    fig.savefig('rk4.pdf',format='pdf',bbox_inches='tight')

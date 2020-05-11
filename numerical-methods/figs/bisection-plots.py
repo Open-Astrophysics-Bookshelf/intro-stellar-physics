@@ -76,21 +76,18 @@ if __name__ == '__main__':
     xr = 4.0
     x = np.linspace(xl,xr,100)
     y = f(x)
-    fig = plt.figure(figsize=(2,2))
-    ax = fig.add_subplot(111)
-    ax = base_plot(ax,x,y,xl,xr,color=DarkGreyBlue,linewidth=1.0)
-    ax = plot_points(ax,xl,xr,f)
-    ax.set_title('First bisection')
-    fig.savefig('bisection-1.pdf',format='pdf',bbox_inches='tight')
+    fig = plt.figure(figsize=(4.5,2))
+    ax1 = fig.add_subplot(121)
+    ax1 = base_plot(ax1,x,y,xl,xr,color=DarkGreyBlue,linewidth=1.0)
+    ax1 = plot_points(ax1,xl,xr,f)
     
     xl,xr = bisect(f,xl,xr)
     xguess[1] = 0.5*(xl+xr)
-    fig = plt.figure(figsize=(2,2))
-    ax = fig.add_subplot(111)
-    ax = base_plot(ax,x,y,xr,xl,color=DarkGreyBlue,linewidth=1.0)
-    ax = plot_points(ax,xl,xr,f)
-    ax.set_title('Second bisection')
-    fig.savefig('bisection-2.pdf',format='pdf',bbox_inches='tight')
+    ax2 = fig.add_subplot(122)
+    ax2 = base_plot(ax2,x,y,xr,xl,color=DarkGreyBlue,linewidth=1.0)
+    ax2 = plot_points(ax2,xl,xr,f)
+    fig.tight_layout()
+    fig.savefig('bisection-1.pdf',format='pdf',bbox_inches='tight')
         
     fig = plt.figure(figsize=(2,2))
     ax = fig.add_subplot(111)
@@ -107,6 +104,5 @@ if __name__ == '__main__':
         plt.annotate(s='{0:d}'.format(i+1),xy=(r,f(r)),\
             va='bottom',ha='left',xytext=(4,4),textcoords='offset points',size='x-small',color=Red)
         xl, xr = bisect(f,xl,xr)
-    ax.set_title('First 5 bisections')
-    fig.savefig('bisection-3.pdf',format='pdf',bbox_inches='tight')
+    fig.savefig('bisection-2.pdf',format='pdf',bbox_inches='tight')
     

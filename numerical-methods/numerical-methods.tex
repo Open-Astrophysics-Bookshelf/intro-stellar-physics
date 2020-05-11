@@ -3,26 +3,31 @@
 Computing is now ubiquitous in science and technology, and is a ``third leg'' along with theory and experiment. Stellar modeling has a long and storied history in this area. Of course, libraries of numerical routines are now widely available, and for research it is far better to use a well-written and well-tested routine than trying to build your own. One still needs to have a basic understanding, however, of how a computational technique works! In this appendix, we wish to give a flavor of a few common numerical techniques. 
 
 \section{Numerical precision}\label{s.numerical-precision}
-Before diving into the sea of computational techniques, we need to wade a bit in the shallows of floating-point arithmetic. Numbers are stored in base-2 (binary) format: a sequence of 1's and 0's known as \newterm{bits}. The number of bits in this sequence is fixed\sidenote{On most systems the default is 64 bits.}, and the processor and compiler define a particular model\sidenote{Notation used here follows \citet{Metcalf2018Modern-Fortran-}.} to represent numbers.
+Before diving into the sea of computational techniques, we need to wade a bit in the shallows of floating-point arithmetic. Numbers are stored in base-2 (binary) format: a sequence of 1's and 0's known as \newterm{bits}. The number of bits in this sequence is fixed\sidenote{On most modern systems the default is 64 bits.}, and the processor and compiler define a particular model\sidenote{Notation used here follows \citet{Metcalf2018Modern-Fortran-}.} to represent numbers.
 
 In symbols, an integer $d$ can be written, using $N$ bits, as
 \[
-d = s\times\sum_{k=1}^{N-1} d_{k}2^{k-1}.
+d = (-1)^{s}\times\sum_{k=1}^{N-1} d_{k}2^{k-1}.
 \]
-Here $s=\pm1$ is the \newterm{sign bit} and $d_{k} = 0,1$. The largest integer in this representation is $2^{N-1}-1$. For example, suppose we are using $N=4$ bits; one bit is reserved to indicate the sign, and with the remaining 3 bits we represent the positive integers from $0$ to $2^{4-1}-1 = 7$ as
+Here $s$ is the \newterm{sign bit} and $d_{k} = 0,1$. The largest integer in this representation is $2^{N-1}-1$. For example, suppose we are using $N=4$ bits; one bit is reserved to indicate the sign, and with the remaining 3 bits we represent the positive integers from $0$ to $2^{4-1}-1 = 7$ as
 \begin{tabular}{rrrrrrrr}
 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
 \hline
 000 & 001 & 010 & 011 & 100 & 101 & 110 & 111
 \end{tabular}.
 
-Real numbers can be modeled\marginnote{The IEEE 754 64-bit model uses 11 bits for representing the exponent $\varepsilon$ and the remaining 53, including the sign bit $s$, for the fractional part, known as the \newterm{mantissa}. Other common models include 32 bits (8 for exponent, 24 for mantissa) and 128 bits (15 for exponent, 113 for mantissa).}
+Real numbers can be modeled\marginnote{The IEEE 754 64-bit model uses 11 bits for representing the exponent $\varepsilon$ and the remaining 53 for the fractional part, known as the \newterm{mantissa}. Because $f_{1}=1$ always, it is not stored to make room for the sign bit.}
 as follows: for $x \neq 0$, 
 \begin{equation}\label{e.modal-reals}
-x = s\times 2^{\varepsilon}\times \sum_{k=1}^{p} f_{k}\times 2^{-k}.
+x = (-1)^{s}\times 2^{\varepsilon}\times \sum_{k=1}^{p} f_{k}\times 2^{-k}.
 \end{equation}
 Here the exponent $\varepsilon_{\min}\le\varepsilon\le\varepsilon_{\max}$ and $f_{k}=0,1$ with $f_{1} = 1$. For example, if $\varepsilon=-6$ and $f_{k} = 11010000\ldots$ (i.e., $f_{k}=1$ for $k=\{1,2,4\}$ and is 0 otherwise), then
 $x = 2^{-6}\times (2^{-1}+2^{-2}+2^{-4}) = 0.0126953125$.
+
+\begin{exercisebox}[Binary representation]
+What is the floating point number 10.0 in the model representation, eq.~(\ref{e.modal-reals})? Specify $\varepsilon$ and the $f_{k}$.
+\label{ex.binary-representation}
+\end{exercisebox}
 
 Using the numerical inquiry functions in Fortran 2018, I wrote a small program to report on the arithmetic on my MacBook Pro (Intel Core i5 processor) for 64-bit floating-point arithmetic. The results are as follows.
 \begin{Verbatim}[numbers=none]
@@ -37,43 +42,46 @@ First, the exponent, $\varepsilon$ in eq.~(\ref{e.modal-reals}), ranges over $-1
 \marginnote{If you are counting, it may seem that $\varepsilon_{\min}$ should be -1023; however, a couple special values of $\varepsilon$ are reserved to indicate exceptions: \texttt{NaN} (not a number), e.g., $\sqrt{-1}$; $\pm$\texttt{Infinity}, e.g., $1/0$; or underflow---the number is too small to be represented in this model with $f_{1}=1$.}
 given this, what is the smallest positive number, \texttt{tiny}, that can be represented by the model (eq.~[\ref{e.modal-reals}])? Since in the model $f_{1}=1$, the smallest representable number has $\varepsilon = \varepsilon_{\min}$ and $f_{k\neq 1} = 0$:
 \[\mathtt{tiny} = 2^{\varepsilon_{\min}}\times 2^{-1} = 2^{-1022} = \sci{2.2251}{-308}.\]
-What is the largest positive number, \texttt{huge} that can be represented by eq.~(\ref{e.modal-reals})? This number has $\varepsilon=\varepsilon_{\max}$ and $f_{k}=1,\,\forall k=1,\ldots,p$, and $p = 52$ (\texttt{digits} with 1 bit reserved for the sign):
+What is the largest positive number, \texttt{huge} that can be represented by eq.~(\ref{e.modal-reals})? This number has $\varepsilon=\varepsilon_{\max}$ and $f_{k}=1,\,\forall k=1,\ldots,p$, and $p = 53$ (\texttt{digits}):
 \marginnote{In this expression use the formula for the sum of the geometric series,
 \[
 \sum_{k=1}^{p}r^{-k} = \frac{1-r^{-p}}{r-1}
 \]
 with $r=2$.}
 \[
-\mathtt{huge} = 2^{\varepsilon_{\max}}\times \sum_{k=1}^{52} 2^{-k} = 2^{\varepsilon_{\max}}\times(1-2^{-52}) = \sci{1.7977}{308}.
+\mathtt{huge} = 2^{\varepsilon_{\max}}\times \sum_{k=1}^{53} 2^{-k} = 2^{\varepsilon_{\max}}\times(1-2^{-53}) = \sci{1.7977}{308}.
 \]
-Finally, we can ask: what is the smallest number that, when added to one, gives a number different than one? The number one is represented with $\varepsilon = 1$ and $f_{k} = 10000\ldots$, i.e., $f_{1}=1$ and $f_{k\neq1}=0$. The next number larger than one that can be represented in the model (eq.~[\ref{e.modal-reals}]) has $f_{k} = 10000\ldots00001$; that is, $f_{1}=f_{p}=1$ and all other $f_{k}=0$. Hence, the smallest difference between two real numbers that we can model with eq.~(\ref{e.modal-reals}) is $\mathtt{epsilon} = 2^{-p} = 2^{-52} = \sci{2.2204}{-16}$; our \verb+precision+ in decimal format is therefore about 15 digits.
+Finally, we can ask: what is the smallest number that, when added to one, gives a number different than one? The number one is represented with $\varepsilon = 1$ and $f_{k} = 10000\ldots$, i.e., $f_{1}=1$ and $f_{k\neq1}=0$. The next number larger than one that can be represented in the model (eq.~[\ref{e.modal-reals}]) has $f_{k} = 10000\ldots00001$; that is, $f_{1}=f_{p}=1$ and all other $f_{k}=0$. Hence, the nearest number to 1.0 that we can model with eq.~(\ref{e.modal-reals}) is $\mathtt{epsilon} = 2\times2^{-p} = 2^{-52} = \sci{2.2204}{-16}$; our \verb+precision+ in decimal format is therefore about 15 digits.
+
+\begin{exercisebox}[Spacing of model numbers]
+Using the representation of exercise~\ref{ex.binary-representation}, what is the nearest number to 10.0 that can be represented in the model of eq.~(\ref{e.modal-reals})?
+\end{exercisebox}
 
 \section{Finding the root of a function}
 A common task in computation is to find the root of a function: that is, given a function $f(x)$ defined on an interval $a\le x\le b$ with $f(a)$ and $f(b)$ having opposite signs ($f(a)\times f(b) < 0$), find $r\in[a,b]$ such that $f(r) = 0$.
 
 \subsection{Bisection}
-\begin{marginfigure}[-18\baselineskip]
+A robust method for finding $r$ is \newterm{bisection}. We find the midpoint $m = (a+b)/2$ and compute $f(m)$ (red dot, left, Fig.~\ref{f.bisection-1}). We then determine the interval---$[a,m]$ or $[m,b]$ in which the root lies. For example, in Fig.~\ref{f.bisection-1}, the root lies in $[m,b]$ since $f(m)$ and $f(b)$ have opposite signs. We thus reset the bounds of our interval---in this case, setting $a=m$---and repeat the process (right, Fig.~\ref{f.bisection-1}).
+\begin{figure}
+\forcerectofloat
+\centering
 \includegraphics[width=\linewidth]{bisection-1}
-\caption[First bisection step]{During the first iteration, we bisect the interval and determine whether the root of the function lies in $[a,m]$ or $[m,b]$.\label{f.bisection-1}}
-\end{marginfigure}
-A robust method for finding $r$ is \newterm{bisection}. We find the midpoint $m = (a+b)/2$ and compute $f(m)$ (red dot, Fig.~\ref{f.bisection-1}). We then determine the interval---$[a,m]$ or $[m,b]$ in which the root lies. For example, in Fig.~\ref{f.bisection-1}, the root lies in $[m,b]$ since $f(m)$ and $f(b)$ have opposite signs. We thus reset the bounds of our interval---in this case, setting $a=m$---and repeat the process, as shown in Fig.~\ref{f.bisection-2}.
+\caption[First bisection steps]{During the first iteration (left), we bisect the interval and determine whether the root of the function lies in $[a,m]$ or $[m,b]$.
+For the second iteration, we move the left-boundary $a$ to $m$ and compute the next midpoint.
+\label{f.bisection-1}}
+\end{figure}
 
-On the second iteration, the root is found to lie in $[a, m]$, so for the third iteration, we set $b=m$. The midpoints for the first five bisections of this example are shown in Fig.~\ref{f.bisection-3}. The midpoints gradually converge toward the root. Although on each iteration the midpoint represents the current best guess for the root, there is an uncertainty in the value of the root given by the width of the interval.
-\begin{marginfigure}
+\begin{marginfigure}[12\baselineskip]
 \includegraphics[width=\linewidth]{bisection-2}
-\caption[Second bisection step]{For the second iteration, we move the left-boundary $a$ to $m$ and compute the next midpoint.\label{f.bisection-2}}
+\caption[First five bisections]{The first five bisections illustrating the convergence to the root.\label{f.bisection-2}}
 \end{marginfigure}
-
-On each iteration this uncertainty in our root is halved: at the start the uncertainty is $\Delta=|b-a|$; after one iteration it is $\Delta/2$; after two iterations, $\Delta/2^{2}$; after $n$ iterations, $\Delta/2^{n}$. If our desired \newterm{tolerance} is $\epsilon$---that is, the root is known to lie in an interval of width $\epsilon$---then we should stop when
-\begin{eqnarray*}
-	\frac{\Delta}{2^{n}} &<& \epsilon,\\
-	n &>& \log_{2}\left(\frac{\Delta}{\epsilon}\right).
-\end{eqnarray*}
-Note the $\log_{2}$: on each iteration, we gain another bit of precision on the root. Since our precision is limited to roughly 52 bits (\S~\ref{s.numerical-precision}), this sets the upper limit on how many iterations we need, depending on the initial width $|b-a|$.
-\begin{marginfigure}
-\includegraphics[width=\linewidth]{bisection-3}
-\caption[First five bisections]{The first five bisections illustrating the convergence to the root.\label{f.bisection-3}}
-\end{marginfigure}
+On the second iteration, the root is found to lie in $[a, m]$, so for the third iteration, we set $b=m$. The midpoints gradually converge toward the root, as shown in Fig.~\ref{f.bisection-2}. 
+The midpoint represents the current best estimate for the root; the uncertainty in this estimate is given by the width of the interval $\Delta = |b-a|$.
+On each iteration this uncertainty in our root is halved: if the uncertainty at the start is $\Delta_{0}$, then after one iteration the uncertainty is $\Delta_{0}/2$; after two iterations, $\Delta_{0}/2^{2}$; after $n$ iterations, $\Delta_{0}/2^{n}$. If our desired \newterm{tolerance} is $\epsilon$---that is, the root is known to lie in an interval of width $\epsilon$---then we should stop iterating when $2^{-n}\Delta_{0} < \epsilon$, or after
+\[
+	n > \log_{2}\left(\frac{\Delta_{0}}{\epsilon}\right)\;\textrm{iterations.}
+\]
+Note the $\log_{2}$: on each iteration, we gain another bit of precision on the root. Since our precision is limited to roughly 53 bits (\S~\ref{s.numerical-precision}), this sets the upper limit on how many iterations we need, depending on the initial width of our bracket.
 
 \subsection{Newton's method}
 Bisection is robust: it is guaranteed to converge to a root that is bracketed on some interval $a \le x \le b$. It converges to the root at a rather plodding pace, however, and you might wonder: can we speed up convergence a bit? If we can evaluate the derivative of our function, $f^{\,\prime}(x)$, then a classic method for rapidly converging to a root from a good initial guess is \newterm{Newton's method}.  In this method, on each iteration $n$ with a trial root $x_{n}$, evaluate $f(x_{n})$ and $f^{\,\prime}(x_{n})$. To get the next guess, $x_{n+1}$, for the root, construct a line through $(x_{n},f(x_{n})$ and having a slope $f^{\,\prime}(x_{n})$; and solve for where this line crosses the x-axis:
@@ -82,13 +90,13 @@ Bisection is robust: it is guaranteed to converge to a root that is bracketed on
 x_{n+1} &=& x_{n} - \frac{f(x_{n})}{f^{\,\prime}(x_{n})}.
 \end{eqnarray*}
 Fig.~\ref{f.newton} illustrates the first iteration to determine $x_{1}$ from an initial guess $x_{0}$. We then repeat this process to get $x_{2}$, $x_{3}$, and so on, with each one hopefully ever closer to the root.
-\begin{marginfigure}[-8\baselineskip]
+\begin{marginfigure}[-10\baselineskip]
 \includegraphics[width=\linewidth]{newton}
 \caption[Schematic of Newton's method]{Starting from an initial guess $x_{0}$, we extend a line (red dotted line) of slope $f^{\,\prime}(x_{0})$ to where it crosses $y=0$, thus giving our next guess $x_{1}$.\label{f.newton}}
 \end{marginfigure}
 
-Compared with bisection, Newton's method converges quite rapidly: $|x_{n+1}-r| \sim |x_{n}-r|^{2}$---that is, the number of decimal places of precision of the guess roughly \emph{doubles} on each iteration.  Thus, for  $f(x) = x^{4}-4$ with $x_{0}=2$, only 6 iterations\sidenote{that is, $\approx\log_{2}p$ iterations, where $p=52$ is the number of bits of precision, see eq.~(\ref{e.modal-reals})} are needed to find the root to a tolerance $< 10^{-15}$. Nothing comes for free, however; if the initial guess is too far from the root, then Newton's method may converge much slower than bisection, or perhaps not even converge at all (what happens if $x_{0}$ is near the left end of the curve in Fig.~\ref{f.newton}?).
-For this reason, Newton's method is generally not preferred.\marginnote[-4\baselineskip]{Newton's method is useful for quickly estimating roots of numbers: for example, to find the square root of a number $r$, start with a guess $x_{0}$ and compute $x_{1} = (x_{0}^{2} + r)/(2x_{0})$, then repeat to get $x_{2}$. Often one can do one or two iterations mentally and get within a percent or so. For example, to estimate $\sqrt{2}$: $x_{0} = 1$; $x_{1} = 3/2$; and $x_{2} = 17/12$, which is accurate to 0.2\%.}
+Compared with bisection, Newton's method converges quite rapidly: $|x_{n+1}-r| \sim |x_{n}-r|^{2}$---that is, the number of decimal places of precision of the guess roughly \emph{doubles} on each iteration.  Thus, for  $f(x) = x^{4}-4$ with $x_{0}=2$, only 6 iterations\sidenote{that is, $\approx\log_{2}p$ iterations, where $p=53$ is the number of bits of precision, see eq.~(\ref{e.modal-reals})} are needed to find the root to a tolerance $< 10^{-15}$. Nothing comes for free, however; if the initial guess is too far from the root, then Newton's method may converge much slower than bisection, or perhaps not even converge at all (what happens if $x_{0}$ is near the left end of the curve in Fig.~\ref{f.newton}?).
+For this reason, Newton's method is generally not preferred.\marginnote{Newton's method is useful for quickly estimating roots of numbers: for example, given a guess $x_{n}$ for a square root of a number $r$, an improved estimate is $x_{n+1} = (x_{n}^{2} + r)/(2x_{n})$. Often one can do one or two iterations mentally and thus estimate the root within a percent or so. For example, to estimate $\sqrt{2}$: $x_{0} = 1$; $x_{1} = 3/2$; and $x_{2} = 17/12$, which is accurate to 0.2\%.}
 
 \subsection{Brent's method}
 \newterm{Brent's method}\cite{Brent1973Algorithms-for-} is a rapidly converging, robust routine for finding roots. Like bisection, it requires that the root be bracketed on an interval $x\in[a,b]$. Rather than use the midpoint as a guess for the root, however, Brent's method instead uses, when possible, either linear or quadratic interpolation (see Box~\ref{sb.interpolation}) to construct the next guess for the root.
@@ -241,68 +249,57 @@ But $\dif z/\dif t = f(t,z)$ is a known function. So to $\mathcal{O}(h^{2})$,
 \label{e.fEuler}
 \end{eqnarray}
 Figure \ref{f.forward-Euler} displays a schematic of a forward Euler step. We first compute the slope $f(t,z)$ and then use this to extend the solution to a point $t+h$. By repeating this step over and over, we can march our solution along.
-
-\begin{figure}[htb]
+\begin{marginfigure}
 \includegraphics[width=\linewidth]{forward-Euler}
-\caption[Schematic of a single forward Euler step]{\label{f.forward-Euler}Schematic of a single forward Euler step, in which we compute the slope $f(t,z)$ (left) and extrapolate the solution from $t$ to $t+h$ (right).}
-\end{figure}
+\caption[Schematic of a single forward Euler step]{\label{f.forward-Euler}Schematic of a single forward Euler step, in which we compute the slope $f(t,z)$ and extrapolate the solution from $t$ to $t+h$.}
+\end{marginfigure}
 
 How accurate is this \newterm{forward Euler} algorithm? From its definition, the error on each step comes from truncating the Taylor series and is $\mathcal{O}(h^{2})$. What do we mean by this? For sufficiently small $h$, reducing the step by a factor of 2 should reduce the error in a single step by a factor of 4. Another way to put this is that the forward Euler reproduces $z(t)$ exactly if $z$ is a linear function of $t$.
 Unfortunately, errors tend to compound with each step, and the smaller the stepsize, the more steps are required. To integrate over a fixed interval $T$ takes $T/h$ steps; if the error on a given step is $\mathcal{E}\sim \mathcal{O}(h^{2})$, then the total integration error will be something like $T/h \times \mathcal{E} \sim \mathcal{O}(h)$.  We therefore call this forward Euler method a \textbf{first-order} method. Reducing the stepsize by a factor of 2 only reduces the integration error by a factor of 2.
+
+\begin{exercisebox}[The Adams-Bashforth method]
+For an ODE $\dif z/\dif t = f(t,z)$, suppose we have managed to construct a series of solutions $phi_{n}$ such that $\phi_{n} = z(t_{n}=n\times h)$. To find the solution at $t_{n+1}=(n+1)h$, we write
+\[
+\phi_{n+1} = \phi_{n} + h\left[af(t_{n},\phi_{n}) + bf(t_{n-1},\phi_{n-1})\right];
+\]
+that is, we express our solution at $t_{n+1}$ in terms of the previous two solutions at $t_{n}$ and $t_{n-1}$. Find the parameters $a$ and $b$ such that $\phi_{n+1}$ agrees with $z(t_{n+1})$ to second order in $h$. This is the \newterm{second-order Adams-Bashforth method}.
+\end{exercisebox}
 
 \subsection{Second-order Runge-Kutta}
 
 As you can see from Fig.~\ref{f.forward-Euler}, the forward Euler algorithm is not very accurate.
 For the forward Euler method to be accurate, we must use a small step $h$ and therefore we must take many steps. We could be more efficient if our step agreed with the Taylor series to a higher order in $h$.
 
+\begin{figure}
+\includegraphics[width=\linewidth]{rk2}
+\caption[The second-order Runge-Kutta method]{\label{f.rk2}
+In the first stage of a second-order Runge-Kutta step (left), we compute the slope $f(t,z)$ and extrapolate the solution to the midpoint $t+h$; in the second stage (right), we compute the slope of our approximate midpoint solution $f(t+h/2,z_{\mathrm{p}})$ (left) and use this slope to extend the solution across the interval $[t,t+h]$.}
+\end{figure}
+
 An improved method is to take, using forward Euler, a step to the midpoint of the interval,
 \begin{equation}\label{e.predictor}
 z_{\mathrm{P}}\left(t+\frac{h}{2}\right) = z(t) + \frac{h}{2}f[t,z(t)].
 \end{equation}
 Here $z_{\mathrm{P}}$ is our estimate of the solution at $t+h/2$.
-\begin{figure}
-\includegraphics[width=\linewidth]{rk2-1}
-\caption[First stage of a second-order Runge-Kutta step]{\label{f.rk2-1}
-First stage of a second-order Runge-Kutta step, in which we compute the slope $f(t,z)$ (left) and extrapolate the solution to the midpoint $t+h$ (right).}
-\end{figure}
-
-We then use $z_{\mathrm{P}}$ to get a better estimate of $f$ and use this corrected value of $f$ for a step across the entire interval:
+We then use $z_{\mathrm{P}}$ to get a better estimate of $f$ and use this corrected value of $f$ for a step across the entire interval (Fig.~\ref{f.rk2}):
 \begin{equation}\label{e.corrector}
 z(t+h) = z(t) + h f\left(t+\frac{h}{2},z_{\mathrm{P}}\right).
 \end{equation}
-\begin{marginfigure}
-\includegraphics[width=\linewidth]{rk2-2}
-\caption[Second stage of a second-order Runge-Kutta step]{\label{f.rk2-2}
-Second stage of a second-order Runge-Kutta step, ini which we compute the slope of our approximate midpoint solution $f(t+h/2,z_{\mathrm{p}})$ (left) and use this slope to extend the solution across the interval $[t,t+h]$ (right).}
-\end{marginfigure}
-
 One can show that $z(t+h)$ agrees with the actual solution to $\mathcal{O}(h^{3})$. When integrating over an interval $T$ and taking $T/h$ steps, the solution then has a global error $\sim\mathcal{O}(h^{2})$.  Equations~(\ref{e.predictor}) and (\ref{e.corrector}) are known as the \newterm{second-order Runge-Kutta} method. Note that if we reduce the stepsize by a factor of two, we expect the global truncation error to decrease by a factor of 4.
 
 \subsection{Fourth-order Runge-Kutta}
 
-An even better method is the classic \newterm{fourth-order Runge-Kutta} algorithm. In this method, the integration of $z$ from $t$ to $t+h$ is done in four steps. 
+An even better method is the classic \newterm{fourth-order Runge-Kutta} algorithm. In this method, the integration of $z$ from $t$ to $t+h$ is done in four steps, as illustrated in Fig.~\ref{f.rk4}.
 
-First, a trial forward Euler step is taken to the midpoint $t+h/2$ and the solution estimated there (Fig.~\ref{f.rk4-1}), just as in the second-order method.
 \begin{figure}
-\includegraphics[width=\linewidth]{rk4-1}
-\caption[First stage of a fourth-order Runge-Kutta step]{\label{f.rk4-1}
-First stage of a fourth-order Runge-Kutta step, in which we compute the slope $k_{1} = f(t,z)$ (left) and extrapolate the solution to the midpoint $t+h$ (right).}
+\includegraphics[width=\linewidth]{rk4}
+\caption[The fourth-order Runge-Kutta method]{\label{f.rk4}
+Stages of the fourth-order Runge-Kutta method.}
 \end{figure}
 
-
-This solution at the midpoint is used to make a better estimate of $f$, and a new step is taken, not to $t+h$, but rather from $t$ just to the midpoint $t+h/2$ again (Fig.~\ref{f.rk4-2}).
-\begin{marginfigure}
-\includegraphics[width=\linewidth]{rk4-2}
-\caption[Second stage of a fourth-order Runge-Kutta step]{\label{f.rk4-2}
-Second stage of a fourth-order Runge-Kutta step, in which we compute the slope $k_{2}=f(t+h/2,z+k_{1}h/2$ (solid red line) and use this to construct an updated solution at $t+h/2$ (dashed red line).}
-\end{marginfigure}
-
-A new value of the slope $f$ at the midpoint is then computed, and this value of $f$ is then used to step across the full interval (Fig.~\ref{f.rk4-3}).
-\begin{marginfigure}
-\includegraphics[width=\linewidth]{rk4-3}
-\caption[Third stage of a fourth-order Runge-Kutta step]{\label{f.rk4-3}
-Third stage of a fourth-order Runge-Kutta step, in which we compute a new slope $k_{3}=f(t+h/2,z+k_{2}h/2$ (solid red line) and use this to construct a solution at $t+h$ (dashed red line).}
-\end{marginfigure}
+First, a trial forward Euler step is taken to the midpoint $t+h/2$ and the solution estimated there (Fig.~\ref{f.rk4}), just as in the second-order method.
+This solution at the midpoint is used to make a better estimate of $f$, and a new step is taken, not to $t+h$, but rather from $t$ just to the midpoint $t+h/2$ again (Fig.~\ref{f.rk4}).
+A new value of the slope $f$ at the midpoint is then computed, and this value of $f$ is then used to step across the full interval (Fig.~\ref{f.rk4}).
 
 The slope at the endpoint $t+h$ is then computed. At this point, we have computed the following four estimates for the value of $\dif z/\dif t$:
 \begin{eqnarray}
@@ -311,17 +308,10 @@ k_{2} &=& f\left(t+\frac{h}{2}, z(t) + \frac{h}{2}k_{1}\right)\\
 k_{3} &=& f\left(t+\frac{h}{2},z(t) + \frac{h}{2}k_{2}\right)\\
 k_{4} &=& f\left(t + h, z(t) + hk_{3}\right).
 \end{eqnarray}
-The solution $z(t+h)$ is then constructed from a weighted sum of the $k_{i}$ (Fig.~\ref{f.rk4-4}),
+The solution $z(t+h)$ is then constructed from a weighted sum of the $k_{i}$ (Fig.~\ref{f.rk4}),
 \begin{equation}\label{e.rk4}
 	z(t+h) \approx z(t) + \frac{h}{6}\left(k_{1} + 2k_{2} + 2k_{3} + k_{4}\right).
 \end{equation}
-\begin{figure}
-\forcerectofloat
-\includegraphics[width=\linewidth]{rk4-4}
-\caption[Fourth and final stage of a fourth-order Runge-Kutta step]{\label{f.rk4-4}
-Fourth and final stage of a fourth-order Runge-Kutta step, in which we compute the slope $k_{4}=f(t+h,z+h\,k_{3}$ (left); we then use a weighted sum of the $k_{i}$ slopes to extend the solution from $t$ to $t+h$ (right).}
-\end{figure}
-
 Notice that the $k_{i}$ are not independent of one another: each one depends on the intermediate value of $z$ computed in the previous step. The fourth-order Runge-Kutta scheme ``sniffs'' the behavior of $f(t,z)$ over the interval $(t,t+h)$ and constructs a weighted approximation for $\dif z/\dif t$.  One can show that this method produces solutions with a global truncation error $\sim\mathcal{O}(h^{4})$. That is, reducing the stepsize by a factor of 2 should reduce the error by a factor $2^{4} = 16$.
 
 The fourth-order Runge-Kutta scheme is a good general-purpose basic algorithm for integrating systems of ordinary differential equations. It does have limitations: highly non-linear systems, especially those with disparate length- or time-scales, or systems with conserved quantities, typically require more specialized integration algorithms.
