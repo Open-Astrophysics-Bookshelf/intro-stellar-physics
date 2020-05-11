@@ -98,7 +98,7 @@ if __name__ == '__main__':
     x = np.linspace(xl,xr,100)
     
     # plot different slopes at xr
-    fig = plt.figure(figsize=(2,3))
+    fig = plt.figure(figsize=(2,2))
     ax = fig.add_subplot(111)
     ax = layout_plot(ax)
     Nslopes = 4
@@ -129,7 +129,7 @@ if __name__ == '__main__':
     x[0,:] = np.linspace(xl,xm,50)
     x[1,:] = np.linspace(xm,xr,50)
     
-    fig = plt.figure(figsize=(2,3.4))
+    fig = plt.figure(figsize=(2,2.5))
     ax = fig.add_subplot(111)
     ax = layout_plot(ax)
     Nslopes = 9

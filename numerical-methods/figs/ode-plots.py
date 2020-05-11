@@ -99,10 +99,10 @@ def plot_slope(ax,t,z,k,loc='mid',length=0.02,include_point=True,color=Red):
     else:
         raise ValueError(loc+' is not an understood value for loc')
 
-    ax.plot([tl,tr],[zl,zr],color=color)
+    ax.plot([tl,tr],[zl,zr],color=color,linewidth=0.5)
 
     if include_point:
-        ax.plot(t,z,linestyle='none',marker='o',markersize=8,color=color)
+        ax.plot(t,z,linestyle='none',marker='o',markersize=4,color=color)
     return ax
 
 def plot_step(ax,t,z,line_color=Red,left_marker_color=DarkerGreen,right_marker_color=Red):
@@ -148,7 +148,7 @@ if __name__ == '__main__':
     print('\nschematic of forward Euler')
     k = f(t,z)
     zh = z + h*k
-    fig = plt.figure(figsize=(2.5,2.5))
+    fig = plt.figure(figsize=(2,2))
     ax2 = fig.add_subplot(111)
     ax2 = plot_solution(ax2,tsol,zsol[0,:])
     ax2 = plot_step(ax2,[t,t+h],[z[0],zh[0]])
@@ -163,7 +163,7 @@ if __name__ == '__main__':
     f_12 = f(t_12,z_12)
     zh = z + h*f(t_12,z_12)
 
-    fig = plt.figure(figsize = (5,2.5))
+    fig = plt.figure(figsize = (5,2))
     ax1 = fig.add_subplot(121)
     ax1 = plot_solution(ax1,tsol,zsol[0,:])
     ax1 = plot_step(ax1,[t,t_12],[z[0],z_12[0]])
@@ -191,12 +191,13 @@ if __name__ == '__main__':
     k4 = f(th,zhp)
     zh = z + (h/6)*(k1+2*k2+2*k3+k4)
 
-    fig = plt.figure(figsize=(5,5))
+    fig = plt.figure(figsize=(5,4))
     ax1 = fig.add_subplot(221)
     ax1 = plot_solution(ax1,tsol,zsol[0,:])
     ax1 = plot_step(ax1,[t,t12],[z[0],z12[0]])
     ax1.annotate(s=r'$k_1$',xy=(0.5*(t+t12),0.5*(z[0]+z12[0])),ha='right',va='center',\
         color=Red,xytext=(-4,0),textcoords='offset points')
+    ax1.annotate(s='1',xy=(0.05,0.85),xycoords='axes fraction',size='large')
     
     ax2 = fig.add_subplot(222)
     ax2 = plot_solution(ax2,tsol,zsol[0,:])
@@ -204,6 +205,7 @@ if __name__ == '__main__':
     ax2 = plot_step(ax2,[t,t12],[z[0],z12p[0]])
     ax2.annotate(s=r'$k_2$',xy=(0.5*(t+t12),0.5*(z[0]+z12p[0])),ha='left',va='center',\
         color=Red,xytext=(4,-4),textcoords='offset points')
+    ax2.annotate(s='2',xy=(0.05,0.85),xycoords='axes fraction',size='large')
 
     ax3 = fig.add_subplot(223)
     ax3 = plot_solution(ax3,tsol,zsol[0,:])
@@ -211,6 +213,7 @@ if __name__ == '__main__':
     ax3 = plot_step(ax3,[t,th],[z[0],zhp[0]])
     ax3.annotate(s=r'$k_3$',xy=(0.5*(t+th),0.5*(z[0]+zhp[0])),ha='left',va='center',\
         color=Red,xytext=(4,-4),textcoords='offset points')
+    ax3.annotate(s='3',xy=(0.05,0.85),xycoords='axes fraction',size='large')
 
     ax4 = fig.add_subplot(224)
     ax4 = plot_solution(ax4,tsol,zsol[0,:])
@@ -220,8 +223,25 @@ if __name__ == '__main__':
     ax4 = plot_slope(ax4,t,z[0],k3[0],loc='left',length=0.04,include_point=False)
     ax4 = plot_slope(ax4,t,z[0],k4[0],loc='left',length=0.02,include_point=False)
     ax4 = plot_step(ax4,[t,th],[z[0],zh[0]])
-    ax4.annotate(s=r'$(k_1+2k_2+2k_3+k_4)/6$',xy=(0.5*(t+th),0.5*(z[0]+zh[0])),ha='left',va='center',\
-        color=Red,xytext=(4,-4),textcoords='offset points')
+    
+    figW,figH = ax4.get_figure().get_size_inches()
+    print(figW,figH)
+    _,_,w,h = ax4.get_position().bounds
+    print(w,h)
+    disp_ratio = (figH*h)/(figW*w)
+    y0,y1 = ax4.get_ylim()
+    x0,x1 = ax4.get_xlim()
+    data_ratio = (y1-y0)/(x1-x0)
+    print(y0,y1,x0,x1,data_ratio)
+    aspect = disp_ratio/data_ratio
+    print(aspect)
+    km = (k1[0]+2*k2[0]+2*k3[0]+k4[0])/6
+    angle = np.rad2deg(np.arctan(km*aspect))
+    print(km)
+    print(angle)
+    ax4.annotate(s=r'$(k_1+2k_2+2k_3+k_4)/6$',xy=(0.5*(t+th),0.5*(z[0]+zh[0])),ha='center',va='center',\
+        color=Red,xytext=(8,-8),textcoords='offset points',rotation=angle)
+    ax4.annotate(s='4',xy=(0.05,0.85),xycoords='axes fraction',size='large')
 
     fig.tight_layout()
     fig.savefig('rk4.pdf',format='pdf',bbox_inches='tight')

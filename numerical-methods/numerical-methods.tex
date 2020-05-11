@@ -258,7 +258,7 @@ How accurate is this \newterm{forward Euler} algorithm? From its definition, the
 Unfortunately, errors tend to compound with each step, and the smaller the stepsize, the more steps are required. To integrate over a fixed interval $T$ takes $T/h$ steps; if the error on a given step is $\mathcal{E}\sim \mathcal{O}(h^{2})$, then the total integration error will be something like $T/h \times \mathcal{E} \sim \mathcal{O}(h)$.  We therefore call this forward Euler method a \textbf{first-order} method. Reducing the stepsize by a factor of 2 only reduces the integration error by a factor of 2.
 
 \begin{exercisebox}[The Adams-Bashforth method]
-For an ODE $\dif z/\dif t = f(t,z)$, suppose we have managed to construct a series of solutions $phi_{n}$ such that $\phi_{n} = z(t_{n}=n\times h)$. To find the solution at $t_{n+1}=(n+1)h$, we write
+For an ODE $\dif z/\dif t = f(t,z)$, suppose we have managed to construct a series of solutions $\phi_{n}$ such that $\phi_{n} = z(t_{n}=n\times h)$. To find the solution at $t_{n+1}=(n+1)h$, we write
 \[
 \phi_{n+1} = \phi_{n} + h\left[af(t_{n},\phi_{n}) + bf(t_{n-1},\phi_{n-1})\right];
 \]
@@ -297,32 +297,37 @@ An even better method is the classic \newterm{fourth-order Runge-Kutta} algorith
 Stages of the fourth-order Runge-Kutta method.}
 \end{figure}
 
-First, a trial forward Euler step is taken to the midpoint $t+h/2$ and the solution estimated there (Fig.~\ref{f.rk4}), just as in the second-order method.
-This solution at the midpoint is used to make a better estimate of $f$, and a new step is taken, not to $t+h$, but rather from $t$ just to the midpoint $t+h/2$ again (Fig.~\ref{f.rk4}).
-A new value of the slope $f$ at the midpoint is then computed, and this value of $f$ is then used to step across the full interval (Fig.~\ref{f.rk4}).
+\begin{enumerate}
+\item
+A forward Euler step with slope $k_{1}$ is taken to the midpoint $t+h/2$ and the solution estimated there (Fig.~\ref{f.rk4}), just as in the second-order method.
 
-The slope at the endpoint $t+h$ is then computed. At this point, we have computed the following four estimates for the value of $\dif z/\dif t$:
-\begin{eqnarray}
+\item
+This solution at the midpoint is used to make a second estimate of the slope $k_{2} = f(t+h/2,z+k_{1}h/2)$. Using $k_{2}$, we take a new step from $t$ just to the midpoint $t+h/2$ again (Fig.~\ref{f.rk4}).
+
+\item
+A new value of the slope $f$ at the midpoint is then computed: $k_{3}=f(t+h/2,z+k_{2}h/2)$. Using $k_{3}$, we then step across the full interval, from $t$ to $t+h$ (Fig.~\ref{f.rk4}).
+
+\item
+The slope $k_{4} = f(t+h,z+hk_{3})$ at the endpoint $t+h$ is then computed. The full solution $z(t+h)$ is then constructed from a weighted sum of the $k_{i}$,
+\begin{equation}\label{e.rk4}
+	z(t+h) \approx z(t) + \frac{h}{6}\left(k_{1} + 2k_{2} + 2k_{3} + k_{4}\right),
+\end{equation}
+with
+\begin{eqnarray*}
 k_{1} &=& f(t,z(t)) \\
 k_{2} &=& f\left(t+\frac{h}{2}, z(t) + \frac{h}{2}k_{1}\right)\\
 k_{3} &=& f\left(t+\frac{h}{2},z(t) + \frac{h}{2}k_{2}\right)\\
 k_{4} &=& f\left(t + h, z(t) + hk_{3}\right).
-\end{eqnarray}
-The solution $z(t+h)$ is then constructed from a weighted sum of the $k_{i}$ (Fig.~\ref{f.rk4}),
-\begin{equation}\label{e.rk4}
-	z(t+h) \approx z(t) + \frac{h}{6}\left(k_{1} + 2k_{2} + 2k_{3} + k_{4}\right).
-\end{equation}
+\end{eqnarray*}
+\end{enumerate}
+
 Notice that the $k_{i}$ are not independent of one another: each one depends on the intermediate value of $z$ computed in the previous step. The fourth-order Runge-Kutta scheme ``sniffs'' the behavior of $f(t,z)$ over the interval $(t,t+h)$ and constructs a weighted approximation for $\dif z/\dif t$.  One can show that this method produces solutions with a global truncation error $\sim\mathcal{O}(h^{4})$. That is, reducing the stepsize by a factor of 2 should reduce the error by a factor $2^{4} = 16$.
 
-The fourth-order Runge-Kutta scheme is a good general-purpose basic algorithm for integrating systems of ordinary differential equations. It does have limitations: highly non-linear systems, especially those with disparate length- or time-scales, or systems with conserved quantities, typically require more specialized integration algorithms.
+The fourth-order Runge-Kutta scheme is a good general-purpose basic algorithm for integrating systems of ordinary differential equations. It has several limitations, however, three of which we'll discuss here. First, although the truncation error is $\mathcal{O}(h^{4})$, we have no way of knowing \emph{a priori} the actual size of the error. More sophisticated versions uses Runge-Kutta steps with different orders to estimate the size of the error and adjust $h$ to maintain the accuracy to some desired tolerance. Second, the method doesn't know anything about underlying symmetries in the systems of ODEs. For example, \newterm{sympletic integrators} are constructed so that errors in position and momentum will tend to offset when computing the total energy, so that conservation of energy is maintained to high accuracy. Finally, the methods we in this section are \newterm{explicit}: the step is taken using current values of $t,z$. For systems with a large dynamical range (e.g., the difference between the dynamical time and Kelvin-Helmholtz time in a star), the steps must be kept quite small to avoid the numerical solution diverging exponentially.
 
 \section{Cubic splines}
 The final commonplace numerical task we'll discuss is interpolation of values in a table of data. In stellar physics, this is often done for opacities or equation of state: one computes, or measures, the opacity under a limited set of composition, temperature, and density and tabulates these values. From this table, we then interpolate to obtain values of the opacity at conditions that lie between table entries. Interpolation using polynomials is discussed in Box \ref{sb.interpolation}; in this section we'll illustrate a commonly used interpolation method, cubic splines.
 
-\begin{marginfigure}
-\includegraphics{spline-1}
-\caption[Cubic polynomial with varying right-hand slopes]{\label{f.spline-1}Cubic polynomials between points $(x_{0},y_{0})$ and $(x_{1},y_{1})$; the slope at $x_{0}$ is $k_{0}=0$, and the slope $k_{1}$ is varied (red dotted lines).}
-\end{marginfigure}
 Through any 4 points $(x_{i},y_{i})_{i=0,\ldots,3}$ we can fit a unique cubic polynomial $y=p_{3}(x)$ (eq.~[\ref{e.lagrange-four}]).  Alternatively, we can fit a cubic polynomial between two points $(x_{i},y_{i})$ and $(x_{i+1},y_{i+1})$ if we also specify the first derivatives $k_{i}$ and $k_{i+1}$ at $x_{i},x_{i+1}$: with $m_{i} = (y_{i+1}-y_{i})/(x_{i+1}-x_{i})$ defined as the mean slope across the interval, the cubic polynomial is
 \begin{eqnarray}
 \lefteqn{q_{i}(x) =   y_{i}\frac{x_{i+1}-x}{x_{i+1}-x_{i}} 
@@ -333,6 +338,10 @@ Through any 4 points $(x_{i},y_{i})_{i=0,\ldots,3}$ we can fit a unique cubic po
 \label{e.spline}
 \end{eqnarray}
 An example of a cubic between $(x_{0},y_{0})$ and $(x_{1},y_{1})$ with $k_{0}=0$ and various $k_{1}$ is shown in Fig.~\ref{f.spline-1}.
+\begin{marginfigure}[-8\baselineskip]
+\includegraphics{spline-1}
+\caption[Cubic polynomial with varying right-hand slopes]{\label{f.spline-1}Cubic polynomials between points $(x_{0},y_{0})$ and $(x_{1},y_{1})$; the slope at $x_{0}$ is $k_{0}=0$, and the slope $k_{1}$ is varied (red dotted lines).}
+\end{marginfigure}
 
 \begin{exercisebox}[Cubic polynomial]
 Verify that $q_{i}(x_{i}) = y_{i}$ and $q_{i}(x_{i+1}) = y_{i+1}$ in eq.~(\ref{e.spline}); also verify that $q^{\prime}_{i}(x_{i}) = k_{i}$ and $q^{\prime}_{i}(x_{i+1}) = k_{i+1}$.
@@ -500,8 +509,8 @@ we then read off $k_{i} = d'_{i}-c'_{i}k'_{i+1}$.
 \end{enumerate}
 Thus, after iterating over the rows twice---forwards to eliminate the $a_{i}$, backwards to eliminate the $c_{i}$---we have the derivatives $k_{i}$. If we then wish to interpolate a value $y(x)$, we simply need to find $i$ such that $x_{i}< x < x_{i+1}$ and then insert $x_{i,i+1}$, $y_{i,i+1}$, and $k_{i,i+1}$ into equation (\ref{e.spline}) to interpolate $y(x)$.
 
+Fig.~\ref{f.spline-4} illustrates a spline for the function $\cos(2\pi x)/2$ using just 5 points. The largest deviation is at the ends where our imposition of a vanishing second derivative bows the spline (dotted curve) upwards from the true function (solid curve).
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{spline-4}
 \caption[Example of a spline fit]{\label{f.spline-4} Spline fit (dotted curve) to the function (solid curve) $\cos(2\pi x)/2$ using 5 evenly spaced points.}
 \end{marginfigure}
-Fig.~\ref{f.spline-4} illustrates a spline for the function $\cos(2\pi x)/2$ using just 5 points. The largest deviation is at the ends where our imposition of a vanishing second derivative bows the spline (dotted curve) upwards from the true function (solid curve).
