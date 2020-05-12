@@ -60,7 +60,7 @@ In chemistry, it is convenient to count the number of particles by \newterm{mole
 \[ PV = n\left[\NA \kB\right]T \equiv n R T, \]
 where $R = \NA\kB = \val{8.314}{\unitstyle{J}\usk\K^{-1}\usk\mol^{-1}}$ is the gas constant. This is perhaps the most familiar form of the ideal gas law---but it is not in a form useful to astronomers.
 
-We astronomers don't care about little beakers of fluid---we have whole stars to model! Put another way, volume isn't a useful quantity since we are working in the middle of a large mass of fluid. Instead, define the \newterm{number density} as the number of particles per volume, $N/V$. The mass of each particle is $\mathcal{A}\times\mb$, where $\mb$ has a mass of one \newterm{atomic mass unit}.\sidenote{By definition, $\val{1}{\mol}$ of \carbon\ atoms in their ground state has a mass of $\val{12}{\gram}$. Thus, $\val{1}{\amu} = \val{\sci{1.661}{-27}}{\kilo\gram}$ is 1/(12\NA) of the mass of \val{1}{\mol} of \carbon\ atoms in their ground state} Hence the mass per volume of our fluid is
+We astronomers don't care about little beakers of fluid---we have whole stars to model! Put another way, volume isn't a useful quantity since we are working in the middle of a large mass of fluid. Instead, define the \newterm{number density} as the number of particles per volume, $N/V$. The mass of each particle is $\mathcal{A}\times\mb$, where $\mb$ has a mass of one \newterm{atomic mass unit} ($\equiv\val{1}{\amu}$)\sidenote{By definition, $\val{1}{\mol}$ of \carbon\ atoms in their ground state has a mass of $\val{12}{\gram}$. Thus, $\val{1}{\amu} = \val{\sci{1.661}{-27}}{\kilo\gram}$ is 1/(12\NA) of the mass of \val{1}{\mol} of \carbon\ atoms in their ground state}. Hence the mass per volume of our fluid is
 \[
 	\rho = \mathcal{A}\mb \times\frac{N}{V}.
 \]
@@ -163,8 +163,9 @@ Now that we have an expression for the central pressure in terms of $M$ and $R$,
 \section{A closer look at hydrostatic equilibrium}
 \label{s.closer-look}
 
-What would happen if the star suddenly fell out of hydrostatic equilibrium? To explore this, suppose that we could turn off the pressure. If we did, then the gas in the star would free-fall towards the center and the star would implode. How long would this take? If the gas is free-falling, we merely need to integrate the equation of motion for a particle free-falling from the surface to the center. There is a simpler method, however, using Kepler's law. Start with a circular orbit and deform it while keeping the sun at one focus, as shown in Fig.~\ref{f.fall-to-center}.
+What would happen if the star were suddenly no longer in hydrostatic equilibrium? To explore this, imagine that we could turn off the pressure. Once we did so, then there would be no net outward force on a fluid element, just the downward pull of gravity (cf.\ Fig.~\ref{f.hydrostatic-equilibrium}). The gas in the star would therefore free-fall inwards once pressure were turned off. 
 
+\newthought{How long would this stellar implosion take?} We can certainly answer this by integrating the equation of motion for a particle free-falling from the surface of the star to the center. There is a simpler method, however, using Kepler's law. Start with a circular orbit and deform it into increasingly eccentric ellipses while keeping the sun at one focus, as shown in Fig.~\ref{f.fall-to-center}.
 The limit of these increasingly eccentric orbits is a fall into the center.  The time to fall in is one-half of an orbital period, and the orbital period only depends on the semi-major axis, which in this limiting case is $a = R/2$:
 \[
 \tau_{\mathrm{ff}} = \frac{T}{2} = \frac{\pi}{\sqrt{GM}} \left(\frac{R}{2}\right)^{3/2}.
@@ -173,21 +174,21 @@ Notice that this expression contains the combination $\sqrt{R^{3}/M}$. Let's the
 \begin{equation}\label{e.tff}
 \tau_{\mathrm{ff}} = \left(\frac{3}{32\pi}\right)^{1/2}\left(\frac{1}{G}\frac{4\pi R^{3}}{3M}\right)^{1/2} = \left(\frac{3}{32\pi}\right)^{1/2} \frac{1}{\sqrt{G\bar{\rho}}}.
 \end{equation}
-The time to collapse is proportional to $1/\sqrt{G\bar{\rho}}$ and depends on the average density of the star. We call $t_{\mathrm{dyn}} \equiv 1/\sqrt{G\bar{\rho}}$ the \newterm{dynamical timescale} of the star.
+The time to collapse is proportional to $1/\sqrt{G\bar{\rho}}$ and depends on the average density of the star. We thus define the \newterm{dynamical timescale} of the star as $t_{\mathrm{dyn}} \equiv 1/\sqrt{G\bar{\rho}}$.
 
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{fall-to-center}
 \caption[Fall to center]{\label{f.fall-to-center} Deformation of an orbit until it becomes a fall to the center, denoted by the yellow dot.}
 \end{marginfigure}
 
-Let's avoid a collapse by turning the pressure back on.  If part of the star is falling inward, the gas within the star will be compressed, the pressure will rise, and hydrostatic equilibrium will be restored.  How quickly can the star respond? A change is pressure is communicated to the rest of the star by sound waves, which travel at a speed (see Box~\ref{b.sound-speed})
+Now imagine that after the collapse starts, we change our mind and turn the pressure back on. The infall of the star's outer layers compresses the gas within the star's interior and causes the pressure in the interior to rise. This will eventually restore hydrostatic equilibrium. How quickly can the star respond? A change is pressure is communicated to the rest of the star by sound waves, which travel at a speed (see Box~\ref{b.sound-speed})
 \begin{equation}\label{e.speed-of-sound}
 c_{s} = \left(\gamma\frac{P}{\rho}\right)^{1/2}
 	= \left(\gamma\frac{\kB T}{\mu\mb}\right)^{1/2}.
 \end{equation}
 Here $\gamma$ is the adiabatic index: for an ideal monatomic gas, $\gamma = 5/3$.  How long would it take for a sound wave to go a distance $R$?  Using the expression for the average temperature of a constant density sphere (cf.~eq.~[\ref{e.mean-T-rho}]), we find
 \[
-	\tau_{\mathrm{sc}} = \frac{R}{c_{s}} = R\left(\frac{3R}{GM}\right)^{1/2}
+	\tau_{\mathrm{sc}} \equiv \frac{R}{c_{s}} = R\left(\frac{\mu\mb}{\gamma\kB \bar{T}}\right)^{1/2} = R\left(\frac{3R}{GM}\right)^{1/2}
 		= \left(\frac{3}{2\sqrt{\pi}}\right)\frac{1}{\sqrt{G\bar{\rho}}}.
 \]
 Both the sound-crossing time, $\tau_{\mathrm{sc}}$, and the free-fall time, $\tau_{\mathrm{ff}}$, are approximately equal to the dynamical timescale $1/\sqrt{G\bar{\rho}}$.  This is another way of looking at hydrostatic equilibrium: the star is able to remain in balance because the time for pressure disturbances to propagate, $\tau_{\mathrm{sc}}$, is comparable to the time for large-scale motions of the fluid, $\tau_{\mathrm{ff}}$.
@@ -196,20 +197,22 @@ Both the sound-crossing time, $\tau_{\mathrm{sc}}$, and the free-fall time, $\ta
 \label{b.sound-speed}
 Suppose we have a long tube filled with gas at pressure $P(x,t) = P_{0}$, density $\rho(x,t) = \rho_{0}$, and velocity $u(x,t) = U_{0} = 0$. We then tap on one end of the tube; this causes a disturbance to propagate down the tube. Denote the cross-sectional area of the tube by $A$, and consider the volume $A\Delta x$ located between $x$ and $x+\Delta x$; the mass in this small volume is $\rho A\,\Delta x$.
 
-As a result of the disturbance, the pressure in the tube becomes $P(x,t) = P_{0}+\sigma P_{1}(x,t)$. In this expression, $\sigma$ is a bookkeeping parameter that we'll eventually set to unity. We will expand our equations and keep only terms that are linear in $\sigma$. The fluid will also acquire a velocity $u(x,t) = \sigma u_{1}(x,t)$. This compresses or rarifies the gas: $\rho(x,t) = \rho_{0} + \sigma\rho_{1}(x,t)$.  Because the pressure in the tube is no longer uniform, our small mass will accelerate: 
+As a result of the disturbance, the pressure in the tube becomes $P(x,t) = P_{0}+\sigma P_{1}(x,t)$ and the fluid acquires a velocity $u(x,t) = \sigma u_{1}(x,t)$. This motion compresses or rarifies the gas: $\rho(x,t) = \rho_{0} + \sigma\rho_{1}(x,t)$. In these expressions, terms with a subscript ``1'' are small perturbations compared with the equilibrium quantities; also, $\sigma$ is a bookkeeping parameter used to keep track of the order of terms in the expansion. After expanding to terms linear in $\sigma$, we'll set $\sigma=1$. 
+
+The nonuniform perturbed pressure subjects our small fluid mass $\rho A\Delta x$ to a net force
+\[
+	A \left[ P(x) - P(x+\Delta x) \right] \approx -\sigma A \left[P_{1}(x+\Delta x)-P_{1}(x)\right].
+\]
+This force causes the mass to accelerate:
 \begin{eqnarray*}
 	\rho A\,\Delta x \ddt{u} &=& A\,\Delta x\,(\rho_{0} + \sigma\rho_{1})\ddt{(0 + \sigma u_{1})}\\
-	&\approx& \sigma\left[A\,\Delta x \rho_{0}\ddt{u_{1}}\right] + \mathcal{O}(\sigma^{2}).
+	&\approx& \sigma\left[A\,\Delta x \rho_{0}\ddt{u_{1}}\right] + \mathcal{O}(\sigma^{2});
 \end{eqnarray*}
-The corresponding force on our mass is
-\[
-	A \left[ P(x) - P(x+\Delta x) \right] \approx -\sigma A \left[P_{1}(x+\Delta x)-P_{1}(x)\right];
-\]
-equating this to the expression---to order $\sigma$---for the acceleration, taking the limit $\Delta x\to 0$, and canceling common factors gives
+equating this to the expression for the force, taking the limit $\Delta x\to 0,\sigma\to 1$, and canceling common factors gives
 \begin{equation}\label{e.sound-speed-ut}
 	\ddt{u_{1}} = -\frac{1}{\rho_{0}}\ddx{P_{1}}.
 \end{equation}
-Because of the non-uniform velocity, the volume and hence density of our little mass will also change:
+Because of the non-uniform velocity, the volume $V$ and hence density of our little mass will also change:
 \[
 	\ddt{V} = A\left[u(x+\Delta x)-u(x)\right] 
 		= \sigma A\,\Delta x\left[\frac{u_{1}(x+\Delta x)-u_{1}(x)}{\Delta x}\right]
@@ -218,11 +221,11 @@ or
 \begin{equation}\label{e.sound-speed-lnVt}
 	\frac{1}{V}\ddt{V} = \sigma \ddx{u_{1}}.
 \end{equation}
-This change in volume is related to the change in pressure. We are interested in fluctuations that are sufficiently quick that no heat is transferred into or out of our mass. This is an adiabatic process, for which $PV^{\gamma} = \mathrm{const.}$. Here $\gamma$ is called the adiabatic index; for an ideal gas, this is the ratio of specific heats, $\gamma = C_{P}/C_{V}$. (We shall discuss adiabatic processes again more thoroughly in chapter~\ref{ch.main-sequence}.)
+This change in volume is related to the change in pressure. We are interested in fluctuations that are sufficiently quick that no heat is transferred into or out of our mass. This is an adiabatic process, for which $PV^{\gamma}$ remains constant. Here $\gamma$ is the \newterm{adiabatic index}; for an ideal gas, $\gamma = C_{P}/C_{V}$. (We shall discuss adiabatic processes more thoroughly in chapter~\ref{ch.main-sequence}.)
 
 As the pressure changes adiabatically from $P_{0}$ to $\sigma P_{1}$, the volume changes as
 \[
-	\frac{\dif V}{V} = \dif\ln V = -\frac{1}{\gamma}\dif\ln P.
+	\frac{\dif V}{V} = \dif\ln V = -\frac{1}{\gamma}\frac{\dif P}{P} = -\frac{1}{\gamma}\dif\ln P.
 \]
 Hence
 \begin{equation}\label{e.sound-speed-lnVt-2}
@@ -253,7 +256,7 @@ The central temperature $T_{c}$ is a measure of the average kinetic energy of a 
 \section{Virial Equilibrium}
 \label{s.virial-equilibrium}
 
-With the assumption that $\rho = \textrm{constant}$, we showed (exercise~\ref{ex.constant-density-star}) that the central temperature and pressure depended on the total mass $M$, total radius $R$, and the gravitational constant $G$ as
+With the assumption that $\rho = \textrm{constant}$, we showed (exercise~\ref{ex.constant-density-star}) that the central temperature and pressure depends on the total mass $M$, total radius $R$, and the gravitational constant $G$ as
 \begin{eqnarray}
 \label{e.Tc}
 T_{c} &=& \frac{1}{2}\left\{\frac{GM}{R}\frac{\mu\mb}{\kB}\right\}\\
@@ -262,29 +265,30 @@ P_{c} &=& \frac{3}{8\pi}\left\{\frac{GM^{2}}{R^{4}}\right\}.
 \end{eqnarray}
 Our task now is to show that the scalings of $T_{c}$ and $P_{c}$ with $M$ and $R$---the quantities in $\{\,\}$---hold in general for an a star in mechanical equilibrium.
 
-To show this, we are going to employ a form of the \emph{virial theorem}.  Suppose we have a collection of $N$ particles, all moving about and exerting forces on one another.  If we let this system settle down into some kind of bound configuration, then we can add up the kinetic and potential energies of all the particles to get a total kinetic energy $K$ and a total potential energy $\Omega$. The virial theorem asserts that $K$ is proportional to, and comparable in magnitude to, $\Omega$; indeed if the potential between a pair of particles scales as $r^{-1}$, $r$ being the distance between the particles, then $K = -\Omega/2$, as we'll now show.
+To show this, we shall employ a form of the \emph{virial theorem}. Suppose we have a collection of $N$ particles, all moving about and exerting forces on one another. If we let this system settle down into some kind of bound configuration, then we can add up the kinetic and potential energies of all the particles to get a total kinetic energy $K$ and a total potential energy $\Omega$. The virial theorem asserts that $K$ is proportional to, and comparable in magnitude to, $\Omega$; indeed if the potential between a pair of particles scales as $r^{-1}$, $r$ being the distance between the particles, then $K = -\Omega/2$, as we'll now show.
 
 Let us take the position and momentum of particle $i$ to be $\bvec{r}_{i} = (x,y,z)_{i}$ and $\bvec{p}_{i}=(p_{x},p_{y},p_{z})_{i}$.  Then the total kinetic energy is
 \begin{eqnarray}
 \nonumber
 	K &=& \frac{1}{2}\sum_{i=1}^{N}\bvec{p}_{i}\vdot\DDt{\bvec{r}_{i}}\\
-		&=& \frac{1}{2}\left[\DDt{}\underbrace{\left(\sum_{i=1}^{N}\bvec{p}_{i}\vdot\bvec{r}_{i}\right)}_{\equiv G} - \sum_{i=1}^{N}\bvec{r}_{i}\vdot\underbrace{\DDt{\bvec{p}_{i}}}_{=\bvec{F}_{i}}\right].
+		&=& \frac{1}{2}\left[\DDt{}\underbrace{\left(\sum_{i=1}^{N}\bvec{p}_{i}\vdot\bvec{r}_{i}\right)}_{\equiv\mathcal{G}} - \sum_{i=1}^{N}\bvec{r}_{i}\vdot\underbrace{\DDt{\bvec{p}_{i}}}_{=\bvec{F}_{i}}\right].
 \label{e.expand-K}
 \end{eqnarray}
-The quantity $G = \sum_{i}\bvec{p}_{i}\vdot\bvec{r}_{i}$ is called the ``virial'' of the system.  By expressing the force $\bvec{F}_{i} = \dif\bvec{p}_{i}/\dif t$ on particle $i$ as the gradient of a potential $\Omega$, $\bvec{F}_{i} = -\grad_{i}\Omega$, we can rewrite eq.~(\ref{e.expand-K}) as
+The quantity $\mathcal{G} = \sum_{i}\bvec{p}_{i}\vdot\bvec{r}_{i}$ is called the ``virial'' of the system.  By expressing the force $\bvec{F}_{i} = \dif\bvec{p}_{i}/\dif t$ on particle $i$ as the gradient of a potential $\Omega$, $\bvec{F}_{i} = -\grad_{i}\Omega$,\marginnote{\[\grad_{i}\equiv \left(\ddx{},\ddy{},\ddz{}\right)_{i},\]that is, it is the gradient with respect to the coordinates of particle $i$.}
+we can rewrite eq.~(\ref{e.expand-K}) as
 \begin{equation}\label{e.virial-deriv-1}
-	2K = \DDt{G} + \sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\Omega.
+	2K = \DDt{\mathcal{G}} + \sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\Omega.
 \end{equation}
-So far, we've just shuffled and relabeled terms.  The crucial step comes in taking the time-average of the kinetic energy, which we'll denote by $\langle\;\rangle$:
+So far, we've just shuffled and relabeled terms.  The crucial step comes in taking the time-average of the kinetic energy. The time average of a quantity $f$ is defined as
 \[	\langle f\,\rangle \equiv \lim_{\tau\to\infty} \frac{1}{\tau}\int_{0}^{\tau}f(t)\,\dif t. \]
 Applying this to equation~(\ref{e.virial-deriv-1}) gives
 \begin{eqnarray*}
 	2\langle K\,\rangle &=&
-		 \left\langle\DDt{G}\right\rangle 
+		 \left\langle\DDt{\mathcal{G}}\right\rangle 
 		+ \left\langle\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\Omega\right\rangle\\
-	&=& \lim_{\tau\to\infty}\left[\frac{1}{\tau}\int_{0}^{\tau}\,\DDt{G}\,\dif t\right] 
+	&=& \lim_{\tau\to\infty}\left[\frac{1}{\tau}\int_{0}^{\tau}\,\DDt{\mathcal{G}}\,\dif t\right] 
 		+ \left\langle\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\Omega\right\rangle\\
-	&=& \underbrace{\lim_{\tau\to\infty}\left[\frac{G(\tau)-G(0)}{\tau}\right]}_{\mathrm{I}}
+	&=& \underbrace{\lim_{\tau\to\infty}\left[\frac{\mathcal{G}(\tau)-\mathcal{G}(0)}{\tau}\right]}_{\mathrm{I}}
 		+ \underbrace{\left\langle\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\Omega\right\rangle}_{\mathrm{II}}
 \end{eqnarray*}
 Now, if the system is bound and in mechanical equilibrium, then the positions and momenta of all particles are finite: none of the particles can escape, and the system doesn't violently collapse so that momenta are diverging.  Hence both $G(\tau)$ and $G(0)$ are finite numbers, so as $\tau\to\infty$, term I vanishes.
@@ -324,14 +328,14 @@ Since many of you aren't yet comfortable with vector expressions, we'll do this 
 	\lefteqn{\left[\bvec{r}_{j}\vdot\grad_{j}\left(\frac{1}{\sqrt{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}}\right) + \bvec{r}_{k}\vdot\grad_{k}\left(\frac{1}{\sqrt{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}}\right)\right]_{x}}\\
 	&=& x_{j}\dd{}{x_{j}}\left(\frac{1}{\sqrt{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}}\right)
 		+ x_{k}\dd{}{x_{k}}\left(\frac{1}{\sqrt{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}}\right) \\
-		&=& -\frac{x_{j}(x_{j}-x_{k})}{(\bvec{r}_{j}-\bvec{r}_{k})^{3/2}}
-		+ \frac{x_{k}(x_{j}-x_{k})}{(\bvec{r}_{j}-\bvec{r}_{k})^{3/2}}\\
-		&=& -\frac{(x_{j}-x_{k})^{2}}{(\bvec{r}_{j}-\bvec{r}_{k})^{3/2}}
+		&=& -\frac{x_{j}(x_{j}-x_{k})}{[(\bvec{r}_{j}-\bvec{r}_{k})^{2}]^{3/2}}
+		+ \frac{x_{k}(x_{j}-x_{k})}{[(\bvec{r}_{j}-\bvec{r}_{k})^{2}]^{3/2}}\\
+		&=& -\frac{(x_{j}-x_{k})^{2}}{[(\bvec{r}_{j}-\bvec{r}_{k})^{2}]^{3/2}}
 \end{eqnarray*}
 The $y$- and $z$-components are similar, giving
 \begin{eqnarray*}
 	\sum_{i=1}^{N}\bvec{r}_{i}\vdot\grad_{i}\left(-\frac{Gm_{j}m_{k}}{\sqrt{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}}\right) &=& Gm_{j}m_{k}
-	\frac{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}{(\bvec{r}_{j}-\bvec{r}_{k})^{3/2}}\\
+	\frac{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}{[(\bvec{r}_{j}-\bvec{r}_{k})^{2}]^{3/2}}\\
  &=& -\left(-\frac{Gm_{j}m_{k}}{\sqrt{(\bvec{r}_{j}-\bvec{r}_{k})^{2}}}\right).
 \end{eqnarray*}
 This can be done for every term in the sum, with the final result that
@@ -352,8 +356,11 @@ The total potential of the system depends on only three parameters: $G$, $M$, an
 \[ \Omega \propto -\frac{GM^{2}}{R}, \]
 and so
 \[ \bar{T} \propto \frac{GM}{R}\frac{\mu\mb}{\kB}.  \]
-By using the ideal gas law, $\bar{P} = \bar{\rho}(\kB/\mu\mb)\bar{T}$, we find
-\[ \bar{P} \propto \frac{GM^{2}}{R^{4}}. \]
+The constant of proportionality depends on the distribution of gas in the system.
+By using the ideal gas law, $\bar{P} = \bar{\rho}(\kB/\mu\mb)\bar{T}$, we find the mean pressure
+\[ \bar{P} \propto \frac{GM^{2}}{R^{4}} \]
+of the system.
+
 As a concrete example, let's compute $\Omega$ for a constant density sphere.
 If we bring a small amount of mass $\dif m$ from infinity onto a sphere of mass $m$ and radius $r$, then the change in potential is \[ \dif\Omega = -\frac{Gm}{r}\,\dif m. \]
 For a constant density, $r = R(m/M)^{1/3}$; upon substituting for $r$ we have
@@ -383,25 +390,6 @@ $L/\Lsun$ & 5800.0    & 180.0 & 6.5 & 3.2 & 0.79 & 0.08 & 0.003\\
 \end{tabular}
 \end{table}
 
-\section{Contraction to the main sequence}
-\label{s.stellar-contraction}
-
-Stars are born when a cold, dense\sidenote{Dense is a relative term; here we mean $\sim 100$ \emph{atoms} per cubic centimeter} cloud of gas and dust becomes unstable to gravitational collapse. The details of this process is a topic of current research; for our purposes, however, after a period of time a pre-main sequence star forms.  This object is in hydrostatic balance, but with a radius much larger than its main-sequence value and a cool central temperature. What happens to this object?
-
-The pre-main sequence star is in hydrostatic balance, so it doesn't collapse. But the interior, and hence the surface, is warm, so it radiates energy.  The only source of energy is gravitational, so the pre-main sequence star \emph{must} contract.  How long would this take?  For our sun, the total energy is
-\[
-	E_{\odot} = K + \Omega = \Omega/2 \approx -\frac{G\Msun^{2}}{\Rsun};
-\]
-the time to radiate this energy away is
-\begin{equation}\label{e.kelvin-helmholtz}
-t_{\mathrm{KH}} = \frac{|E_{\odot}|}{\Lsun} \approx \frac{G\Msun^{2}}{\Rsun\Lsun} \approx \val{\sci{3}{7}}{\yr}.
-\end{equation}
-This timescale is called the \newterm{Kelvin-Helmholtz timescale}.  Since $t_{\mathrm{KH}} \gg t_{\mathrm{dyn}} = (G\bar{\rho})^{-1/2}$ the star is, to an excellent approximation, in hydrostatic equilibrium throughout the whole contraction.
-
-\begin{exercisebox}[Contraction of a constant density protostar]
-\label{ex.contraction-constant-density-protostar}
-Using the constant density model (constant here means ``constant throughout the star at any given time'') of exercise \ref{ex.constant-density-star} and the virial relations, give a qualitative sketch for how the pressure, density, temperature, radius, and total energy change with time as the protostar contracts.
-\end{exercisebox}
 
 \begin{exercisebox}[The relation between energy and temperature]
 \label{ex.gravithermal-specific-heat}
@@ -438,5 +426,36 @@ Insert the expressions for $P'$ and $R'=R+\delta R$ into equation~(\ref{e.shell-
 \item
 Equate this residual force with the acceleration of the shell, $m\ddot{\delta R}$, and show that the shell oscillates. For $\gamma = 5/3$ (appropriate for an ideal gas), find the period of oscillation in terms of $\rho = 3M/4\pi R^{3}$.
 \end{enumerate}
+\end{exercisebox}
+
+\section{Contraction to the main sequence}
+\label{s.stellar-contraction}
+
+Stars are born when a cold, dense\sidenote{Dense is a relative term; here we mean $\sim 100$ \emph{atoms} per cubic centimeter} cloud of gas and dust becomes unstable to gravitational collapse. The details of this process is a topic of current research; for our purposes, however, after a period of time a \newterm{pre-main sequence} star forms. At this point, the star is in hydrostatic balance, but with a radius much larger than its main-sequence value and a cool  temperature. We observe such pre-main sequence stars in star-forming regions, such as in the Rho Ophiuchi complex (Fig.~\ref{f.rho-ophiuchi}) or the Tauris molecular cloud (Fig.~\ref{f.tauris}). \begin{marginfigure}
+\includegraphics[width=\linewidth]{RhoOph_WISE_960}
+\caption{\label{f.rho-ophiuchi} Star forming regions in the Rho Ophiuchi cloud. The average age of the newly formed stars in this image is estimated to be $\sim \val{30\,000}{\yr}$. 
+\emph{Image credit:} NASA, JPL-Caltech, WISE.}
+\end{marginfigure}
+
+
+What happens to this object?
+The pre-main sequence star is in hydrostatic balance, so it doesn't collapse. But the interior, and hence the surface, is warm, so it radiates energy.  The only source of energy is gravitational, so the pre-main sequence star \emph{must} contract.  How long would this take?  For our sun, the total energy is
+\[
+	E_{\odot} = K + \Omega = \Omega/2 \approx -\frac{G\Msun^{2}}{\Rsun};
+\]
+the time to radiate this energy away is
+\begin{equation}\label{e.kelvin-helmholtz}
+t_{\mathrm{KH}} = \frac{|E_{\odot}|}{\Lsun} \approx \frac{G\Msun^{2}}{\Rsun\Lsun} \approx \val{\sci{3}{7}}{\yr}.
+\end{equation}
+This timescale is called the \newterm{Kelvin-Helmholtz timescale}.  Since $t_{\mathrm{KH}} \gg t_{\mathrm{dyn}} = (G\bar{\rho})^{-1/2}$ the star is, to an excellent approximation, in hydrostatic equilibrium throughout the whole contraction.
+
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{LBN782ProcessedLRv1-2_1024}
+\caption{\label{f.tauris} The Taurus molecular cloud. At right are million-year old pre-main sequence stars still embedded in dust clouds. \emph{Image Credit \& Copyright}: Lloyd L. Smith, Deep Sky West}
+\end{marginfigure}
+
+\begin{exercisebox}[Contraction of a constant density protostar]
+\label{ex.contraction-constant-density-protostar}
+Using the constant density model (constant here means ``constant throughout the star at any given time'') of exercise \ref{ex.constant-density-star} and the virial relations, give a qualitative sketch for how the pressure, density, temperature, radius, and total energy change with time as the protostar contracts.
 \end{exercisebox}
 
