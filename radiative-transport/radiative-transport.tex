@@ -15,7 +15,7 @@ What is the probability of our particle making it through the cylinder unscathed
 \[
     \mathcal{P} = \frac{\textrm{total area covered by obstacles}}{\textrm{area of cylinder}}
 \]
-Denote the cross-sectional area of the other particles by $\sigma$. If the density of obstacles is $n$, then the number of obstacles in the cylinder is $n\times(\mathcal{A}\ell)$, and therefore the fraction of the area blocked by the obstacles is
+Denote the cross-sectional area of each particle by $\sigma$. If the density of particles is $n$, then the number of obstacles in the cylinder is $n\times(\mathcal{A}\ell)$, and therefore the fraction of the area blocked by the obstacles is
 \marginnote{We are taking $\ell$ and $\mathcal{A}$ sufficiently small that we don't have to worry about particles overlapping.}
 \begin{equation}
     \mathcal{P} = \frac{n\times(\mathcal{A}\ell)\times\sigma}{\mathcal{A}} = n\sigma\ell.
@@ -35,7 +35,7 @@ We call $\ell$ the ``mean free path'': it is the mean distance the particle trav
     Suppose we have a flat, slippery surface on which hockey pucks are sliding around, as shown in Fig.~\ref{f.MFP-2D}. The pucks bounce off the walls as they slide around.  Suppose there are $N$ pucks, each with unit diameter, and the table is square with sides of length $L$.  Estimate the mean free path of a puck.
 \end{exercisebox}
 
-Although we have motivated this derivation with a classical picture, the cross-section $\sigma$ is just related to the probability of an interaction and can therefore be defined for quantum mechanical systems.
+Although we have motivated this derivation with a classical picture, since the cross-section $\sigma$ is just related to the probability of an interaction we can define it for quantum mechanical systems as well.
 
 \begin{exercisebox}[Mean free path for electron scattering]\label{ex.MFP}
     In the sun, free electrons scatter photons; the cross-section for this is
@@ -45,7 +45,7 @@ Although we have motivated this derivation with a classical picture, the cross-s
     What is the mean free path against this process for a photon at the average density of the solar interior?
 \end{exercisebox}
 
-As the ray of light traverses a small distance $\Delta s$ through some matter, the probability of a photon being absorbed is $\mathcal{P} = n\sigma\Delta s$. Thus, out of every $N$ photons, $\Delta N = N \times\mathcal{P} = N\times n\sigma\Delta s$ are absorbed. Since the intensity $I_{\nu}$ is proportional to the number of photons, the change in intensity is just
+As the ray of light traverses a small distance $\Delta s$ through some matter, the probability of a photon being absorbed is $\mathcal{P} = n\sigma\Delta s$. Thus, out of every $N$ photons, $\Delta N = N \times\mathcal{P} = N\times n\sigma\Delta s$ are absorbed. Since the intensity $I_{\nu}$ is proportional to the number of photons, the change in intensity across $\Delta s$ is just
 \[ \Delta I_{\nu} = -n\sigma I_{\nu}\Delta s. \]
 Dividing by $\Delta s$ and taking the limit $\Delta s\to0$, we obtain an equation for the absorption of light,
 \begin{equation}\label{e.absorption-microscopic}
@@ -55,13 +55,13 @@ Rather than work with the microscopic cross-section, it is convenient to define 
 \[
 	\kapabs = \frac{n\sigma}{\rho},
 \]
-so that $\dif I_{\nu}/\dif s = -\rho\kapabs I_{\nu}$. The units of opacity are $\cm^{2}/\gram$. We use a subscript $\nu$ to indicate that the opacity is a function of frequency. In terms of the opacity, the photon mean free path is $\ell = (\rho\kapabs)^{-1}$.
+\marginnote{The units of opacity are $\meter^{2}/\kilo\gram$.}so that $\dif I_{\nu}/\dif s = -\rho\kapabs I_{\nu}$. We use a subscript $\nu$ to indicate that the opacity is a function of frequency. In terms of the opacity, the photon mean free path is $\ell = (\rho\kapabs)^{-1}$.
 
 \begin{exercisebox}[Attenuation of light in an absorbing medium]
 A ray of light crosses a slab of absorbent material. Calculate the intensity $I_{\nu}$ as a function of distance traveled. Your expression should be in terms of $\rho$ and $\kapabs$. How far does the ray go before its intensity has dropped to $1/e$ of its original value?
 \end{exercisebox}
 
-\newthought{In addition to absorbing photons, the matter can also spontaneously emit them.} Denote the power emitted per wavelength per volume per angle by $\rho j_{\nu}$. After traveling a distance $\Delta s$ through matter with this \newterm{emissivity}, the ray will increase in intensity by $\rho j_{\nu}\Delta s$; or
+\newthought{In addition to absorbing photons, matter can also spontaneously emit them.} Denote the power emitted per wavelength per volume per steradian by $\rho j_{\nu}$.\marginnote{The units of $j_{\nu}$ are $\watt\usk\kilogram^{-1}\usk\Hz^{-1}$.} After traveling a distance $\Delta s$ through matter with this \newterm{emissivity}, the ray will increase in intensity by $\rho j_{\nu}\Delta s$; dividing by $\Delta s$ and taking the limit $\Delta s\to0$,
 \begin{equation}\label{e.emission-microscopic}
 \left.\DD{I_{\nu}}{s}\right|_{\mathrm{emission}} = \rho j_{\nu}.
 \end{equation}
@@ -73,11 +73,12 @@ Solve for $I_{\nu}(s)$, and show that as $s\to\infty$, $I_{\nu}\to j_{\nu}/\kapa
 \label{ex.intensity-at-large-depth}
 \end{exercisebox}
 
-\newthought{Finally, the matter can also scatter light.} This removes photons from a ray, similar to absorption, but it also adds them into a ray propagating in a different direction. 
-If we assume that the direction into which the photon is scattered is random and isotropic (as is most often the case), then if the intensity in our ray is greater than the angle-average $J_{\nu}$, scattering will cause a net reduction in intensity as more photons are scattered out of the ray than are scattered into it. Conversely, if $I_{\nu} < J_{\nu}$, then more photons will be scattered into the ray than out of it. Thus, the effect of scattering can be described via
+\newthought{Finally, matter can also scatter light.} This removes photons from a ray, similar to absorption, but the photons are redirected into a ray propagating in a different direction. 
+If we assume that the direction into which the photon is scattered is random and isotropic (as is most often the case), then if the intensity in our ray $I_{\nu}$ is greater than the angle-average $J_{\nu} = (4\pi)^{-1}\int I_{\nu}\,\dif\Omega$, scattering will cause a net reduction in intensity as more photons are scattered out of the ray than are scattered into it. Conversely, if $I_{\nu} < J_{\nu}$, then more photons will be scattered into the ray than out of it. Thus, the effect of scattering can be described via
 \begin{equation}\label{e.scattering-microscopic}
 \left.\DD{I_{\nu}}{s}\right|_{\mathrm{scattering}} = -\rho\kapscat \left(I_{\nu} - J_{\nu}\right).
 \end{equation}
+The effect of scattering is to average the intensity over angle.
 
 \section{The equation of radiative transfer}
 \label{s.equation-radiative-transfer}
@@ -86,52 +87,54 @@ Combining our expressions for absorption, emission, and scattering gives us the 
 \begin{equation}\label{e.transfer-equation}
 \DD{I_{\nu}}{s} = -\rho\left(\kapabs + \kapscat\right) I_{\nu} + \rho j_{\nu} + \rho\kapscat J_{\nu}.
 \end{equation}
-This is a complicated \newterm{integrodifferential} equation: it contains both the derivative $\dif I_{\nu}/\dif s$ of the intensity as well as its integral $J_{\nu} = (4\pi)^{-1}\int I_{\nu}\,\dif\Omega$.
+This is a complicated \newterm{integrodifferential} equation: it contains both the derivative $\dif I_{\nu}/\dif s$ of the intensity as well as its integral $J_{\nu}$.
 
-In general, eq.~(\ref{e.transfer-equation}) must be solved numerically; but conditions in the deep interior of the star and near the surface allow us to make simplifying approximations and to obtain a solution that gives some insight into the physics. First, let's clean up the equation: divide through by $\rho\kappa_{\nu}\equiv\rho(\kapabs + \kapscat)$,
+In general, eq.~(\ref{e.transfer-equation}) must be solved numerically; but conditions in the deep interior of the star and near the surface allow us to make simplifying approximations and to obtain a solution that gives some insight into the physics. First, let's clean up eq.~(\ref{e.transfer-equation}): divide through by $\rho\kappa_{\nu}\equiv\rho(\kapabs + \kapscat)$,
 \[
-	\frac{1}{\rho\kappa_{\nu}}\dd{I_{\nu}}{s} = -I_{\nu} + \left[\frac{j_{\nu} + \kapscat J_{\nu}}{\kappa_{\nu}}\right].
+	\frac{1}{\rho\kappa_{\nu}}\DD{I_{\nu}}{s} = -I_{\nu} + \left[\frac{j_{\nu} + \kapscat J_{\nu}}{\kappa_{\nu}}\right].
 \]
-Next, define a new quantity, the \newterm{optical depth} $\tau_{\nu}$ via the equation
+Next, define a new quantity, the \newterm{optical depth} $\tau_{\nu}$, via
 \[
-	\dd{\tau_{\nu}}{s} = \rho\kappa_{\nu} = \rho(\kapabs+\kapscat),
+	\DD{\tau_{\nu}}{s} = \rho\kappa_{\nu} = \rho(\kapabs+\kapscat).
 \]
-which allows us to change variables, $\dif I_{\nu}/\dif s = (\dif I_{\nu}/\dif\tau_{\nu})\cdot(\dif\tau_{\nu}/\dif s)$; and finally define the \newterm{source function} $S_{\nu}$ as the term in $\left[\cdot\right]$. Doing all that gives us the simpler-looking equation,
-\[
+We can then change variables, $\dif I_{\nu}/\dif s = (\dif I_{\nu}/\dif\tau_{\nu})\cdot(\dif\tau_{\nu}/\dif s)$, and finally define the \newterm{source function}
+\[ S_{\nu} \equiv \left[\frac{j_{\nu} + \kapscat J_{\nu}}{\kappa_{\nu}}\right].\]
+Doing all that gives us the deceptively simple-looking equation,
+\begin{equation}\label{e.simple-transfer}
 	\DD{I_{\nu}}{\tau_{\nu}} = -I_{\nu} + S_{\nu}.
-\]
-This prettifying doesn't advance us any closer to the solution, but notice! The optical depth has a simple meaning:
+\end{equation}
+This prettifying doesn't advance us any closer to the solution, of course, but notice! The optical depth has a simple meaning:
 \[
 	\tau_{\nu} = \int_{0}^{s} \rho\kappa_{\nu}\,\dif s = \int_{0}^{s} n\sigma_{\nu}\,\dif s = \int_{0}^{s} \frac{\dif s}{\ell}.
 \]
-That is, the optical depth measures distance along the ray in units of mean free path. Said differently, if you have traveled one optical depth, then you have gone one mean free path. We also see from this equation that $I_{\nu}\to S_{\nu}$ as $\tau_{\nu}\to\infty$ (cf.\ exercise~\ref{ex.intensity-at-large-depth}).
+That is, the optical depth measures distance along the ray in units of mean free path. Said differently, to travel one optical depth is to travel one mean free path. We also see from eq.~(\ref{e.simple-transfer}) that $I_{\nu}\to S_{\nu}$ as $\tau_{\nu}\to\infty$ (cf.\ exercise~\ref{ex.intensity-at-large-depth}).
 
-Thus, if your object has $\tau_{\nu}\ll 1$, then photons are hardly affected by the medium and the object is nearly transparent; if, on the other hand, $\tau_{\nu} \gg 1$, then photons cannot go through the object: it is opaque, and the emission is determined by the emissivity (via the source function $S_{\nu}$) of the matter.
+What have we learned so far? If an object has $\tau_{\nu}\ll 1$, then photons are hardly affected by the medium and the object is nearly transparent; if, on the other hand, $\tau_{\nu} \gg 1$, then photons cannot go through the object: it is opaque, and the emission is determined by the emissivity (via the source function $S_{\nu}$) of the matter.
 
 \begin{exercisebox}[Optical depth of the solar center]
 For the electron scattering cross-section (Exercise~\ref{ex.MFP}), estimate the optical depth between the solar center and the solar photosphere.
 \end{exercisebox}
 
 \newthought{Suppose we are in a cavity in which the radiation and matter are in a steady-state}. 
-The matter is not gaining or losing energy to the radiation. This requires balancing
-\[ \left(\textrm{energy emitted per unit volume}\right) = \rho\int j_{\nu}\,\dif\nu\,\dif\Omega\] 
-with
-\[ \left(\textrm{energy absorbed per unit volume}\right) = \rho\int \kapabs I_{\nu}\,\dif\nu\,\dif\Omega,\]
+That is, the matter is neither gaining nor losing energy to the radiation. Maintaining a steady-state requires balancing the
+\[ \textrm{energy emitted per unit volume} = \rho\int j_{\nu}\,\dif\nu\,\dif\Omega\] 
+with the
+\[ \textrm{energy absorbed per unit volume} = \rho\int \kapabs I_{\nu}\,\dif\nu\,\dif\Omega,\]
 so that
 \begin{equation}\label{e.rad-equil}
 \int_{0}^{\infty}\! \left(j_{\nu} - \kapabs J_{\nu}\right)\,\dif\nu = 0.
 \end{equation}
 We don't include scattering in this expression because scattering doesn't transfer energy between the radiation and the gas.
 
-If, in addition, the matter and radiation are in thermal equilibrium, so that $J_{\nu} = B_{\nu}$, then eq.~(\ref{e.rad-equil}) implies that
+If in addition to being in steady-state, the matter and radiation are also in thermal equilibrium,\marginnote{meaning at the same temperature and each having a thermal distribution of states} so that $J_{\nu} = B_{\nu}$, then eq.~(\ref{e.rad-equil}) implies that
 \begin{equation}\label{e.detailed-balance}
 \frac{j_{\nu}}{\kapabs} = B_{\nu}(T).
 \end{equation}
-Now $j_{\nu}$ and $\kapabs$ are properties of the matter, and do not depend on the state of the radiation field. Hence, equation~(\ref{e.detailed-balance}) must hold whenever the matter is in equilibrium, \emph{regardless of the state of the radiation field}.
+Now $j_{\nu}$ and $\kapabs$ are properties of the matter, and do not depend on the state of the radiation field. Hence, equation~(\ref{e.detailed-balance}), known as \newterm{detailed balance}, must hold whenever the matter is in equilibrium, \emph{regardless of the state of the ambient radiation}.
 
 \section{Radiative diffusion}
 
-We can now examine how heat transport works in the deep interior of a star. First, we need to adjust our coordinates. In equation~(\ref{e.transfer-equation}), the coordinate $s$ is distance along a ray; but we are considering many different rays. We shall therefore use radial distance $r$ as a coordinate, and measure the optical depth it: $\dif\tau_{\nu} = \rho\kappa_{\nu}\,\dif r$. 
+We can now examine how heat transport works in the deep interior of a star. First, we need to establish our coordinate system. In equation~(\ref{e.transfer-equation}), the coordinate $s$ is distance along a ray; but it is more convenient to use coordinates that are tied to the star. We therefore use radial distance $r$ as a coordinate, and measure the optical depth along it: $\dif\tau_{\nu} = \rho\kappa_{\nu}\,\dif r$. 
 Since $\dif r = \mu\,\dif s$, where $\mu=\cos\theta$ is the cosine between $\dif s$ and $\dif r$ (Fig.~\ref{f.dr-ds-relation}), the equation of transfer becomes
 \begin{equation}
 \mu\DD{I_{\nu}}{r} = -\rho\kappa_{\nu}\left(I_{\nu} - S_{\nu}\right).
@@ -141,29 +144,30 @@ Since $\dif r = \mu\,\dif s$, where $\mu=\cos\theta$ is the cosine between $\dif
 \caption[Coordinates for radiative transport equation]{\label{f.dr-ds-relation} Schematic of the coordinate system used for solving the radiative transport equation.}
 \end{marginfigure}
 
-\newthought{Let's examine the typical scales of terms in the radiative transfer equation, for conditions in the deep solar interior.} We'll start with eq.~(\ref{e.transfer-equation}), and indicate some expected scales:
+\newthought{Let's examine the typical scales of terms in the radiative transfer equation, for conditions in the deep solar interior.} We'll start by indicating some expected scales for eq.~(\ref{e.transfer-equation}):
 \[
 \underbrace{\mu\DD{I_{\nu}}{r}}_{\sim I_{\nu}/\Rsun} = -\underbrace{\rho\kappa_{\nu} I_{\nu}}_{\sim I_{\nu}/\ell}  +\rho\kappa_{\nu} S_{\nu}.
 \]
-If we are far from the surface of the star, then we should expect the intensity to change over lengthscales comparable to $\Rsun$. Of course, it won't be exactly this, but---as we'll show---the exact value doesn't matter so long as $|\dif I_{\nu}/\dif s|$ is in the ballpark of $I_{\nu}/\Rsun$. Notice the enormous disparity in scales:
+If we are far from the surface of the star, then we should expect the intensity to change over lengthscales comparable to $\Rsun$. Of course, it won't be exactly this, but---as we'll show---the exact value doesn't matter so long as $|\dif I_{\nu}/\dif r|$ is in the ballpark of $I_{\nu}/\Rsun$. Notice the enormous disparity in scales:
 \[
-	\frac{|\dif I_{\nu}/\dif r|}{\rho\kappa_{\nu}I_{\nu}} \sim \frac{\ell}{\Rsun};
+	\frac{|\dif I_{\nu}/\dif r|}{\rho\kappa_{\nu}I_{\nu}} \sim \frac{\ell}{\Rsun}.
 \]
-the left-hand side is smaller than the terms on the right by the ratio of the mean free path to the solar radius. This implies that conditions are nearly homogeneous. They are also isotropic, so that $I_{\nu} = J_{\nu}$. We expect that collisions are fast enough so that the matter is in thermal equilibrium and $j_{\nu} = \kapabs B_{\nu}$. We also know from exercise~\ref{ex.intensity-at-large-depth} that $I_{\nu} \to j_{\nu}/\kapabs = B_{\nu}$.
+The left-hand side of eq.~(\ref{e.transfer-equation}) is smaller than the terms on the right by the ratio of the mean free path to the solar radius. This implies that conditions in the deep solar interior are nearly homogeneous. They are also isotropic, so that $I_{\nu} = J_{\nu}$. We expect that collisions are fast enough so that the matter is in thermal equilibrium and $j_{\nu} = \kapabs B_{\nu}$. We also know from exercise~\ref{ex.intensity-at-large-depth} that $I_{\nu} \to j_{\nu}/\kapabs = B_{\nu}$.
 
-We can't have $I_{\nu} = B_{\nu}$ exactly, however, since in that case there is no net flux! We'll treat the intensity as being thermal plus a perturbation:
+We can't have $I_{\nu} = B_{\nu}$ exactly, however, since in that case there is no net flux! We'll therefore treat the intensity as being thermal plus a perturbation:
 \[ I_{\nu} = B_{\nu} + I_{\nu}^{(1)}, \]
 where the superscript ``(1)'' indicates that this is a small correction. Inserting this expansion into eq.~(\ref{e.transfer-equation}) and keeping only the lowest-order terms on each side gives
 \begin{equation}\label{e.perturbation-radiative-transfer}
 I_{\nu}^{(1)} = -\mu\DD{B_{\nu}}{\tau_{\nu}}.
 \end{equation}
-$B_{\nu}$ depends on the temperature $T$, so $\dif B_{\nu}/\dif\tau_{\nu} = \dif B_{\nu}/\dif T \cdot \dif T/\dif \tau_{\nu}$. To get the flux, multiply eq.~(\ref{e.perturbation-radiative-transfer}) by $\mu$ and integrate over angles:
+$B_{\nu}$ is a function of the temperature $T$, so $\dif B_{\nu}/\dif\tau_{\nu} = \dif B_{\nu}/\dif T \cdot \dif T/\dif \tau_{\nu}$. To get the flux, multiply eq.~(\ref{e.perturbation-radiative-transfer}) by $\mu$ and integrate over angles (cf.\ eq.~[\ref{e.specific-flux}]):
 \[ F_{\nu} = \int\mu I_{\nu}^{(1)}\,\dif\Omega = -\int \mu^{2}\DD{B_{\nu}}{T}\,\DD{T}{\tau_{\nu}}\,\dif \Omega = -\frac{4\pi}{3} \DD{B_{\nu}}{T}\,\DD{T}{\tau_{\nu}}. \]
-We can switch back to the radial coordinate:
+Switching variables from $\tau_{\nu}$ back to $r$ gives
 \begin{equation}\label{e.specific-radiative-transport}
 	F_{\nu} = -\frac{4\pi}{3}\left[\frac{1}{\rho\kappa_{\nu}}\dd{B_{\nu}}{T}\right]\DD{T}{r}.
 \end{equation}
-The term in $\left[\cdot\right]$ controls which frequencies are most responsible for energy transport.
+The flux $F_{\nu}$ is therefore proportional to the temperature gradient $\dif T/\dif r$, and
+the term in $\left[\cdot\right]$ controls which frequencies have the largest flux and are therefore most responsible for energy transport.
 
 \begin{exercisebox}[Transport by frequency]
 \label{ex.radiative-transfer}
@@ -214,7 +218,7 @@ Finally, assume that the photon mean free path $\ell = (\rho\kappa_{\mathrm{R}})
 
 \section{Diffusion}\label{s.diffusion}
 
-In the presence of scattering or absorption, the photons crossing the face can travel one mean free path $\ell$. Imagine a small cube with sides of length $\ell$ and filled with photons. The total radiant energy in the cube is $\Delta E$. In a time $\Delta t = \ell/c$, all of the photons will leave this cube. The total luminosity is $\Delta E/\Delta t = c\Delta E/\ell$. If everything is isotropic, then the flux out of any one face is $1/6$ of the luminosity, divided by the area of that face:
+In the presence of scattering or absorption, photons take short hops averaging one mean free path $\ell$ in length. Imagine a small cube with sides of length $\ell$ and filled with photons. The total radiant energy in the cube is $\Delta E$. In a time $\Delta t = \ell/c$, all of the photons will leave this cube. The total luminosity of the cube is thus $\Delta E/\Delta t = c\Delta E/\ell$. If everything is isotropic, then the flux out of any one face is $1/6$ of the luminosity, divided by the area of that face:
 \[
 	F = \frac{1}{6\ell^{2}}\frac{c\Delta E}{\ell} = \frac{1}{6}c U,
 \]
@@ -238,28 +242,28 @@ For radiation, the ``something'' is ``radiative energy'' and the carriers are ph
 \end{marginfigure}
 
 \begin{exercisebox}[Rosseland weighting]
-Compare this crude diffusion model,
+Compare this diffusion equation,
 \[
 	F = -\frac{1}{3}c\ell\DD{U}{r},
 \]
-with eq.~(\ref{e.radiative-transfer}). Using the results of exercise~\ref{ex.radiative-transfer}, give a succinct description for why the effective mean free path $\ell = 1/(\rho\kappa_{\mathrm{R}})$ is computed using a weighting function $\partial B_{\nu}/\partial T$.
+with eq.~(\ref{e.radiative-transfer}) and use eq.~(\ref{e.rosseland-opacity}) to write an expression for the \emph{average} mean free path  of a photon (the ``mean mean free path''?). Can you give a physical interpretation for the weighting function used in computing the average (cf.\ exercise \ref{ex.radiative-transfer})?
 \end{exercisebox}
 
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{random-walk-schematic}
 \caption[Schematic of a random walk]{\label{f.random-walk-schematic}Schematic of a random walk of 50 steps.}
 \end{marginfigure}
-\newthought{As an alternate take on our estimation, let's model the transport as a photon that is randomly walking throughout the interior.}
-The photon moves at speed $c$, but it can only go one mean free path $\ell$ before being absorbed or scattered, at which point it is sent off in a random direction.\marginnote{To keep things simple, we'll imagine that after absorption the atom immediately emits an identical photon in a random direction.} The path of the photon will therefore look something like that in Fig.~\ref{f.random-walk-schematic}.
+\newthought{For an alternate view on photon diffusion,} imagine a photon random-walking throughout the stellar interior.
+The photon moves at speed $c$, but it can only go one mean free path $\ell$ before being absorbed or scattered, at which point it is sent off in a random direction. The path of the photon will therefore look something like that in Fig.~\ref{f.random-walk-schematic}.
 
-We will just do our calculation for motion along a diameter, with the photon starting at the center. At each hop, the photon either goes left or right with equal probability. On average, the photon doesn't go anywhere; but after enough hops, there is some probability for the photon to reach the edge of the star and escape. Figure~\ref{f.random-walk} shows the distribution of positions for walks of length $n = 10, 30, 100, 300$ steps, with each step having length 1.0. Suppose the edge of the star is at $x=\pm 10$ (red dotted lines).  Although the average position is at $x=0$, for $n \gtrsim 100$ steps, there is a reasonable probability of the photon escaping.
+We will just do our calculation for motion along a diameter, with the photon starting at the center. On each hop, the photon either goes left or right with equal probability.\marginnote{To keep things simple, we'll imagine that after absorption the atom immediately emits an identical photon in a random direction.} On average, the photon doesn't go anywhere; but after enough hops, there is some probability for the photon to reach the edge of the star and escape. Figure~\ref{f.random-walk} shows the distribution of positions for walks of length $n = 10, 30, 100, 300$ steps, with each step having length 1.0. Suppose the edge of the star is at $x=\pm 10$ (red dotted lines).  Although the average position is at $x=0$, for $n \gtrsim 100$ steps, there is a reasonable probability of the photon eventually escaping.
 \begin{figure}[htbp]
 \forceversofloat
 \includegraphics[width=\linewidth]{random-walk}
 \caption[Distribution of positions in a random walk]{\label{f.random-walk} Distribution of positions after $n$ steps in a random walk.}
 \end{figure}
 
-To make this into a workable model, let us first recall the basic features of a random walk. It is described by a binomial distribution: after $n$ steps, the probability that $m$ of them were to the right is
+Recall that a random walk is described by a binomial distribution: after $n$ steps, the probability that $m$ of them were to the right is
 \begin{equation}\label{e.binomial}
     \binom{n}{m}{p} = \frac{n!}{m!(n-m)!} p^{m}(1-p)^{n-m}.
 \end{equation}
@@ -269,7 +273,7 @@ The mean and root variance of $m$ are
 	\mean{m} &=& np \label{e.mean-binomial} \\
 	\left[\mean{\left(m-\mean{m}\right)^{2}}\right]^{1/2} &=& \left[np(1-p)\right]^{1/2}. \label{e.var-binomial}
 \end{eqnarray}
-We can use these to estimate the diffusion timescale $\tau$.
+In exercise \ref{ex.random-walk-diffusion}, you will use these quantities to estimate the diffusion timescale $\tau$.
 
 \begin{exercisebox}[Radiative diffusion as a random walk]
 \label{ex.random-walk-diffusion}
@@ -296,35 +300,35 @@ What is the \emph{total} distance traveled by the photon after $n_{\mathrm{edge}
 
 \section{The photosphere}
 
-We are now ready to investigate heat transport near the edge, where the optical depth $\tau_{\nu} \lesssim 1$ and photons begin to freely escape. We can no longer use the approximation of radiative diffusion, because conditions in the star are now changing over distances of a mean free path. Let's return to equation~(\ref{e.transfer-equation}) for radiative transport:
+We are now ready to investigate heat transport near the star's edge, where the optical depth $\tau_{\nu} \lesssim 1$ and photons begin to freely escape. Near the edge, we cannot use the approximation of radiative diffusion, because conditions are changing over distances of order one mean free path. We therefore return to equation~(\ref{e.transfer-equation}) for radiative transport:
 \[
 	\DD{I_{\nu}}{s} = -\rho\left(\kapabs + \kapscat\right) I_{\nu} + \rho j_{\nu} + \rho\kapscat J_{\nu}.
 \]
-In general, this is difficult to solve: for some frequencies, the atmosphere will be nearly transparent, while for other frequencies it is quite opaque. Rather than develop the numerical machinery to solve the equation, we shall adopt a few simple approximations (indicated by highlighted bold text in the margins) that will allow us to obtain an approximate solution for the temperature of the stellar atmosphere.
+This is difficult to solve: for some frequencies, the atmosphere is nearly transparent, while for other frequencies it is quite opaque. Rather than develop the numerical machinery to solve this equation, we shall make a few simplifying assumptions (indicated by \colorbox{yellow}{\textbf{highlighted bold text}} in the margins) to obtain an approximate solution for the temperature of the stellar atmosphere.
 
-\marginnote[\baselineskip]{\colorbox{yellow}{\textbf{Opacities are gray}}}First, we assume that the opacity is gray---that is, independent of frequency. This is unphysical, but the solutions for temperature and pressure will have the correct overall behavior. Because the opacity is gray, we shall drop the ``$\nu$'' subscript in $\kappa$ and $\tau$.
+\marginnote[\baselineskip]{\colorbox{yellow}{\textbf{Opacities are gray}}}First, we assume that the opacity is gray---that is, independent of frequency. Although unphysical, the solutions for temperature and pressure near the stellar photosphere will still have the correct qualitative behavior. Because the opacity is gray, we shall drop the ``$\nu$'' subscript in $\kappa$ and $\tau$.
 
 \begin{exercisebox}[Gray emissivity?]
-Does matter with a gray opacity in thermal equilibrium also have a gray emissivity $j_{\nu}$?
+Does matter with a gray opacity in thermal equilibrium also have a gray emissivity $j_{\nu}=j$?
 \end{exercisebox}
 
 We next define a coordinate system. Since we are in a thin layer near the edge of the star, we will adopt planar coordinates, with $z$ being the altitude above some point. We'll pick $z=0$ to be a point deep enough in the star that $I_{\nu}\approx B_{\nu}$. Then we define the optical depth as
 \begin{equation}\label{e.optical-depth-planar}
-	\tau = \int_{z}^{\infty} \rho\left(\kappa^{\mathrm{abs}}+\kappa^{\mathrm{sca}}\right)\,\dif z ;
+	\tau(z) = \int_{z}^{\infty} \rho\left(\kappa^{\mathrm{abs}}+\kappa^{\mathrm{sca}}\right)\,\dif z ;
 \end{equation}
 differentiating this expression gives
 \[
-	\DD{\tau}{z} = -\rho\left(\kappa^{\mathrm{abs}}+\kappa^{\mathrm{sca}}\right).
+	\DD{\tau}{z} = -\rho\left(\kappa^{\mathrm{abs}}+\kappa^{\mathrm{sca}}\right) \equiv -\rho\kappa.
 \]
-Note the ``$-$'': in these coordinates, as $z$ gets larger, $\tau$ gets smaller.
+Note the ``$-$'': in these coordinates, as $z$ gets larger, $\tau$ gets smaller. Alternatively, you can view $\tau$ as being the optical depth for a photon traveling \emph{into} the star.
 
-We may rewrite the equation (\ref{e.hydrostatic-equilibrium-g}) of hydrostatic balance as
+Using eq.~\ref{e.optical-depth-planar}), we then rewrite the equation (\ref{e.hydrostatic-equilibrium-g}) of hydrostatic balance as
 \begin{eqnarray}
 	-\rho g = \DD{P}{z} &=& \DD{P}{\tau}\DD{\tau}{z} = -\rho\kappa\DD{P}{\tau},\nonumber\\
 	\DD{P}{\tau} &=& \frac{g}{\kappa}.
 \label{e.P-tau}
 \end{eqnarray}
-Since we are in a thin layer, we can take the gravitational acceleration $g$ as being approximately constant. By integrating hydrostatic equilibrium from where $\tau = 0, P = 0$ to where $\tau = 1$, we can get an approximate value of the photospheric pressure,
+Since we are in a thin layer, we can take the gravitational acceleration $g$ to be approximately constant. By integrating hydrostatic equilibrium from where $\tau = 0, P = 0$ to where $\tau = 1$, we obtain an approximate value of the photospheric pressure,
 \[
 	P_{\mathrm{ph}} = \int_{0}^{P_{\mathrm{ph}}}\,\dif P = \int_{0}^{1}\frac{g}{\kappa}\,\dif\tau \approx \frac{g}{\kappa}.
 \]
@@ -336,12 +340,14 @@ Since we are in a thin layer, we can take the gravitational acceleration $g$ as 
 Suppose you observe a star that has a 10\% larger mass and 10\% larger radius than the sun. All else being equal, how does the pressure at the photosphere of this star compare to that of the sun?
 \end{exercisebox}
 
-\marginnote[\baselineskip]{\colorbox{yellow}{\textbf{Atmosphere is in steady-state LTE}}}
 For our second approximation, we assume that the matter is in \newterm{local thermal equilibrium} (LTE). This means there is a well-defined temperature at each depth. Furthermore, the emissivity is related to the absorption opacity,
+\marginnote[-2\baselineskip]{\colorbox{yellow}{\textbf{Atmosphere is in steady-state LTE}}} 
 \[
 	j_{\nu} = \kappa^{\mathrm{abs}}B_{\nu}.
 \]
-Note that this does \emph{not} imply anything about the radiation field. We can now take the radiative transfer equation (\ref{e.transfer-equation}) and substitue our definition of optical depth (eq.~[\ref{e.optical-depth-planar}]) to obtain
+Note that this does \emph{not} imply the radiation field is actually Planckian.
+
+We then take the radiative transfer equation (\ref{e.transfer-equation}) and substitute our definition of optical depth (eq.~[\ref{e.optical-depth-planar}]) to obtain
 \begin{equation}\label{e.transfer-gray}
 	\mu\DD{I_{\nu}}{\tau} = I_{\nu} - S_{\nu}.
 \end{equation}
@@ -350,23 +356,40 @@ Here
 	S_{\nu} = \frac{j_{\nu} + \kappa^{\mathrm{sca}} J_{\nu}}{\kappa}
 	= \frac{\kappa^{\mathrm{abs}} B_{\nu} + \kappa^{\mathrm{sca}} J_{\nu}}{\kappa}.
 \]
-If, in addition, the matter is in steady-state, then the rate at which energy is absorbed from the radiation field, $\int\kappa^{\mathrm{abs}}I_{\nu}\,\dif\nu\,\dif\Omega$, must equal the rate at which energy is emitted, $\int j_{\nu}\,\dif\nu\,\dif\Omega$. Since we are in LTE,
-\[
+If, in addition, the matter is in steady-state, then the rate at which energy is absorbed from the radiation field, $\int\kappa^{\mathrm{abs}}I_{\nu}\,\dif\nu\,\dif\Omega$, must equal the rate at which energy is emitted, $\int j_{\nu}\,\dif\nu\,\dif\Omega$:
+\begin{eqnarray*}
 	\int \left(j_{\nu} - \kappa^{\mathrm{abs}}I_{\nu}\right)\,\dif\nu\,\dif\Omega
-	= 4\pi\kappa^{\mathrm{abs}}\int\left(B_{\nu} - J_{\nu}\right)\,\dif\nu = 0.
-\]
-Since $J = \int J_{\nu}\,\dif\nu = \int B_{\nu}\,\dif\nu = B$, it follows that $S = \int S_{\nu}\,\dif\nu = B$ as well:
+	&=& \kappa^{\mathrm{abs}}\int\left(B_{\nu} - I_{\nu}\right)\,\dif\nu\,\dif\Omega\\
+	&=& 4\pi\kappa^{\mathrm{abs}}\int\left(B_{\nu} - J_{\nu}\right)\,\dif\nu 
+	= 0.
+\end{eqnarray*}
+In this expression we use the LTE expression for $j_{\nu}$ and we pull $\kappa^{\mathrm{abs}}$ from the integral because it is independent of frequency.
+
+Since $J = \int J_{\nu}\,\dif\nu = \int B_{\nu}\,\dif\nu = B$, it follows that $S = \int S_{\nu}\,\dif\nu = B$ as well.
 \begin{quote}
 \emph{For a gray atmosphere in steady-state, local thermal equilibrium, the integrated source function and mean intensity equal the Planck value:}
 \[ S(\tau) = J(\tau) = B(\tau), \]
 \end{quote}
-Note that this does \emph{not} imply that $I_{\nu}=B_{\nu}$ or $J_{\nu}=B_{\nu}$.
+Note that this does \emph{not} imply that $I_{\nu}=B_{\nu}$ or $J_{\nu}=B_{\nu}$: it only means their frequency-integrated averages are equal.
 
-We still have the problem that eq.~(\ref{e.transfer-gray}) includes both the derivative and integral of $I_{\nu}$. To get around this, we are going to expand $I_{\nu}$ in Legendre polynomials,
+If we integrate eq.~(\ref{e.transfer-gray}) over all angles,
+\begin{eqnarray*}
+	\int\mu\DD{I_{\nu}}{\tau}\,\dif\Omega &=& \int I_{\nu}\,\dif\nu -\int S_{\nu}\,\dif\Omega\\
+	\DD{F_{\nu}}{\tau} &=& 4\pi \left(J_{\nu} - S_{\nu}\right),
+\end{eqnarray*}
+and then integrate over all frequencies and use the steady-state, LTE relation,
+\[ \DD{F}{\tau} = \DD{}{\tau}\int F_{\nu}\,\dif\nu = 4\pi\int \left(J_{\nu} - S_{\nu}\right)\,\dif\nu = 0.\]
+We thus have the remarkable result:
+\begin{quote}
+\emph{For a steady-state gray atmosphere in local thermal equilibrium, the total flux $F = \int F_{\nu}\,\dif\nu$ is constant.}
+\end{quote}
+That is, the atmosphere does not add to, or detract from, the radiation flowing through it.
+
+We still have the problem that eq.~(\ref{e.transfer-gray}) includes both the derivative and integral of $I_{\nu}$. To get around this, we expand $I_{\nu}$ in Legendre polynomials,
 \[
 	I_{\nu}(\tau,\mu) = I_{\nu,0}(\tau)\Pl{0}(\mu) + I_{\nu,1}(\tau)\Pl{1}(\mu) + I_{\nu,2}(\tau)\Pl{2}(\mu) + \ldots
 \]
-and then only include the first two terms, $\Pl{0}(\mu) = 1, \Pl{1} = \mu$. Thus, $I_{\nu}$ is \emph{linear} in $\mu$: $I_{\nu} = I_{\nu,0}(\tau) + I_{\nu,1}(\tau)\mu$. 
+and only retain the first two terms, $\Pl{0}(\mu) = 1, \Pl{1} = \mu$. That is, we assume $I_{\nu}$ is \emph{linear} in $\mu$: $I_{\nu} = I_{\nu,0}(\tau) + I_{\nu,1}(\tau)\mu$. 
 \marginnote{\colorbox{yellow}{\textbf{Intensity is linear in $\mu$}}}
 
 In terms of this expansion, the angle-averaged specific intensity is
@@ -377,15 +400,15 @@ and hence the specific energy density is $U_{\nu} = 4\pi/c\cdot J_{\nu} = 4\pi/c
 \[
 	F_{\nu}(\tau) = \int \mu I_{\nu}\,\dif\mu\,\dif\phi = \frac{4\pi}{3} I_{\nu,1}(\tau).
 \]
-We can therefore write the intensity as
+We can therefore use these relations for $I_{\nu,0}$ and $I_{\nu,1}$ to express the intensity as
 \begin{equation}
 \label{e.intensity-expanded}
-I_{\nu}(\tau) = J_{\nu}(\tau) + \frac{3\mu}{4\pi} F_{\nu}(\tau) = \frac{c}{4\pi}U_{\nu}(\tau) + \frac{3\mu}{4\pi} F_{\nu}(\tau).
+I_{\nu}(\tau) = \frac{c}{4\pi}U_{\nu}(\tau) + \frac{3\mu}{4\pi} F_{\nu}(\tau).
 \end{equation}
 
 \begin{sidebar}[Expansion in Legendre polynomials]
 \label{sb.intensity-decomposition}
-You may recall from electrostatics that we can decompose the field from a set of charges into a sum of moments: dipole, quadrupole, and so on. The basis functions for this are the Legendre polynomials $\Pl{n}(\cos\theta)$, defined by the expansion
+You may recall from electrostatics that we can decompose the field from a set of charges into a sum of moments: dipole, quadrupole, and so on. The basis functions for this expansion are the Legendre polynomials $\Pl{n}(\cos\theta)$, defined via
 \[
 	\frac{1}{\sqrt{1 - 2\mu z + z^{2}}} \equiv \sum_{n=0}^{\infty}\Pl{n}(\mu)z^{n},
 \]
@@ -420,60 +443,57 @@ Use eq.~(\ref{e.orthogonal}) to show that $(4\pi)^{-1}\int I\,\dif\Omega = I_{0}
 
 \end{sidebar}
 
-Insert the expansion (\ref{e.intensity-expanded}) into the radiative transfer equation (\ref{e.transfer-gray}) and integrate over all angles and frequencies. Since $\tau$ is gray, we can pull the derivative out from the integral,
-\begin{eqnarray*}
-	\DD{}{\tau}\int \mu I_{\nu}\,\dif\nu\,\dif\Omega &=& \int I_{\nu}\,\dif\nu\,\dif\Omega - \frac{\kappa^{\mathrm{abs}}}{\kappa}\int B_{\nu}\,\dif\nu\,\dif\Omega - \frac{\kappa^{\mathrm{sca}}}{\kappa} \int J_{\nu}\,\dif\nu\,\dif\Omega\\
-	\DD{}{\tau}\int F_{\nu}\,\dif\nu &=& \frac{4\pi}{\kappa}\left[
-		(\kappa^{\mathrm{abs}}+\kappa^{\mathrm{sca}})\int J_{\nu}\,\dif\nu
-		- \kappa^{\mathrm{abs}}\int B_{\nu}\,\dif\nu
-		- \kappa^{\mathrm{sca}}\int J_{\nu}\,\dif\nu\right]\\
-	\DD{F}{\tau} &=& 4\pi\frac{\kappa^{\mathrm{abs}}}{\kappa}\int\left(J_{\nu}-B_{\nu}\right) = 0.
-\end{eqnarray*}
-Here we used $\kappa = \kappa^{\mathrm{abs}}+\kappa^{\mathrm{sca}}$ to simplify the right-hand side.
-
-\begin{quote}
-\emph{For a steady-state gray atmosphere in local thermal equilibrium, the total flux $F = \int F_{\nu}\,\dif\nu$ is constant.}
-\end{quote}
-The radiative energy is just passing through. Since the flux at $\tau=0$, outside the star, is $F = \sigmaSB\,\Teff^{4}$, we can substitute that value in our expression for the intensity,
+Since the flux in the atmosphere is constant, it must be equal to its value far from the star where $\tau\to0$: $F(\tau=0) = \sigmaSB\,\Teff^{4}$. We can therefore integrate eq.~(\ref{e.intensity-expanded}) over frequency and substitute for $F$:
 \begin{equation}
 \label{e.Inu-expansion}
 	I(\mu,\tau) = \frac{c}{4\pi} U(\tau) + \frac{3\mu}{4\pi}\sigmaSB\Teff^{4}.
 \end{equation}
-To solve for $U(\tau)$, multiply eq.~(\ref{e.transfer-gray}) by $\mu$ and integrate over all angles and frequencies:
+To solve for $U(\tau)$, integrate eq.~(\ref{e.transfer-gray}) over frequency,
+$\mu\,\dif I/\dif\tau = I-S$, substitute for $I$ on the left-hand side using eq.~(\ref{e.Inu-expansion}), then multiply by $\mu$ and integrate over all angles:
 \begin{eqnarray}
-	\DD{}{\tau}\int\mu^{2}I_{\nu}\,\dif\Omega\,\dif\nu &=& \int\mu I_{\nu}\,\dif\Omega\,\dif\nu
-		- \int \mu S_{\nu}\,\dif\Omega\,\dif\nu\nonumber\\
+	\DD{}{\tau}\int\mu^{2}I\,\dif\Omega &=& \int\mu I\,\dif\Omega
+		- \int \mu S\,\dif\Omega\nonumber\\
 	\frac{c}{4\pi}\DD{}{\tau} \int \mu^{2}U\,\dif\Omega 
 		+ \frac{3}{4\pi}\sigmaSB\Teff^{4}\int\mu^{3}\,\dif\Omega &=& F - \int \mu S\,\dif\Omega\nonumber\\
-	\frac{c}{3}\DD{U}{\tau} &=& \sigmaSB\Teff^{4}
+	\frac{c}{3}\DD{U}{\tau} &=& F = \sigmaSB\Teff^{4}
 \label{e.ODE-U}
 \end{eqnarray}
-In going from the first to the second line we have used eq.~(\ref{e.Inu-expansion}). In going from the second to the third line, the integrals of $\mu^{3}$ and $\mu S$ vanish because $S$ is independent of angle and $\int_{-1}^{1} \mu\,\dif\mu = \int_{-1}^{1}\mu^{3}\,\dif\mu = 0$. 
+The integrals over $\mu^{3}$ and $\mu S$ vanish because $S$ is independent of angle and $\int_{-1}^{1} \mu\,\dif\mu = \int_{-1}^{1}\mu^{3}\,\dif\mu = 0$. Also, $U$ is independent of $\mu$, and $\int\mu^{2}\,\dif\Omega = \int_{0}^{2\pi}\int_{-1}^{1}\mu^{2}\,\dif\mu\,\dif\phi = (4\pi/3)$.
 
 Equation~(\ref{e.ODE-U}) is a first-order ODE, which upon integration yields
 \begin{equation}\label{e.energy-density-Eddington}
-	U(\tau) = \frac{3}{c}F(\tau + \tau_{0}),
+	U(\tau) = \frac{3}{c}F(\tau + \tau_{0}) = \frac{3}{c}\sigmaSB\Teff^{4} (\tau+\tau_{0}),
 \end{equation}
-where $\tau_{0}$ is an integration constant. Our intensity is thus
+where $\tau_{0}$ is an integration constant. Substituting this back into the expression for the intensity, eq.~(\ref{e.Inu-expansion}), gives
 \[
 	I(\mu,\tau) = \frac{3}{4\pi}\sigmaSB\Teff^{4}\left(\tau + \tau_{0} + \mu\right).
 \]
-To fix the integration constant $\tau_{0}$, let's go to where $\tau=0$. Here all of the radiation must be outward-bound. Hence if we integrate $\mu I(\mu,\tau=0)$ over $0\le\mu\le 1$, we should recover the flux:
+To fix the integration constant $\tau_{0}$, evaluate this expression at $\tau=0$. Far outside the star, all of the radiation must be outward-bound. Hence if we integrate $\mu I(\mu,\tau=0)$ over $0\le\mu\le 1$, we should recover the flux:
 \[
 	\sigmaSB\Teff^{4} = \int_{0}^{2\pi}\int_{0}^{1} \mu I(\mu,\tau=0)\,\dif\mu\,\dif\phi
 	= \frac{3}{4}\sigmaSB\Teff^{4}\left(\tau_{0} + \frac{2}{3}\right),
 \]
 which fixes $\tau_{0} = 2/3$.
 
-To finish this, we note that $J = B$ since we are in steady-state local thermal equilibrium. The radiative energy density is thus $U = (4\pi/c) J = (4\pi/c)B = 4\sigmaSB/c T^{4}$. Substituting this into eq.~(\ref{e.energy-density-Eddington}) then yields
+We are almost finished! To recap, we now have the expressions for the intensity, flux, and radiative energy density under the assumption of a gray atmosphere in steady-state, local thermal equilibrium and under the approximation of the intensity being linear in $\mu$:
+\begin{eqnarray*}
+I &=& \frac{3}{4\pi}\sigmaSB\Teff^{4}\left(\tau + \mu + \frac{2}{3}\right)\\
+F &=& \sigmaSB\Teff^{4}\\
+U &=& \frac{3}{c}\sigmaSB\Teff^{4}\left(\tau + \frac{2}{3}\right).
+\end{eqnarray*}
+To finish this, we note that in the atmosphere $J = B$ since we are in steady-state local thermal equilibrium. The radiative energy density can thus be written as $U(\tau) = (4\pi/c) J(\tau) = (4\pi/c)B(\tau) = (4\sigmaSB/c )T^{4}(\tau)$. Substituting this into eq.~(\ref{e.energy-density-Eddington}) gives us an expression for the temperature in terms of optical depth,
 \begin{equation}\label{e.T-tau}
-T^{4} = \frac{3}{4}\Teff^{4}\left(\tau + \frac{2}{3}\right).
+T^{4}(\tau) = \frac{3}{4}\Teff^{4}\left(\tau + \frac{2}{3}\right).
 \end{equation}
 This equation, along with eq.~(\ref{e.P-tau}), determines the structure of the stellar atmosphere.
 
 \begin{sidebar}[Decomposition of intensity into moments]
 \label{sb.intensity-moments}
-It is often useful to describe the intensity in terms of \newterm{moments}. A moment is simply an angle-weighted average of the radiative intensity, where the weight is a power of $\mu$. For example, to take the zeroth-order moment, we multiply $I_{\nu}$ by $\mu^{0}=1$, integrate over all angles, and divide by $4\pi$. This is just the average intensity $J_{\nu} = (4\pi)^{-1}\int I_{\nu}\,\dif\Omega$. To take the first-order moment $H_{\nu}$, we use a weight $\mu^{1}$:
+Our integration of the radiative-transfer equation~(\ref{e.transfer-gray}) is known as taking a \newterm{moment} of the equation. A moment is simply a weighted average, where the weight is a power of $\mu$. For example, to take the zeroth-order moment of the radiative intensity, we multiply $I_{\nu}$ by $\mu^{0}=1$, integrate over all angles, and divide by $4\pi$:
+\[
+	J_{\nu} = \frac{1}{4\pi}\int_{0}^{2\pi}\int_{-1}^{1} I_{\nu}\,\dif\mu\,\dif\phi.
+\]
+To take the first-order moment $H_{\nu}$, we use a weight $\mu^{1}$:
 \[
 	H_{\nu} = \frac{1}{4\pi}\int_{0}^{2\pi}\int_{-1}^{1}\mu I_{\nu}\,\dif\mu\,\dif\phi.
 \]
@@ -483,9 +503,7 @@ To take the second-order moment $K_{\nu}$, we use a weight $\mu^{2}$:
 \]
 The first three moments have physically interpretable meanings: the specific radiative energy density, flux, and pressure are $U_{\nu} = (4\pi/c)J_{\nu}$, $F_{\nu} = 4\pi H_{\nu}$, and $P_{\nu} = (4\pi/c) K_{\nu}$, respectively.
 
-By taking moments of the radiative-transfer equation~(\ref{e.transfer-gray}), we reduce the complicated integro-differential equation into a simpler ordinary differential equation. This comes at a cost, however; because the left-hand side contains $\mu\dif/\dif\tau$, the left hand side will have a higher-order moment than the right-hand side. By multiplying eq.~(\ref{e.transfer-gray}) by successively higher powers of $\mu$ and integrating, we will generate an infinite series of ODE's for successively higher moments of $I_{\nu}$.
-The trick is to adopt a \newterm{closure relation} that truncates this series. The classic scheme, due to Eddington, is to take $K = J/3$.
-The Eddington closure scheme is equivalent to expanding the radiative intensity to terms linear in $\mu$.
+By taking moments of the radiative-transfer equation~(\ref{e.transfer-gray}), we reduce the complicated integro-differential equation into a simpler ordinary differential equation. This comes at a cost, however; because the left-hand side contains $\mu\dif/\dif\tau$, the left hand side will have a higher-order moment than the right-hand side. By multiplying eq.~(\ref{e.transfer-gray}) by successively higher powers of $\mu$ and integrating, we generate an infinite series of ODE's for successively higher moments of $I_{\nu}$. The trick to this procedure is to adopt a \newterm{closure relation} that truncates this series. The classic scheme, attributed to Eddington, is to take $K = J/3$. The Eddington closure scheme is equivalent to expanding the radiative intensity to terms linear in $\mu$.
 
 \begin{exercisebox}[The Eddington closure scheme]
 Show that if we approximate the intensity as $I_{\nu}(\mu,\tau) = I_{\nu,0}(\tau) + \mu I_{\nu,1}(\tau)$ (cf.\ eq.~[\ref{e.intensity-expanded}]), then $K_{\nu} = J_{\nu}/3$ identically.
