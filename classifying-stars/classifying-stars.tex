@@ -6,23 +6,23 @@ Now that we've discussed radiative transport in the star, we'll explore how the 
 
 \section{Overview}
 
-If light from the sun is passed through a grating (a piece of glass with finely etched lines), the light is dispersed in wavelength and creates a spectrum, such as the highly detailed one show in Fig.~\ref{f.solar-spectrum}. 
+If light from the sun is passed through a grating (a piece of glass with finely etched lines), the light is dispersed in wavelength and creates a spectrum, such as the highly detailed one show in Fig.~\ref{f.solar-spectrum}. Superposed on the slow variation from red to violet are dark \newterm{absorption lines}. The ions, atoms, and molecules in the solar atmosphere absorb light at specific frequencies and create these lines.
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{sunsqa}
 \caption[Visible spectrum of the sun]{\label{f.solar-spectrum} Visible spectrum of the sun. Frequency increases along a row from left to right, and by rows from top to bottom. \emph{Credit:
 N.A.Sharp, NOAO/NSO/Kitt Peak FTS/AURA/NSF.}}
 \end{marginfigure}
-Superposed on the slow variation from red to violet are dark \newterm{absorption lines}. The ions, atoms, and molecules in the solar atmosphere absorb light at specific frequencies and create these lines.
 
-Beginning in the late 1800's, astronomers began classifying stars by the observed absorption lines in the spectra. At this time, Edward Pickering and Williamina Fleming of the Harvard College Observatory began amassing a vast catalog of stellar spectra. They classified these spectra according to the strength of observed hydrogen Balmer lines (the first four are H$\alpha$: \val{657}{\nano\meter}; H$\beta$: \val{486}{\nano\meter}; H$\gamma$: \val{434}{\nano\meter}; H$\delta$: \val{410}{\nano\meter}). Stars, such as Vega, with the strongest Balmer lines were classified as type ``A'', those with the next strongest were type ``B'', and so forth. Annie Jump Cannon, who would later succeed Fleming as curator of astronomical photography at the observatory, simplified and reorganized the scheme, and added decimal subdivisions ($0\ldots9$) for each type\sidenote{For example, the sun's type is G2}. When stellar color is taken into account, the ordering of stars, from blue to red, is ``OBAFGKM''. In the 1990's the ``L'' and ``T'' classes were added\cite{Kirkpatrick1999Dwarfs-Cooler-t} for cool stars and brown dwarfs (stellar-like objects that do not reach central temperature sufficient for fusion of hydrogen into helium). With the introduction of the ``Y'' stellar type\cite{Cushing2011The-Discovery-o}, this classification was further extended to even cooler objects having $\Teff\lesssim\val{500}{\K}$.
+Beginning in the late 1800's, astronomers began classifying stars by the observed absorption lines in the spectra. At this time, Edward Pickering and Williamina Fleming of the Harvard College Observatory began amassing a vast catalog of stellar spectra. They classified these spectra according to the strength of observed hydrogen Balmer lines (the first four are H$\alpha$: \val{657}{\nano\meter}; H$\beta$: \val{486}{\nano\meter}; H$\gamma$: \val{434}{\nano\meter}; H$\delta$: \val{410}{\nano\meter}). Stars, such as Vega, with the strongest Balmer lines were classified as type ``A'', those with the next strongest were type ``B'', and so forth. Annie Jump Cannon, who would later succeed Fleming as curator of astronomical photography at the observatory, simplified and reorganized the scheme, and added decimal subdivisions ($0\ldots9$) for each type\sidenote{For example, the sun's type is G2}. When stellar color is taken into account, the ordering of stars, from blue to red, is ``OBAFGKM''. 
 
-Hertzsprung and Russell independently noticed that most stars tended to lie along a band, termed the \newterm{main sequence}, in a plot of absolute magnitude (or luminosity) against stellar type (now known as a \newterm{Hertzsprung-Russell diagram}). Figure~\ref{f.HR} shows some standard main-sequence stars, along with their stellar type and approximate color.
+The classification of large numbers of stars allowed for comparison of brightness and spectral type for stars in clusters (and hence at the same distance).
+Hertzsprung and Russell independently noticed\cite{Hertzsprung1909Uber-die-Sterne,Russell1914Relations-Betwe} that most stars tended to lie along a band, termed the \newterm{main sequence}, in a plot of absolute magnitude (or luminosity) against stellar type (now known as a \newterm{Hertzsprung-Russell diagram}). Figure~\ref{f.HR} shows some standard main-sequence stars, along with their stellar type and approximate color. The classification of stars based on spectra was put on a firm physical foundation with the influential PhD thesis of Cecilia Payne-Gaposhkin\cite{Payne1925Stellar-Atmosph}, who applied the Boltzmann and Saha equations to show that different stellar spectra were consistent with changes in temperature, rather than composition, of the stellar photosphere. The sequence of stellar types is therefore a temperature sequence, with ``O'' stars being the hottest. 
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{HR}
 \caption[Hertzsprung-Russell diagram of standard main-sequence stars]{\label{f.HR} Hertzsprung-Russell diagram showing standard main-sequence stars. Colors are approximate translations of the spectra.}
 \end{marginfigure}
 
-In an influential PhD thesis, Cecilia Payne-Gaposhkin\cite{Payne1925Stellar-Atmosph} applied the Boltzmann and Saha equations to show that different stellar spectra were consistent with changes in temperature, rather than composition, of the stellar photosphere. The sequence of stellar types is therefore a temperature sequence, with ``O'' stars being the hottest. 
+In the 1990's the ``L'' and ``T'' classes were added\cite{Kirkpatrick1999Dwarfs-Cooler-t} for cool stars and brown dwarfs (stellar-like objects that do not reach central temperature sufficient for fusion of hydrogen into helium). With the introduction of the ``Y'' stellar type\cite{Cushing2011The-Discovery-o}, this classification was further extended to even cooler objects having $\Teff\lesssim\val{500}{\K}$.
 
 \section{The hydrogen atom}
 
@@ -75,24 +75,21 @@ where the quantity
 \end{equation}
 is the \emph{partition function}. Loosely speaking, the partition function indicates the number of ways the sample of atoms can be partitioned among the different energy levels.
 
-\begin{exercisebox}[Partition function for neutral hydrogen]
-Assuming that the first term $g_{1}e^{-E_{1}/\kB T}$ dominates the sum in the partition function (see Box~\ref{sb.partition-function}), plot the fraction of neutral hydrogen in its $n=2$ state as a function of temperature, for $\val{5\,000}{\K} < T < \val{20\,000}{\K}$.
-\end{exercisebox}
-
 \begin{sidebar}[The partition function for neutral hydrogen]
 \label{sb.partition-function}
-The partition function for neutral hydrogen, eq.~(\ref{e.partition-function}), has some interesting features. Substituting $g_{n}=4n^{2}$ and $E_{n} = -\ERy/n^{2}$ and factoring out common terms gives
+The partition function for neutral hydrogen, eq.~(\ref{e.partition-function}), diverges as $n\to\infty$. To see this, substitute $g_{n}=4n^{2}$ and $E_{n} = -\ERy/n^{2}$ and factor out common terms to obtain
 \[	\pfcn = 4e^{\beta\ERy}\sum_{n} n^{2} e^{-\beta\ERy(1-1/n^{2})}, \]
-with $\beta = (\kB T)^{-1}$. The sum diverges, since for $n\gg 1$ the individual terms approach $n^{2}e^{-\beta\ERy}$. In practice, this isn't a problem, as there is an upper limit on $n$ set by ambient conditions. For example, the mean distance of the electron from the nucleus is $\approx \abohr n^{2}$, where $\abohr = \val{\sci{5.29}{-11}}{\cm}$ is the Bohr radius. As a result, each atom takes up a volume $\approx \abohr^{3}n^{6}$; if we want the atoms to not overlap, then the volume per atom, $V/N = 1/\xi$, must be larger than this by some factor. Suppose we set that the volume of an atom must be less than half of that available in our gas; then
+with $\beta = (\kB T)^{-1}$. The sum evidently diverges, since for $n\gg 1$ the individual terms approach $n^{2}e^{-\beta\ERy}$. In practice, this divergence isn't a problem, as there is an upper limit on $n$ set by ambient conditions. For example, the mean distance of the electron from the nucleus is $\approx \abohr n^{2}$, where $\abohr = \val{\sci{5.29}{-11}}{\cm}$ is the Bohr radius. As a result, each atom takes up a volume $\approx \abohr^{3}n^{6}$; if the atoms are not to overlap, then the volume per atom, $V/N \equiv 1/\xi$, must be larger than this by some factor. To make this concrete, set the volume of an atom to be less than half of that available in our gas:
 \[
-\xi = \frac{N}{V} < \frac{N}{N\cdot 2\abohr^{3}n^{6}}.
+\abohr^{3}n^{6} \lesssim \frac{1}{2}\frac{V}{N} = \frac{1}{2\xi}.
 \]
 Thus the maximum level is $n < (2\abohr^{3}\xi)^{-1/6}$. For a typical A-star photospheric density $\xi\sim \val{10^{15}}{\cm^{-3}}$, the energy level cutoff is $n \approx 35$. In practice the cutoff will be even lower because of collisions.
 
-The precise maximum value of $n$ is not that important for most applications. The reason is that the terms in the partition function increase only slowly. As an example, the terms and cumulative sum in the partition function at a temperature $T=\val{10^{4}}{\K}$ are as follows.
+You might worry that this estimate for the maximum value of $n$ is a bit sloppy. Fortunately,
+the precise maximum value of $n$ is unimportant for most applications. The reason is that the terms in the partition function increase only slowly. As an example, the terms and cumulative sum in the partition function at a temperature $T=\val{10^{4}}{\K}$ are as follows.
 \begin{center}
 \begin{tabular}{rrr}
-$n$ & $n^{2} e^{\beta\ERy(1-1/n^{2})}$ & $4\sum_{i=1}^{n} i^{2}e^{-\beta\ERy(1-1/i^{2})}$ \\
+$n$ & $n^{2} e^{-\beta\ERy(1-1/n^{2})}$ & $4\sum_{i=1}^{n} i^{2}e^{-\beta\ERy(1-1/i^{2})}$ \\
 \hline
    1 & 1.00e+00 &  4.0000 \\
    2 & 2.88e-05 &  4.0001 \\
@@ -105,8 +102,12 @@ $n$ & $n^{2} e^{\beta\ERy(1-1/n^{2})}$ & $4\sum_{i=1}^{n} i^{2}e^{-\beta\ERy(1-1
  268 & 9.99e-03 &  7.5901 \\
 \end{tabular}
 \end{center}
-As we can see from the cumulative sum (rightmost column), the partition function is insensitive to the precise value of the cutoff until $n$ is quite large; indeed, for many applications it is reasonably accurate to just use the first term: $Q\approx 4e^{\beta\ERy}$. 
+As we can see from the cumulative sum (rightmost column), the value of the partition function is insensitive to cutoff until $n$ is quite large; indeed, for many applications it is reasonably accurate to just use $Q\approx 4e^{\beta\ERy}$. 
 \end{sidebar}
+
+\begin{exercisebox}[Partition function for neutral hydrogen]
+Assuming that the first term $g_{1}e^{-E_{1}/\kB T}$ dominates the sum in the partition function (see Box~\ref{sb.partition-function}), plot the fraction of neutral hydrogen in its $n=2$ state as a function of temperature, for $\val{5\,000}{\K} < T < \val{20\,000}{\K}$.
+\end{exercisebox}
 
 \section{Ionization: The Saha equation}
 \label{s.saha-eqn}
@@ -124,16 +125,16 @@ $N_{i+1}$ and $N_{i}$ is
 \left(\frac{m_{e}\kB T}{2\pi\hbar^{2}}\right)^{3/2}\right]}
 {\color{blue}\frac{\pfcn_{i+1}}{\pfcn_{i}}}.
 \end{equation}
-In this equation, $n_{e}$ denotes the electron density---the number of free electrons per unit volume---and $m_{e}$ is the electron mass. The terms $\pfcn_{i+1}$ and $\pfcn_{i}$ are the partition functions for the two states, \emph{both measured with respect to the same zero-point for energy}.
+In this equation, $n_{e}$ denotes the electron density---the number of free electrons per unit volume---and $m_{e}$ is the electron mass. The terms $\pfcn_{i+1}$ and $\pfcn_{i}$ are the partition functions for the two states, \emph{both measured with respect to the same zero-point for energy}. To understand better what this equations means, let's consider each of the color-coded factors in turn.
 
-Let's start with the term $\color{blue} Q_{i+1}/Q_{i}$. If both partition functions are dominated by the ground state term\sidenote{see Box~\ref{sb.partition-function}} then
+Start with the term $\color{blue} Q_{i+1}/Q_{i}$. If both partition functions are dominated by the ground state term\sidenote{see Box~\ref{sb.partition-function}} then
 \begin{eqnarray*}
 	\frac{Q_{i+1}}{Q_{i}} &=& \frac{g_{i+1,1}}{g_{i,1}} e^{-\beta (E_{i+1,1}-E_{i,1})}\\
 	&=& \frac{g_{i+1,1}}{g_{i,1}} e^{-\beta\,E_{\mathrm{ion}}}
 \end{eqnarray*}
-Here $E_{\mathrm{ion}} = E_{i+1,1} - E_{i,1}$ is the energy needed to remove an electron from an ion in state $i$ and we use the common shorthand $\beta = (\kB T)^{-1}$. Thus $Q_{i+1}/Q_{i}$ resembles equation~(\ref{e.boltzmann}).
+Here $E_{\mathrm{ion}} = E_{i+1,1} - E_{i,1}$ is the energy needed to remove an electron from an ion in state $i$ and we use the common shorthand $\beta = (\kB T)^{-1}$. Thus $Q_{i+1}/Q_{i}$ resembles the Boltzmann equation~(\ref{e.boltzmann}).
 
-The term in $\color{red}\left[\cdot\right]$ in eq.~(\ref{e.saha}) arises because we also need to allow for the number of free electron states. When the atom is ionized, each electron quickly acquires an average kinetic energy $(3/2)\kB T$. There are many different states having this energy: the electron can be in different locations and moving in different directions, for example.  
+The additional factor in $\color{red}\left[\cdot\right]$ in eq.~(\ref{e.saha}) arises because we also need to allow for the number of free electron states. When the atom is ionized, each electron quickly acquires an average kinetic energy $(3/2)\kB T$. There are many different states having this energy: the electron can be in different locations and moving in different directions, for example.  
 
 You might think that there would be an infinitude of possible electron states.  Quantum mechanics, however, sets limitations on this number. First, we have the Pauli exclusion principle: no two electrons can be in the same location with the same momentum and same spin. What do we mean by same location and momentum?  Recall the Heisenberg uncertainty principle: the electrons $x$-position and $x$-momentum are spread about a range of values $\Delta x$ and $\Delta p_{x}$, and these uncertainties are related via
 \[ \Delta x\,\Delta p_{x} \gtrsim h. \]
@@ -157,7 +158,7 @@ If our volume $V$ contains $N_{e}$ electrons, then the number of states electron
 \[
 	\frac{2V}{N_{e}\Delta V} \sim \frac{2V}{N_{e}}\frac{\left(m_{e}\kB T\right)^{3/2}}{h^{3}}.
 \]
-The factor of 2 appears because each box can hold 2 electrons.  Recognizing that $N_{e}/V = n_{e}$, we see that this number of states per free electrons corresponds to the factor in $\color{red}\left[\;\right]$ in equation~(\ref{e.saha}). When the numerical calculation is done correctly, the additional factor of $2\pi$ arises.
+The factor of 2 appears because each box can hold 2 electrons.  Recognizing that $N_{e}/V = n_{e}$, we see that this number of states per free electrons corresponds to the factor in $\color{red}\left[\cdot\right]$ in equation~(\ref{e.saha}). When the numerical calculation is done correctly, the additional factor of $2\pi$ arises.
 
 The number of states per free electron plays an important role in setting the temperature at which a species ionizes. You might expect, since a term $e^{-E_{\mathrm{ion}}/\kB T}$ appears in the ratio $N_{i+1}/N_{i}$, that a species would ionize at a temperature $E_{\mathrm{ion}}/\kB$. In fact the ionization temperature is much lower. To see how this works, define
 \[
@@ -178,7 +179,7 @@ Let $n_{\textsc{i}}$ be the density of \ion{H}{i} and $n_{\textsc{ii}}$ be the d
 
 As shown in exercise~\ref{ex.strong-Balmer}, the Balmer lines, which correspond to transitions $2\to3$, $2\to 4$, \ldots, are most prominent in A stars. These stars have $\Teff = \valrng[--]{7\,500}{9\,500}{\K}$. At lower temperatures, the population of hydrogen atoms in the level $n=2$ decreases as $e^{-E_{2}/\kB T}$ and the lines become weak. At higher temperatures, the number of neutral hydrogen atoms decreases; most of the hydrogen is ionized, and the Balmer lines again become weaker.
 
-These arguments apply to other species present in the stellar photosphere. Figure \ref{f.spectral-types} displays spectra for selected stellar types at optical wavelengths. In the hottest stars (type O: $\Teff > \val{30\,000}{\K}$), hydrogen is mostly ionized and the lines are from \ion{He}{ii} and multiply-ionized metals. As the temperature cools into the B and A series, the hydrogen lines increase in strength. Going from F into G ($\Teff = \valrng[--]{5\,000}{6\,000}{\K}$, the hydrogen lines decrease, while lines from singly-ionized and neutral metals such as \ion{Ca}{ii}, \ion{Ca}{i}, and \ion{Fe}{i} become strong.  At still lower temperatures in the K and M ($\Teff < \val{3\,500}{\K}$) types, absorption from molecules such as TiO becomes prominant.  An example is the broad trough seen in the K spectrum near $\lambda = \val{500}{\nano\meter}$.
+These arguments apply to other species present in the stellar photosphere. Figure \ref{f.spectral-types} displays spectra for selected stellar types at optical wavelengths. In the hottest stars (type O: $\Teff > \val{30\,000}{\K}$), hydrogen is mostly ionized and the lines are from \ion{He}{ii} and multiply-ionized metals. As the temperature cools into the B and A series, the hydrogen lines increase in strength. Going from F into G ($\Teff = \valrng[--]{5\,000}{6\,000}{\K}$), the hydrogen lines decrease, while lines from singly-ionized and neutral metals such as \ion{Ca}{ii}, \ion{Ca}{i}, and \ion{Fe}{i} become strong.  At still lower temperatures in the K and M ($\Teff < \val{3\,500}{\K}$) types, absorption from molecules such as TiO becomes prominant.  An example is the broad trough seen in the K spectrum near $\lambda = \val{500}{\nano\meter}$.
 
 \begin{figure}[hbp]
 \includegraphics[width=\linewidth]{spectral_types}
@@ -188,7 +189,7 @@ These arguments apply to other species present in the stellar photosphere. Figur
 \section{Pressure broadening of lines}
 
 We've now demonstrated how stars may be classified by the absorption lines in their spectra, and how this classification gives us the photosphere effective temperature. We can also obtain information about the pressure at the photosphere, and hence the surface gravity of the star, by looking at the shape of the absorption lines. A zoomed-in view of the H$\gamma$ line ($2\to5$ transition in \ion{H}{i}) from a main-sequence A1 star is show in Fig.~\ref{f.single-line}. The line is spread over a few nanometers, compared against a central value of $\val{434}{\nano\meter}$.
-\begin{marginfigure}
+\begin{marginfigure}[-8\baselineskip]
 \includegraphics[width=\linewidth]{single-line}
 \caption[H$\gamma$ absorption line]{\label{f.single-line} H$\gamma$ absorption line observed from the main-sequence A1 star HD16608. Spectrum from \protect\citet{Jacoby1984A-library-of-st}.}
 \end{marginfigure}
@@ -320,101 +321,9 @@ We rewrote the amplitude in the second line so that the term in $\{\cdot\}$ is n
 If we have two stars of the same photospheric temperature (so that both stars have the same lines), then a way to increase the collision rate is to increase the pressure. Recall, however, that in the stellar atmosphere $P = (g/\kappa)\tau$; as a result, stars with a higher surface gravity will have broader lines. The inset in Figure~\ref{f.compare_grav} illustrates the broadening of the Balmer H$\gamma$ line ($2\to5$) in the spectrum of a main-sequence A1 star compared with that of a supergiant A1 star.
 
 \begin{figure}[hp]
+\forcerectofloat
     \includegraphics[width=\linewidth]{compare_grav}
     \caption[Spectra of two A1 stars]{\label{f.compare_grav}
     Spectra of two A1 stars, HD 16608 (a main sequence star) and SAO 12149 (a supergiant star).  Spectra are from \citet{Jacoby1984A-library-of-st}.
     }
 \end{figure}
-
-%In addition to the width set by collisions, the line is also broadened by thermal motion: the atoms are in ceaseless motion; those headed towards us absorb at a blueshifted frequency, while those headed away from us absorb at a redshifted frequency.  Because the atomic velocities follow a Maxwell-Boltzmann distribution, the net effect is to make the core of the line (that is, near the center) assume a Gaussian profile.  Because a Gaussian falls off more quickly than a Lorentzian profile (see Fig.~\ref{f.comparison}), the wings of the line are still determined by the collision rate.
-%
-%We might be inclined to treat the atoms as hard spheres, but this gives a large $\tau$, or equivalently a narrow line width. We are therefore led to consider longer-range interactions for setting the intrinsic line width. Table~\ref{t.perturbers} lists such interactions. For a given impact parameter, the interaction perturbs the energy levels; by integrating over a distribution of  impact parameters one gets the intrinsic damping. Of course, we should really use a quantum mechanical calculation.  We can scale our cross-section to the classical result (eq.~[\ref{e.cross-section-lorentz}]), however, by writing
-%\begin{equation}\label{e.cross-section}
-%	 \sigma_{\nu} = \left(\frac{\pi e^{2}}{m_{e}c}\right) f \phi_{\nu}, 
-%\end{equation}
-%where $\phi_{\nu}$ is the line profile (dimension $\sim \Hz^{-1}$) and $f$ is a dimensionless cross-section called the \newterm{oscillator strength}.
-%
-%\begin{table}[htbp]
-%\caption{Interactions in stellar atmospheres}\label{t.perturbers}
-%\begin{tabular}{crcc}
-%\hline
-%perturbation & form & source & affects\\
-%\hline\hline
-%linear Stark & $C_{2} r^{-2}$ & $e^{-}$, $p$, ions & H (H$\alpha$, H$\beta$, \ldots)\\
-%quadratic Stark & $C_{4} r^{-4}$ & $e^{-}$ & non-hydrogenic ions\\
-%van der Waals & $C_{6}r^{-6}$ & atoms, H & most atomic lines, esp.\ in cool stars\\
-%\hline
-%\end{tabular}
-%\end{table}
-
-
-%
-%\begin{sidebar}[Treating line emission as a driven damped oscillator]
-%\label{b.line-emission}
-%NB. In this box, Gaussian CGS units are used for the electromagnetic field. To convert to MKS, make the following substitutions:
-%\begin{eqnarray*}
-%e &\to& \frac{1}{\sqrt{4\pi\varepsilon_0}}e\\
-%\bvec{E} &\to& \sqrt{4\pi\varepsilon_0}\bvec{E}\\
-%c &\to& (\mu_0\varepsilon_0)^{-1/2}.
-%\end{eqnarray*}
-%
-%\newthought{Suppose we have a classical charged harmonic oscillator.}  The instantaneous power emitted by the oscillator is
-%\begin{equation}\label{e.larmor-power}
-%	 P(t) = \frac{2}{3}\frac{e^{2}}{c^{3}} |\dot{\vu}|^{2},
-%\end{equation}
-%and when averaged over a cycle is
-%\begin{equation}\label{e.oscillator-power}
-%	 \left\langle P(t) \right\rangle = \frac{e^{2}}{3c^{3}}x_{0}^{2} \omega^{4},
-%\end{equation}
-%since $\dot{\vu} = -\omega^{2}\bvec{x}_{0}\cos \omega t$. Since the oscillator is radiating, it is losing energy and is damped. Let us write the damping as $\bvec{F}_{\mathrm{rad}}\vdot \vu$; to find $\bvec{F}_{\mathrm{rad}}$, we integrate the power loss over a cycle,
-%\[  -\int_{t_{1}}^{t_{2}}\!\dif t\;\frac{2}{3}\frac{e^{2}}{c^{3}}\dot{\vu}\vdot\dot{\vu} 
-%	= -\left.\frac{2}{3}\frac{e^{2}}{c^{3}}\dot{\vu}\vdot\vu\right|_{t_{1}}^{t_{2}} 
-%	+ \frac{2}{3}\frac{e^{2}}{c^{3}} \int_{t_{1}}^{t_{2}}\!\dif t\;\ddot{\vu}\vdot\vu. 
-%\]
-%Since the motion is periodic, the first term vanishes and we can therefore identify 
-%\[ 
-%	\bvec{F}_{\mathrm{rad}} = \frac{2}{3}\frac{e^{2}}{c^{3}}\ddot{\vu} 
-%	= -m\left(\frac{2e^{2}\omega^{2}}{3c^{3}m}\right)\vu
-%\]
-%as the radiation damping term with the term in parenthesis being the damping constant $\gamma$. 
-%If there is an driving electric field on our oscillator, then its equation of motion becomes
-%\begin{equation}\label{e.eq-sho}
-%	m\ddot{\bvec{x}} = -m\omega_{0}^{2}\bvec{x} + e\bvec{E}e^{i\omega t} - m\gamma \dot{\bvec{x}}.
-%\end{equation}
-%Using a trial function $\bvec{x}\propto e^{i\omega t}$ gives
-%\[
-%	\bvec{x} = \frac{e}{m}\frac{E e^{i\omega t}}{(\omega_{0}^{2}-\omega^{2}) + i\omega\gamma}.
-%\]
-%Taking the second derivative w.r.t.\ time of $\bvec{x}$, substituting into eq.~(\ref{e.larmor-power}), and averaging over a cycle gives the power radiated by the oscillator,
-%\[
-%	\left\langle P(t)\right\rangle = \frac{e^{4}\omega^{4} E^{2}}{3 c^{2}m^{2}}
-%	\frac{1}{(\omega_{0}^{2}-\omega^{2})^{2} + \gamma^{2}\omega^{2}}.
-%\]
-%Dividing $\langle P(t)\rangle$ by the incident power per unit area, $cE^{2}/(8\pi)$, gives the cross-section:
-%\begin{equation}\label{e.classical-oscillator-cross-section}
-%	\sigma = \frac{8\pi}{3}\frac{e^{4}}{m^{2}c^{3}}
-%	\frac{\omega^{4}}{(\omega_{0}^{2}-\omega^{2})^{2} + \gamma^{2}\omega^{2}}.
-%\end{equation}
-%Now, for $\omega \approx \omega_{0}$, we can expand $(\omega_{0}^{2}-\omega^{2})^{2} \approx 4\omega_{0}^{2}(\omega_{0}-\omega)^{2}$; furthermore, we identify $2e^{2}\omega_{0}^{2}/(3c^{3}m) = \gamma$ and equation~(\ref{e.classical-oscillator-cross-section}) becomes
-%\begin{equation}\label{e.cross-section-lorentz}
-%	\sigma = \pi\left(\frac{e^{2}}{mc}\right)\frac{\gamma}{(\omega_{0}-\omega)^{2} + (\gamma/2)^{2}}.
-%\end{equation}
-%The line profile is Lorentzian, with a width $\gamma$. In terms of wavelength, the width is
-%\[ 
-%	\Delta \lambda = \left|\frac{\dif\lambda}{\dif\omega}\right|\gamma = \frac{2\pi c}{\omega^{2}}\gamma
-%	= \val{\sci{1.2}{-4}}{\textrm{\AA}}.
-%\]
-%This width is independent of the transition frequency (it is just the classical electron radius), and it is very, very small.  In a stellar atmosphere, the width is set by interactions and doppler broadening.
-%
-%\newthought{To understand how impacts affect the line width}, suppose we model the oscillator as being started and stopped by impacts; in between impacts it just goes as $e^{i\omega_{0}t}$.  To get the spectrum, we take the Fourier transform,
-%\[
-%	F(\omega,t) = \int_{0}^{t}\!\dif t'\; \exp[i(\omega_{0}-\omega)t'],
-%\]
-%where $t$ is some time between impacts. Now if the impacts are distributed randomly and are uncorrelated, then the distribution of wait times follows a Poisson distribution,
-%\[ W(t)\,\dif t = e^{-t/\tau}\,\dif t/\tau, \]
-%where $\tau$ is the average time between collisions.  Using this to compute the energy spectrum, we obtain
-%\[ E(\omega) = \frac{1}{2\pi\tau}\int_{0}^{\infty}\!\dif t\; F(\omega,t)F^{*}(\omega,t)W(t) = \frac{1}{\pi\tau} 
-%	\frac{1}{(\omega_{0}-\omega)^{2} + (1/\tau)^{2}};
-%\]
-%the line profile is again Lorentzian, with a FWHM $2/\tau$.
-%\end{sidebar}
