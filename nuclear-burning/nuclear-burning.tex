@@ -1,7 +1,7 @@
 % !TEX root = ../intro-stellar-physics.tex
 
 \newcommand*{\altnuc}[3]{\ensuremath{\mathrm{_{#1}^{#2}#3}}}
-\newcommand*{\nucarule}{\mbox{\rule[-5pt]{3.0em}{1pt}}}
+\newcommand*{\nucarule}{\mbox{\rule[-5pt]{3.0em}{0.5pt}}}
 
 To recap, we have established a description for the basic features of a self-gravitating fluid:
 \begin{enumerate}
@@ -107,10 +107,36 @@ the binding energy of \helium[3] is \val{7.718}{\MeV} and that of \helium\ is \v
 	&=& B(\helium)-2B(\helium[3])\\
 	&=& \val{28.296}{\MeV} - \val{15.437}{\MeV}\\ &=& \val{12.859}{\MeV}.
 \end{eqnarray*}
-
 \begin{exercisebox}[Heat from hydrogen fusing to helium]
 \label{ex.Q-hydrogen-helium}
 Fusion of hydrogen into helium entails converting 4 hydrogen atoms (including the 4 electrons) into 1 helium atom (2 protons, 2 neutrons, 2 electrons) with $B = \val{28.296}{\MeV}$. What is the heat evolved \emph{per hydrogen atom}? Assume that the sun has been shining with its current luminosity over its life. What mass of hydrogen atoms would need to undergo fusion to supply this energy? How large is this mass relative to the total mass of the sun? 
+\end{exercisebox}
+
+\begin{margintable}
+\caption[Selected atomic mass excesses]{\label{t.atomic-mass-excesses} Selected atomic mass excesses, taken from \protect\citet{Tuli2011Nuclear-Wallet-}.}
+\begin{tabular}{ld{7.3}}
+\tabhead{isotope} & \tabhead{$\Delta/\MeV$}\\
+\hline
+\nt & 8.071 \\
+\hydrogen & 7.289 \\
+\helium &   2.425 \\
+\carbon &   0.000 \\
+\oxygen &  -4.737 \\
+\silicon& -21.493 \\
+\iron   & -60.606 \\
+\end{tabular}
+\end{margintable}Because stellar reactions often involve electrons, it is convenient to define the \newterm{atomic mass excess} $\Delta(Z,A) = \mathcal{M}(Z,A) - A\mb$, where $\mathcal{M}$ is the atomic mass, including electrons.\marginnote{From the definition of the atomic mass unit $\mb$, 
+$\Delta(\carbon) \equiv 0$.}
+Some common mass excesses are listed in Table~\ref{t.atomic-mass-excesses}.
+Neglecting the electron binding energy ($\sim\eV$), we can relate the atomic mass excess to the binding energy via $\mathcal{M}(Z,A) = A\mb + \Delta(Z,A) = M(Z,N=A-Z) + Z m_{e}$.
+
+\begin{exercisebox}
+Compute the energy released by the following reactions:
+\begin{eqnarray*}
+\helium+\helium+\helium &\to& \carbon\\
+\carbon + \helium &\to& \oxygen\\
+\oxygen + \oxygen &\to& \silicon + \helium.
+\end{eqnarray*}
 \end{exercisebox}
 
 \newthought{You might think that because the nuclear interaction is short-range, the cross-section is something like $\pi r_{n}^{2}$, where $r_{n}\approx\valrng{1}{2}{\fermi}\times A^{1/3}$.} Things are a bit more subtle, however, and in this section we shall explore how the reaction rate works. First, the ``size'' of a particle is in general proportional to the ``size'' of the wavefunction. From the uncertainty principle, 
@@ -132,7 +158,7 @@ The final part of the cross-section concerns the Coulomb potential.
 Because protons repel one another, at large separations the nuclei interact \emph{only} via the Coulomb potential. Consider the case of two nuclei with masses\sidenote{When doing kinematics, we shall make the approximation $m\approx A\mb$.} $A_{1}\mb$ and $A_{2}\mb$. Transform to the center-of-mass frame; the problem then reduces to that of one particle, mass $A\mb = A_{1}A_{2}/(A_{1}+A_{2})\times\mb$, moving in a potential (Fig.~\ref{f.tunneling}) that at large separations is purely Coulomb,
 \[ \frac{Z_{1}Z_{2}e^{2}}{4\pi\epsilon_{0}r} = \frac{Z_{1}Z_{2}\alphaF\hbar c}{r} = \val{1.44}{\MeV}\times Z_{1}Z_{2}\left(\frac{\val{1}{\fermi}}{r}\right). \]
 Although the nuclear interaction forms a deep potential well (blue $V_{n}$, Fig.~\ref{f.tunneling}) at short distances, outside the nucleus the Coulomb potential (red $V_{C}$, Fig.~\ref{f.tunneling})  dominates.
-\begin{marginfigure}
+\begin{marginfigure}[-8\baselineskip]
 \includegraphics[width=\linewidth]{tunnel-schematic}
 \caption[Tunneling through the Coulomb potential barrier]{Tunneling through the Coulomb potential barrier. Not to scale.}
 \label{f.tunneling}
@@ -165,15 +191,15 @@ Combining eqs.~(\ref{e.nuclear-cross-section}) and (\ref{e.probability-tunneling
 For many reactions $S(E)$ is nearly constant over the range of typical energies in a stellar plasma. This is useful, as the reaction cross-section can be measured in the lab at higher energies and then extrapolated to the much lower stellar energies using eq.~(\ref{e.s-def}).
 
 \newthought{To get the reaction rate from the cross-section,} recall that the mean-free path of a particle is $\ell = (n\sigma)^{-1}$, where $n$ is the density of targets. For definiteness, let us consider a plasma with two species present, type 1 and type 2. The mean-free path of any given nucleus of type 1 against reactions with nuclei of type 2 is $\ell = (n_{2}\sigma)^{-1}$. If the nuclei are traveling with relative speed $v = |\bvec{v}_{1}-\bvec{v}_{2}|$, then the mean time between collisions is $\ell/v$. Thus in a large ensemble of nuclei, the mean rate of reactions is
-\[
+\begin{equation}\label{e.mean-reaction-rate}
 	r_{12} = \frac{n_{1} v}{\ell} = n_{2}n_{1}\langle\sigma v\rangle.
-\]
+\end{equation}
 Here $\langle \sigma v\rangle$ is the mean value of $\sigma v$ for all pairs of nuclei in the plasma. For reactions between nuclei of the same type, we replace $n_{1}n_{2}$ with $n^{2}/2$; the factor of $1/2$ is to avoid double-counting.
 
 A detailed calculation of the thermally averaged cross-section $\langle\sigma v\rangle$ is presented in Box~\ref{sb.thermally-averaged-cross-section}; here we'll just give a brief physical explanation for its value. There are two competing terms. First, the cross-section (eq.~\ref{e.s-def}) has an exponential term $\exp[-(\EG/E)^{1/2}]$ that increases rapidly with energy: more energetic particles have a much higher probability of tunneling through the Coulomb barrier. On the other hand, in thermal equilibrium the number of particles with energy $E$ decreases as $\exp(-E/\kB T)$.
 As a result, reactions predominately occur in a narrow window of energies about a sort of geometric mean between \EG\ and $\kB T$:
 \[	\Epk = \frac{\EG^{1/3}(\kB T)^{2/3}}{4^{1/3}}. \]
-The reaction rate is suppressed for $E\ll\Epk$ because the probability of penetrating the Coulomb barrier is so small; the reaction rate is suppressed for $E\gg\Epk$ because there are so few nuclei with those energies.
+The reaction rate is suppressed for $E\ll\Epk$ because the probability of penetrating the Coulomb barrier is so small; the reaction rate is suppressed for $E\gg\Epk$ because there are so few nuclei with those energies. Using this approximation the rate can be evaluated, with $\langle\sigma v\rangle$ being given by eq.~(\ref{e.rate2}).
 
 \begin{sidebar}[The thermally averaged reaction cross-section]
 \label{sb.thermally-averaged-cross-section}
@@ -250,7 +276,7 @@ Another simplification can be made because both the Gaussian and the original in
 \end{eqnarray}
 \end{sidebar}
 
-Using this approximation the rate can be evaluated, with $\langle\sigma v\rangle$ being given by eq.~(\ref{e.rate2}). The rate has the temperature dependence
+The rate has the temperature dependence
 \[
 	r \propto T^{-2/3} \exp\left[-3\left(\frac{\EG}{4\kB T}\right)^{1/3}\right];
 \]
@@ -337,38 +363,9 @@ furthermore, at slightly higher temperatures \beryllium[7] can capture a proton 
 \end{eqnarray}
 The end result of these chains is the conversion of hydrogen to helium. 
 
-To obtain the net heating rate, we multiply the reaction rate $r$ by the difference in rest mass between the products and reactants. Although the conversion to hydrogen to helium involves many different reactions, the slowest step by far is the $\pt + \pt$ reaction, so we can use this as a good approximation to the the net rate $r$. Each reaction chain converts 4 hydrogen to 1 helium; in addition, two electrons are consumed and two neutrinos emitted as well. 
-Neglecting the energy carried away by neutrinos, the net change in rest mass per 2 $\pt+\pt$ reactions is
-\[
-	Q = 4 m_{p} + 4 m_{e} - M(\helium) + 2 m_{e}.
-\]
-Because stellar reactions often involve electrons, it is convenient to work with the \newterm{atomic mass excess}, defined as $\Delta(Z,A) = M(Z,A) - A\mb$, where $M$ is the atomic mass, including electrons.\marginnote{From the definition of the atomic mass unit $\mb$, 
-$\Delta(\carbon) \equiv 0$.}
-Some common mass excesses are listed in Table~\ref{t.atomic-mass-excesses}.
-\begin{margintable}
-\caption[Selected atomic mass excesses]{\label{t.atomic-mass-excesses} Selected atomic mass excesses, taken from Nuclear Wallet Cards}
-\begin{tabular}{lr}
-isotope & $\Delta/\MeV$\\
-\hline
-\nt & 8.071 \\
-\hydrogen & 7.289 \\
-\helium &   2.425 \\
-\carbon &   0.000 \\
-\oxygen &  -4.737 \\
-\silicon& -21.493 \\
-\iron   & -60.606 \\
-\end{tabular}
-\end{margintable}
+Although the conversion to hydrogen to helium involves many different reactions, the slowest step by far is the $\pt + \pt$ reaction, so we can use this as a good approximation to the net reaction rate $r$. From eq.~(\ref{e.mean-reaction-rate}), $r = n_{\pt}^{2}\langle\sigma v\rangle_{\pt}/2$, where the factor of 2 avoids double counting. Since each pp reaction destroys 2 hydrogen, however, the rate at which hydrogen is depleted is $2r = n_{\pt}^{2}\langle\sigma v\rangle_{\pt\pt}$. To get the net heating rate $\varepsilon_{\pt\pt}$, we multiply the rate at which hydrogen is destroyed by the heat released per hydrogen (cf.\ exercise~\ref{ex.Q-hydrogen-helium}).
 
-The net energy relaesed per conversion of 4 hydrogen into 1 helium is thus
-\[
-	Q(4\hydrogen\to\helium) = 4\Delta(\hydrogen)-\Delta(\helium) = \val{26.731}{\MeV},
-\]
-and the specific heating rate per mass is given by
-\[
-	\varepsilon_{\mathrm{pp}} = \frac{n_{\mathrm{p}}^{2}}{\rho} \langle\sigma v\rangle_{\mathrm{pp}} Q(4\hydrogen\to\helium).
-\]
-Because the solar interior is transparent to neutrinos, $\varepsilon_{\mathrm{pp}}$ is reduced slightly because the neutrinos carry away some energy. The amount of energy carried away by neutrinos differs from one chain to the next, so the net energy release varies slightly with temperature. 
+Because the solar interior is transparent to neutrinos, $\varepsilon_{\mathrm{pp}}$ is reduced slightly because the neutrinos carry away some energy. The amount of energy carried away by neutrinos differs from one chain to the next, so the net energy release varies slightly with temperature.
 
 \subsection{Hydrogen burning via the CNO cycle}
 
