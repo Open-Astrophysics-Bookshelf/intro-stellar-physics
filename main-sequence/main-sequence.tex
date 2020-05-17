@@ -1,6 +1,6 @@
 % !TEX root = ../intro-stellar-physics.tex
 
-We now have almost all of the physics necessary to describe the structure of a star. We only need two additional items: we must consider whether the fluid is at rest or whether there is circulation, and we must discuss how the equation of state deviates from that of a classical ideal gas at high densities. These changes in the equation of state are important for low-mass stars and set the minimum stellar mass.
+We now have almost all of the physics necessary to describe the structure of a star. We only need two additional items: we must consider whether the fluid can slowly circulate and thereby trasnport heat, and we must discuss how the equation of state deviates from that of a classical ideal gas at high densities and at high temperatures. The changes in the equation of state at high densities are important for low-mass stars and set the minimum stellar mass; the changes at high temperatures are important for high-mass stars and set the maximum stellar mass.
 
 \section{Convection}\label{s.convection}
 
@@ -11,7 +11,7 @@ We've established that in the interior of the star a temperature gradient,
 arises to transport heat outward (cf.\ eq.~[\ref{e.gradient-temperature}]).
 This gradient becomes steeper as we increases either the flux $L/4\pi r^{2}$ or the mean opacity $\kappa_{\mathrm{R}}$. There is a limit, however, to the magnitude of $|\dif T/\dif r|$: if the gradient is too steep, the warm fluid becomes buoyant relative to the cooler fluid above it and begins to rise. You are familiar with this phenomenon: picture a hot summer day. As the ground absorbs sunlight, it warms the air just above the ground. The warm air rises and forms updrafts. You have perhaps seen hawks circling as they are carried aloft by these updrafts. This circulation of fluid induced by a temperature gradient is known as \newterm{convection}. 
 
-You can do a home demonstration of convection.  Brew tea, and pour the hot tea into a saucepan that is on an unlit burner. Use a straw to inject a layer of cold milk under the warm tea in the saucepan. The temperature difference between the tea and milk will inhibit their mixing. Light the burner, and watch for the development of convection---you will know it when you see it (Fig.~\ref{f.tea}).
+You can do a home demonstration of convection.  Brew tea, and pour the hot tea into a saucepan that is on an unlit burner. Use a straw to inject a layer of cold milk under the hot tea in the saucepan. The temperature difference between the tea and milk inhibits premature mixing. Light the burner, and watch for the development of convection---you will know it when you see it (Fig.~\ref{f.tea}). As a bonus, you can drink the results of this demonstration.
 
 \begin{figure}[htbp]
 \forceversofloat
@@ -65,7 +65,7 @@ After the blob has moved from $r$ to $r+h$, it has expanded so that its density 
 	\rho_{b}(r+h) = \rho[P_{b}(r+h),s_{b}(r+h)] = \rho[P(r+h),s(r)].
 \]
 Here we've written the density as a function of pressure and entropy: $\rho(P,s)$. Now we can apply Archimedes' law: if the density of the blob is greater than that of the surrounding fluid, then the buoyant force will be less than the weight of the blob; as a consequence, the blob will sink back to its original location. The fluid is thus stable. In contrast, if the density of the blob is less than that of the surrounding fluid, then the buoyant force is greater than the weight of the blob; as a result, the blob will continue to rise. In this case, the fluid is unstable, as a small perturbation leads to the acceleration of the blob upwards. Figure~\ref{f.convective-schematic} has a schematic of this criterion.
-\begin{marginfigure}[-6\baselineskip]
+\begin{marginfigure}
 \includegraphics[width=\textwidth]{convective}
 \caption[Illustration of criteria for convective instability]{\label{f.convective-schematic}Illustration of criteria for convective instability.  On the left, raising a blob a distance $h$ adiabatically and in pressure balance with its surrounding results in a higher density $V_{b} < V$, or $\rho_{b} > \rho$.  This is stable: the blob will sink back.  On the right, the blob is less dense and hence buoyant: it will continue to rise.}
 \end{marginfigure}
@@ -199,9 +199,6 @@ The figure below indicates the central density and temperature (\emph{triangle})
 \includegraphics[width=\linewidth]{convection-worksheet-2}
 \end{exercisebox}
 
-%This occurs for large $\kappa$ (outer layers of cool stars) or for a high $L(r)/m(r)$ (centers of luminous hot stars).  On the main-sequence, stars with $M \lesssim \Msun$ have convective outer layers; stars with $M \lesssim \val{0.3}{\Msun}$ are fully convective. Stars with $M\gtrsim\Msun$ have convective cores.
-%
-
 \newthought{We can now collect the equations describing the structure of a star in steady-state}. Previously, we established the relations for the enclosed mass,
 \begin{equation}\label{e.mass}
 \DD{m}{r} = 4\pi r^{2}\rho,
@@ -242,11 +239,13 @@ makes a useful coordinate. Using the enclosed mass as a coordinate is called a \
 \section{Contraction to the main sequence}
 \label{s.contraction-to-main-sequence}
 
-Stars are formed when clouds of gas and dust fall out of pressure balance and become unstable to gravitational collapse. Often, the cloud fragments into a myriad of small collapsing regions, such as in the Soul Nebula pictured in Fig.~\ref{f.soul-nebula}. In the center of these dense knots, a core comes into hydrostatic equilibrium and grows in mass as matter continues to infall. Much of this process is obscured from view by the surrounding clouds of gas and dust.
+Stars are formed when clouds of gas and dust fall out of pressure balance and become unstable to gravitational collapse. Often, the cloud fragments into a myriad of small collapsing regions, such as in the Soul and Tauris Nebulae pictured in Fig.~\ref{f.soul-nebula-and-tauris}. In the center of these dense knots, a core comes into hydrostatic equilibrium and grows in mass as matter continues to infall. Much of this process is obscured from view by the surrounding clouds of gas and dust.
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{Soul_Priego_960}
-\caption[Soul Nebula]{\label{f.soul-nebula} Image of the Soul Nebula (IC 1848) in the constellation Cassiopeia. Credit: Jos\'e Jim\'enez Priego (Astromet).}
+\includegraphics[width=\linewidth]{LBN782ProcessedLRv1-2_1024}
+\caption[Pre-main sequence stars]{\label{f.soul-nebula-and-tauris} (Top) Image of the Soul Nebula (IC 1848) in the constellation Cassiopeia. \emph{Credit}: Jos\'e Jim\'enez Priego (Astromet). (Bottom) The Taurus molecular cloud. At right are million-year old pre-main sequence stars still embedded in dust clouds. \emph{Image Credit \& Copyright}: Lloyd L. Smith, Deep Sky West.}
 \end{marginfigure}
+
 
 As the nebula thins out, the star continues to contract slowly on a Kelvin-Helmholtz timescale, eq.~(\ref{e.kelvin-helmholtz}), as the core is still too cool for nuclear reactions to power the luminosity from the surface (remember, the luminosity is set by the mass of the star and its opacity). As the central temperature rises, the nuclear reaction rate increases rapidly until the heat released by reactions balances that emitted from the surface. At that point the star is on the \newterm{zero-age main sequence} (ZAMS). Of course, not all collapsing stellar-like objects reach the ZAMS---objects that are too low in mass will not ignite hydrogen fusion, while objects that are too high in mass tend to be unstable and eject mass. We'll explore these limits in the next few sections.
 
@@ -418,7 +417,7 @@ so that $n_{e} = \rho/(\mb\mu_{e})$.
 
 \begin{exercisebox}[The mass-radius relation for a degenerate EOS]
 \label{ex.degenerate-mass-radius}
-Use equation~(\ref{e.electron-mean-weight}) in eq.~(\ref{e.pressure-electrons}) to express the pressure as a function of mass density $\rho$. The use the virial scalings for $P(M,R)$ and $\rho(M,R)$ to obtain a relation $R(M)$ for a degenerate object.
+Express the pressure as a function of mass density $\rho$ and $\mu_{e}$. Then use the virial scalings for $P(M,R)$ and $\rho(M,R)$ to obtain a relation $R(M)$ for a degenerate object.
 \end{exercisebox}
 
 As you found in exercise~\ref{ex.degenerate-mass-radius}, when the star becomes degenerate, there is a unique radius for a given mass and composition. This is in contrast to the non-degenerate case, for which a star of a given mass can have a wide range of possible radii depending on the internal temperature.
@@ -496,9 +495,9 @@ We can estimate how the luminosity depends on stellar mass for stars that have a
 \begin{tabular}{lll}
  & $M\lesssim\Msun$ & $M\gtrsim\Msun$\\
 \hline
-$4\hydrogen\to\helium$ & pp & CNO\\
-core is & radiative  & convective\\
-envelope is & convective & radiative\\
+$4\pt\to\helium$\ldots & pp & CNO\\
+core is\ldots & radiative  & convective\\
+envelope is\ldots & convective & radiative\\
 \end{tabular}
 \end{margintable}
 
