@@ -205,6 +205,7 @@ When convection is absent, the temperature gradient in the star is (eq.~[\ref{e.
 Here $\kappa$ is the opacity and $L(r)$ is the luminosity at radius $r$: $L/4\pi r^2$ is the flux. If this thermal gradient, $|\dif T/\dif r|$, becomes too steep, however, then---just as in the pot of tea and milk on the stove, Fig.~\ref{f.tea}---the fluid becomes unstable: warm fluid begins to rise while cold fluid sinks. Over a wide range of stellar conditions this mixing drives the temperature gradient in the convectively unstable region to the adiabatic relations (eqs.~[\ref{e.differential-adiabat}]--[\ref{e.adiabat}]). As an example, the sun has a convective region in its outer region, Fig.~\ref{f.solar-convection}.
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{convection_hinode}
+\caption[Solar convection cells]{\label{f.solar-convection} Solar convection cells, imaged with the Hinode Solar Optical Telescope. \imgcred\ Hinode JAXA/NASA/PPARC.}
 \end{marginfigure}
 
 \begin{exercisebox}[Temperature and density within a star]
@@ -320,7 +321,7 @@ Classically, we would argue that the probability of getting either particle in d
     \mathcal{P}(\textrm{a or b in 1}) = \mathcal{P}(\textrm{a in 1}) + \mathcal{P}(\textrm{b in 1}).
 \end{equation}
 If particles a and b are different---e.g., one is a \carbon\ nucleus and the other is an \oxygen\ nucleus---then this holds in quantum mechanics as well. Quantum mechanically, we write
-\begin{equation}
+\begin{equation}\label{e.classical-probability}
     \mathcal{P}(\textrm{a or b in 1}) = |\braket{1}{a}\braket{2}{b}|^2 + |\braket{2}{a}\braket{1}{b}|^2.
 \end{equation}
 If the particles are identical, however---for example, if a and b are two electrons with identical spin---then this picture is wrong.
@@ -333,11 +334,9 @@ There are now two indistinguishable ways of arriving at the final state---in thi
 \begin{eqnarray}
     \lefteqn{\mathcal{P}(\textrm{a or b in 1}) = |\braket{1}{a}\braket{2}{b} + \braket{2}{a}\braket{1}{b}|^2} && \label{e.scattering-quantum}\\
     &=& |\braket{1}{a}\braket{2}{b}|^2 + |\braket{2}{a}\braket{1}{b}|^2 \nonumber\\
-    && + {\color{red}\left[ \braket{1}{a}^*\braket{2}{b}^*\braket{2}{a}\braket{1}{b} + \braket{2}{a}^*\braket{1}{b}^*\braket{1}{a}\braket{2}{b}\right]} \nonumber\\
-    &=& \mathcal{P}(\textrm{a in 1}) + \mathcal{P}(\textrm{b in 1}) \nonumber\\
     && + {\color{red}\left[ \braket{1}{a}^*\braket{2}{b}^*\braket{2}{a}\braket{1}{b} + \braket{2}{a}^*\braket{1}{b}^*\braket{1}{a}\braket{2}{b}\right]}. \nonumber
 \end{eqnarray}
-The probability of scattering an electron into detector 1 is the classical value plus the \emph{additional} interference term in $\color{red}[\cdot]$.
+The probability of scattering one electron into detector 1 and the other into detector 2 is the  value for distinguishable particles, eq.~(\ref{e.classical-probability}), \emph{plus} an interference term in $\color{red}[\cdot]$.
 
 \newthought{To see the effect of this interference term on the thermal properties of the system,} let's imagine putting two particles into the same small volume.  To do this, we imagine the detectors 1 and 2 sliding together until they overlap, as shown here.  
 \begin{center}
@@ -359,7 +358,7 @@ since swapping the particles twice just gets up back to the original situation, 
 
 If there is no change of sign, i.e., $\braket{2}{a}\braket{1}{b} = \braket{1}{a}\braket{2}{b}$, then from equation~(\ref{e.scattering-quantum}) we have
 \begin{equation}\label{e.boson}
-    \mathcal{P}(\textrm{a or b in 1}) = 2|\braket{1}{a}\braket{2}{b}|^2 + 2|\braket{2}{a}\braket{1}{b}|^2.
+    \mathcal{P}(\textrm{a or b in 1}) = 2\left(|\braket{1}{a}\braket{2}{b}|^2 + |\braket{2}{a}\braket{1}{b}|^2\right).
 \end{equation}
 This is \emph{twice} the classical value: the probability of the particles entering the same state is enhanced.
 
