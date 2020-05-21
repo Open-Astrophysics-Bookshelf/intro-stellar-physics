@@ -40,15 +40,9 @@ Recall that a parsec (pc) is defined by the relation
 \caption[The electric force in a light wave]{Schematic of the electric field (blue arrows) and magnetic field (red arrows) for a wave traveling along direction $\bvec{k}$ with wavelength $\lambda$.}
 \label{f.light-wave}
 \end{marginfigure}
-When we detect light, what happens at the atomic level is that the charges in our detector (antenna, CCD, eye) feel an electric (and magnetic) force that oscillates with frequency $\nu$. Imagine setting up a grid of detectors that measure the electric and magnetic forces per charge at each point in space and at each instant of time. We call these forces per charge the electric and magnetic fields, $\bvec{E}(\bvec{x},t)$ and $\bvec{B}(\bvec{x},t)$. As light passes through this grid, we would notice a sinusoidal pattern traveling at speed\sidenote{This velocity is exact; the meter is defined in terms of the speed of light.} $c = \val{299\,792\,458}{\meter/\second}$ with a wavelength $\lambda = c/\nu$.  The amplitude of the light at our detector is proportional to $|\bvec{E}|^{2} + |\bvec{B}|^{2}$. 
+When we detect light, what happens at the atomic level is that the charges in our detector (antenna, CCD, eye) feel an electric (and magnetic) force that oscillates with frequency $\nu$. Imagine setting up a grid of detectors that measure the electric and magnetic forces per charge at each point in space and at each instant of time. We call these forces per charge the electric and magnetic fields, $\bvec{E}(\bvec{x},t)$ and $\bvec{B}(\bvec{x},t)$. As light passes through this grid, we would notice a sinusoidal pattern, with amplitude proportional to $|\bvec{E}|^{2} + |\bvec{B}|^{2}$, traveling at speed\sidenote{This velocity is exact; the meter is defined in terms of the speed of light.} $c = \val{299\,792\,458}{\meter/\second}$ with a wavelength $\lambda = c/\nu$.
 
-Suppose we put a filter in front of our detector that only accepted light in a narrow range of wavelengths $(\lambda,\lambda+\Delta\lambda)$. We would find that energy is deposited into our detector in discrete quanta, known as \newterm{photons}, with each photon having an energy $hc/\lambda = h\nu$\marginnote{The symbol $h = \val{\sci{6.63}{-34}}{\unitstyle{J}\usk\second}$ denotes \newterm{Planck's constant}.}. The light emitted by the sun (or any other source) consists of a huge number of photons distributed over a broad range of wavelengths, known as a \newterm{spectrum}.
-
-\begin{exercisebox}[Photon flux from the sun]
-The peak of the sun's spectrum is at a wavelength of approximately $\val{500}{\nano\meter}$. Estimate the number of photons from the sun striking $\val{1}{\meter^{2}}$ of Earth each second.
-\end{exercisebox}
-
-\begin{marginfigure}[6\baselineskip]
+\begin{marginfigure}
 \includegraphics[width=\linewidth]{intensity}
 \caption{\label{f.intensity} Schematic of radiative intensity}
 \end{marginfigure}
@@ -56,7 +50,11 @@ Take a detector (a CCD, an eye, a photographic emulsion) and place (see Fig.~\re
 \begin{equation}\label{e.definition-intensity}
 I_{\lambda} \equiv \frac{\Delta E}{\Delta t\,\Delta A\,\Delta\lambda\,\Delta\Omega}
 \end{equation}
-is known as the \newterm{intensity}. It is the basic quantity describing radiation, and is proportional to the phase-space distribution of photons.
+is known as the \newterm{intensity}, and is the basic quantity describing radiation. At sufficiently low intensity, we would find that energy is deposited into our detector in discrete quanta, known as \newterm{photons}, with each photon having an energy $hc/\lambda = h\nu$\marginnote{The symbol $h = \val{\sci{6.63}{-34}}{\unitstyle{J}\usk\second}$ denotes \newterm{Planck's constant}.}. The light emitted by the sun (or any other source) consists of a huge number of photons distributed over a broad range of wavelengths, known as a \newterm{spectrum}. The intensity describes how the photons are distributed in energy and momentum.
+
+\begin{exercisebox}[Photon flux from the sun]
+The peak of the sun's spectrum is at a wavelength of approximately $\val{500}{\nano\meter}$. Estimate the number of photons from the sun striking $\val{1}{\meter^{2}}$ of Earth each second.
+\end{exercisebox}
 
 In situations in which the wavelength is small (relative to the system in question so we can neglect diffraction), light propagates along \newterm{rays}. By a ray of light, we mean the light emitted into a small cone of opening solid angle $\dif\Omega$ about a direction $\unitk$. In the absence of any interactions with matter, the intensity is conserved along a ray if both source and receiver are stationary with respect to one another (Exercise~\ref{ex.intensity-conserved}).
 
@@ -93,15 +91,10 @@ and show that this is the same as what your friend calculated.
 \caption[Schematic of intensity being constant]{\label{f.intensity-conserved} Schematic for exercise \ref{ex.intensity-conserved}.}
 \end{figure*}
 
-To compute the \newterm{specific flux} $F_{\lambda}$, we multiply the intensity by $\cos\theta$, where $\theta$ is the angle between the ray and the normal of our area\sidenote{this gives the projected area} and integrate over angle:
+A related quantity is the \newterm{specific flux} $F_{\lambda}$, which is the energy carried by light having wavelength in a range $\Delta\lambda$ crossing an area $\Delta A$ (from all angles) in a time $\Delta t$. We compute $F_{\lambda}$ by multiplying the intensity by $\cos\theta$, where $\theta$ is the angle between the ray and the normal of our area\sidenote{this gives the projected area} and integrating over angle:
 \begin{equation}\label{e.specific-flux}
 F_{\lambda} =  \int I_{\lambda}\,\cos\theta\,\sin\theta\,\dif\theta\,\dif\phi.
 \end{equation}
-The specific flux has dimensions
-\[
-	[F_{\lambda}] \sim \frac{\textrm{energy}}{\textrm{time}\cdot\textrm{area}\cdot\textrm{wavelength}}.
-\]
-
 
 \section{Thermal emission}
 \label{s.thermal-emission}
@@ -132,14 +125,14 @@ B_{\nu}(T) = \frac{2h\nu^{3}}{c^{2}} \left[\exp\left(\frac{h\nu}{\kB T}\right)-1
 What is the frequency corresponding to $\lambda_{\mathrm{pk}}$ in Exercise~\ref{ex.Wien-wavelength}? \notebook~Compute the frequency $\nu_{\mathrm{pk}}$ at which $B_{\nu}$ is maximum. Is $\nu_{\mathrm{pk}}$ the same as the frequency corresponding to $\lambda_{\mathrm{pk}}$?
 \end{exercisebox}
 
-Using Eq.~(\ref{e.specific-flux}), we can compute the specific flux associated with our thermal emissionthe sun. Since $B_{\lambda}$ doesn't depend on angle, the integral is easy:
+Using Eq.~(\ref{e.specific-flux}), we can compute the specific flux of this thermal radiation. Since $B_{\lambda}$ doesn't depend on angle, the integral is easy:
 \[ F_{\lambda} = B_{\lambda}\int_{0}^{2\pi}\int_{0}^{\pi}\cos\theta\,\sin\theta\,\dif\theta\,\dif\phi = 0. \]
 
 \begin{exercisebox}[No net flux for thermal emission]
 Explain, without using mathematical expressions, why there is no net flux for thermal emission.
 \end{exercisebox}
 
-Although the net flux is zero, if we just want the radiation escaping from our cavity, we only want to integrate over the angles $0\le\theta\le\pi/2$. If we do this, then our \emph{outward-going} specific flux is
+Although the net flux is zero, if we just want the radiation escaping from our cavity, we should only integrate over the angles $0\le\theta\le\pi/2$. If we do this, then our \emph{outward-going} specific flux is
 \begin{equation}\label{e.outward-thermal-flux}
  F_{\lambda}(\mathrm{outward}) = B_{\lambda}\int_{0}^{2\pi}\int_{0}^{\pi/2}\cos\theta\,\sin\theta\,\dif\theta\,\dif\phi = \pi B_{\lambda}.
 \end{equation}
