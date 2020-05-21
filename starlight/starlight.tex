@@ -115,12 +115,12 @@ I_{\lambda}(\mathrm{Planck}) \equiv B_{\lambda}(T) = \frac{2hc^{2}}{\lambda^{5}}
 \end{equation}
 Here $\kB = \val{\sci{1.381}{-23}}{\unitstyle{J}\usk\K^{-1}}$ denotes \newterm{Boltzmann's constant}. This spectrum is also known as a \newterm{blackbody} spectrum, because it is emitted from a material that absorbs (and therefore emits) equally well at all wavelengths. The emission is peaked at a wavelength $\lambda_{\mathrm{pk}} \sim hc/\kB T$. 
 Fig.~\ref{f.Planck} displays Planck's spectra for various temperatures. Note that $B_{\lambda}$ increases at all wavelengths as the temperature increases.
-\begin{marginfigure}
+\begin{marginfigure}[-12\baselineskip]
 \includegraphics[width=\linewidth]{Planck}
 \caption[Thermal spectra]{\label{f.Planck}Thermal spectra for temperatures ranging from \val{3000}{\K} to \val{7000}{\K}.}
 \end{marginfigure}
 
-\begin{exercisebox}[Peak of thermal spectrum]\label{ex.Wien-wavelength}
+\begin{exercisebox}[Peak of thermal spectrum \notebook]\label{ex.Wien-wavelength}
 Show that the peak of the thermal spectrum, temperature $T$, occurs (i.e., where $B_{\lambda}$ is maximum) at a wavelength
 \[ \lambda_{\mathrm{pk}} = \val{290}{\nano\meter}\left(\frac{\val{10\,000}{\K}}{T}\right). \]
 This result is known as \newterm{Wien's law}. Check this: what is the peak wavelength of the sun's emission? What is the peak wavelength for the cosmic microwave background ($T_{\mathrm{CMB}} = \val{2.73}{\K}$)? \notebook~\emph{Hint:} In finding the peak, you may need to find the root of a function numerically; that is, you will have an expression $f(x)$ and you want to find $x_{r}$ such that $f(x=x_{r}) = 0$. There are multiple ways to do this; see the notebooks \code{bisection} and \code{brent} in the \code{numerical-methods/notebooks} folder.
@@ -131,7 +131,7 @@ The Planck spectrum, expressed in terms of frequency, is
 B_{\nu}(T) = \frac{2h\nu^{3}}{c^{2}} \left[\exp\left(\frac{h\nu}{\kB T}\right)-1\right]^{-1}.
 \end{equation}
 
-\begin{exercisebox}[Frequency peak in thermal spectrum]
+\begin{exercisebox}[Frequency peak in thermal spectrum \notebook]
 What is the frequency corresponding to $\lambda_{\mathrm{pk}}$ in Exercise~\ref{ex.Wien-wavelength}? \notebook~Compute the frequency $\nu_{\mathrm{pk}}$ at which $B_{\nu}$ is maximum. Is $\nu_{\mathrm{pk}}$ the same as the frequency corresponding to $\lambda_{\mathrm{pk}}$?
 \end{exercisebox}
 
