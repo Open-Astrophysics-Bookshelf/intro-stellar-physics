@@ -23,18 +23,19 @@ Dividing by $\Delta r$ and taking the limit $\Delta r \to 0$ gives us the equati
 \end{equation}
 This is a differential equation describing how the pressure varies in the star. We don't have enough information yet to solve it, however, because we haven't specified either the gravity $g(r)$ or the density $\rho$.
 
-\subsection{Constant gravity, incompressible fluid}
+\subsection{Constant gravity}
 
-Let's try a simple case: an incompressible (density is fixed) fluid in constant gravity. This isn't a good approximation for a star, but it is a good approximation to Earth's oceans: the density of sea water changes by less than 5\% between the surface and ocean floor.
+Let's start with a simple case: a thin fluid layer, over which gravity is approximately constant. This is a good approximations for Earth's atmosphere or ocean. Exercise~\ref{ex.pressure-increase-ocean} examines the pressure increase in an incompressible (density is fixed) fluid. This is a bad approximation for a star, but a good one for Earth's oceans: the density of sea water increases by less than 5\% between the surface and ocean floor.
 
-\begin{exercisebox}[Pressure increase in water]
+\begin{exercisebox}[Pressure increase in the ocean]
+\label{ex.pressure-increase-ocean}
 Water is nearly incompressible and has a density $\rho = \val{10^{3}}{\kilo\gram\usk\meter^{-3}}$. Solve eq.~(\ref{e.hydrostatic-equilibrium-g}) to get an equation for the pressure as a function of depth in the ocean. How deep would you need to dive for the pressure to increase by $\val{1}{\unitstyle{atm}} = \val{\sci{1.013}{5}}{\unitstyle{Pa}}$? Does this agree with your experience?
 \end{exercisebox}
 \marginnote[-3\baselineskip]{The SI unit of pressure is the \textbf{Pascal}: $\val{1}{\unitstyle{Pa}} = \val{1}{\unitstyle{N}\usk\meter^{-2}}$. The mean pressure at terrestrial sea level is $\val{1}{\unitstyle{atm}} = \val{\sci{1.013}{5}}{\unitstyle{Pa}}$. Other common units of pressure are the \textbf{bar} ($\val{1}{\unitstyle{bar}} = \val{10^{5}}{\unitstyle{Pa}}$) and the \textbf{Torr} ($\val{760}{\unitstyle{Torr}} = \val{1}{\unitstyle{atm}}$).}
 
-Let's look at this in a bit more detail.  Suppose we take our fluid layer to be thin, so that $g$ is approximately constant. Then we can write equation~(\ref{e.hydrostatic-equilibrium}) as
+We can write equation~(\ref{e.hydrostatic-equilibrium}) in the form of an integral:
 \[ \int_{P_{0}}^{P_(z)} \dif P = -g\int_{0}^{z} \rho\,\dif z. \]
-Now consider a cylinder of cross-section $\Delta A$ that extends from $0$ to $z$.  The mass of that cylinder is
+Consider a cylinder of cross-section $\Delta A$ that extends from $0$ to $z$.  The mass of that cylinder is
 \[ m(z) = \Delta A\times\int_{0}^{z}\rho \,\dif z.
 \]
 and its weight is $m(z)g$.
@@ -47,7 +48,7 @@ The mass of a column of fluid.
 
 The difference in pressure between the bottom and top of the cylinder is just
 \[ P_{0}-P(z) = g m(z)/\Delta A, \]
-that is, the weight per unit area of our column.  Let's apply this to our atmosphere:
+that is, the difference in pressure is the weight per unit area of our column.  Let's apply this to our atmosphere:
 if we take the top of our column to infinity and the pressure at the top to zero, then the pressure at the bottom (sea level) is just the weight of a column of atmosphere with a cross-sectional area of $\val{1}{\meter^{2}}$.
 
 \subsection{The isothermal ideal gas}\label{s.ideal-gas}
@@ -103,31 +104,33 @@ For a mixture with different types of particles, it is useful to introduce the \
 \begin{equation}\label{e.mean-mol-weight}
 \mu = \frac{\rho}{\mb n_{\mathrm{tot}}} = \frac{1}{\mb}\frac{\sum_{i}m_{i}\,n_{i}}{\sum_{i}n_{i}}.
 \end{equation}
-Some examples may make this clearer. Suppose we star with molecular hydrogen ($\mathrm{H}_{2}$). The mass of a sample of $n$ molecules is $\approx \val{2}{\mb}\times n$, since each molecule has 2 nucleons. The total number of particles in our sample is $n$, so
+Some examples may make this clearer. Suppose we have $n$ molecules of molecular hydrogen ($\mathrm{H}_{2}$). The mass of this sample is $\approx \val{2}{\mb}\times n$, since each molecule has 2 nucleons. The total number of particles in our sample is $n$, so
 \[
 	\mu(\mathrm{H_{2}}) = \frac{2\mb \times n}{n\mb} = 2.
 \]
-Now suppose we raise the temperature and dissociate those molecules into individual atoms. For $n$ atoms, the mass is $\val{1}{\amu}\times n$, so $\mu = 1$. It becomes a little trickier when the atoms are ionized. Let's raise the temperature further, so that the gas ionizes into electrons and nuclei (protons). The electrons contribute negligibly to the mass, so if we have $n$ atoms, the mass is still $\val{1}{\amu}\times n$. The total number of particles has \emph{doubled}, however, since for each atom there are now 2 particles (electron and nucleus). The mean molecular weight is therefore
+Now suppose we raise the temperature and dissociate those molecules into individual atoms. The mass of a sample of $n$ atoms is $\val{1}{\amu}\times n$, so $\mu = 1$. Let's raise the temperature further, so that the gas ionizes into electrons and nuclei (protons). This is a bit trickier.  The electrons contribute negligibly to the mass, so if we had $n$ atoms, the mass is still $\val{1}{\amu}\times n$. The total number of particles has \emph{doubled}, however, since for each atom there are now 2 particles (electron and nucleus). The mean molecular weight is therefore
 \[
 	\mu(\hydrogen + e^{-}) = \frac{n\mb}{2n\mb} = \frac{1}{2}.
 \]
-In terms of the mean molecular weight, the ideal gas EOS becomes
-\begin{equation}\label{e.eos}
-P = \rho\left(\frac{\kB}{\mu\mb}\right) T.
-\end{equation}
 
 \begin{exercisebox}[Mean molecular weight for ionized helium]
 What is $\mu$ for a fully ionized \helium\ gas ($A=4$, with 2 electrons per atom)? 
 \end{exercisebox}
 
+The ideal gas EOS (eq.~[\ref{e.ideal-gas-astro}]) as used in astronomy is thus
+\begin{equation}\label{e.eos}
+P = \rho\left(\frac{\kB}{\mu\mb}\right) T,
+\end{equation}
+in which the composition enters via the mean molecular weight $\mu$.
+
 \section{The mass distribution}
 
-Now let's look at how gravity varies within a star. Suppose we are at a distance $r$ from the stellar center. Newton discovered that the gravitational force inside a spherical shell vanished. This means that the net gravitational force arising from portions of the star exterior to our position vanishes. The gravitational force depends only on the amount of mass interior to our position. This mass is
+Now let's look at how gravity varies within a star. Suppose we are at a distance $r$ from the stellar center. Newton discovered that the gravitational force inside a spherical shell vanished. This means that the net gravitational force arising from portions of the star exterior to our position vanishes. The gravitational force depends only on the amount of mass interior to our position,
+\[	m(r) = 4\pi \int_{0}^{r}\rho(r)r^{2}\,\dif r, \]
+or in differential form,
 \begin{equation}\label{e.mass-continuity}
-	m(r) = 4\pi \int_{0}^{r}\rho(r)r^{2}\,\dif r,
+\DD{m}{r} = 4\pi r^{2}\rho.
 \end{equation}
-with $\rho$ being the mass density.
-
 Furthermore, the gravitational force from a spherically symmetric mass is identical to that of a point particle of the same mass. Thus, the gravitational force at a radius $r$ from the center is simply
 \[ g(r) = \frac{Gm(r)}{r^{2}}. \]
 Using this expression for $g$, we can write eq.~(\ref{e.hydrostatic-equilibrium-g}) as
@@ -139,9 +142,8 @@ Using this expression for $g$, we can write eq.~(\ref{e.hydrostatic-equilibrium-
 What happens to $m(r)$ and $g(r)$ at the center ($r\to0$)? Before doing any calculation, see if you can argue that $g(r)\to0$ at the center. If this is so, then what is $\dif P/\dif r$ at the center? Assuming that $\rho\to\rho_{c}\approx\mathrm{const.}$ near the center, integrate eq.~(\ref{e.mass-continuity}) over a small radius $\Delta r$ to get $m(\Delta r)$ and hence $g(\Delta r)$. Show explicitly that $g(\Delta r)\to 0$ as $\Delta r\to0$.
 \end{exercisebox}
 
-To recap, we now have two differential equations, (\ref{e.mass-continuity}) and (\ref{e.hydrostatic-equilibrium}), that describe the structure of a star. These equations are for the pressure $P(r)$ and density $\rho(r)$ in the star. We can't solve these equations yet, however, because we don't have a relation between $P$ and $\rho$. For example, the ideal gas equation of state relates $P$ and $\rho$ via a temperature $T$, so we need at least an equation for $T(r)$. 
-
-Before developing the general solution, however, let's see what we can learn from just these two equations. To proceed, we shall assume a simple form for $\rho(r)$, such as a constant density, and see what we can infer.
+To recap, we now have two differential equations, (\ref{e.mass-continuity}) and (\ref{e.hydrostatic-equilibrium}), that describe the structure of a star. These equations are for the pressure $P(r)$ and density $\rho(r)$ in the star. We can't solve these equations, however, because we don't yet have a relation between $P$ and $\rho$. For example, the ideal gas equation of state relates $P$ and $\rho$ via a temperature $T$, so at a minimum we need an equation for $T(r)$. 
+We'll defer the derivation of additional stellar structures a bit, and explore what we can learn from just these two equations. To proceed, we need to prescribe $\rho(r)$; let's use a constant density and see where that leads.
 
 \begin{exercisebox}[A star of constant density]
 \label{ex.constant-density-star}
@@ -163,14 +165,14 @@ Now that we have an expression for the central pressure in terms of $M$ and $R$,
 \section{A closer look at hydrostatic equilibrium}
 \label{s.closer-look}
 
-What would happen if the star were suddenly no longer in hydrostatic equilibrium? To explore this, imagine that we could turn off the pressure. Once we did so, then there would be no net outward force on a fluid element, just the downward pull of gravity (cf.\ Fig.~\ref{f.hydrostatic-equilibrium}). The gas in the star would therefore free-fall inwards once pressure were turned off. 
+What would happen if the star were suddenly no longer in hydrostatic equilibrium? To explore this, imagine that we could turn off the pressure. Once we did so, there would be no net outward force on a fluid element, just the downward pull of gravity (cf.\ Fig.~\ref{f.hydrostatic-equilibrium}). The gas in the star would therefore free-fall inwards once pressure were turned off. 
 
 \newthought{How long would this stellar implosion take?} We can certainly answer this by integrating the equation of motion for a particle free-falling from the surface of the star to the center. There is a simpler method, however, using Kepler's law. Start with a circular orbit and deform it into increasingly eccentric ellipses while keeping the sun at one focus, as shown in Fig.~\ref{f.fall-to-center}.
 The limit of these increasingly eccentric orbits is a fall into the center.  The time to fall in is one-half of an orbital period, and the orbital period only depends on the semi-major axis, which in this limiting case is $a = R/2$:
 \[
 \tau_{\mathrm{ff}} = \frac{T}{2} = \frac{\pi}{\sqrt{GM}} \left(\frac{R}{2}\right)^{3/2}.
 \]
-Notice that this expression contains the combination $\sqrt{R^{3}/M}$. Let's therefore convert this into an expression involving the mean density $\bar{\rho}$:
+Notice that this expression contains the combination $\sqrt{R^{3}/M}\propto 1/\sqrt{\bar{\rho}}$, where $\bar{\rho}$ is the mean density:
 \begin{equation}\label{e.tff}
 \tau_{\mathrm{ff}} = \left(\frac{3}{32\pi}\right)^{1/2}\left(\frac{1}{G}\frac{4\pi R^{3}}{3M}\right)^{1/2} = \left(\frac{3}{32\pi}\right)^{1/2} \frac{1}{\sqrt{G\bar{\rho}}}.
 \end{equation}
@@ -186,12 +188,21 @@ Now imagine that after the collapse starts, we change our mind and turn the pres
 c_{s} = \left(\gamma\frac{P}{\rho}\right)^{1/2}
 	= \left(\gamma\frac{\kB T}{\mu\mb}\right)^{1/2}.
 \end{equation}
-Here $\gamma$ is the adiabatic index: for an ideal monatomic gas, $\gamma = 5/3$.  How long would it take for a sound wave to go a distance $R$?  Using the expression for the average temperature of a constant density sphere (cf.~eq.~[\ref{e.mean-T-rho}]), we find
+Here $\gamma$ is the adiabatic index: for an ideal monatomic gas, $\gamma = 5/3$. The star can therefore respond to pressure changes on a \newterm{sound-crossing time} $\tau_{\mathrm{sc}} = R/\bar{c}_{s}$. If we use the central temperature for a constant density star (exercise~\ref{ex.constant-density-star}) to get an estimate for the mean $c_{s}$,
 \[
-	\tau_{\mathrm{sc}} \equiv \frac{R}{c_{s}} = R\left(\frac{\mu\mb}{\gamma\kB \bar{T}}\right)^{1/2} = R\left(\frac{3R}{GM}\right)^{1/2}
-		= \left(\frac{3}{2\sqrt{\pi}}\right)\frac{1}{\sqrt{G\bar{\rho}}}.
+	\tau_{\mathrm{sc}} \equiv \frac{R}{\bar{c}_{s}} \approx R\left(\frac{\mu\mb}{\gamma\kB T_{c}}\right)^{1/2} = R\left(\frac{2R}{\gamma GM}\right)^{1/2}
+		= \left(\frac{3}{\sqrt{10\pi}}\right)\frac{1}{\sqrt{G\bar{\rho}}}.
 \]
-Both the sound-crossing time, $\tau_{\mathrm{sc}}$, and the free-fall time, $\tau_{\mathrm{ff}}$, are approximately equal to the dynamical timescale $1/\sqrt{G\bar{\rho}}$.  This is another way of looking at hydrostatic equilibrium: the star is able to remain in balance because the time for pressure disturbances to propagate, $\tau_{\mathrm{sc}}$, is comparable to the time for large-scale motions of the fluid, $\tau_{\mathrm{ff}}$.
+Both the sound-crossing time, $\tau_{\mathrm{sc}}$, and the free-fall time, $\tau_{\mathrm{ff}}$, are of the order of the dynamical timescale $1/\sqrt{G\bar{\rho}}$.
+
+We have another way of viewing hydrostatic equilibrium: the star is able to remain in balance because the time for pressure disturbances to propagate is comparable to the time for large-scale motions of the fluid
+\[ \tau_{\mathrm{sc}} \sim \tau_{\mathrm{ff}} \sim \tau_{\mathrm{dyn}}. \]
+For the sun, $\bar{\rho} = \val{1400}{\kilo\gram\usk\meter^{-3}}$; this is just a bit denser than you\sidenote{The density of an adult human body, which is about 60\% water, is close to $\val{10^{3}}{\kilo\gram\usk\meter^{-3}}$; most of us are close to neutral buoyancy in water.}. The dynamical timescale for the sun is thus about one hour.
+
+\begin{exercisebox}[Sound-crossing time]
+The central temperature $T_{c}$ is a measure of the average kinetic energy of a particle at the stellar center. Use the central temperature that you found for the constant density star in exercise~\ref{ex.constant-density-star} and estimate the time that such a particle would take to cross a distance $R$. How does this time compare to the orbital period of a satellite orbiting just outside the stellar surface?
+\end{exercisebox}
+
 
 \begin{sidebar}[The sound speed]
 \label{b.sound-speed}
@@ -246,12 +257,6 @@ differentiating the top equation with respect to $x$ and the bottom with respect
 \end{equation}
 This is the equation for a wave: the solutions are $P_{1}(x,t) = P_{1}(x\pm c_{s}t)$, where the sound speed is $c_{s} = \sqrt{\gamma P/\rho}$.
 \end{sidebar}
-
-For the sun, $\bar{\rho} = \val{1400}{\kilo\gram\usk\meter^{-3}}$; this is just a bit denser than you.\marginnote{The density of an adult human body, which is about 60\% water, is close to $\val{10^{3}}{\kilo\gram\usk\meter^{-3}}$; most of us are close to neutral buoyancy in water.} The dynamical timescale for the sun is thus about one hour.
-
-\begin{exercisebox}[Sound-crossing time]
-The central temperature $T_{c}$ is a measure of the average kinetic energy of a particle at the stellar center. Use the central temperature that you found for the constant density star in exercise~\ref{ex.constant-density-star} and estimate the time that such a particle would take to cross a distance $R$. How does this time compare to the orbital period of a satellite orbiting just outside the stellar surface?
-\end{exercisebox}
 
 \section{Virial Equilibrium}
 \label{s.virial-equilibrium}
