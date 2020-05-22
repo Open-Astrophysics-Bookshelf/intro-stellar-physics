@@ -69,13 +69,17 @@ Here $\theta$ is the opening half-angle of the cone. The solid angle into which 
 If we integrate over all angles ($0\le\theta\le\pi$, or $-1\le\mu\le 1$), then we get the area of a sphere, $A = 4\pi R^{2}$.
 \end{sidebar}
 
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{intensity-conserved}
+\caption[Schematic of intensity being constant]{\label{f.intensity-conserved} Schematic for exercise \ref{ex.intensity-conserved}.}
+\end{marginfigure}
 \begin{exercisebox}[Proof that $I_{\lambda}$ is conserved]
 \label{ex.intensity-conserved}
-Your friend flashes a light: in a time $\Delta t$ it emits a energy $\Delta E_{\mathrm{emit}}$ in a waveband $\Delta\lambda$. The opening through which the light passes has area $\Delta A_{\mathrm{emit}}$, and the light goes into a cone of opening solid angle $\Delta\Omega_{\mathrm{emit}}$ (see Fig.~\ref{f.intensity-conserved}). Your friend therefore calculates her intensity as
+Your friend (at top in Fig.~\ref{f.intensity-conserved}) flashes a light: in a time $\Delta t$ it emits energy $\Delta E_{\mathrm{emit}}$ in a waveband $\Delta\lambda$. The opening through which the light passes has area $\Delta A_{\mathrm{emit}}$, and the light goes into a cone of opening solid angle $\Delta\Omega_{\mathrm{emit}}$. Your friend therefore calculates her intensity as
 \[	
 	I_{\lambda,\mathrm{emit}} = \frac{\Delta E_{\mathrm{emit}}}{\Delta t\,\Delta A_{\mathrm{emit}}\,\Delta\lambda \,\Delta\Omega_{\mathrm{emit}}}.
 \]
-You stand a distance $d$ ($d^{2}\gg \Delta A_{\mathrm{emit}}, \Delta A_{\mathrm{obs}}$) from your friend with a camera. The aperture on your camera has area $\Delta A_{\mathrm{obs.}}$. Show that the intensity you receive is $I_{\lambda,\mathrm{obs}} = I_{\lambda,\mathrm{emit}}$.
+You stand (at bottom in Fig.~\ref{f.intensity-conserved}) a distance $d$ ($d^{2}\gg \Delta A_{\mathrm{emit}}, \Delta A_{\mathrm{obs}}$) from your friend with a camera. The aperture on your camera has area $\Delta A_{\mathrm{obs.}}$. Show that the intensity you receive is $I_{\lambda,\mathrm{obs}} = I_{\lambda,\mathrm{emit}}$.
 \begin{enumerate}
 \item Calculate the incident energy that falls on your camera aperture $\Delta E_{\mathrm{obs}}$.
 \item What solid angle $\Delta\Omega_{\mathrm{obs}}$ is subtended by the rays entering the aperture?
@@ -86,10 +90,6 @@ You stand a distance $d$ ($d^{2}\gg \Delta A_{\mathrm{emit}}, \Delta A_{\mathrm{
 and show that this is the same as what your friend calculated.
 \end{enumerate}
 \end{exercisebox}
-\begin{figure*}
-\includegraphics[width=\linewidth]{intensity-conserved}
-\caption[Schematic of intensity being constant]{\label{f.intensity-conserved} Schematic for exercise \ref{ex.intensity-conserved}.}
-\end{figure*}
 
 A related quantity is the \newterm{specific flux} $F_{\lambda}$, which is the energy carried by light having wavelength in a range $\Delta\lambda$ crossing an area $\Delta A$ (from all angles) in a time $\Delta t$. We compute $F_{\lambda}$ by multiplying the intensity by $\cos\theta$, where $\theta$ is the angle between the ray and the normal of our area\sidenote{this gives the projected area} and integrating over angle:
 \begin{equation}\label{e.specific-flux}
