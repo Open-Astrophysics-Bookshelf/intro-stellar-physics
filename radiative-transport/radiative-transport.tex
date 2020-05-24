@@ -58,6 +58,7 @@ Rather than work with the microscopic cross-section, it is convenient to define 
 \marginnote{The units of opacity are $\meter^{2}/\kilo\gram$.}so that $\dif I_{\nu}/\dif s = -\rho\kapabs I_{\nu}$. We use a subscript $\nu$ to indicate that the opacity is a function of frequency. In terms of the opacity, the photon mean free path is $\ell = (\rho\kapabs)^{-1}$.
 
 \begin{exercisebox}[Attenuation of light in an absorbing medium]
+\label{ex.attenuation-light}
 A ray of light crosses a slab of absorbent material. Calculate the intensity $I_{\nu}$ as a function of distance traveled. Your expression should be in terms of $\rho$ and $\kapabs$. How far does the ray go before its intensity has dropped to $1/e$ of its original value?
 \end{exercisebox}
 
@@ -69,7 +70,7 @@ A ray of light crosses a slab of absorbent material. Calculate the intensity $I_
 \begin{exercisebox}[Combined absorption and emission]
 Suppose a ray traverses matter that both absorbs (opacity $\kapabs$) and emits (emissivity $j_{\nu}$), so that
 \[	\DD{I_{\nu}}{s} = \rho j_{\nu} - \rho\kapabs I_{\nu}. \]
-Solve for $I_{\nu}(s)$, and show that as $s\to\infty$, $I_{\nu}\to j_{\nu}/\kapabs$.
+Solve for $I_{\nu}(s)$ assuming $\rho$, $j_{\nu}$, and $\kappa_{\nu}$ are constant, and show that $I_{\nu}\to j_{\nu}/\kapabs$ as $s\to\infty$.
 \label{ex.intensity-at-large-depth}
 \end{exercisebox}
 
@@ -78,26 +79,26 @@ If we assume that the direction into which the photon is scattered is random and
 \begin{equation}\label{e.scattering-microscopic}
 \left.\DD{I_{\nu}}{s}\right|_{\mathrm{scattering}} = -\rho\kapscat \left(I_{\nu} - J_{\nu}\right).
 \end{equation}
-The effect of scattering is to average the intensity over angle.
+The effect of scattering is to drive the intensity towards its angle-averaged value.
 
 \section{The equation of radiative transfer}
 \label{s.equation-radiative-transfer}
 
-Combining our expressions for absorption, emission, and scattering gives us the full expression for how the intensity changes along a ray,
+Combining our expressions for absorption, emission, and scattering gives the full expression for how the intensity changes along a ray,
 \begin{equation}\label{e.transfer-equation}
 \DD{I_{\nu}}{s} = -\rho\left(\kapabs + \kapscat\right) I_{\nu} + \rho j_{\nu} + \rho\kapscat J_{\nu}.
 \end{equation}
 This is a complicated \newterm{integrodifferential} equation: it contains both the derivative $\dif I_{\nu}/\dif s$ of the intensity as well as its integral $J_{\nu}$.
 
-In general, eq.~(\ref{e.transfer-equation}) must be solved numerically; but conditions in the deep interior of the star and near the surface allow us to make simplifying approximations and to obtain a solution that gives some insight into the physics. First, let's clean up eq.~(\ref{e.transfer-equation}): divide through by $\rho\kappa_{\nu}\equiv\rho(\kapabs + \kapscat)$,
+In general, eq.~(\ref{e.transfer-equation}) must be solved numerically; but conditions in the deep interior of the star and near the surface allow us to make simplifying approximations and to obtain a solution that gives some insight into the physics. Before doing that, let's clean up eq.~(\ref{e.transfer-equation}): define a new quantity, the \newterm{optical depth} $\tau_{\nu}$, via
 \[
-	\frac{1}{\rho\kappa_{\nu}}\DD{I_{\nu}}{s} = -I_{\nu} + \left[\frac{j_{\nu} + \kapscat J_{\nu}}{\kappa_{\nu}}\right].
+	\DD{\tau_{\nu}}{s} = \rho\kappa_{\nu} \equiv \rho(\kapabs+\kapscat).
 \]
-Next, define a new quantity, the \newterm{optical depth} $\tau_{\nu}$, via
+Next, divide through by $\rho\kappa_{\nu}=\rho(\kapabs + \kapscat)$,
 \[
-	\DD{\tau_{\nu}}{s} = \rho\kappa_{\nu} = \rho(\kapabs+\kapscat).
+	\frac{1}{\rho\kappa_{\nu}}\DD{I_{\nu}}{s} = \frac{1}{\dif\tau_{\nu}/\dif s}\DD{I_{\nu}}{s} -I_{\nu} + \left[\frac{j_{\nu} + \kapscat J_{\nu}}{\kappa_{\nu}}\right],
 \]
-We can then change variables, $\dif I_{\nu}/\dif s = (\dif I_{\nu}/\dif\tau_{\nu})\cdot(\dif\tau_{\nu}/\dif s)$, and finally define the \newterm{source function}
+and change variables, $\dif I_{\nu}/\dif s = (\dif I_{\nu}/\dif\tau_{\nu})\cdot(\dif\tau_{\nu}/\dif s)$ so the left-hand side is just $\dif I_{\nu}/\dif \tau_{\nu}$. Finally, define the \newterm{source function}
 \[ S_{\nu} \equiv \left[\frac{j_{\nu} + \kapscat J_{\nu}}{\kappa_{\nu}}\right].\]
 Doing all that gives us the deceptively simple-looking equation,
 \begin{equation}\label{e.simple-transfer}
@@ -107,13 +108,20 @@ This prettifying doesn't advance us any closer to the solution, of course, but n
 \[
 	\tau_{\nu} = \int_{0}^{s} \rho\kappa_{\nu}\,\dif s = \int_{0}^{s} n\sigma_{\nu}\,\dif s = \int_{0}^{s} \frac{\dif s}{\ell}.
 \]
-That is, the optical depth measures distance along the ray in units of mean free path. Said differently, to travel one optical depth is to travel one mean free path. We also see from eq.~(\ref{e.simple-transfer}) that $I_{\nu}\to S_{\nu}$ as $\tau_{\nu}\to\infty$ (cf.\ exercise~\ref{ex.intensity-at-large-depth}).
-
-What have we learned so far? If an object has $\tau_{\nu}\ll 1$, then photons are hardly affected by the medium and the object is nearly transparent; if, on the other hand, $\tau_{\nu} \gg 1$, then photons cannot go through the object: it is opaque, and the emission is determined by the emissivity (via the source function $S_{\nu}$) of the matter.
+That is, the optical depth measures distance along the ray in units of mean free path. Said differently, to travel one optical depth is to travel one mean free path.
 
 \begin{exercisebox}[Optical depth of the solar center]
 For the electron scattering cross-section (Exercise~\ref{ex.MFP}), estimate the optical depth between the solar center and the solar photosphere.
 \end{exercisebox}
+
+The other advantage of organizing eq.~(\ref{e.transfer-equation}) is that this can help develop our intuition about how the solutions should behave, and this will guide our analysis in \S~\ref{s.radiative-diffusion}. Although $S_{\nu}$ depends on the integral of $I_{\nu}$, we can get a feel for the general behavior by considering a simple model where $S_{\nu}$ is a known function of $\tau_{\nu}$.
+
+\begin{exercisebox}[Formal solution of radiative transfer]
+\label{ex.formal-solution-radiative-transfer}
+Suppose that $S_{\nu}$ were constant, and solve eq.~(\ref{e.simple-transfer}) for $I_{\nu}(\tau_{\nu})$ with boundary condition $I_{\nu}(\tau_{\nu} = 0) = I_{\nu,0}$. How does $I_{\nu}$ behave in the limiting cases $\tau_{\nu}\ll1$ and $\tau_{\nu}\gg 1$?
+\end{exercisebox}
+
+The solution to the simple case of exercise~\ref{ex.formal-solution-radiative-transfer} should make sense. If we have a ray of intensity $I_{\nu,0}$ incident on an object with $\tau_{\nu}\ll 1$, then  photons will hardly be absorbed or scattered (cf.\ exercise~\ref{ex.attenuation-light}). If we are deep inside an object with $\tau_{\nu}\gg1$, then we shouldn't expect any incident light to matter, so $I_{\nu}$ shouldn't depend on $I_{\nu,0}$; further if $\tau_{\nu}\gg 1$, then going one mean free path shouldn't affect our solution, meaning $\dif I_{\nu}/\dif\tau_{\nu} \to 0$, or $I_{\nu}\to S_{\nu}$ (cf.\ exercise~\ref{ex.intensity-at-large-depth}).
 
 \newthought{Suppose we are in a cavity in which the radiation and matter are in a steady-state}. 
 That is, the matter is neither gaining nor losing energy to the radiation. Maintaining a steady-state requires balancing the
@@ -132,17 +140,17 @@ If in addition to being in steady-state, the matter and radiation are also in th
 \end{equation}
 Now $j_{\nu}$ and $\kapabs$ are properties of the matter, and do not depend on the state of the radiation field. Hence, equation~(\ref{e.detailed-balance}), known as \newterm{detailed balance}, must hold whenever the matter is in equilibrium, \emph{regardless of the state of the ambient radiation}.
 
-\section{Radiative diffusion}
+\section{Radiative diffusion}\label{s.radiative-diffusion}
 
+\begin{marginfigure}
+\includegraphics[width=\linewidth]{dr-ds-relation}
+\caption[Coordinates for radiative transport equation]{\label{f.dr-ds-relation} Schematic of the coordinate system used for solving the radiative transport equation.}
+\end{marginfigure}
 We can now examine how heat transport works in the deep interior of a star. First, we need to establish our coordinate system. In equation~(\ref{e.transfer-equation}), the coordinate $s$ is distance along a ray; but it is more convenient to use coordinates that are tied to the star. We therefore use radial distance $r$ as a coordinate, and measure the optical depth along it: $\dif\tau_{\nu} = \rho\kappa_{\nu}\,\dif r$. 
 Since $\dif r = \mu\,\dif s$, where $\mu=\cos\theta$ is the cosine between $\dif s$ and $\dif r$ (Fig.~\ref{f.dr-ds-relation}), the equation of transfer becomes
 \begin{equation}
 \mu\DD{I_{\nu}}{r} = -\rho\kappa_{\nu}\left(I_{\nu} - S_{\nu}\right).
 \end{equation}
-\begin{marginfigure}
-\includegraphics[width=\linewidth]{dr-ds-relation}
-\caption[Coordinates for radiative transport equation]{\label{f.dr-ds-relation} Schematic of the coordinate system used for solving the radiative transport equation.}
-\end{marginfigure}
 
 \newthought{Let's examine the typical scales of terms in the radiative transfer equation, for conditions in the deep solar interior.} We'll start by indicating some expected scales for eq.~(\ref{e.transfer-equation}):
 \[
@@ -152,7 +160,7 @@ If we are far from the surface of the star, then we should expect the intensity 
 \[
 	\frac{|\dif I_{\nu}/\dif r|}{\rho\kappa_{\nu}I_{\nu}} \sim \frac{\ell}{\Rsun}.
 \]
-The left-hand side of eq.~(\ref{e.transfer-equation}) is smaller than the terms on the right by the ratio of the mean free path to the solar radius. This implies that conditions in the deep solar interior are nearly homogeneous. They are also isotropic, so that $I_{\nu} = J_{\nu}$. We expect that collisions are fast enough so that the matter is in thermal equilibrium and $j_{\nu} = \kapabs B_{\nu}$. We also know from exercise~\ref{ex.intensity-at-large-depth} that $I_{\nu} \to j_{\nu}/\kapabs = B_{\nu}$.
+The left-hand side of eq.~(\ref{e.transfer-equation}) is smaller than the terms on the right by the ratio of the mean free path to the solar radius. This implies that conditions in the deep solar interior are nearly homogeneous. They are also isotropic, so that $I_{\nu} = J_{\nu}$. We expect that collisions are fast enough so that the matter is in thermal equilibrium and $j_{\nu} = \kapabs B_{\nu}$. We also know from exercise~\ref{ex.intensity-at-large-depth} that $I_{\nu} \to j_{\nu}/\kapabs = B_{\nu}$. From eq.~(\ref{e.simple-transfer}) it follows that $S_{\nu}= B_{\nu}$ as well.
 
 We can't have $I_{\nu} = B_{\nu}$ exactly, however, since in that case there is no net flux! We'll therefore treat the intensity as being thermal plus a perturbation:
 \[ I_{\nu} = B_{\nu} + I_{\nu}^{(1)}, \]
@@ -188,7 +196,7 @@ Here we've defined the \newterm{Rosseland mean} of the opacity:
 \begin{equation}\label{e.rosseland-opacity}
 	\frac{1}{\kappa_{\mathrm{R}}} = \left(\int_{0}^{\infty} \dd{B_{\nu}}{T}\,\dif\nu\right)^{-1}\int_{0}^{\infty} \frac{1}{\kappa_{\nu}}\dd{B_{\nu}}{T}\,\dif\nu.
 \end{equation}
-This is done to put the equation in more familiar terms. Since (cf.\ eq.~[\ref{e.bolometric-thermal-flux}]) $\int B_{\nu}\,\dif\nu = \sigmaSB T^{4}/\pi = c a T^{4}/4\pi$, we can write the equation for the flux as
+This is a weighted average of $\kappa_{\nu}^{-1}$ with weight $\partial B_{\nu}/\partial T$. Since (cf.\ eq.~[\ref{e.bolometric-thermal-flux}]) $\int B_{\nu}\,\dif\nu = \sigmaSB T^{4}/\pi = c a T^{4}/4\pi$, we can write the equation for the flux as
 \begin{equation}
 	F = -\frac{1}{3}\frac{c}{\rho\kappa_{\mathrm{R}}}\DD{}{r}aT^{4}.
 \label{e.radiative-transfer}
