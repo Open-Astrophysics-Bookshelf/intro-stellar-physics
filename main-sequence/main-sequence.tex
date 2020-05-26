@@ -330,7 +330,7 @@ Because of the uncertainty principle, we cannot follow the trajectories of a and
 \begin{center}
 \includegraphics[width=\linewidth]{scattering-quantum}
 \end{center}
-There are now two indistinguishable ways of arriving at the final state---in this case, an electron in detector 1 and an electron in detector 2. According to quantum mechanics, we must therefore sum the amplitudes for getting to the final state, \emph{before taking the square}. That is, the probability for this one particle to end up in detector 1 and the other to end up in detector 2 is
+There are now two indistinguishable ways of arriving at the final state---in this case, an electron in detector 1 and an electron in detector 2. According to quantum mechanics, we must therefore sum the amplitudes for getting to the final state, \emph{before taking the square}. That is, the probability for one particle to end up in detector 1 and the other to end up in detector 2 is
 \begin{eqnarray}
     \lefteqn{\mathcal{P}(\textrm{a or b in 1}) = |\braket{1}{a}\braket{2}{b} + \braket{2}{a}\braket{1}{b}|^2} && \label{e.scattering-quantum}\\
     &=& |\braket{1}{a}\braket{2}{b}|^2 + |\braket{2}{a}\braket{1}{b}|^2 \nonumber\\
@@ -346,39 +346,32 @@ Since detectors 1 and 2 are approaching one another, we must have
 \begin{equation}
     |\braket{1}{a}\braket{2}{b}|^2 = |\braket{2}{a}\braket{1}{b}|^2.
 \end{equation}
-This does not imply, however, that $\braket{1}{a}\braket{2}{b} = \braket{2}{a}\braket{1}{b}$: the amplitudes could differ by a phase factor, so that interchanging the particles would yield
-\[
-    \braket{2}{a}\braket{1}{b} = e^{i\delta}\braket{1}{a}\braket{2}{b}.
-\]
-If we interchange the particles, and then interchange them again, we get
-\[
-    \braket{1}{a}\braket{2}{b} = e^{2i\delta}\braket{1}{a}\braket{2}{b};
-\]
-since swapping the particles twice just gets up back to the original situation, we must have that $e^{2i\delta} = 1$ and therefore $e^{i\delta} = \pm 1$.
+For short, let's call $|\braket{1}{a}\braket{2}{b}|^{2}\equiv |ab|^{2}$.
+For distinguishable particles, we add probabilities, so from eq.~(\ref{e.classical-probability}),
+\[    \mathcal{P}(\textrm{a or b in 1}) = |\braket{1}{a}\braket{2}{b}|^2 + |\braket{2}{a}\braket{1}{b}|^2 = 2|ab|^{2}. \]
+For indistinguishable particles, however, the amplitudes can differ by a phase factor, $\braket{2}{a}\braket{1}{b} = e^{i\delta}\braket{1}{a}\braket{2}{b}$. We argued that since interchanging the particles twice brings us back to the original state, we must have $e^{i\delta} = \pm 1$.
 
-If there is no change of sign, i.e., $\braket{2}{a}\braket{1}{b} = \braket{1}{a}\braket{2}{b}$, then from equation~(\ref{e.scattering-quantum}) we have
+If $e^{i\delta} = 1$, so that $\braket{2}{a}\braket{1}{b} = \braket{1}{a}\braket{2}{b}$, then from equation~(\ref{e.scattering-quantum})
 \begin{equation}\label{e.boson}
-    \mathcal{P}(\textrm{a or b in 1}) = 2\left(|\braket{1}{a}\braket{2}{b}|^2 + |\braket{2}{a}\braket{1}{b}|^2\right).
+    \mathcal{P}(\textrm{a or b in 1}) = |\braket{1}{a}\braket{2}{b} + \braket{2}{a}\braket{1}{b}|^2 = 4|ab|^{2}.
 \end{equation}
-This is \emph{twice} the classical value: the probability of the particles entering the same state is enhanced.
+This is \emph{twice} the classical value: the probability of the particles entering the same state is \emph{enhanced}.
 
-In contrast, if the sign changes under exchange, i.e., if $\braket{2}{a}\braket{1}{b} = -\braket{1}{a}\braket{2}{b}$, then equation~(\ref{e.scattering-quantum}) implies that
-\begin{eqnarray}
-\mathcal{P}(\textrm{a or b in 1}) &=& |\braket{1}{a}\braket{2}{b}|^{2} + |\braket{2}{a}\braket{1}{b}|^{2} \nonumber\\ 
-    && - |\braket{1}{a}\braket{2}{b}|^{2} - |\braket{2}{a}\braket{1}{b}|^{2} \nonumber\\ 
-    &=& 0.\label{e.fermion}
-\end{eqnarray}
+In contrast, if $e^{i\delta}=-1$ and $\braket{2}{a}\braket{1}{b} = -\braket{1}{a}\braket{2}{b}$, then equation~(\ref{e.scattering-quantum}) implies that
+\begin{equation}
+\mathcal{P}(\textrm{a or b in 1}) = |\braket{1}{a}\braket{2}{b} + \braket{2}{a}\braket{1}{b}|^{2}     = 0\label{e.fermion}
+\end{equation}
 \begin{quote}\itshape
-We cannot have 2 identical particles with the same momentum, position, and spin if their wavefunction changes sign when the particles are exchanged.
+We cannot put 2 identical particles into a state with with the same momentum, position, and spin if their wavefunction changes sign when the particles are exchanged.
 \end{quote}
 Particles with integer spin (i.e., their angular momentum is an integer multiple of $\hbar$) have wavefunctions that do not change sign under exchange; these particles are said to obey \newterm{Bose-Einstein statistics} and are called \newterm{bosons}.  Particles with half-integer spin have wavefunctions that do change sign under exchange; these particles are said to obey \newterm{Fermi-Dirac statistics} and are called \newterm{fermions}.  Photons are bosons; electrons, protons, neutrons, and neutrinos are fermions.
 \end{sidebar}
 
-\newthought{To account for Fermi-Dirac statistics within the equation of state,} we imagine a small volume containing $N$ electrons. Motivated by eq.~(\ref{e.heuristic-quantum-density}), we divide the phase space into cells,
+\newthought{To account for Fermi-Dirac statistics within the equation of state,} imagine a small volume containing $N$ electrons. Motivated by eq.~(\ref{e.heuristic-quantum-density}), divide the phase space into cells\marginnote{The denominator $h^{3}$ can be derived from the density of states for a free particle in a box with periodic boundary conditions.},
 \[
 	\frac{\dif^{3}x\,\dif^{3}p}{h^{3}},
 \]
-and into each cell we place 2 electrons with opposing spins. We always add the electrons to the lowest open energy level, and repeat the process until we have added all $N$ electrons. This procedure is represented by the equation
+and into each cell place 2 electrons with opposing spins. We always add the electrons to the lowest open energy level, and repeat the process until we have added all $N$ electrons. This procedure is represented by the equation
 \begin{equation}
 \label{e.number-degenerate}
 	N = \frac{2}{h^{3}}\int_{V}\dif^{3}x\int_{0}^{\EF}\dif^{3}p
@@ -415,7 +408,7 @@ For a non-relativistic gas the pressure is $P = (2/3)(E/V)$.  Hence the pressure
 \end{equation}
 Notice that the pressure is independent of the temperature.
 
-Electrons, being more than 1000 times lighter than nuclei, become degenerate first. Suppose our composition consists of species with charge $Z_{i}$ and mass number $A_{i}$. Then the number of electrons per unit volume\sidenote{assuming complete ionization} is
+In a stellar plasma, there is a mix of electrons and nuclei. The density at which a gas becomes degenerate, eq,~(\ref{e.heuristic-quantum-density}), depends on the mass of the particles in questions. Since electrons are more than 1000 times lighter than nuclei, they become degenerate at a lower density than nuclei. For most cases, we can treat the nuclei in the stellar plasma as a classical gas. As the electrons become degenerate, their pressure increases over the classical value, and once the star is degenerate, we can treat the pressure as being provided solely by the electrons to a good approximation. It's useful to express eq.~(\ref{e.pressure-electrons}) in terms of the mass density $\rho$. To do this, suppose our composition consists of isotopes with charge $Z_{i}$ and mass number $A_{i}$. Then the number of electrons per unit volume\sidenote{assuming complete ionization} is
 \[
 	n_{e} = \sum_{i} n_{i} Z_{i} = \frac{\rho}{\mb}\sum_{i} X_{i}\frac{Z_{i}}{A_{i}}.
 \]
