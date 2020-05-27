@@ -40,13 +40,13 @@ Recall that a parsec (pc) is defined by the relation
 \caption[The electric force in a light wave]{Schematic of the electric field (blue arrows) and magnetic field (red arrows) for a wave traveling along direction $\bvec{k}$ with wavelength $\lambda$.}
 \label{f.light-wave}
 \end{marginfigure}
-When we detect light, what happens at the atomic level is that the charges in our detector (antenna, CCD, eye) feel an electric (and magnetic) force that oscillates with frequency $\nu$. Imagine setting up a grid of detectors that measure the electric and magnetic forces per charge at each point in space and at each instant of time. We call these forces per charge the electric and magnetic fields, $\bvec{E}(\bvec{x},t)$ and $\bvec{B}(\bvec{x},t)$. As light passes through this grid, we would notice a sinusoidal pattern, with amplitude proportional to $|\bvec{E}|^{2} + |\bvec{B}|^{2}$, traveling at speed\sidenote{This velocity is exact; the meter is defined in terms of the speed of light.} $c = \val{299\,792\,458}{\meter/\second}$ with a wavelength $\lambda = c/\nu$.
+When we detect light, what happens at the atomic level is that the charges in our detector (a CCD, an eye, a photographic emulsion) feel an electric (and magnetic) force that oscillates with frequency $\nu$. Imagine setting up a grid of detectors that measure the electric and magnetic forces per charge at each point in space and at each instant of time. We call these forces per charge the electric and magnetic fields, $\bvec{E}(\bvec{x},t)$ and $\bvec{B}(\bvec{x},t)$. As light passes through this grid, we would notice a sinusoidal pattern, with amplitude proportional to $|\bvec{E}|^{2} + |\bvec{B}|^{2}$, traveling at speed\sidenote{This velocity is exact; the meter is defined in terms of the speed of light.} $c = \val{299\,792\,458}{\meter/\second}$ with a wavelength $\lambda = c/\nu$.
 
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{intensity}
 \caption{\label{f.intensity} Schematic of radiative intensity}
 \end{marginfigure}
-Take a detector (a CCD, an eye, a photographic emulsion) and place (see Fig.~\ref{f.intensity}) in front of the detector a filter that only lets through light with wavelengths in a range $\Delta\lambda$. Place a mask over the detector with a small pinhole of area $\Delta A$ that restricts the light falling on the detector to fall in a narrow cone of solid angle $\Delta\Omega$ about the normal to the detector. Then measure the energy $\Delta E$ incident on the detector in a time $\Delta t$. The quantity
+Take a detector and place (see Fig.~\ref{f.intensity}) in front of the detector a filter that only lets through light with wavelengths in a range $\Delta\lambda$. Place a mask over the detector with a small pinhole of area $\Delta A$ that restricts the light falling on the detector to fall in a narrow cone of solid angle $\Delta\Omega$ about the normal to the detector. Then measure the energy $\Delta E$ incident on the detector in a time $\Delta t$. The quantity
 \begin{equation}\label{e.definition-intensity}
 I_{\lambda} \equiv \frac{\Delta E}{\Delta t\,\Delta A\,\Delta\lambda\,\Delta\Omega}
 \end{equation}
@@ -154,11 +154,10 @@ The total energy radiated per second per area from a thermal emitter of temperat
 \newthought{Real stars are \emph{not} blackbodies!} That being said, their spectra are roughly thermal, so we can define an \newterm{effective surface temperature}
 \[	\Teff = \left[\frac{F}{\sigmaSB}\right]^{1/4}. \]
 The total power output, or \emph{luminosity}, of a star of radius $R$ is thus
-\[
+\begin{equation}\label{e.total-luminosity}
 	L = 4\pi R^{2}\sigmaSB \Teff^{4}.
-\]
+\end{equation}
 For the sun, $\Teff = \val{5780}{\K}$.
-
 
 \section{The radiation energy density}\label{s.radiation-energy-density}
 
@@ -256,11 +255,11 @@ As an application of this, imagine comparing the flux from a star, at a distance
 \end{eqnarray}
 Since the absolute magnitude is a measure of the flux from the star \emph{if it were} at a specified distance, the absolute magnitude is a proxy for the luminosity \emph{measured in a given filter}.
 
-\newthought{We can also compare the flux from two different filters for the same star.} The difference in magnitudes for two different filters defines a \newterm{color index}, which is a measure of the star's spectrum (and, roughly, its temperature). For example,
+\newthought{We can also compare the flux from two different filters for the same star.} The difference in magnitudes for two different filters defines a \newterm{color index}, which is a measure of the star's spectrum (and, roughly, its temperature). For example, the index
 \[
 	B - V \equiv m_{B}-m_{V} = -2.5\log\left[\frac{\int_{B-\mathrm{band}}F_{\lambda}\,\dif\lambda}{\int_{V-\mathrm{band}}F_{\lambda}\,\dif\lambda}\right]
 \]
-measures the ratio of fluxes in the $B$ and $V$ bands for a particular star.
+measures the ratio of $V$-band flux to $B$-band flux for a particular star.
 
 \begin{exercisebox}[Color index and temperature]
 How would the $B-V$ index of the sun compare to that of a hotter star, e.g., one with $\Teff = \val{8\,000}{\K}$?
@@ -268,11 +267,11 @@ How would the $B-V$ index of the sun compare to that of a hotter star, e.g., one
 
 \begin{marginfigure}
 \includegraphics[width=\linewidth]{Hipparcos-HR}
-\caption[Hipparcos color-magnitude diagram]{\label{f.Hipparcos-HR} Absolute $M_{V}$ plotted against the $B-V$ color index for 20\,853 stars.}
+\caption[Hipparcos color-magnitude diagram]{\label{f.Hipparcos-HR} Distribution of stars cataloged by \emph{Hipparcos} in $M_{V}$ and $B-V$.}
 \end{marginfigure}
-Figure~\ref{f.Hipparcos-HR} shows the absolute $M_{V}$ magnitudes and the $B-V$ color index for 20\,853 nearby stars as measured by the \emph{Hipparcos} satellite\cite{Perryman1997The-Hipparcos-C}. 
+Figure~\ref{f.Hipparcos-HR} shows the absolute $M_{V}$ magnitudes and the $B-V$ color indices for 20\,853 nearby stars as measured by the \emph{Hipparcos} satellite\cite{Perryman1997The-Hipparcos-C}. \emph{Hipparcos} was launched by ESA in 1989 to measure parallaxes for over $10^{5}$ nearby stars. Its successor, \emph{Gaia}, is measuring positions and motions of about $10^{9}$ stars in the Milky Way. Fig.~\ref{f.Hipparcos-HR} represents a wide range of stellar masses and evolutionary stages. In the remaining chapters of these notes, we'll explore how the groupings on this diagram come about and trace the life of a star from birth to death.
 
-\begin{exercisebox}
+\begin{exercisebox}[An examination of the color-magnitude diagram]
 Let's examine the Hipparcos color-magnitude diagram, Fig.~\ref{f.Hipparcos-HR}, and understand the physical properties of the stars plotted on it.
 \begin{enumerate}
 \item On the axis $B-V$, indicate the direction ``red$\to$blue'' in visual appearance; assuming  thermal emission, indicate the direction of increasing surface temperature.
