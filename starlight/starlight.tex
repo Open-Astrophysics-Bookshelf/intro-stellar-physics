@@ -2,7 +2,7 @@
 
 \section{Introduction: Our Sun}
 
-Let's start by considering the star we know best: the sun.  We'll denote the sun with the symbol $\sun$. Measurements of the Earth-Sun distance have been done since antiquity\sidenote{For a critical account from a physicist's perspective of how this was done, see \citet{Weinberg2015To-Explain-the-}.}. Observations of the planets' orbital periods, when combined with Kepler's laws, determine the planets' relative distances from the sun. The distance scale is then fixed using radar ranging of objects in the solar system, with the mean Earth-Sun distance, known as an \newterm{astronomical unit}, being defined as\cite{Luzum2011The-IAU-2009-sy}
+Let's start by considering the star we know best: the sun.  We'll denote the sun with the symbol $\sun$. Measurements of the Earth-Sun distance have been done since antiquity\sidenote{For a critical account from a physicist's perspective of how this was done, see \citet{Weinberg2015To-Explain-the-}.}. Observations of the planets' orbital periods, when combined with Kepler's laws, determine the planets' relative distances from the sun. The distance scale is then fixed using radar ranging of objects in the solar system, with the mean Earth-Sun distance, known as an \newterm{astronomical unit}, being defined\cite{Luzum2011The-IAU-2009-sy} as
 \[
 	\val{1}{\AU} = \val{\sci{1.495\,978\,707\,00}{11}}{\meter}.
 \]
@@ -141,7 +141,7 @@ To find the total power emitted per area for thermal radiation, we need to integ
 F = \int_{0}^{\infty}F_{\lambda}(\mathrm{outward})\,\dif\lambda 
 	= \int_{0}^{\infty} \frac{2\pi hc^{2}}{\lambda^{5}} \frac{\dif\lambda}{\exp\left(hc/\lambda\kB T\right)-1}.
 \end{equation}
-By changing variables to $x = hc/\lambda\kB T$, we can write this integral as\marginnote{The integral over $x$ can be converted into a Riemann zeta function; for further information, consult a text on mathematical methods in physics.}
+By changing variables to $x = hc/\lambda\kB T$, we can write this integral as\marginnote{The integral over $x$ can be converted into $3!\,\zeta(4)$, where $\zeta$ is the Riemann zeta function; for further information, consult a text on mathematical methods in physics.}
 \[
 	F = \frac{2\pi\kB^{4}}{h^{2}c}T^{4}\times \underbrace{\int_{0}^{\infty}\frac{x^{3}}{e^{x}-1}\,\dif x}_{=\pi^{4}/15} = \left[\frac{2\pi^{5}}{15}\frac{\kB^{4}}{h^{2}c}\right] T^{4}.
 \]
