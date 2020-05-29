@@ -2,11 +2,11 @@
 
 \section{Introduction: Our Sun}
 
-Let's start by considering the star we know best: the sun.  We'll denote the sun with the symbol $\sun$. Measurements of the Earth-Sun distance have been done since antiquity\sidenote{For a critical account from a physicist's perspective of how this was done, see \citet{Weinberg2015To-Explain-the-}.}. Observations of the planets' orbital periods, when combined with Kepler's laws, determine the planets' relative distances from the sun. The distance scale is then fixed using radar ranging of objects in the solar system, with the mean Earth-Sun distance, known as an \newterm{astronomical unit}, being defined\cite{Luzum2011The-IAU-2009-sy} as
+Let's start by considering the star we know best: the sun\sidenote{The symbol $\sun$ is used to denote the sun}. Measurements of the Earth-Sun distance and hence the size of the sun began in antiquity\sidenote{See \citet{Weinberg2015To-Explain-the-} for a physicist's perspective on how this was done.}. Observations of the planets' orbital periods, when combined with Kepler's laws, determine the planets' relative distances from the sun. The distance scale is then fixed using radar ranging of objects in the solar system, with the mean Earth-Sun distance, known as an \newterm{astronomical unit}, being defined\cite{Luzum2011The-IAU-2009-sy} as
 \[
 	\val{1}{\AU} = \val{\sci{1.495\,978\,707\,00}{11}}{\meter}.
 \]
-From the planetary orbits and our understanding of gravity, we deduce the mass of the sun\sidenote{Note that $G\Msun$ is known much more precisely than $G$ or $\Msun$ separately.}:
+From the sizes and periods of the planetary orbits, along with Newton's theory of gravity, we deduce the mass of the sun\sidenote{Note that $G\Msun$ is known much more precisely than $G$ or $\Msun$ separately.}:
 \[
 	\Msun = \val{\sci{1.99}{30}}{\kilo\gram}.
 \]
@@ -31,6 +31,8 @@ Recall that a parsec (pc) is defined by the relation
 	\frac{\val{1}{\AU}}{\val{1}{\parsec}} = 1'' = \frac{1}{206\,265}.
 \]
 \end{exercisebox}
+
+Our information about the sun and the more distant stars is carried by light. Before going further, then, let's establish some basic properties of light and how observations are made.
 
 \section{Intensity and specific flux}
 \label{s.intensity-specific-flux}
@@ -239,25 +241,27 @@ Here $\mathcal{T}(\lambda)$ is the \newterm{transmission function} for that filt
 Suppose you wished to observe a sun-like star, and you wanted to observe wavelengths near the peak of the spectrum.  Which filter would you choose, and why?  What about for a star with a surface effective temperature $\Teff = \val{8\,000}{\K}$? 
 \end{exercisebox}
 
-When making observations, it is common to compare the fluxes in a particular band between two stars. Optical astronomers therefore define the \emph{apparent magnitude} as
+When making observations, a common practice is to compare fluxes in a particular band between two stars. Optical astronomers define the \emph{apparent magnitude} $m$ via
 \marginnote{NB. Throughout this text, $\log\equiv\lg$ denotes $\log_{10}$ and $\ln$ denotes $\log_{e}$.}
 \begin{equation}\label{e.apparent-magnitude}
 m(A) - m(B) = -2.5\log\left[\frac{F(A)}{F(B)}\right].
 \end{equation}
-Here $F(A)$ and $F(B)$ are two different measurements of flux (from two different stars, for example) in a particular waveband. It is common to use the label of the waveband in place of $m$. Thus, for example, when an astronomer says, ``The $V$-magnitude is 16.6'', what she means is that the apparent magnitude measured with a standard $V$-filter is 16.6.
+Here $F(A)$ and $F(B)$ are two different measurements of flux (from two different stars, for example) in a particular waveband. In place of $m$, the usual practice, is to simply use the label of the waveband. For example, when an astronomer says, ``The $V$-magnitude is 16.6'', what she means is that the apparent magnitude measured in the $V$-filter is 16.6.
 
-As an application of this, imagine comparing the flux from a star, at a distance $d$, with that from an imaginary identical star located at a distance of $\val{10}{\parsec}$. We'll call the magnitude of this imaginary star at $\val{10}{\parsec}$ the \newterm{absolute magnitude} $M$ and define the \newterm{distance modulus} as
+Because equation~(\ref{e.apparent-magnitude}) is a flux ratio, the absolute scale is not defined. Conversion from a magnitude to physical units, such as $\watt\usk\meter^{-2}\usk\nano\meter^{-1}$, is unfortunately difficult and not straightforward. Instead, the magnitude system is calibrated to specific stars.  The zero-point is usually set so that Vega has $U = B = V = \ldots = 0$\sidenote{But for historical reasons, $V(\textrm{Vega}) = +0.04$.}. 
+
+Imagine comparing the flux from a star, at a distance $d$, with that from an imaginary identical star located at a distance of $\val{10}{\parsec}$. We'll call the magnitude of this imaginary star at $\val{10}{\parsec}$ the \newterm{absolute magnitude} $M$ and define the \newterm{distance modulus} as
 \begin{eqnarray}
 \mathrm{DM} \equiv m-M &=& m(d) - m(\val{10}{\parsec})\nonumber\\
 &=& -2.5\log\left[\frac{L/4\pi d^{2}}{L/4\pi(\val{10}{\parsec})^{2}}\right]\nonumber\\
 &=& -2.5\log\left[\left(\frac{\val{10}{\parsec}}{d}\right)^{2}\right]\nonumber \\
 &=& 5\log\left(\frac{d}{\parsec}\right) - 5.
 \end{eqnarray}
-Since the absolute magnitude is a measure of the flux from the star \emph{if it were} at a specified distance, the absolute magnitude is a proxy for the luminosity \emph{measured in a given filter}.
+Since the absolute magnitude is a measure of the flux from the star \emph{if it were} at a specified distance, the absolute magnitude is a proxy for the luminosity \emph{in a given filter}. Because magnitudes do not have a straightforward conversion to physical units, the absolute magnitude is again a relative scale for comparing stellar luminosities.
 
-\newthought{We can also compare the flux from two different filters for the same star.} The difference in magnitudes for two different filters defines a \newterm{color index}, which is a measure of the star's spectrum (and, roughly, its temperature). For example, the index
+\newthought{We can also compare the flux from two different filters for the same star.} The difference in magnitudes betweem two different filters defines a \newterm{color index}, which measures where the star's spectrum peaks and is therefore a rough proxy for surface effective temperature. For example, the index
 \[
-	B - V \equiv m_{B}-m_{V} = -2.5\log\left[\frac{\int_{B-\mathrm{band}}F_{\lambda}\,\dif\lambda}{\int_{V-\mathrm{band}}F_{\lambda}\,\dif\lambda}\right]
+	B - V = -2.5\log\left[\frac{\int_{B-\mathrm{band}}F_{\lambda}\,\dif\lambda}{\int_{V-\mathrm{band}}F_{\lambda}\,\dif\lambda}\right]
 \]
 measures the ratio of $V$-band flux to $B$-band flux for a particular star.
 
