@@ -52,7 +52,7 @@ Take a detector and place (see Fig.~\ref{f.intensity}) in front of the detector 
 \begin{equation}\label{e.definition-intensity}
 I_{\lambda} \equiv \frac{\Delta E}{\Delta t\,\Delta A\,\Delta\lambda\,\Delta\Omega}
 \end{equation}
-is known as the \newterm{intensity}, and is the basic quantity describing radiation. At sufficiently low intensity, we would find that energy is deposited into our detector in discrete quanta, known as \newterm{photons}, with each photon having an energy $hc/\lambda = h\nu$\marginnote{The symbol $h = \val{\sci{6.63}{-34}}{\unitstyle{J}\usk\second}$ denotes \newterm{Planck's constant}.}. The light emitted by the sun (or any other source) consists of a huge number of photons distributed over a broad range of wavelengths, known as a \newterm{spectrum}. The intensity describes how the photons are distributed in energy and momentum.
+is known as the \newterm{intensity}, and is the basic quantity describing radiation. At sufficiently low intensity, we would find that energy is deposited into our detector in discrete quanta, known as \newterm{photons}, with each photon having an energy $hc/\lambda = h\nu$, with $h = \val{\sci{6.63}{-34}}{\unitstyle{J}\usk\second}$ being \newterm{Planck's constant}. The light emitted by the sun (or any other source) consists of a huge number of photons; the distribution of photons over a range of wavelengths is known as a \newterm{spectrum}. 
 
 \begin{exercisebox}[Photon flux from the sun]
 The peak of the sun's spectrum is at a wavelength of approximately $\val{500}{\nano\meter}$. Estimate the number of photons from the sun striking $\val{1}{\meter^{2}}$ of Earth each second.
@@ -62,7 +62,7 @@ In situations in which the wavelength is small (relative to the system in questi
 
 \begin{sidebar}[Solid angles]
 \label{sb.solid-angles}
-Imagine that your are at the center of a great sphere of radius $R$, and you shine a light that emits rays into some solid angle. Orient your coordinates so that the rays are traveling along the $z$-axis. The light will illuminate an area
+Imagine that you are at the center of a great sphere of radius $R$, and you shine a light that emits rays into some solid angle. Orient your coordinates so that the rays are traveling along the $z$-axis. The light will illuminate an area
 \[ 	A = R^{2}\int_{0}^{2\pi}\int_{0}^{\theta}\sin\theta\,\dif\theta\,\dif\phi. \]
 Here $\theta$ is the opening half-angle of the cone. The solid angle into which the light is emitted is $\Omega = A/R^{2}$. Astronomers often express the integral by changing variables to $\mu = \cos\theta$, so that the solid angle is
 \[
@@ -143,7 +143,7 @@ To find the total power emitted per area for thermal radiation, we need to integ
 F = \int_{0}^{\infty}F_{\lambda}(\mathrm{outward})\,\dif\lambda 
 	= \int_{0}^{\infty} \frac{2\pi hc^{2}}{\lambda^{5}} \frac{\dif\lambda}{\exp\left(hc/\lambda\kB T\right)-1}.
 \end{equation}
-By changing variables to $x = hc/\lambda\kB T$, we can write this integral as\marginnote{The integral over $x$ can be converted into $3!\,\zeta(4)$, where $\zeta$ is the Riemann zeta function; for further information, consult a text on mathematical methods in physics.}
+By changing variables to $x = hc/\lambda\kB T$, we can write this integral as\marginnote{The integral over $x$ can be converted into $3!\times\zeta(4)$, where $\zeta$ is the Riemann zeta function; for further information, consult a text on mathematical methods in physics.}
 \[
 	F = \frac{2\pi\kB^{4}}{h^{2}c}T^{4}\times \underbrace{\int_{0}^{\infty}\frac{x^{3}}{e^{x}-1}\,\dif x}_{=\pi^{4}/15} = \left[\frac{2\pi^{5}}{15}\frac{\kB^{4}}{h^{2}c}\right] T^{4}.
 \]
