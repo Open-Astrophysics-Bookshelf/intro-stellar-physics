@@ -81,15 +81,15 @@ Your friend (at top in Fig.~\ref{f.intensity-conserved}) flashes a light: in a t
 \[	
 	I_{\lambda,\mathrm{emit}} = \frac{\Delta E_{\mathrm{emit}}}{\Delta t\,\Delta A_{\mathrm{emit}}\,\Delta\lambda \,\Delta\Omega_{\mathrm{emit}}}.
 \]
-You stand (at bottom in Fig.~\ref{f.intensity-conserved}) a distance $d$ ($d^{2}\gg \Delta A_{\mathrm{emit}}, \Delta A_{\mathrm{obs}}$) from your friend with a camera. The aperture on your camera has area $\Delta A_{\mathrm{obs.}}$. Show that the intensity you receive is $I_{\lambda,\mathrm{obs}} = I_{\lambda,\mathrm{emit}}$.
+You stand (at bottom in Fig.~\ref{f.intensity-conserved}) with a camera, the aperture of which has area $\Delta A_{\mathrm{obs.}}$, a distance $d$ ($d^{2}\gg \Delta A_{\mathrm{emit}}, \Delta A_{\mathrm{obs}}$) from your friend. You measure an intensity $I_{\lambda,\mathrm{obs}}$. Show that  $I_{\lambda,\mathrm{obs}} = I_{\lambda,\mathrm{emit}}$ by doing the following.
 \begin{enumerate}
-\item Calculate the incident energy that falls on your camera aperture $\Delta E_{\mathrm{obs}}$.
-\item What solid angle $\Delta\Omega_{\mathrm{obs}}$ is subtended by the rays entering the aperture?
-\item Now compute your intensity
+\item\label{ex.intensity-conserved-one} Calculate the incident energy that falls on your camera aperture $\Delta E_{\mathrm{obs}}$.
+\item\label{ex.intensity-conserved-two} Find the solid angle $\Delta\Omega_{\mathrm{obs}}$ subtended by the rays entering the aperture.
+\item Now use parts \ref{ex.intensity-conserved-one} and \ref{ex.intensity-conserved-two} to compute your intensity
 \[	
 	I_{\lambda,\mathrm{obs}} = \frac{\Delta E_{\mathrm{obs}}}{\Delta t\,\Delta A_{\mathrm{obs}}\,\Delta\lambda \,\Delta\Omega_{\mathrm{obs}}}.
 \]
-and show that this is the same as what your friend calculated.
+and show that this is the same as $I_{\lambda,\mathrm{emit}}$.
 \end{enumerate}
 \end{exercisebox}
 
@@ -248,7 +248,7 @@ m(A) - m(B) = -2.5\log\left[\frac{F(A)}{F(B)}\right].
 \end{equation}
 Here $F(A)$ and $F(B)$ are two different measurements of flux (from two different stars, for example) in a particular waveband. In place of $m$, the usual practice, is to simply use the label of the waveband. For example, when an astronomer says, ``The $V$-magnitude is 16.6'', what she means is that the apparent magnitude measured in the $V$-filter is 16.6.
 
-Because equation~(\ref{e.apparent-magnitude}) is a flux ratio, the absolute scale is not defined. Conversion from a magnitude to physical units, such as $\watt\usk\meter^{-2}\usk\nano\meter^{-1}$, is unfortunately difficult and not straightforward. Instead, the magnitude system is calibrated to specific stars.  The zero-point is usually set so that Vega has $U = B = V = \ldots = 0$\sidenote{But for historical reasons, $V(\textrm{Vega}) = +0.04$.}. 
+Because equation~(\ref{e.apparent-magnitude}) is a flux ratio, the absolute scale is not defined. Conversion from a magnitude to physical units, such as $\watt\usk\meter^{-2}\usk\nano\meter^{-1}$, is unfortunately difficult and not straightforward. Instead, the magnitude system is calibrated to specific stars.  The zero-point is set so that Vega has $U = B = V = \ldots = 0$\sidenote{The modern value is $V(\textrm{Vega}) = 0.026 \pm 0.008$; \citet{Bohlin2004Hubble-Space-Te}.}. 
 
 Imagine comparing the flux from a star, at a distance $d$, with that from an imaginary identical star located at a distance of $\val{10}{\parsec}$. We'll call the magnitude of this imaginary star at $\val{10}{\parsec}$ the \newterm{absolute magnitude} $M$ and define the \newterm{distance modulus} as
 \begin{eqnarray}
