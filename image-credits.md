@@ -12,3 +12,6 @@ Image sources
 * [Fig. 7.1](https://apod.nasa.gov/apod/ap010223.html)
 * [Fig. 7.2](https://apod.nasa.gov/apod/ap200216.html)
 * [Fig. 7.3](https://apod.nasa.gov/apod/ap100106.html)
+* [Fig. 7.x](https://commons.wikimedia.org/wiki/File:Pulsar_schematic.svg) Made by Mysid in Inkscape, based on Pulsar schematic.jpg by Roy Smits. Licensed under CC BY-SA 3.0
+By Cambridge University Lucky Imaging Group - http://www.ast.cam.ac.uk/~optics/Lucky_Web_Site/, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=2528398
+
