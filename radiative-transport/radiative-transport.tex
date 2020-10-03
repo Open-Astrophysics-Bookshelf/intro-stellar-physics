@@ -524,28 +524,20 @@ Deep in the star, we expect the radiation to be nearly isotropic, while it becom
 Demonstrate that $H_{\nu}/J_{\nu} = 0$ if the radiation is isotropic.
 
 \item
-Next, suppose the radiation is completely anisotropic: all the photons are headed along precisely the same direction $\mu = 1$. We describe this mathematically as
-\begin{equation}
-I_{\nu}(\mu) = a_{\nu} \delta(\mu - 1),
-\end{equation}
-where $\delta(x)$ is the \newterm{Dirac delta function} (see Box~\ref{sb.delta-function}).
-Show that $H_{\nu}/J_{\nu} = 1$ for this case.
+Next, suppose the radiation is completely anisotropic: all the photons are headed in a narrow cone about the direction $\mu = 1$. To make this precise, let
+\[
+	I_{\nu}(\mu) = \left\{
+		\begin{array}{lr}
+			I_{\nu,0} & 1-\varepsilon \le \mu \le 1,\\
+			0 & \textrm{otherwise,}
+		\end{array}
+	\right.
+\]
+where $I_{\nu,0}$ is a constant. Show that $H_{\nu}/J_{\nu} \to 1$ as $\varepsilon\to 0$.
 
 \item
 Now compute $H(\tau)/J(\tau)$ for our gray atmosphere.What is the degree of anisotropy at $\tau = 0$? at $\tau=2/3$? at $\tau = 10$?
 \end{enumerate}
 \end{exercisebox}
 
-\begin{sidebar}[The Dirac delta function]
-\label{sb.delta-function}
-The Dirac delta function $\delta(x)$ has the following properties: $\delta(x) = 0, \forall x \neq 0$; and
-\[
-\int_{-\epsilon}^{\epsilon} \delta(x)\,\dif x = 1.
-\]
-From this definition, one can show that
-\[
-	\int f(x) \delta(x-a)\,\dif x = f(a),
-\]
-where the integral is over any domain containing $x = a$.
-\end{sidebar}
 
