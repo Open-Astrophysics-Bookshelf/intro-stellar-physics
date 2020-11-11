@@ -379,8 +379,8 @@ Defining $\Delta_{i} = (x_{i+1}-x_{i})^{-1}$ and equating second derivatives at 
 \end{equation}
 Setting the second derivatives to zero at $x_{0}$, $x_{N}$ gives the additional equations
 \begin{eqnarray}
-2k_{0} + k_{1} &=& 3m_{0}\\
-k_{N-1} + 2k_{N} &=& 3m_{N-1}.
+2k_{0} + k_{1} &=& 3m_{0}\label{e.cubic-interpolant-1}\\
+k_{N-1} + 2k_{N} &=& 3m_{N-1}.\label{e.cubic-interpolant-2}
 \end{eqnarray}
 This system of equations is termed a \newterm{tridiagonal} system because $i$ contains only $k_{i-1}$, $k_{i}$, and $k_{i+1}$. It can be efficiently solved with two iterations over the equations (see Box~\ref{sb.solving-tridiagonal-system}). After solving for $k_{i}$, if we then wish to interpolate a value $y(x)$, we simply need to find $i$ such that $x_{i}< x < x_{i+1}$ and then insert $x_{i,i+1}$, $y_{i,i+1}$, and $k_{i,i+1}$ into equation (\ref{e.spline}) to interpolate $y(x)$.
 
@@ -392,7 +392,7 @@ Fig.~\ref{f.spline-4} illustrates a spline for the function $\cos(2\pi x)/2$ usi
 
 \begin{sidebar}[Solving a tridiagonal system]
 \label{sb.solving-tridiagonal-system}
-These $N+1$ equations for the $N+1$ $k_{i}$ can be written as the matrix equation
+The $N+1$ equations (\ref{e.cubic-interpolant-1})--(\ref{e.cubic-interpolant-2}) for the $N+1$ $k_{i}$ can be written as the matrix equation
 \[
 \left[\begin{array}{cccccccccc}
 	b_{0} & c_{0} \\
