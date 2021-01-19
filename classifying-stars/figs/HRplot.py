@@ -9,9 +9,9 @@ from matplotlib import rc
 star_data = np.genfromtxt(
     'stellar_parameters.data',names=[
         'star','type','subtype','indx','L','Teff','red','green','blue'],
-        dtype=None)
+        dtype=None, encoding='UTF-8')
 
-clrs = [(r*0.01,g*0.01,b*0.01) \
+clrs = [(r,g,b) \
     for r,g,b in zip(star_data['red'],star_data['green'],star_data['blue'])]
 
 plt.style.use('text-sans')
@@ -29,7 +29,7 @@ for stype,sub,x,l,clr in \
     zip(star_data['type'],star_data['subtype'],xs,star_data['L'],clrs):
     plt.semilogy(
         x,l,linestyle='none',marker='o',markersize=8,mfc=clr,mec='none')
-    plt.annotate(s=str(stype,'utf-8')+str(sub),xy=(x,l),
+    plt.annotate(text=str(stype)+str(sub),xy=(x,l),
         ha='left',va='bottom',size='x-small',
         xytext=(4,4),textcoords='offset points',color=clr)
 plt.ylabel('luminosity relative to solar')
