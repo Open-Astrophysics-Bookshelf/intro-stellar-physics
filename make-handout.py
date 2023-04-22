@@ -50,7 +50,8 @@ titles = {
     "classifying-stars":"Rainbow in the Dark",
     "nuclear-burning":"Burn",
     "main-sequence":"Star",
-    "post-main-sequence":"End of the Line"
+    "post-main-sequence":"End of the Line",
+    "numerical-methods":"Algorithm"
 }
 
 # execution starts here
