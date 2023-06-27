@@ -1,6 +1,6 @@
 # Introduction to Stellar Astrophysics
 
-Part of the [Open Astrophysics Bookshelf](http://open-astrophysics-bookshelf.github.io/).  A pdf of these notes is available at [https://www.pa.msu.edu/~ebrown/docs/intro-stellar-physics.pdf](https://www.pa.msu.edu/~ebrown/docs/intro-stellar-physics.pdf).
+Part of the [Open Astrophysics Bookshelf](http://open-astrophysics-bookshelf.github.io/).  A pdf of these notes is available at [https://web.pa.msu.edu/people/ebrown/docs/intro-stellar-physics.pdf](https://web.pa.msu.edu/people/ebrown/docs/intro-stellar-physics.pdf).
 
 These notes were written for the junior/senior undergraduate course on stars at Michigan State University. They are based on my notes from teaching this course in 2012, 2014, and 2016, and were put into manuscript form, with additional figures and exercises, during the spring and summer of 2018. The motivation for assembling the notes was to make a self-contained package that could be inexpensively distributed to students instead of a textbook.
 
